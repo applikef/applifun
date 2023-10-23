@@ -1,0 +1,64 @@
+@import './../assets/styles/global.css';
+
+.app {
+  background-color: var(--background);
+  direction: rtl;
+  padding-right: 200px;
+  padding-top: 50px;
+  line-height: 40px;
+}
+
+.app-landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  font-size: var(--font-size-normal);
+  color: var(--text);
+}
+
+.app-games-list {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.app-select-game {
+  padding-top: 20px;
+  padding-right: 60px;
+  color: var(--link);
+}
+
+.app-games {
+  display: flex;
+  text-align: center;
+}
+
+.app-headless-landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-normal);
+  color: var(--text);
+}
+
+.app-headless-landing-hide {
+  display: none;
+}
+
+.home-page-headless-games-icon {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  height: 32px;
+  width: 32px;
+}
+
+.headless-page-global {
+  padding-top: 100px;
+}
+
+.landing-title {
+  font-size: 3rem;
+  font-weight: bold;
+}

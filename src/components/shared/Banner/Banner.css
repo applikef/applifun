@@ -1,0 +1,54 @@
+.title {
+  font-size: 24px;
+  color: white;
+}
+
+.banner-icon-bar {
+  display:flex;
+  flex-direction: row;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  justify-content: space-between;
+}
+
+.banner-right-icon-bar {
+  display:flex;
+  flex-direction: row;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.banner-left-icon-bar {
+  display:flex;
+  flex-direction: row;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.banner-icon {
+  height: 32px;
+  width: 32px;
+  margin-left: 16px;
+}
+
+.banner-show-help {
+  display: inline;
+}
+
+.banner-hide-help {
+  display: none;
+}
+
+.banner-hr {
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.banner-more-games-modal {
+  padding: 10px;;
+  background-color: white;
+  position: absolute;
+  top: 55px;
+  left: 20px;
+  border: 1px solid blue;
+}

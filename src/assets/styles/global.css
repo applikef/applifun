@@ -1,0 +1,41 @@
+@import './colors.css';
+@import './sizes.css';
+
+.app-link {
+  color: var(--link);
+  text-decoration: none;
+  cursor: pointer; 
+}
+
+.app-indent-01 {
+  margin-right: var(--8);
+}
+
+.app-indent-02 {
+  margin-right: var(--16);
+}
+
+.app-indent-03 {
+  margin-right: var(--20);
+}
+
+.app-clickable {
+  cursor: pointer;
+}
+
+.app-button-primary {
+  background-color: var(--blue-00);
+  cursor: pointer;
+  padding: 8px;
+  border: 1px solid var(--blue-01);
+  border-radius: 5px;
+}
+
+.app-button-ghost {
+  cursor: pointer;
+  padding: 8px;
+  border: 1px solid var(--blue-01);
+  border-radius: 5px;
+}
+
+
