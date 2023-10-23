@@ -1,5 +1,12 @@
 {
   "gameId": "colorMatch",
+  "titleTemplate": "בְּחַר תְּמוּנוֹת עִם דְּבָרִים שֶׁהַצֶּבַע שֶׁלָּהֶם $value$",
+  "titleVariableValues": [
+    "צָהוֹב",
+    "כָּחוֹל",
+    "יָרוֹק",
+    "אָדוֹם"
+  ],
   "groupIds": [
     "yellow",
     "blue",

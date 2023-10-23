@@ -12,6 +12,8 @@ export const Match = (props: MatchPropsType) => {
   const playerHooray = new Audio("resources/audio/hooray-short-1.mp3");
   const playerOi = new Audio("resources/audio/ouch-2.mp3");
 
+  const titleTemplate = props.gameDescriptor.titleTemplate
+  const titleVariableValues = props.gameDescriptor.titleVariableValues
   const groupFiles = props.gameDescriptor.groupFiles;
   const groupIds = props.gameDescriptor.groupIds;
   const groupNames = props.gameDescriptor.groupNames;
@@ -25,6 +27,16 @@ export const Match = (props: MatchPropsType) => {
   let selectedGroupId = useRef(groupIds[selectedIndex])
   let selectedGroup = useRef(groupNames[selectedIndex]);
   let selectedGroupName = useRef(groupNames[selectedIndex]);
+
+  function setTitle() {
+    const titleAsArray = titleTemplate.split("$");
+    if (titleAsArray.length < 3) {
+      return "";
+    }
+    
+    const titleVariableValue = titleVariableValues[selectedIndex];
+    return titleAsArray[0] + titleVariableValue + titleAsArray[2];
+  }
 
   function setGroup() {
     let lastIndex = selectedIndex;
@@ -60,7 +72,7 @@ export const Match = (props: MatchPropsType) => {
     <div>
       <Banner />
       <div id="instructions" className="instructions">
-        { ` בְּחַר תְּמוּנוֹת עִם דְּבָרִים שֶׁהַצֶּבַע שֶׁלָּהֶם ${selectedGroupName.current}` }
+        { setTitle() }
       </div>
       <div className="feedbackImage" id="feedbackImage">
         <img src="resources/games/well-done-200.png" alt="כל הכבוד" width="150px" className={feedbackClass} />      
