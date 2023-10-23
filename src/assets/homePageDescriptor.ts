@@ -30,8 +30,19 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
     path: "/launch?gameId=numberMatch",
     media: "resources/images/numbersSplash.png",
     position: {
+      x: "480px",
+      y: "150px"
+    },
+    height: 150
+  },
+  {
+    id: "yoga",
+    label: "מתרגל יוגה",
+    path: "/launch?gameId=yogaTheChildThatImagined",
+    media: "resources/images/YogaCobraSilluette.png",
+    position: {
       x: "180px",
-      y: "450px"
+      y: "400px"
     },
     height: 150
   }

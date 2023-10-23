@@ -1,0 +1,41 @@
+{
+  "gameId": "numberMatch",
+  "colorIds": [1,2,3,4,5,6,7,8,9,10],
+  "colorFiles": [
+    "resources/games/colorMatch/yellow.png",
+    "resources/games/colorMatch/blue.png",
+    "resources/games/colorMatch/green.png",
+    "resources/games/colorMatch/green.png",
+    "resources/games/colorMatch/green.png",
+    "resources/games/colorMatch/green.png",
+    "resources/games/colorMatch/green.png",
+    "resources/games/colorMatch/green.png",
+    "resources/games/colorMatch/green.png",
+    "resources/games/colorMatch/red.png"
+  ],
+  "colorNames": [
+    "אַחַת",
+    "שְׁתַּיִם",
+    "שָׁלוֹשׁ",
+    "אַרְבַּע",
+    "חָמֵשׁ",
+    "שֵׁשׁ",
+    "שֶׁבַע",
+    "שְׁמוֹנֶה",
+    "תֵּשַׁע",
+    "עֶשֶׂר"
+],
+  "images": [
+    "resources/games/numberMatch/Cloud-7.png",
+    "resources/games/numberMatch/Cube-2.png",
+    "resources/games/numberMatch/Cylinder-10.png",
+    "resources/games/numberMatch/Face-1.png",
+    "resources/games/numberMatch/Flat-cylinder-5.png",
+    "resources/games/numberMatch/Heart-8.png",
+    "resources/games/numberMatch/Lightening-9.png",
+    "resources/games/numberMatch/Smiley-4.png",
+    "resources/games/numberMatch/Splash-3.png",
+    "resources/games/numberMatch/Sun-6.png"
+  ],
+  "imageColorIds": [7,2,10,1,5,8,9,4,3,6]
+}

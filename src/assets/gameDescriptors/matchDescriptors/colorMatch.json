@@ -1,0 +1,45 @@
+{
+  "gameId": "colorMatch",
+  "colorIds": [
+    "yellow",
+    "blue",
+    "green",
+    "red"
+  ],
+  "colorFiles": [
+    "resources/games/colorMatch/yellow.png",
+    "resources/games/colorMatch/blue.png",
+    "resources/games/colorMatch/green.png",
+    "resources/games/colorMatch/red.png"
+  ],
+  "colorNames": [
+    "צָהוֹב",
+    "כָּחוֹל",
+    "יָרוֹק",
+    "אָדוֹם"
+  ],
+  "images": [
+    "resources/games/colorMatch/balloon-yellow.png",
+    "resources/games/colorMatch/butterfly-blue.png",
+    "resources/games/colorMatch/flower-red.png",
+    "resources/games/colorMatch/grapes-green.png",
+    "resources/games/colorMatch/strawberry-red.png",
+    "resources/games/colorMatch/halcyon-blue.png",
+    "resources/games/colorMatch/tree-green.png",
+    "resources/games/colorMatch/flower-yellow.png",
+    "resources/games/colorMatch/puff-red.png",
+    "resources/games/colorMatch/lemon-yellow.png"
+  ],
+  "imageColorIds": [
+    "yellow",
+    "blue",
+    "red",
+    "green",
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "red",
+    "yellow"
+  ]
+}
