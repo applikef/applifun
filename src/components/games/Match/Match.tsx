@@ -12,41 +12,41 @@ export const Match = (props: MatchPropsType) => {
   const playerHooray = new Audio("resources/audio/hooray-short-1.mp3");
   const playerOi = new Audio("resources/audio/ouch-2.mp3");
 
-  const colorFiles = props.gameDescriptor.colorFiles;
-  const colorIds = props.gameDescriptor.colorIds;
-  const colorNames = props.gameDescriptor.colorNames;
-  const imageColorIds = props.gameDescriptor.imageColorIds;
+  const groupFiles = props.gameDescriptor.groupFiles;
+  const groupIds = props.gameDescriptor.groupIds;
+  const groupNames = props.gameDescriptor.groupNames;
+  const imageGroupIds = props.gameDescriptor.imageGroupIds;
   const images = props.gameDescriptor.images;
 
   const [selectedIndex, setSelectedIndex] = 
-    useState<number>(Math.floor(Math.random() * colorFiles.length));
+    useState<number>(Math.floor(Math.random() * groupIds.length));
   const [feedbackClass, setFeedbackClass] = useState<string>("feedbackImageHide");
 
-  let selectedColorId = useRef(colorIds[selectedIndex])
-  let selectedColor = useRef(colorNames[selectedIndex]);
-  let selectedColorName = useRef(colorNames[selectedIndex]);
+  let selectedGroupId = useRef(groupIds[selectedIndex])
+  let selectedGroup = useRef(groupNames[selectedIndex]);
+  let selectedGroupName = useRef(groupNames[selectedIndex]);
 
-  function setColor() {
+  function setGroup() {
     let lastIndex = selectedIndex;
     let newIndex = 0;
     do {
-      newIndex = Math.floor(Math.random() * colorFiles.length);
+      newIndex = Math.floor(Math.random() * groupIds.length);
     } while (newIndex === lastIndex);
 
-    selectedColorId.current = colorIds[newIndex];
-    selectedColor.current = colorNames[newIndex];
-    selectedColorName.current = colorNames[newIndex];
+    selectedGroupId.current = groupIds[newIndex];
+    selectedGroup.current = groupNames[newIndex];
+    selectedGroupName.current = groupNames[newIndex];
 
     setSelectedIndex(() => newIndex);
   }
 
-  function updateColor() {
-    setColor();
+  function updateGroup() {
+    setGroup();
     setFeedbackClass(() => "feedbackImageHide");
   }
 
-  function verifyImage(imageColorId: string) {
-    if (imageColorId === selectedColorId.current) {
+  function verifyImage(imageGroupId: string) {
+    if (imageGroupId === selectedGroupId.current) {
       setFeedbackClass(() => "feedbackImageShow");
       playerHooray.play();
     }
@@ -60,27 +60,36 @@ export const Match = (props: MatchPropsType) => {
     <div>
       <Banner />
       <div id="instructions" className="instructions">
-        { ` בְּחַר תְּמוּנוֹת עִם דְּבָרִים שֶׁהַצֶּבַע שֶׁלָּהֶם ${selectedColorName.current}` }
+        { ` בְּחַר תְּמוּנוֹת עִם דְּבָרִים שֶׁהַצֶּבַע שֶׁלָּהֶם ${selectedGroupName.current}` }
       </div>
       <div className="feedbackImage" id="feedbackImage">
         <img src="resources/games/well-done-200.png" alt="כל הכבוד" width="150px" className={feedbackClass} />      
       </div>
-      <div id="colorSplash" className="colorImage">
-        <img src={colorFiles[selectedIndex]} alt={ selectedColorName.current } width="150px" />
-        <div className="colorName">
-          { selectedColorName.current } 
+      <div id="groupSplash" className="groupImage">
+        {
+          groupFiles ?
+            <img src={groupFiles[selectedIndex]} alt={ selectedGroupName.current } width="150px" />
+          :
+            <span className="groupNameTitle">
+              { groupIds[selectedIndex] }
+            </span> 
+        }
+        <div className="groupName">
+          { selectedGroupName.current } 
         </div>
       </div>
       <div className="imagesArea">
         {
           images.map((img,i) =>
-            <img src={ img } alt="" key={i} width="100px"  onClick={() => verifyImage(imageColorIds[i])} />
+            <img src={ img } alt="" key={i} height="150px"  
+              onClick={() => verifyImage(imageGroupIds[i])} 
+              className="imageStyle" />
           )
         }
 
       </div>
       <div className="controlArea">
-        <button className="button" onClick={() => updateColor()}>צֶבַע חָדָשׁ</button>
+        <button className="button" onClick={() => updateGroup()}>{props.gameDescriptor.buttonTitle}</button>
       </div>
     </div>
   )

@@ -14,16 +14,25 @@
   left: 1rem;
   display: none;
 }
-.colorImage {
+.groupImage {
   text-align: center;
   margin-bottom: 10px;
 }
-.colorName {
+.groupName {
   font-size: 2rem;
   padding-bottom: 2rem;
 }
+.groupNameTitle {
+  font-size: 3rem;
+  padding-bottom: 2rem;
+  font-weight: bold;
+}
 .imagesArea {
   text-align: center;
+}
+.imageStyle {
+  border: solid 1px #ddd;
+  margin-left: 12px;
 }
 .controlArea {
   text-align: center;

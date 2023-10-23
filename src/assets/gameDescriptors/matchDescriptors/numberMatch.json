@@ -1,19 +1,7 @@
 {
   "gameId": "numberMatch",
-  "colorIds": [1,2,3,4,5,6,7,8,9,10],
-  "colorFiles": [
-    "resources/games/colorMatch/yellow.png",
-    "resources/games/colorMatch/blue.png",
-    "resources/games/colorMatch/green.png",
-    "resources/games/colorMatch/green.png",
-    "resources/games/colorMatch/green.png",
-    "resources/games/colorMatch/green.png",
-    "resources/games/colorMatch/green.png",
-    "resources/games/colorMatch/green.png",
-    "resources/games/colorMatch/green.png",
-    "resources/games/colorMatch/red.png"
-  ],
-  "colorNames": [
+  "groupIds": [1,2,3,4,5,6,7,8,9,10],
+  "groupNames": [
     "אַחַת",
     "שְׁתַּיִם",
     "שָׁלוֹשׁ",
@@ -37,5 +25,6 @@
     "resources/games/numberMatch/Splash-3.png",
     "resources/games/numberMatch/Sun-6.png"
   ],
-  "imageColorIds": [7,2,10,1,5,8,9,4,3,6]
+  "imageGroupIds": [7,2,10,1,5,8,9,4,3,6],
+  "buttonTitle": "מִסְפָּר חָדָשׁ"
 }

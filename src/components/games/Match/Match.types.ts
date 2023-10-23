@@ -1,8 +1,9 @@
 export interface MatchDescriptorType {
   gameId: string;
-  colorIds: string[];
-  colorFiles: string[];
-  colorNames: string[];
+  groupIds: string[];
+  groupFiles?: string[];
+  groupNames: string[];
   images: string[];
-  imageColorIds: string[];
+  imageGroupIds: string[];
+  buttonTitle: string;
 }
