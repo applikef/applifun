@@ -5,47 +5,57 @@
     "צָהוֹב",
     "כָּחוֹל",
     "יָרוֹק",
+    "סָגוֹל",
     "אָדוֹם"
   ],
   "groupIds": [
     "yellow",
     "blue",
     "green",
+    "purple",
     "red"
   ],
   "groupFiles": [
     "resources/games/colorMatch/yellow.png",
     "resources/games/colorMatch/blue.png",
     "resources/games/colorMatch/green.png",
+    "resources/games/colorMatch/purple.png",
     "resources/games/colorMatch/red.png"
   ],
   "groupNames": [
     "צָהוֹב",
     "כָּחוֹל",
     "יָרוֹק",
+    "סָגוֹל",
     "אָדוֹם"
   ],
   "images": [
     "resources/games/colorMatch/balloon-yellow.png",
+    "resources/games/colorMatch/flower-purple.png",
     "resources/games/colorMatch/butterfly-blue.png",
     "resources/games/colorMatch/flower-red.png",
+    "resources/games/colorMatch/grapes-purple.png",
     "resources/games/colorMatch/grapes-green.png",
     "resources/games/colorMatch/strawberry-red.png",
     "resources/games/colorMatch/halcyon-blue.png",
     "resources/games/colorMatch/tree-green.png",
     "resources/games/colorMatch/flower-yellow.png",
+    "resources/games/colorMatch/butterfly-purple.png",
     "resources/games/colorMatch/puff-red.png",
     "resources/games/colorMatch/lemon-yellow.png"
   ],
   "imageGroupIds": [
     "yellow",
+    "purple",
     "blue",
     "red",
+    "purple",
     "green",
     "red",
     "blue",
     "green",
     "yellow",
+    "purple",
     "red",
     "yellow"
   ],

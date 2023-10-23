@@ -22,7 +22,7 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
       x: "180px",
       y: "150px"
     },
-    height: 150
+    height: 200
   },
   {
     id: "numberMatch",
@@ -30,10 +30,10 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
     path: "/launch?gameId=numberMatch",
     media: "resources/images/numbersSplash.png",
     position: {
-      x: "480px",
+      x: "550px",
       y: "150px"
     },
-    height: 150
+    height: 200
   },
   {
     id: "yoga",
@@ -42,8 +42,8 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
     media: "resources/images/YogaCobraSilluette.png",
     position: {
       x: "180px",
-      y: "400px"
+      y: "450px"
     },
-    height: 150
+    height: 200
   }
 ];
