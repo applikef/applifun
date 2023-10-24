@@ -74,7 +74,7 @@ export const Match = (props: MatchPropsType) => {
   return(
     <div className="page">
       <Banner />
-      <div id="instructions" className="instructions">
+      <div id="instructions" className="app-title-centered">
         { setTitle() }
       </div>
       <div className="feedbackImage" id="feedbackImage">
@@ -104,7 +104,7 @@ export const Match = (props: MatchPropsType) => {
 
       </div>
       <div className="controlArea">
-        <button className="button" onClick={() => updateGroup()}>{props.gameDescriptor.buttonTitle}</button>
+        <button className="app-button-primary" onClick={() => updateGroup()}>{props.gameDescriptor.buttonTitle}</button>
       </div>
     </div>
   )

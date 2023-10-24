@@ -1,6 +1,17 @@
 @import './colors.css';
 @import './sizes.css';
 
+.app-title-centered {
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+.app-title {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
 .app-link {
   color: var(--link);
   text-decoration: none;
@@ -26,16 +37,22 @@
 .app-button-primary {
   background-color: var(--blue-00);
   cursor: pointer;
-  padding: 8px;
   border: 1px solid var(--blue-01);
   border-radius: 5px;
+  padding: 15px 32px;
+  display: inline-block;
+  font-size: 2rem;
+  margin: 4px 2px;
 }
 
 .app-button-ghost {
   cursor: pointer;
-  padding: 8px;
   border: 1px solid var(--blue-01);
   border-radius: 5px;
+  padding: 15px 32px;
+  display: inline-block;
+  font-size: 2rem;
+  margin: 4px 2px;
 }
 
 

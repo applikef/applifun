@@ -1,8 +1,3 @@
-.instructions {
-  text-align: center;
-  font-size: 2rem;
-  padding-bottom: 1rem;
-}
 .feedbackImageShow {
   position: absolute;
   top: 3rem;
@@ -37,16 +32,4 @@
 .controlArea {
   text-align: center;
   padding-top: 3rem;
-}
-.button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 2rem;
-  margin: 4px 2px;
-  cursor: pointer;
-  background-color: #008CBA;
 }

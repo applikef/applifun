@@ -10,9 +10,9 @@ export const Tile = (props: TilePropsType) => {
   return(
     <div>
       <Banner />
-      <h1>{ props.gameDescriptor.title }</h1>
+      <div className="app-title">{ props.gameDescriptor.title }</div>
       <div>
-        <a target="yoga" href={props.gameDescriptor.href}>
+        <a target="yoga" href={props.gameDescriptor.href} className="app-link">
           <img alt={props.gameDescriptor.hrefTitle} 
             src={props.gameDescriptor.media}
             height="200px"></img>
