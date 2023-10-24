@@ -9,7 +9,7 @@ export const HomePage = () => {
   return (
     <div className="app">
       <div className="app-landing">
-        <div className="landing-title">מה אני עושה?</div>
+        <div className="landing-title">מָה אֲנִי עוֹשֶׂה?</div>
         <div className='app-games-list' data-walkthrough="app-games-list">
           {homePageDescriptor.map((game: HomePageDescriptorType,i) => 
             <Card key={game.id}

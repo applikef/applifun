@@ -15,7 +15,7 @@ export type HomePageDescriptorType = {
 export const homePageDescriptor: HomePageDescriptorType[] = [
   {
     id: "colorMatch",
-    label: "מוצא צבעים",
+    label: "מוֹצֵא צְבָעִים",
     path: "/launch?gameId=colorMatch",
     media: "resources/images/colorSplashes.png",
     position: {
@@ -26,7 +26,7 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
   },
   {
     id: "numberMatch",
-    label: "סופר",
+    label: "סוֹפֵר",
     path: "/launch?gameId=numberMatch",
     media: "resources/images/numbersSplash.png",
     position: {
@@ -37,7 +37,7 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
   },
   {
     id: "yoga",
-    label: "מתרגל יוגה",
+    label: "מְתַרְגֵּל יוֹגָה",
     path: "/launch?gameId=yogaTheChildThatImagined",
     media: "resources/images/YogaCobraSilluette.png",
     position: {

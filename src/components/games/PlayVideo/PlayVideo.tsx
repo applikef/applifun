@@ -1,17 +1,15 @@
 import React from "react";
-import ReactPlayer from "react-player";
+
 import { Banner } from "../../shared/Banner/Banner";
 
 export const PlayVideo = () => {
   return(
-    <div className="page">
+    <div>
       <Banner />
-      <ReactPlayer
-        url="./resources/videos/yogaTheChildThatImagined.mp4"
-        controls={true}
-        width="100%"
-        height="100%"
-      />
+      <h1>בְּחַר תִּרְגּוּל</h1>
+      <div>
+        <a target="yoga" href="https://drive.google.com/file/d/1BxXGgpAgTUdTxg0SmJtdYeKi8EIavA5P/view?usp=drive_link">הַיֶּלֶד שֶׁתִּרְגֵּל בְּדִמְיוֹן</a>
+      </div>
     </div>
   )
 }

@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
 
+import "./../../../assets/styles/app.css";
+import "./../../../assets/styles/global.css";
 import "./Match.css";
+
 import { Banner } from "../../shared/Banner/Banner";
 import { MatchDescriptorType } from "./Match.types";
 
