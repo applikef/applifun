@@ -72,7 +72,7 @@ export const Match = (props: MatchPropsType) => {
   }
 
   return(
-    <div>
+    <div className="page">
       <Banner />
       <div id="instructions" className="instructions">
         { setTitle() }

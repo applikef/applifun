@@ -2,6 +2,9 @@
   direction: rtl;
   padding-right: 20px;
   flex: 2;
+  background-color: var(--background);
+  overflow: auto;
+  height: 100vh;
 }
 
 .banner {
