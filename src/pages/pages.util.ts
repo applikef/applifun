@@ -4,9 +4,9 @@ export function getGameDescriptor(gameId: string | null): any {
   }
 
   return(
-    gameId === "colorMatch" ? require("./../assets/gameDescriptors/matchDescriptors/colorMatch.json")
-    : gameId === "numberMatch" ? require("./../assets/gameDescriptors/matchDescriptors/numberMatch.json")
-    : gameId === "yoga" ? require("./../assets/gameDescriptors/linkListDescriptors/yoga.json")
+    gameId === "colorMatch" ? require("./../assets/componentDescriptors/matchDescriptors/colorMatch.json")
+    : gameId === "numberMatch" ? require("./../assets/componentDescriptors/matchDescriptors/numberMatch.json")
+    : gameId === "yoga" ? require("./../assets/componentDescriptors/tileDescriptors/yoga.json")
     : undefined
   )
 }

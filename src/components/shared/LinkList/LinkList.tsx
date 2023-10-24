@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Banner } from "../../shared/Banner/Banner";
-import { LinkListDescriptorType } from "../GameDescriptors.types";
+import { Banner } from "../Banner/Banner";
+import { LinkListDescriptorType } from "../../componentDescriptors.types";
 
 export interface LinkListPropsType {
   gameDescriptor: LinkListDescriptorType;
