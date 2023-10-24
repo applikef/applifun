@@ -1,3 +1,10 @@
+export interface LinkListDescriptorType {
+  gameId: string;
+  title: string;
+  href: string;
+  hrefTitle: string;
+}
+
 export interface MatchDescriptorType {
   gameId: string;
   titleTemplate: string;

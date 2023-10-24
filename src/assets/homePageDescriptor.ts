@@ -38,7 +38,7 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
   {
     id: "yoga",
     label: "מְתַרְגֵּל יוֹגָה",
-    path: "/launch?gameId=yogaTheChildThatImagined",
+    path: "/launch?gameId=yoga",
     media: "resources/images/YogaCobraSilluette.png",
     position: {
       x: "180px",

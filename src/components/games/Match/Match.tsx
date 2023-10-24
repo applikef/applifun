@@ -5,7 +5,7 @@ import "./../../../assets/styles/global.css";
 import "./Match.css";
 
 import { Banner } from "../../shared/Banner/Banner";
-import { MatchDescriptorType } from "./Match.types";
+import { MatchDescriptorType } from "../GameDescriptors.types";
 
 export interface MatchPropsType {
   gameDescriptor: MatchDescriptorType;
