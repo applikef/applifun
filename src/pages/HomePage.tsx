@@ -10,7 +10,7 @@ export const HomePage = () => {
   return (
     <div className="app">
       <div className="app-landing">
-        <div className="landing-title">מָה אֲנִי עוֹשֶׂה?</div>
+        <div className="landing-title">מְשַׂחֲקִים וְלוֹמְדִים</div>
         { DeviceUtil.isSmallDevice() ?
             <div className="app-title"><br/><br/><br/>
               צָרִיךְ מָסָךְ גָּדוֹל יוֹתֵר כְּדֵי לְהִשְׁתַּמֵּשׁ בַּתָּכְנָה שֶׁלָּנוּ
