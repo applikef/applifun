@@ -1,26 +1,27 @@
 @import './../assets/styles/global.css';
 
-.app {
+.home-page-app {
   background-color: var(--background);
   direction: rtl;
-  padding-right: 200px;
+  padding-right: 50px;
   padding-top: 50px;
   line-height: 40px;
 }
 
-.app-landing {
+.home-page-landing {
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: var(--font-size-normal);
   color: var(--text);
 }
 
-.app-games-list {
+.home-page-games-list {
   padding-top: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   min-width: 200px;
+  flex-wrap: wrap;
 }
 
 .app-select-game {
@@ -58,7 +59,7 @@
   padding-top: 100px;
 }
 
-.landing-title {
+.home-page-title {
   font-size: 3rem;
   font-weight: bold;
 }

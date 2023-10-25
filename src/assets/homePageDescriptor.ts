@@ -17,7 +17,7 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
     id: "colorMatch",
     label: "מוֹצְאִים תְּמוּנוֹת בְּצֶבַע",
     path: "/launch?gameId=colorMatch",
-    media: "resources/images/colorSplashes.png",
+    media: "applifun/resources/images/colorSplashes.png",
     position: {
       x: "180px",
       y: "150px"
@@ -28,7 +28,7 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
     id: "numberMatch",
     label: "סוֹפְרִים דְּבָרִים",
     path: "/launch?gameId=numberMatch",
-    media: "resources/images/numbersSplash.png",
+    media: "applifun/resources/images/numbersSplash.png",
     position: {
       x: "550px",
       y: "150px"
