@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path="/applifun" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
           <Route path="launch" element={<LaunchPage />} />
       </Routes>
     </BrowserRouter>
