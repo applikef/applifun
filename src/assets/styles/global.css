@@ -12,6 +12,17 @@
   padding-bottom: 1rem;
 }
 
+.app-sub-title-centered {
+  text-align: center;
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.app-sub-title {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
+}
+
 .app-link {
   color: var(--link);
   text-decoration: none;

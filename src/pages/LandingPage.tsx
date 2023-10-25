@@ -10,6 +10,9 @@ export const LandingPage = () => {
           <div className="app-title-centered">
             לְחַץ בָּעַכְבָּר אוֹ בָּאֶצְבַּע כְּדֵי לְהַתְחִיל
           </div>
+          <div className="app-sub-title-centered">
+            הַפְּעִילוּיוֹת שֶׁלָּנוּ עוֹבְדוֹת טוֹב יוֹתֵר עַל מָסַכִּים בֵּינוֹנִיִּים וּגְדוֹלִים
+          </div>
         </Link>
       </div>
     </div>
