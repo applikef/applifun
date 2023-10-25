@@ -6,7 +6,7 @@ export const Banner = () => {
     <>
       <div className="banner-icon-bar">
         <div className="banner-right-icon-bar">
-          <Link to="/">
+          <Link to="/home">
             <img src="resources/icons/home128.png" className="banner-icon" 
               title="עמוד הבית"  alt="עמוד הבית" />
           </Link>

@@ -8,7 +8,7 @@ import './pages.css';
 export const HomePage = () => {
   return (
     <div className="home-page-app">
-      <div className="home-page-landing">
+      <div className="home-page-content-area">
         <div className="home-page-title">מְשַׂחֲקִים וְלוֹמְדִים</div>
           <div className='home-page-games-list' data-walkthrough="app-games-list">
             {homePageDescriptor.map((game: HomePageDescriptorType,i) => 
