@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 
-import "./../../../assets/styles/app.css";
 import "./../../../assets/styles/global.css";
 import "./Match.css";
 
@@ -72,7 +71,7 @@ export const Match = (props: MatchPropsType) => {
   }
 
   return(
-    <div className="page">
+    <div className="app-page">
       <Banner />
       <div id="instructions" className="app-title-centered">
         { setTitle() }
