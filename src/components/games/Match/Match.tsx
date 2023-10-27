@@ -5,6 +5,7 @@ import "./Match.css";
 
 import { Banner } from "../../shared/Banner/Banner";
 import { MatchDescriptorType } from "../../componentDescriptors.types";
+import { DeviceUtil } from "../../../utils/DeviceUtil.utils";
 
 export interface MatchPropsType {
   gameDescriptor: MatchDescriptorType;
@@ -22,9 +23,12 @@ export const Match = (props: MatchPropsType) => {
   const imageGroupIds = props.gameDescriptor.imageGroupIds;
   const images = props.gameDescriptor.images;
 
+  const smallDevice = DeviceUtil.isSmallDevice();
+
   const [selectedIndex, setSelectedIndex] = 
     useState<number>(Math.floor(Math.random() * groupIds.length));
   const [feedbackClass, setFeedbackClass] = useState<string>("feedbackImageHide");
+  const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
 
   let selectedGroupId = useRef(groupIds[selectedIndex])
   let selectedGroup = useRef(groupNames[selectedIndex]);
@@ -70,9 +74,15 @@ export const Match = (props: MatchPropsType) => {
     }
   }
 
+  /********
+  function getGameSettings() {
+    setGameSettinsDisplay("game-settings-global-show");
+  }
+
+  settings={() => getGameSettings()} **********/
   return(
     <div className="app-page">
-      <Banner />
+      <Banner/>
       <div id="instructions" className="app-title-centered">
         { setTitle() }
       </div>
@@ -95,7 +105,7 @@ export const Match = (props: MatchPropsType) => {
       <div className="imagesArea">
         {
           images.map((img,i) =>
-            <img src={ img } alt="" key={i} height="150px"  
+            <img src={ img } alt="" key={i} height={smallDevice ? "100px" : "150px"}  
               onClick={() => verifyImage(imageGroupIds[i])} 
               className="imageStyle" />
           )
@@ -104,6 +114,24 @@ export const Match = (props: MatchPropsType) => {
       </div>
       <div className="controlArea">
         <button className="app-button-primary" onClick={() => updateGroup()}>{props.gameDescriptor.buttonTitle}</button>
+      </div>
+
+      <div id="gameSettings" className={ gameSettinsDisplay }>
+        <div>
+          <div className="game-settings-title">סמן את הקבוצות שייראו במשחק</div>
+          
+          { props.gameDescriptor.groupNames.map(
+            (group, i) => 
+              <div className="game-settings-entry">
+                <input type="checkbox"></input>
+                <span key={i}>{group}</span>
+              </div>
+          )}
+          <br/>
+          <button className="app-button-primary-sm" onClick={() => { 
+            setGameSettinsDisplay(()=>"game-settings-global-hide")
+          }}>שמור</button>
+        </div>
       </div>
     </div>
   )
