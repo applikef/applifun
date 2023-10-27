@@ -46,14 +46,15 @@
 }
 
 .app-button-primary {
-  background-color: var(--blue-00);
+  background-color: var(--blue-02);
   cursor: pointer;
-  border: 1px solid var(--blue-01);
+  border: 1px solid var(--blue-03);
   border-radius: 5px;
   padding: 15px 32px;
   display: inline-block;
   font-size: 2rem;
   margin: 4px 2px;
+  color: white;
 }
 
 .app-button-ghost {
