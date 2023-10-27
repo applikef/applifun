@@ -92,7 +92,8 @@ export const Match = (props: MatchPropsType) => {
       <div id="groupSplash" className="groupImage">
         {
           groupFiles ?
-            <img src={groupFiles[selectedIndex]} alt={ selectedGroupName.current } width="150px" />
+            <img src={groupFiles[selectedIndex]} alt={ selectedGroupName.current } 
+              width={smallDevice ? "100px" : "150px"} />
           :
             <span className="groupNameTitle">
               { groupIds[selectedIndex] }
