@@ -73,16 +73,15 @@ export const Match = (props: MatchPropsType) => {
       playerOi.play();
     }
   }
-
-  /********
+  /*
   function getGameSettings() {
     setGameSettinsDisplay("game-settings-global-show");
   }
-
-  settings={() => getGameSettings()} **********/
+  settings={() => getGameSettings()}
+  */
   return(
     <div className="app-page">
-      <Banner/>
+      <Banner />
       <div id="instructions" className="app-title-centered">
         { setTitle() }
       </div>
