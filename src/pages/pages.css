@@ -84,14 +84,3 @@
   padding-top: 30px;
   text-align: center;
 }
-
-.landing-page-image-attributes-area {
-  cursor: pointer;
-  text-align: center;
-}
-
-.landing-page-image-attributes {
-  color: var(--gray-05);
-  font-size: smaller;
-  text-decoration: none;
-}

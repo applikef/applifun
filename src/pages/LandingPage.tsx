@@ -41,9 +41,6 @@ export const LandingPage = () => {
           </div>
         </Link>
       </div>
-      <div className='landing-page-image-attributes-area' >
-        <a className='landing-page-image-attributes' href="https://www.svgrepo.com/svg/34897/children">Image source</a>
-      </div>
     </div>
   );
 }
