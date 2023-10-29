@@ -5,7 +5,8 @@ import "./Match.css";
 
 import { Banner } from "../../shared/Banner/Banner";
 import { MatchDescriptorType } from "../../componentDescriptors.types";
-import { DeviceUtil } from "../../../utils/DeviceUtil.utils";
+import { DeviceUtil } from "../../../utils/DeviceUtil";
+import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 
 export interface MatchPropsType {
   gameDescriptor: MatchDescriptorType;
@@ -67,6 +68,10 @@ export const Match = (props: MatchPropsType) => {
     if (imageGroupId === selectedGroupId.current) {
       setFeedbackClass(() => "feedbackImageShow");
       playerHooray.play();
+      setTimeout(() => {
+        setFeedbackClass(() => "feedbackImageHide")
+        updateGroup();
+      }, ConstantsUtil.hoorayTimeout)
     }
     else {
       setFeedbackClass(() => "feedbackImageHide");
@@ -92,7 +97,7 @@ export const Match = (props: MatchPropsType) => {
         {
           groupFiles ?
             <img src={groupFiles[selectedIndex]} alt={ selectedGroupName.current } 
-              width={smallDevice ? "100px" : "150px"} />
+              width={smallDevice ? "100px" : ConstantsUtil.fullSizeIamge} />
           :
             <span className="groupNameTitle">
               { groupIds[selectedIndex] }
@@ -105,15 +110,12 @@ export const Match = (props: MatchPropsType) => {
       <div className="imagesArea">
         {
           images.map((img,i) =>
-            <img src={ img } alt="" key={i} height={smallDevice ? "100px" : "150px"}  
+            <img src={ img } alt="" key={i} height={smallDevice ? "100px" : ConstantsUtil.fullSizeIamge}  
               onClick={() => verifyImage(imageGroupIds[i])} 
               className="imageStyle" />
           )
         }
 
-      </div>
-      <div className="controlArea">
-        <button className="app-button-primary" onClick={() => updateGroup()}>{props.gameDescriptor.buttonTitle}</button>
       </div>
 
       <div id="gameSettings" className={ gameSettinsDisplay }>

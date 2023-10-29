@@ -29,10 +29,6 @@
   border: solid 1px #ddd;
   margin-left: 12px;
 }
-.controlArea {
-  text-align: center;
-  padding-top: 3rem;
-}
 
 .game-settings-global-hide {
   display: none;
