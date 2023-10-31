@@ -8,7 +8,6 @@ export type HomePageDescriptorType = {
   label: string;
   path: string;
   media: string;
-  position: PointType;
   height?: number;
 }
 
@@ -17,11 +16,7 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
     id: "colorMatch",
     label: "מוֹצְאִים תְּמוּנוֹת בְּצֶבַע",
     path: "/launch?gameId=colorMatch",
-    media: "resources/images/colorSplashes.png",
-    position: {
-      x: "180px",
-      y: "150px"
-    },
+    media: "resources/images/colorדSplash.png",
     height: 200
   },
   {
@@ -29,10 +24,13 @@ export const homePageDescriptor: HomePageDescriptorType[] = [
     label: "סוֹפְרִים דְּבָרִים",
     path: "/launch?gameId=numberMatch",
     media: "resources/images/numbersSplash.png",
-    position: {
-      x: "550px",
-      y: "150px"
-    },
+    height: 200
+  },
+  {
+    id: "letterMatch",
+    label: "מוֹצְאִים אוֹתִיּוֹת",
+    path: "/launch?gameId=letterMatch",
+    media: "resources/images/lettersSplash.png",
     height: 200
   }
 ];

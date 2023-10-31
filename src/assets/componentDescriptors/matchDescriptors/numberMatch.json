@@ -39,5 +39,5 @@
     "resources/games/numberMatch/Sun-6.png"
   ],
   "imageGroupIds": [7,2,10,1,5,8,9,4,3,6],
-  "buttonTitle": "מִסְפָּר חָדָשׁ"
+  "settingsTitle": "סמני את המספרים שיופיעו במשחק"
 }

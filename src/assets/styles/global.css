@@ -71,11 +71,21 @@
 
 .app-button-ghost {
   cursor: pointer;
-  border: 1px solid var(--blue-01);
+  border: 1px solid var(--blue-03);
   border-radius: 5px;
-  padding: 15px 32px;
+  padding: 16px 32px;
   display: inline-block;
   font-size: 2rem;
+  margin: 4px 2px;
+}
+
+.app-button-ghost-sm {
+  cursor: pointer;
+  border: 1px solid var(--blue-03);
+  border-radius: 5px;
+  padding: 4px 8px;
+  display: inline-block;
+  font-size: 1rem;
   margin: 4px 2px;
 }
 

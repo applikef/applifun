@@ -15,6 +15,7 @@ export const LaunchPage = () => {
     <div className="app-page">
       { gameId === "colorMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "numberMatch" && <Match gameDescriptor={descriptor}/> }
+      { gameId === "letterMatch" && <Match gameDescriptor={descriptor}/> }
     </div>
   )
 }

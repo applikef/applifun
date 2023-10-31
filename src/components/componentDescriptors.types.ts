@@ -15,7 +15,7 @@ export interface MatchDescriptorType extends GameDescriptorType {
   groupNames: string[];
   images: string[];
   imageGroupIds: string[];
-  buttonTitle: string;
+  settingsTitle: string;
 }
 export interface TileDescriptorType extends GameDescriptorType {
   title: string;
