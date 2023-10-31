@@ -9,6 +9,12 @@ import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { AudioUtil } from "../../../utils/AudioUtil";
 
+type ImageTitleNotificationType = {
+  top: number,
+  left: number,
+  content: string
+}
+
 /********************************************
  * Match game 
  * An item out of a set of items is shown at the top (number, color, letter, etc.).
@@ -37,6 +43,7 @@ export const Match = (props: MatchPropsType) => {
   const groupNames = props.gameDescriptor.groupNames;
   const imageGroupIds = props.gameDescriptor.imageGroupIds;
   const images = props.gameDescriptor.images;
+  const imageTitles = props.gameDescriptor.imageTitles;
 
   const numberOfGroups = groupIds.length;
   const maxNumberOfValidGroups = Math.min(10,numberOfGroups);
@@ -45,6 +52,12 @@ export const Match = (props: MatchPropsType) => {
     useState<number>(Math.floor(Math.random() * maxNumberOfValidGroups));
   const [feedbackClass, setFeedbackClass] = useState<string>("feedbackImageHide");
   const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
+  const [imageTitleNotification, setImageTitleNotification] = 
+    useState<ImageTitleNotificationType>({
+      top: 0,
+      left: 0,
+      content: ""
+    });
 
   const [selectedGroupValueIndices, setSelectedGroupValueIndices] = 
     useState<boolean[]>((new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false));
@@ -56,6 +69,8 @@ export const Match = (props: MatchPropsType) => {
   let activeGroupId = useRef(groupIds[activeIndex]);
   let activeGroup = useRef(groupNames[activeIndex]);
   let activeGroupName = useRef(groupNames[activeIndex]);
+
+  let showImageTitleNotification = useRef<boolean>(false);
 
   function getvalidImages() {
     return imageGroupIds.map((groupId, i) => {
@@ -134,6 +149,7 @@ export const Match = (props: MatchPropsType) => {
   }
 
   function handleSettingsDone() {
+    showImageTitleNotification.current = false;
     validGroupValueIndices.current = selectedGroupValueIndices;
     validImages.current = getvalidImages();
     setActiveGroup();
@@ -168,13 +184,30 @@ export const Match = (props: MatchPropsType) => {
           validImages.current.map((img,i) =>
             img.length > 0 &&
               <img src={ img } alt="" key={i} height={smallDevice ? "100px" : ConstantsUtil.fullSizeIamge}  
-              onClick={() => verifyImage(imageGroupIds[i])} 
+              onClick={(event:React.MouseEvent<HTMLElement>) => {
+                showImageTitleNotification.current = true;
+                setImageTitleNotification({
+                  top: event.clientY,
+                  left: event.clientX,
+                  content: imageTitles ? imageTitles[i] : ""
+                })
+                verifyImage(imageGroupIds[i])}} 
               className="imageStyle" />
           )
         }
-
       </div>
-
+      
+      { showImageTitleNotification.current &&
+        <div className="title-notification" style={{
+          position: "absolute",
+          top: imageTitleNotification.top,
+          left: imageTitleNotification.left,
+          display: imageTitleNotification.content.length > 0 ? "inline" : "none"
+        }}>
+            {imageTitleNotification.content}
+        </div>
+      }
+      
       <div id="gameSettings" className={ gameSettinsDisplay }>
         <div>
           <div className="game-settings-title">{ props.gameDescriptor.settingsTitle }</div>
