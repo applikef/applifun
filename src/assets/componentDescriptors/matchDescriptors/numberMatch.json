@@ -27,16 +27,16 @@
     "עֶשֶׂר"
 ],
   "images": [
-    "resources/games/numberMatch/Cloud-7.png",
-    "resources/games/numberMatch/Cube-2.png",
-    "resources/games/numberMatch/Cylinder-10.png",
-    "resources/games/numberMatch/Face-1.png",
-    "resources/games/numberMatch/Flat-cylinder-5.png",
-    "resources/games/numberMatch/Heart-8.png",
-    "resources/games/numberMatch/Lightening-9.png",
-    "resources/games/numberMatch/Smiley-4.png",
-    "resources/games/numberMatch/Splash-3.png",
-    "resources/games/numberMatch/Sun-6.png"
+    "clouds-clipart-7",
+    "cubes-clipart-2",
+    "cylinders-clipart-10",
+    "face-clipart-1",
+    "cylinders-flat-clipart-5",
+    "hearts-clipart-8",
+    "hourses-clipart-9",
+    "smiley-clipart-4",
+    "splash-clipart-3",
+    "sun-clipart-6"
   ],
   "imageGroupIds": [7,2,10,1,5,8,9,4,3,6],
   "settingsTitle": "סמני את המספרים שיופיעו במשחק"

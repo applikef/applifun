@@ -16,11 +16,11 @@
     "red"
   ],
   "groupFiles": [
-    "resources/games/colorMatch/yellow.png",
-    "resources/games/colorMatch/blue.png",
-    "resources/games/colorMatch/green.png",
-    "resources/games/colorMatch/purple.png",
-    "resources/games/colorMatch/red.png"
+    "yellow-splash",
+    "blue-splash",
+    "green-splash",
+    "purple-splash",
+    "red-splash"
   ],
   "groupNames": [
     "צָהוֹב",
@@ -30,19 +30,19 @@
     "אָדוֹם"
   ],
   "images": [
-    "resources/games/colorMatch/balloon-yellow.png",
-    "resources/games/colorMatch/flower-purple.png",
-    "resources/games/colorMatch/butterfly-blue.png",
-    "resources/games/colorMatch/flower-red.png",
-    "resources/games/colorMatch/grapes-purple.png",
-    "resources/games/colorMatch/grapes-green.png",
-    "resources/games/colorMatch/strawberry-red.png",
-    "resources/games/colorMatch/halcyon-blue.png",
-    "resources/games/colorMatch/tree-green.png",
-    "resources/games/colorMatch/flower-yellow.png",
-    "resources/games/colorMatch/butterfly-purple.png",
-    "resources/games/colorMatch/puff-red.png",
-    "resources/games/colorMatch/lemon-yellow.png"
+    "yellow-balloon",
+    "purple-flower",
+    "blue-butterfly",
+    "red-flower",
+    "purple-grapes",
+    "green-grapes",
+    "red-strawberry",
+    "blue-halcyon",
+    "green-tree",
+    "yellow-flower",
+    "purple-butterfly",
+    "red-puff",
+    "yellow-lemon"
   ],
   "imageGroupIds": [
     "yellow",

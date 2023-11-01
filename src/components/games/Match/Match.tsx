@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 
 import "./../../../assets/styles/global.css";
 import "./Match.css";
@@ -39,10 +39,10 @@ export const Match = (props: MatchPropsType) => {
   const titleTemplate = props.gameDescriptor.titleTemplate
   const titleVariableValues = props.gameDescriptor.titleVariableValues
   const groupIds = props.gameDescriptor.groupIds;
-  const groupFiles = props.gameDescriptor.groupFiles;
+  const groupFiles = AudioUtil.getImages(props.gameDescriptor.groupFiles);
   const groupNames = props.gameDescriptor.groupNames;
   const imageGroupIds = props.gameDescriptor.imageGroupIds;
-  const images = props.gameDescriptor.images;
+  const images = AudioUtil.getImages(props.gameDescriptor.images);
   const imageTitles = props.gameDescriptor.imageTitles;
 
   const numberOfGroups = groupIds.length;
@@ -167,7 +167,7 @@ export const Match = (props: MatchPropsType) => {
       </div>
       <div id="groupSplash" className="groupImage">
         {
-          groupFiles ?
+          groupFiles && groupFiles.length > 0 ?
             <img src={groupFiles[activeIndex]} alt={ activeGroupName.current } 
               width={smallDevice ? "100px" : ConstantsUtil.fullSizeIamge} />
           :
