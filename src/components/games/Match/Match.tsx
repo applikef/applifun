@@ -165,7 +165,7 @@ export const Match = (props: MatchPropsType) => {
         { setTitle() }
       </div>
       <div className="feedbackImage" id="feedbackImage">
-        <img src="resources/games/well-done-200.png" alt="כל הכבוד" width="150px" className={feedbackClass} />      
+        <img src="resources/images/well-done-200.png" alt="כל הכבוד" width="150px" className={feedbackClass} />      
       </div>
       <div id="groupSplash" className="groupImage">
         {
