@@ -1,7 +1,7 @@
 @import "./../../../assets/styles/global.css";
 
 .card-global {
-  padding: 10px;
+  padding: 10px 10px 5px 10px;
   border: solid 1px var(--gray-02);
   background-color: var(--white-02);
   margin-bottom: var(--08);

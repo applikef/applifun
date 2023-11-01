@@ -25,6 +25,14 @@
   color: var(--text);
 }
 
+.home-page-section-list {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  flex-wrap: wrap;
+}
+
 .home-page-games-list {
   padding-top: 20px;
   display: flex;
