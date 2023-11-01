@@ -7,7 +7,7 @@ import { Banner } from "../../shared/Banner/Banner";
 import { MatchDescriptorType } from "../../componentDescriptors.types";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
-import { AudioUtil } from "../../../utils/AudioUtil";
+import { MediaUtil } from "../../../utils/MediaUtil";
 
 type ImageTitleNotificationType = {
   top: number,
@@ -28,8 +28,8 @@ export interface MatchPropsType {
 }
 
 export const Match = (props: MatchPropsType) => {
-  const playerHooray = AudioUtil.getHorrayPlayer();
-  const playerOi = AudioUtil.getOuchPlayer();
+  const playerHooray = MediaUtil.getHorrayPlayer();
+  const playerOi = MediaUtil.getOuchPlayer();
 
   const smallDevice = DeviceUtil.isSmallDevice();
 
@@ -39,10 +39,10 @@ export const Match = (props: MatchPropsType) => {
   const titleTemplate = props.gameDescriptor.titleTemplate
   const titleVariableValues = props.gameDescriptor.titleVariableValues
   const groupIds = props.gameDescriptor.groupIds;
-  const groupFiles = AudioUtil.getImages(props.gameDescriptor.groupFiles);
+  const groupFiles = MediaUtil.getImages(props.gameDescriptor.groupFiles);
   const groupNames = props.gameDescriptor.groupNames;
   const imageGroupIds = props.gameDescriptor.imageGroupIds;
-  const images = AudioUtil.getImages(props.gameDescriptor.images);
+  const images = MediaUtil.getImages(props.gameDescriptor.images);
   const imageTitles = props.gameDescriptor.imageTitles;
 
   const numberOfGroups = groupIds.length;

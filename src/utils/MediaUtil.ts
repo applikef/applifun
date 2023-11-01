@@ -1,4 +1,4 @@
-export class AudioUtil {
+export class MediaUtil {
   public static getHorrayPlayer() {
     return new Audio("resources/audio/hooray-short-1.mp3");
   }
