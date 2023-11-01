@@ -5,6 +5,8 @@ import "./Match.css";
 
 import { Banner } from "../../shared/Banner/Banner";
 import { MatchDescriptorType } from "../../componentDescriptors.types";
+import { Notification, NotificationType } from "../../shared/Notification/Notification";
+
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { MediaUtil } from "../../../utils/MediaUtil";
@@ -198,14 +200,16 @@ export const Match = (props: MatchPropsType) => {
       </div>
       
       { showImageTitleNotification.current &&
-        <div className="title-notification" style={{
-          position: "absolute",
-          top: imageTitleNotification.top,
-          left: imageTitleNotification.left,
-          display: imageTitleNotification.content.length > 0 ? "inline" : "none"
-        }}>
-            {imageTitleNotification.content}
-        </div>
+        <Notification 
+          type={NotificationType.PLAIN}
+          content={[imageTitleNotification.content]} 
+          style={{
+            position: "absolute",
+            top: imageTitleNotification.top,
+            left: imageTitleNotification.left,
+            display: imageTitleNotification.content.length > 0 ? "inline" : "none"
+          }} 
+        />
       }
       
       <div id="gameSettings" className={ gameSettinsDisplay }>

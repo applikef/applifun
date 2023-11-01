@@ -1,0 +1,23 @@
+.notification-global {
+  padding: 16px;
+  border: solid 1px var(--gray-02);
+  font-weight: bold;
+  color: var(--text);
+}
+
+.notification-global-info {
+  background-color: var(--notification-info);
+}
+
+.notification-global-warning {
+  background-color: var(--notification-warning);
+}
+
+.notification-global-error {
+  background-color: var(--notification-error);
+}
+
+.notification-global-plain {
+  background-color: white;
+  color: var(--blue-03);
+}
