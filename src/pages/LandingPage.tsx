@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './pages.css';
+import { WhatIsNew } from '../components/shared/WhatIsNew/WhatIsNew';
 
 export const LandingPage = () => {
   const imageFill = "#6baed6";
@@ -39,15 +40,7 @@ export const LandingPage = () => {
               </g>
             </svg>
           </div>
-          <div>
-            <div className="app-title" style={{paddingRight: "20px"}}>
-              מה חדש?
-            </div>
-            <ul>
-              <li>משחק חדש: התאמת תמונות לאותיות</li>
-              <li>במשחקי ההתאמה אפשר לבחור עד 10 ערכים להתאמה. לשם כך לחצו על גלגל השניים בפינה העליונה מימין</li>
-            </ul>
-          </div>
+          <WhatIsNew />
         </Link>
       </div>
     </div>
