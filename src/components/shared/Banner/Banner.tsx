@@ -27,10 +27,6 @@ export const Banner = (props: BannerPropsType) => {
           </div>
           <div className="banner-left-icon-bar">
             <div>
-              <img src="resources/icons/speaker.png" className="banner-icon" 
-                  title="השתק"  alt="השתק" />
-            </div>
-            <div>
               <img src="resources/icons/hide.png" className="banner-icon" 
                   title="החבא תפריט שליטה"  alt="החבא תפריט שליטה"
                   onClick={() => setShowBanner(false)} />
