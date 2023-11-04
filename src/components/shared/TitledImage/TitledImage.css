@@ -1,0 +1,11 @@
+.titled-image-global {
+  vertical-align: top;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.titled-image-caption {
+  display: block;
+  font-size: 1.5rem;
+}

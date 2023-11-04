@@ -5,6 +5,7 @@ import "./pages.css";
 import { getGameDescriptor } from "./pages.util";
 
 import { Match } from "../components/games/Match/Match";
+import { Sequence } from "../components/games/Sequence/Sequence";
 
 export const LaunchPage = () => {
   const queryParameters = new URLSearchParams(window.location.search)
@@ -16,6 +17,10 @@ export const LaunchPage = () => {
       { gameId === "colorMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "numberMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "letterMatch" && <Match gameDescriptor={descriptor}/> }
+      
+      { gameId === "bathroomRoutine" && <Sequence gameDescriptor={descriptor}/> }
+      { gameId === "morningRoutine" && <Sequence gameDescriptor={descriptor}/> }
+      { gameId === "washHands" && <Sequence gameDescriptor={descriptor}/> }
     </div>
   )
 }

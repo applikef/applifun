@@ -1,0 +1,37 @@
+{
+  "type": "images",
+  "gameType": "sequence",
+  "title": "סדר את התמונות מהפעולה הראשונה לפעולה האחרונה",
+  "images": [
+    {
+      "id": "brushTeeth",
+      "title": "מְצַחְצֵחַ שִׁנַּיִם",
+      "file": "brush-teeth",
+      "serialNumber": 2
+    },
+    {
+      "id": "wakeUp",
+      "title": "קָם",
+      "file": "wake-up",
+      "serialNumber": 1
+    },
+    {
+      "id": "dress",
+      "title": "מִתְלַבֵּשׁ",
+      "file": "dress",
+      "serialNumber": 3
+    },
+    {
+      "id": "goToSchool",
+      "title": "הוֹלֵךְ לְבֵית סֵפֶר",
+      "file": "go-to-school",
+      "serialNumber": 5
+    },
+    {
+      "id": "haveBreakfast",
+      "title": "אוֹכֵל אֲרוּחַת בֹּקֶר",
+      "file": "have-breakfast",
+      "serialNumber": 4
+    }
+  ]
+}

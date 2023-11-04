@@ -41,10 +41,10 @@ export const Match = (props: MatchPropsType) => {
   const titleTemplate = props.gameDescriptor.titleTemplate
   const titleVariableValues = props.gameDescriptor.titleVariableValues
   const groupIds = props.gameDescriptor.groupIds;
-  const groupFiles = MediaUtil.getImages(props.gameDescriptor.groupFiles);
+  const groupFiles = MediaUtil.getCatalogImages(props.gameDescriptor.groupFiles);
   const groupNames = props.gameDescriptor.groupNames;
   const imageGroupIds = props.gameDescriptor.imageGroupIds;
-  const images = MediaUtil.getImages(props.gameDescriptor.images);
+  const images = MediaUtil.getCatalogImages(props.gameDescriptor.images);
   const imageTitles = props.gameDescriptor.imageTitles;
 
   const numberOfGroups = groupIds.length;
@@ -159,7 +159,7 @@ export const Match = (props: MatchPropsType) => {
   }
 
   return(
-    <div className="app-pa ge">
+    <div className="app-page">
       <Banner settings={() => setGameSettinsDisplay("game-settings-global-show")}/>
       <div id="instructions" className="app-title-centered">
         { setTitle() }

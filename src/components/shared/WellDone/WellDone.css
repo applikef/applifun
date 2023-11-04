@@ -1,0 +1,14 @@
+.well-done-global {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -100px;
+  width: 200px;
+  height: 400px;
+  display: none;
+}
+
+.well-done-show {
+  display: inline;
+}

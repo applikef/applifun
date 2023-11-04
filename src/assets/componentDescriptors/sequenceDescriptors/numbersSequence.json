@@ -1,0 +1,10 @@
+{
+  "type": "numbers",
+  "gameType": "iCount",
+  "title": "סדר את המספרים לפי הסדר",
+  "numbers": {
+    "range": [2, 9],
+    "values": [2, 4, 10, 7]
+  }
+}
+

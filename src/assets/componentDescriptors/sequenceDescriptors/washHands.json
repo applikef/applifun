@@ -1,0 +1,48 @@
+{
+    "gameType": "sequence",
+    "type": "images",
+    "images": [
+      {
+        "id": "wet-hands",
+        "file": "wet-hands",
+        "title": "מַרְטִיב יָדַיִים",
+        "serialNumber": 2
+      },
+      {
+        "id": "close-faucet",
+        "file": "close-faucet",
+        "title": "סוֹגֵר אֶת הַבֶּרֶז",
+        "serialNumber": 6
+      },
+      {
+        "id": "open-faucet",
+        "file": "open-faucet",
+        "title": "פּוֹתֵחַ אֶת הַבֶּרֶז",
+        "serialNumber": 1
+      },
+      {
+        "id": "put-soap",
+        "file": "put-soap-on-hands",
+        "title": "שָׂם סַבּוֹן",
+        "serialNumber": 3
+      },
+      {
+        "id": "dry-handsl",
+        "file": "dry-hands",
+        "title": "מְנַגֵּב יָדַיִם",
+        "serialNumber": 7
+      },
+      {
+        "id": "wash-hands",
+        "file": "wash-hands",
+        "title": "שׁוֹטֵף אֶת הַסַּבּוֹן",
+        "serialNumber": 5
+      },
+      {
+        "id": "clean-with-soap",
+        "file": "clean-hands-with-soap",
+        "title": "מְשַׁפְשֵׁף עִם הַסַּבּוֹן",
+        "serialNumber": 4
+      }
+    ]
+  }

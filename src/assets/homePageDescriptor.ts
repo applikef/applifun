@@ -51,6 +51,20 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=washHands",
         media: "resources/images/wash-hands.jpg",
         height: 100
+      },
+      {
+        id: "bathroomRoutine",
+        label: "הוֹלֵךְ לַשֵּׁרוּתִים",
+        path: "/launch?gameId=bathroomRoutine",
+        media: "resources/images/toilet.jpg",
+        height: 100
+      },
+      {
+        id: "morningRoutine",
+        label: "מִסְתַּדֵּר בַּבֹּקֶר",
+        path: "/launch?gameId=morningRoutine",
+        media: "resources/images/wake-up.jpg",
+        height: 100
       }
     ]
   }

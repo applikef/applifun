@@ -1,0 +1,9 @@
+.face-feedback-global {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  margin-left: -100px;
+  width: 100px;
+  height: 100px;
+  display: none;
+}

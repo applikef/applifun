@@ -1,0 +1,35 @@
+@import "./../../../assets/styles/global.css";
+
+.sequence-container {
+  margin-top: 20px;
+}
+
+.sequence-source-images {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.sequence-feedback {
+  text-align: right;
+}
+
+.sequence-image {
+  cursor: pointer;
+  width: 200px;
+  display: inline-block;
+  border: solid 1px var(--gray-02);
+}
+
+.sequence-feedback-image {
+  width: 200px;
+  display: none;
+}
+
+.sequence-letter {
+  font-size: 64px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding-left: 40px;
+  cursor: pointer;
+}
+

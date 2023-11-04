@@ -16,7 +16,7 @@ export const HomePage = () => {
                 {section.title &&
                   <div className="app-sub-title">{section.title}</div>
                 } 
-                    <div className="line-break"></div>
+                    <div className="app-line-break"></div>
                 {section.items.map((game: HomePageItemType,i) => 
                   <Card key={game.id}
                       content={<Link to={game.path} className="app-link app-default-text">{game.label}</Link>}
