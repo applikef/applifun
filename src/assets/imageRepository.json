@@ -1,4 +1,6 @@
 {
+  "balloon": "resources/imageCatalog/balloon.png",
+  "balloon-yellow-transparent": "resources/imageCatalog/balloon-yellow.png",
   "bird": "resources/imageCatalog/tsadik.jpg",
   "blue-butterfly": "resources/imageCatalog/butterfly-blue.png",
   "blue-halcyon": "resources/imageCatalog/halcyon-blue.png",
@@ -22,6 +24,7 @@
   "face-clipart-1": "resources/imageCatalog/face-1.png",
   "fense": "resources/imageCatalog/gimel.png",
   "fish": "resources/imageCatalog/dalet.jpg",
+  "flowers": "resources/imageCatalog/flowers.png",
   "flush-7": "resources/imageCatalog/flush.png",
   "have-breakfast": "resources/imageCatalog/haveBreakfast.jpg",
   "hearts": "resources/imageCatalog/lamed.jpg",
@@ -63,7 +66,6 @@
   "wash-hands": "resources/imageCatalog/wash-hands.jpg",
   "wash-hands-9": "resources/imageCatalog/wash-hands.png",
   "wet-hands": "resources/imageCatalog/wet-hands.jpg",
-  "yellow-balloon": "resources/imageCatalog/balloon-yellow.png",
   "yellow-flower": "resources/imageCatalog/flower-yellow.png",
   "yellow-lemon": "resources/imageCatalog/lemon-yellow.png",
   "yellow-splash": "resources/imageCatalog/yellow.png",

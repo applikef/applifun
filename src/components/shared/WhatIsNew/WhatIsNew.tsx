@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import "./WhatIsNew.css";
-import { UpdateRecordItemType, getUpdateRecords } from "../../../assets/updatesRecord";
+import { ChangeRecordItemType, getChangeRecords } from "../../../assets/changeRecord";
 
 export const WhatIsNew = () => {
   const [showUpdates, setShowUpdates] = useState<boolean>(false);
 
-  const entries: UpdateRecordItemType[] = getUpdateRecords();
+  const entries: ChangeRecordItemType[] = getChangeRecords();
 
   return  (
     <div>
@@ -24,7 +24,7 @@ export const WhatIsNew = () => {
         <div className="what-is-new-info-global">
           <div className="app-sub-title">מה חדש?</div>
           
-          {entries.map((item: UpdateRecordItemType, i) => {
+          {entries.map((item: ChangeRecordItemType, i) => {
             return(
               <div key={i}>
                 <div className="what-is-new-info-title">

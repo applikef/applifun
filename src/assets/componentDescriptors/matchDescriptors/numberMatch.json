@@ -33,11 +33,13 @@
     "face-clipart-1",
     "cylinders-flat-clipart-5",
     "hearts-clipart-8",
+    "flowers",
     "hourses-clipart-9",
     "smiley-clipart-4",
     "splash-clipart-3",
-    "sun-clipart-6"
+    "sun-clipart-6",
+    "balloon"
   ],
-  "imageGroupIds": [7,2,10,1,5,8,9,4,3,6],
+  "imageGroupIds": [7,2,10,1,5,8,3,9,4,3,6,1],
   "settingsTitle": "סמני את המספרים שיופיעו במשחק"
 }

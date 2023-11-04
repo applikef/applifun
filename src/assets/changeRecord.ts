@@ -1,21 +1,26 @@
-export type UpdateRecordItemType = {
+export type ChangeRecordItemType = {
   title: string,
   date: string,
   content: string
 }
 
-export type UpdateRecordType = {
+export type ChangeRecordType = {
   first: number,
-  entries: UpdateRecordItemType[]
+  entries: ChangeRecordItemType[]
 }
 
-export const getUpdateRecords = () => {
-  return updateRecord.entries.slice(0, updateRecord.first);
+export const getChangeRecords = () => {
+  return changeRecord.entries.slice(0, changeRecord.first);
 }
 
-const updateRecord: UpdateRecordType = {
-  "first": 3,
+const changeRecord: ChangeRecordType = {
+  "first": 4,
   "entries": [
+    {
+      "title": "משחקי 'אני עושה'",
+      "date": "4-11-2023",
+      "content": " אני רוחץ ידיים, הולך לשרותים ומסתדר בבוקר בהם הילד מסדר תמונות של פעולותיו על-פי סדר עשייתן הנכון"
+    },
     {
       "title": "אפשרות להחביא את תפריט השליטה",
       "date": "2-11-2023",
