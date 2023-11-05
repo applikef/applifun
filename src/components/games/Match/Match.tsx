@@ -129,8 +129,8 @@ export const Match = (props: MatchPropsType) => {
   function handleSettingsSelectGroup(e:ChangeEvent<HTMLInputElement>, index: number) : boolean[] {
     const isChecked = e.target.checked;
     let settingArr = new Array(...selectedGroupValueIndices)
+    const nSelected = settingArr.filter(Boolean).length;
     if (isChecked) {
-      const nSelected = settingArr.filter(Boolean).length;
       if (nSelected < maxNumberOfValidGroups) {
         settingArr[index] = true;
       }
@@ -139,7 +139,12 @@ export const Match = (props: MatchPropsType) => {
       }
     }
     else {
-      settingArr[index] = false;
+      if (nSelected > 2) {
+        settingArr[index] = false;
+      }
+      else {
+        alert("לפחות 2 כניסות חייבות להיות בחורות");
+      }
     }  
     return settingArr;  
   }
