@@ -13,6 +13,7 @@ import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../shared/Banner/Banner";
+import { DeviceUtil } from "../../../utils/DeviceUtil";
 
 export interface SequenceProps {
   gameDescriptor: SequenceDescriptorType;
@@ -31,6 +32,8 @@ let numbersDescriptor: NumbersDescriptorType = {
 
 export const Sequence = (props: SequenceProps) => {
   let audioOn = true;
+
+  const smallDevice = DeviceUtil.isSmallDevice();
 
   let selectedSequenceSteps = useRef<string[]>([]);
   function addSequenceStep(id: string) {
@@ -177,7 +180,9 @@ export const Sequence = (props: SequenceProps) => {
           {sequenceType === SequenceType.IMAGES ? 
             imageDescriptors.map((e:ImageDescriptorType,i:number) =>
               <TitledImage className="sequence-image" id={"bank-" + e.id} key={i} 
-                src={MediaUtil.getCatalogImage(e.file)} alt={e.title} height="150px" maxWidth="200px"
+                src={MediaUtil.getCatalogImage(e.file)} alt={e.title} 
+                height={smallDevice ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge} 
+                maxWidth="200px"
                 onClick={() => verifyImage(e)}></TitledImage>
             )
             : sequenceType === SequenceType.WORD ? 
@@ -214,7 +219,9 @@ export const Sequence = (props: SequenceProps) => {
                 <span key={i}>
                     <TitledImage className="sequence-feedback-image" 
                       id={"feedback-" + e.id} src={MediaUtil.getCatalogImage(e.file)} 
-                      alt={e.title} height="150px" maxWidth="200px"/> 
+                      alt={e.title} 
+                      height={smallDevice ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge} 
+                      maxWidth="200px"/> 
                 </span>
               )
             : sequenceType === SequenceType.WORD ? 

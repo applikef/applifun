@@ -176,7 +176,7 @@ export const Match = (props: MatchPropsType) => {
         {
           groupFiles && groupFiles.length > 0 ?
             <img src={groupFiles[activeIndex]} alt={ activeGroupName.current } 
-              width={smallDevice ? "100px" : ConstantsUtil.fullSizeIamge} />
+              width={smallDevice ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge} />
           :
             <span className="groupNameTitle">
               { groupIds[activeIndex] }
@@ -190,7 +190,7 @@ export const Match = (props: MatchPropsType) => {
         {
           validImages.current.map((img,i) =>
             img.length > 0 &&
-              <img src={ img } alt="" key={i} height={smallDevice ? "100px" : ConstantsUtil.fullSizeIamge}  
+              <img src={ img } alt="" key={i} height={smallDevice ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge}  
               onClick={(event:React.MouseEvent<HTMLElement>) => {
                 showImageTitleNotification.current = true;
                 setImageTitleNotification({
