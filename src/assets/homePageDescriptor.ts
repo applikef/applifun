@@ -13,6 +13,7 @@ export type HomePageItemType = {
 
 export type HomePageSectionType = {
   title?: string;
+  mobile?: boolean;
   items: HomePageItemType[];
 }
 
@@ -67,5 +68,10 @@ export const homePageDescriptor: HomePageSectionType[] = [
         height: 100
       }
     ]
+  },
+  {
+    "title": "הָעַכְבָּר שֶׁלִּי - יגיע בקרוב",
+    "mobile": false,
+    "items": []
   }
 ];
