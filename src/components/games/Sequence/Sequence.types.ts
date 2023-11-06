@@ -19,7 +19,6 @@ export type ImageDescriptorType = {
   title: string,
   name?: string;
   file: string;
-  serialNumber: number;
 }
 
 // Either range or values should be specified. If both are specified range is ignored

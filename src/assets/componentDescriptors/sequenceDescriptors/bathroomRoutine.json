@@ -4,46 +4,39 @@
     "title": "סדר את התמונות מהפעולה הראשונה לפעולה האחרונה",
     "images": [
       {
-        "id": "TakeToiletPaper",
-        "title": "לוֹקֵחַ נְיָר טוּאָלֵט",
-        "file": "take-toilet-paper-4",
-        "serialNumber": 3
-      },
-      {
         "id": "PantsDown",
         "title": "מוֹרִיד מִכְנָסַיִים",
-        "file": "pants-down-2",
-        "serialNumber": 1
-      },
-      {
-        "id": "CleanToiletPaper",
-        "title": "מְנַקֶּה אֶת הַטּוּסִיק",
-        "file": "clean-with-toilet-paper-5",
-        "serialNumber": 4
+        "file": "pants-down-2"
       },
       {
         "id": "Sit",
         "title": "יוֹשֵׁב עַל הָאַסְלָה",
-        "file": "sit-3",
-        "serialNumber": 2
+        "file": "sit-3"
       },
       {
-        "id": "WashHands",
-        "title": "רוֹחֵץ יָדַיִים",
-        "file": "wash-hands-9",
-        "serialNumber": 7
+        "id": "TakeToiletPaper",
+        "title": "לוֹקֵחַ נְיָר טוּאָלֵט",
+        "file": "take-toilet-paper-4"
+      },
+      {
+        "id": "CleanToiletPaper",
+        "title": "מְנַקֶּה אֶת הַטּוּסִיק",
+        "file": "clean-with-toilet-paper-5"
       },
       {
         "id": "PantsUp",
         "title": "מֵרִים מִכְנָסַיִים",
-        "file": "pants-up-6",
-        "serialNumber": 5
+        "file": "pants-up-6"
       },
       {
         "id": "Flush",
         "title": "מוֹרִיד אֶת הַמַּיִם",
-        "file": "flush-7",
-        "serialNumber": 6
+        "file": "flush-7"
+      },
+      {
+        "id": "WashHands",
+        "title": "רוֹחֵץ יָדַיִים",
+        "file": "wash-hands-9"
       }
     ]
   }

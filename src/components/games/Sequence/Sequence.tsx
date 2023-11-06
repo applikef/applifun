@@ -49,6 +49,8 @@ export const Sequence = (props: SequenceProps) => {
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [pageTitle, setPageTitle] = useState(props.gameDescriptor.title ? props.gameDescriptor.title : "");
 
+  let shuffledImages = useRef<ImageDescriptorType[]>([]);
+
   let orderedNumbers = useRef<number[]>([]);
   let shuffledNumbers = useRef<number[]>([]);
 
@@ -59,6 +61,7 @@ export const Sequence = (props: SequenceProps) => {
     switch (sequenceType) {
       case SequenceType.IMAGES: {
         imageDescriptors = images ? images : [];
+        shuffledImages.current = ObjectsUtil.shuffleArrayItems(imageDescriptors);
         break;
       }
       case SequenceType.WORD: {
@@ -100,14 +103,14 @@ export const Sequence = (props: SequenceProps) => {
   }
 
   function verifyImage(image: ImageDescriptorType) {
-    if (image.serialNumber === selectedSequenceSteps.current.length+1) {
+    if (imageDescriptors.indexOf(image)+1 === selectedSequenceSteps.current.length+1) {
       addSequenceStep(image.id);
       document.getElementById("feedback-"+image.id)!.style.display = "inline-block";
       document.getElementById("bank-"+image.id)!.style.display = "none";
       setFeedbackFace(() => FACES.HAPPY);
       MediaUtil.play(MediaUtil.pickAudio(PlayListNames.SHORT_HOORAY), audioOn);
     
-      if (image.serialNumber === imageDescriptors.length) {
+      if (imageDescriptors.indexOf(image)+1 === imageDescriptors.length) {
         showSuccess();
       }
     }
@@ -116,13 +119,6 @@ export const Sequence = (props: SequenceProps) => {
       MediaUtil.play(MediaUtil.pickAudio(PlayListNames.OUCH), audioOn);
     }
   }
-
-  function orderImages() {
-    var res = Array(imageDescriptors.length);
-    imageDescriptors.map((e,i) => res[e.serialNumber] = e);
-    return res;
-  }
-  const orderedImages = orderImages();
 
   function verifyLetter(letter: string) {
 /*    if (letter.serialNumber === selectedSequenceSteps.current.length) {
@@ -178,7 +174,7 @@ export const Sequence = (props: SequenceProps) => {
         <h3>{ pageTitle }</h3>
         <div className="sequence-source-images" >
           {sequenceType === SequenceType.IMAGES ? 
-            imageDescriptors.map((e:ImageDescriptorType,i:number) =>
+            shuffledImages.current.map((e:ImageDescriptorType,i:number) =>
               <TitledImage className="sequence-image" id={"bank-" + e.id} key={i} 
                 src={MediaUtil.getCatalogImage(e.file)} alt={e.title} 
                 height={smallDevice ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge} 
@@ -215,7 +211,7 @@ export const Sequence = (props: SequenceProps) => {
         }
         <div>
           {sequenceType === SequenceType.IMAGES ?
-            orderedImages.map((e,i) =>
+            imageDescriptors.map((e,i) =>
                 <span key={i}>
                     <TitledImage className="sequence-feedback-image" 
                       id={"feedback-" + e.id} src={MediaUtil.getCatalogImage(e.file)} 
