@@ -10,6 +10,9 @@ import { Notification, NotificationType } from "../../shared/Notification/Notifi
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { MediaUtil } from "../../../utils/MediaUtil";
+import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
+import { ObjectsUtil } from "../../../utils/ObjectsUtil";
+import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
 
 type ImageTitleNotificationType = {
   top: number,
@@ -30,6 +33,7 @@ export interface MatchPropsType {
 }
 
 export const Match = (props: MatchPropsType) => {
+  const audioOn = true;
   const playerHooray = MediaUtil.getHorrayPlayer();
   const playerOi = MediaUtil.getOuchPlayer();
 
@@ -38,8 +42,8 @@ export const Match = (props: MatchPropsType) => {
   /***
    * Retrieve game descriptor values to local variables
    */
-  const titleTemplate = props.gameDescriptor.titleTemplate
-  const titleVariableValues = props.gameDescriptor.titleVariableValues
+  const titleTemplate = props.gameDescriptor.titleTemplate;
+  const titleVariableValues = props.gameDescriptor.titleVariableValues;
   const groupIds = props.gameDescriptor.groupIds;
   const groupFiles = MediaUtil.getCatalogImages(props.gameDescriptor.groupFiles);
   const groupNames = props.gameDescriptor.groupNames;
@@ -52,7 +56,6 @@ export const Match = (props: MatchPropsType) => {
 
   const [activeIndex, setActiveIndex] = 
     useState<number>(Math.floor(Math.random() * maxNumberOfValidGroups));
-  const [feedbackClass, setFeedbackClass] = useState<string>("feedbackImageHide");
   const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
   const [imageTitleNotification, setImageTitleNotification] = 
     useState<ImageTitleNotificationType>({
@@ -60,6 +63,7 @@ export const Match = (props: MatchPropsType) => {
       left: 0,
       content: ""
     });
+  const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
 
   const [selectedGroupValueIndices, setSelectedGroupValueIndices] = 
     useState<boolean[]>((new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false));
@@ -82,6 +86,10 @@ export const Match = (props: MatchPropsType) => {
   }
 
   function setTitle() {
+    if (validImages.current.filter(x => x.length > 0).length === 0) {
+      return "כל הכבוד!";
+    }
+
     const titleAsArray = titleTemplate.split("$");
     if (titleAsArray.length < 3) {
       return "";
@@ -90,13 +98,17 @@ export const Match = (props: MatchPropsType) => {
     return titleAsArray[0] + titleVariableValue + titleAsArray[2];
   }
 
+  function multipleGroupsProvided(): boolean {
+    return (selectedGroupValueIndices.filter(x => x===true).length > 1)
+  }
+
   function setActiveGroup() {
     let lastIndex = activeIndex;
     const relevantIndices = validGroupValueIndices.current.flatMap((b, i) => b ? i : []);
     let newIndex = relevantIndices[0];
     do {
       newIndex = Math.floor(Math.random() * relevantIndices.length);
-    } while (relevantIndices[newIndex] === lastIndex);
+    } while (relevantIndices[newIndex] === lastIndex && multipleGroupsProvided());
     newIndex = relevantIndices[newIndex];
 
     activeGroupId.current = groupIds[newIndex];
@@ -108,21 +120,56 @@ export const Match = (props: MatchPropsType) => {
 
   function updateActiveGroup() {
     setActiveGroup();
-    setFeedbackClass(() => "feedbackImageHide");
+    setFeedbackFace(() => FACES.NONE);
   }
 
-  function verifyImage(imageGroupId: string) {
+  function verifyImage(imageIndex: number) {
+    const imageGroupId: string = imageGroupIds[imageIndex];
+
     if (imageGroupId === activeGroupId.current) {
-      setFeedbackClass(() => "feedbackImageShow");
+      validImages.current[imageIndex] = "";
+      showImageTitleNotification.current = false;
+      if (validImages.current.every(ObjectsUtil.emptyString)) {
+        showWellDone(audioOn);
+        setFeedbackFace(() => FACES.NONE);
+        setTimeout(() => {
+          window.location.reload();
+        }, ConstantsUtil.pauseTimeout);
+      }
+      else {
+        setFeedbackFace(() => FACES.HAPPY);
+      }
       playerHooray.play();
       setTimeout(() => {
-        setFeedbackClass(() => "feedbackImageHide")
+        updateValidGroupsOnItemMatch(imageIndex);
+        setSelectedGroupValueIndices(validGroupValueIndices.current);
+        setFeedbackFace(() => FACES.NONE);
         updateActiveGroup();
       }, ConstantsUtil.hoorayTimeout)
     }
     else {
-      setFeedbackClass(() => "feedbackImageHide");
+      setFeedbackFace(() => FACES.WORRY);
       playerOi.play();
+      setTimeout(() => {
+        setFeedbackFace(() => FACES.NONE);
+      }, ConstantsUtil.hoorayTimeout)
+    }
+  }
+
+  /** Returns groups that are relevant for at least one image */
+  function updateValidGroupsOnItemMatch(imageIndex: number) {
+    const imageGroupId: string = imageGroupIds[imageIndex];
+    const groupIndex = groupIds.indexOf(imageGroupId);
+    if (validGroupValueIndices.current[groupIndex]) {   // Valid group
+      let clearGroup = true;
+      for (let i=0; i < validImages.current.length; i++) {
+        if (validImages.current[i].length > 0 && imageGroupIds[i] === imageGroupId) {    // Valid image
+          clearGroup = false;
+        }
+      }
+      if (clearGroup) {
+        validGroupValueIndices.current[groupIndex] = false;
+      }
     }
   }
 
@@ -139,13 +186,8 @@ export const Match = (props: MatchPropsType) => {
       }
     }
     else {
-      if (nSelected > 2) {
-        settingArr[index] = false;
-      }
-      else {
-        alert("לפחות 2 כניסות חייבות להיות בחורות");
-      }
-    }  
+      settingArr[index] = false;
+    }
     return settingArr;  
   }
   
@@ -168,9 +210,6 @@ export const Match = (props: MatchPropsType) => {
       <Banner settings={() => setGameSettinsDisplay("game-settings-global-show")}/>
       <div id="instructions" className="app-title-centered">
         { setTitle() }
-      </div>
-      <div className="feedbackImage" id="feedbackImage">
-        <img src="resources/images/well-done-200.png" alt="כל הכבוד" width="150px" className={feedbackClass} />      
       </div>
       <div id="groupSplash" className="groupImage">
         {
@@ -198,11 +237,14 @@ export const Match = (props: MatchPropsType) => {
                   left: event.clientX,
                   content: imageTitles ? imageTitles[i] : ""
                 })
-                verifyImage(imageGroupIds[i])}} 
+                verifyImage(i)}} 
               className="imageStyle" />
           )
         }
       </div>
+      
+      <span><FaceFeedback face={feedbackFace} /></span>
+      <WellDone />
       
       { showImageTitleNotification.current &&
         <Notification 

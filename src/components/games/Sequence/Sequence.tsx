@@ -196,7 +196,7 @@ export const Sequence = (props: SequenceProps) => {
         </div>
       </div>
 
-       <div className="sequence-feedback">
+      <div className="sequence-feedback">
         {
           sequenceType === SequenceType.IMAGES && 
           <h3>
@@ -237,10 +237,10 @@ export const Sequence = (props: SequenceProps) => {
             : <></>
           }
           <span><FaceFeedback face={feedbackFace} /></span>
-          </div>
-       </div>
+        </div>
+      </div>
 
-       <WellDone />
+      <WellDone />
     </div>
   )
 }

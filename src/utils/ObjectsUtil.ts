@@ -45,4 +45,8 @@ public static sortNumbers = (array: number[]) => {
     } 
     return shuffledArray; 
   }; 
+
+  public static emptyString(str: string) {
+    return str === undefined || str.length === 0;
+  }
 }

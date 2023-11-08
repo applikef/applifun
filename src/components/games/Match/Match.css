@@ -1,14 +1,3 @@
-.feedbackImageShow {
-  position: absolute;
-  top: 3rem;
-  left: 1rem;
-}
-.feedbackImageHide {
-  position: absolute;
-  top: 3rem;
-  left: 1rem;
-  display: none;
-}
 .groupImage {
   text-align: center;
   margin-bottom: 10px;
