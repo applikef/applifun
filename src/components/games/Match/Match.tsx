@@ -13,6 +13,7 @@ import { MediaUtil } from "../../../utils/MediaUtil";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { useNavigate } from "react-router-dom";
 
 type ImageTitleNotificationType = {
   top: number,
@@ -38,6 +39,8 @@ export const Match = (props: MatchPropsType) => {
   const playerOi = MediaUtil.getOuchPlayer();
 
   const smallDevice = DeviceUtil.isSmallDevice();
+
+  const navigate = useNavigate();
 
   /***
    * Retrieve game descriptor values to local variables
@@ -133,7 +136,7 @@ export const Match = (props: MatchPropsType) => {
         showWellDone(audioOn);
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
-          window.location.reload();
+          navigate("/home");
         }, ConstantsUtil.pauseTimeout);
       }
       else {
