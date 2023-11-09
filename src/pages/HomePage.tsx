@@ -34,7 +34,7 @@ export const HomePage = () => {
             )}
           </div>
           <div className="app-padding-top-32">
-            <Link to="changeRecords" target="_blank" className="app-link-sm">
+            <Link to="/changeRecords" target="_blank" className="app-link-sm">
               לרשימת כל עדכוני המשחקים
             </Link> 
           </div>
