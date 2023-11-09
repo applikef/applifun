@@ -13,9 +13,9 @@ function App() {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-            <Route path="home" element={<HomePage />} />
-            <Route path="launch" element={<LaunchPage />} />
-            <Route path="changeRecords" element={<ChangeRecordsPage />} />
+          <Route path="home" element={<HomePage />} />
+          <Route path="launch" element={<LaunchPage />} />
+          <Route path="changeRecords" element={<ChangeRecordsPage />} />
         </Routes>
       </BrowserRouter>
     </GamesProvider>  )
