@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import "./Sequence.css";
 
@@ -14,6 +14,7 @@ import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../shared/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
+import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 
 export interface SequenceProps {
   gameDescriptor: SequenceDescriptorType;
@@ -31,7 +32,12 @@ let numbersDescriptor: NumbersDescriptorType = {
 };
 
 export const Sequence = (props: SequenceProps) => {
-  let audioOn = true;
+  const { 
+    audioOn 
+  } = useContext(GamesContext) as GamesContextType;
+
+  const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
+  const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
   const smallDevice = DeviceUtil.isSmallDevice();
 
@@ -108,7 +114,7 @@ export const Sequence = (props: SequenceProps) => {
       document.getElementById("feedback-"+image.id)!.style.display = "inline-block";
       document.getElementById("bank-"+image.id)!.style.display = "none";
       setFeedbackFace(() => FACES.HAPPY);
-      MediaUtil.play(MediaUtil.pickAudio(PlayListNames.SHORT_HOORAY), audioOn);
+      MediaUtil.player(playerHooray, audioOn);
     
       if (imageDescriptors.indexOf(image)+1 === imageDescriptors.length) {
         showSuccess();
@@ -116,7 +122,7 @@ export const Sequence = (props: SequenceProps) => {
     }
     else {
       setFeedbackFace(() => FACES.WORRY);
-      MediaUtil.play(MediaUtil.pickAudio(PlayListNames.OUCH), audioOn);
+      MediaUtil.player(playerOuch, audioOn);
     }
   }
 
@@ -126,7 +132,7 @@ export const Sequence = (props: SequenceProps) => {
       document.getElementById("feedback-"+ letter.serialNumber)!.style.display = "inline-block";
       document.getElementById("bank-"+ letter.serialNumber)!.style.display = "none";
       setFeedbackFace(() => FACES.HAPPY);
-      MediaUtil.play(MediaUtil.pickAudio(PlayListNames.SHORT_HOORAY), audioOn);
+      MediaUtil.player(playerHooray, audioOn);
       if (letter.serialNumber === orderedLetters.length-1) {
         showSuccess();
       }
@@ -138,14 +144,14 @@ export const Sequence = (props: SequenceProps) => {
       document.getElementById("feedback-"+ letter)!.style.display = "inline-block";
       document.getElementById("bank-"+ letter)!.style.display = "none";
       setFeedbackFace(() => FACES.HAPPY);
-      MediaUtil.play(MediaUtil.pickAudio(PlayListNames.SHORT_HOORAY), audioOn);
+      MediaUtil.player(playerHooray, audioOn);
       if (nIndex === orderedLetters.current.length-1) {
         showSuccess();
       }
     }
     else {
       setFeedbackFace(() => FACES.WORRY);
-      MediaUtil.play(MediaUtil.pickAudio(PlayListNames.OUCH), audioOn);
+      MediaUtil.player(playerOuch, audioOn);
     }
   }
 
@@ -156,14 +162,14 @@ export const Sequence = (props: SequenceProps) => {
       document.getElementById("feedback-"+ n)!.style.display = "inline-block";
       document.getElementById("bank-"+ n)!.style.display = "none";
       setFeedbackFace(() => FACES.HAPPY);
-      MediaUtil.play(MediaUtil.pickAudio(PlayListNames.SHORT_HOORAY), audioOn);
+      MediaUtil.player(playerHooray, audioOn);
       if (nIndex === orderedNumbers.current.length-1) {
         showSuccess();
       }
     }
     else {
       setFeedbackFace(() => FACES.WORRY);
-      MediaUtil.play(MediaUtil.pickAudio(PlayListNames.OUCH), audioOn);
+      MediaUtil.player(playerOuch, audioOn);
     }
   }
 

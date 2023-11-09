@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useContext, useRef, useState } from "react";
 
 import "./../../../assets/styles/global.css";
 import "./Match.css";
@@ -14,6 +14,8 @@ import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
 import { useNavigate } from "react-router-dom";
+import GamesContext, { GamesContextType } from "../../../context/GamesContext";
+import { PlayListNames } from "../../../assets/playLists";
 
 type ImageTitleNotificationType = {
   top: number,
@@ -34,9 +36,12 @@ export interface MatchPropsType {
 }
 
 export const Match = (props: MatchPropsType) => {
-  const audioOn = true;
-  const playerHooray = MediaUtil.getHorrayPlayer();
-  const playerOi = MediaUtil.getOuchPlayer();
+  const { 
+    audioOn 
+  } = useContext(GamesContext) as GamesContextType;
+
+  const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
+  const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
   const smallDevice = DeviceUtil.isSmallDevice();
 
@@ -142,7 +147,7 @@ export const Match = (props: MatchPropsType) => {
       else {
         setFeedbackFace(() => FACES.HAPPY);
       }
-      playerHooray.play();
+      MediaUtil.player(playerHooray, audioOn);
       setTimeout(() => {
         updateValidGroupsOnItemMatch(imageIndex);
         setSelectedGroupValueIndices(validGroupValueIndices.current);
@@ -152,7 +157,7 @@ export const Match = (props: MatchPropsType) => {
     }
     else {
       setFeedbackFace(() => FACES.WORRY);
-      playerOi.play();
+      MediaUtil.player(playerOuch, audioOn);
       setTimeout(() => {
         setFeedbackFace(() => FACES.NONE);
       }, ConstantsUtil.hoorayTimeout)

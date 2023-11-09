@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 
 import './Banner.css'
-import { useState } from "react";
+import { useContext, useState } from "react";
+import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 
 export interface BannerPropsType {
   settings?: Function;
 }
 
 export const Banner = (props: BannerPropsType) => {
+  const { turnAudioOn, turnAudioOff, audioOn } = useContext(GamesContext) as GamesContextType;
+
   const [showBanner, setShowBanner] = useState<boolean>(true);
 
   return (
@@ -31,6 +34,16 @@ export const Banner = (props: BannerPropsType) => {
                   title="החבא תפריט שליטה"  alt="החבא תפריט שליטה"
                   onClick={() => setShowBanner(false)} />
             </div>
+            {
+            audioOn && <img src="resources/icons/speaker.png" className="banner-icon"
+              onClick={() => turnAudioOff()} 
+                title="קול" alt="קול" />
+            }
+            {
+              !audioOn && <img src="resources/icons/speaker-off.png" className="banner-icon" 
+                onClick={() => turnAudioOn()}
+                  title="קול" alt="קול" />
+            }
           </div>
         </div>
       }
