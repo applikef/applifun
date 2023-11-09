@@ -33,6 +33,12 @@ export const HomePage = () => {
                 </div>
             )}
           </div>
+          <div className="app-padding-top-32">
+            <Link to="/changeRecords" target="_blank" rel="noopener noreferrer" 
+              className="app-link-sm">
+              לרשימת כל עדכוני המשחקים
+            </Link> 
+          </div>
       </div>
     </div>
   );

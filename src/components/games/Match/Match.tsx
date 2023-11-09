@@ -145,9 +145,9 @@ export const Match = (props: MatchPropsType) => {
         }, ConstantsUtil.pauseTimeout);
       }
       else {
+        MediaUtil.player(playerHooray, audioOn);
         setFeedbackFace(() => FACES.HAPPY);
       }
-      MediaUtil.player(playerHooray, audioOn);
       setTimeout(() => {
         updateValidGroupsOnItemMatch(imageIndex);
         setSelectedGroupValueIndices(validGroupValueIndices.current);

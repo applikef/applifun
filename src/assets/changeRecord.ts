@@ -9,13 +9,32 @@ export type ChangeRecordType = {
   entries: ChangeRecordItemType[]
 }
 
-export const getChangeRecords = () => {
+export const getChangeRecords = (): ChangeRecordItemType[] => {
   return changeRecord.entries.slice(0, changeRecord.first);
 }
 
+export const getAllChangeRecords = (): ChangeRecordItemType[] => {
+  return changeRecord.entries;
+}
+
 const changeRecord: ChangeRecordType = {
-  "first": 4,
+  "first": 3,
   "entries": [
+    {
+      "title": "רשימת עידכוני משחקים",
+      "date": "9-11-2023",
+      "content": "ניתן לפתוח רשימה מלאה של עידכוני משחקים מעמוד הבית בנוסף לרשימת השינויים האחרונים שנפתחת מעמוד הכניסה"
+    },
+    {
+      "title": "תמיכה בקול",
+      "date": "9-11-2023",
+      "content": "הוספת אפשרות להפעיל או להפסיק את התגובות הקוליות מתפריט השליטה של כל משחק"
+    },
+    {
+      "title": "שיפור במשחקי ההתאמה",
+      "date": "8-11-2023",
+      "content": "תמונה שנבחרת ומתאימה במשחקי ההתאמה מוסרת מאוסף התמונות שמוצגות על המסך"
+    },
     {
       "title": "משחקי 'אני עושה'",
       "date": "4-11-2023",

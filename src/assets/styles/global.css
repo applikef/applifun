@@ -16,6 +16,14 @@
   font-weight: normal;
 }
 
+.app-padding-top-16 {
+  padding-top: 16px;
+}
+
+.app-padding-top-32 {
+  padding-top: 32px;
+}
+
 .app-title-centered {
   text-align: center;
   font-size: 2rem;
@@ -44,6 +52,12 @@
 }
 
 .app-link {
+  color: var(--link);
+  text-decoration: none;
+  cursor: pointer; 
+} 
+.app-link-sm {
+  font-size: 0.75rem;
   color: var(--link);
   text-decoration: none;
   cursor: pointer; 

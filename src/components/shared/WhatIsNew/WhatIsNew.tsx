@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import "./WhatIsNew.css";
 import { ChangeRecordItemType, getChangeRecords } from "../../../assets/changeRecord";
+import { Link } from "react-router-dom";
 
 export const WhatIsNew = () => {
   const [showUpdates, setShowUpdates] = useState<boolean>(false);
