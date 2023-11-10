@@ -6,6 +6,7 @@ import { getGameDescriptor } from "./pages.util";
 
 import { Match } from "../components/games/Match/Match";
 import { Sequence } from "../components/games/Sequence/Sequence";
+import { ChangeRecords } from "../components/global/ChangeRecordsPage/ChangeRecords";
 
 export const LaunchPage = () => {
   const queryParameters = new URLSearchParams(window.location.search)
@@ -21,6 +22,8 @@ export const LaunchPage = () => {
       { gameId === "bathroomRoutine" && <Sequence gameDescriptor={descriptor}/> }
       { gameId === "morningRoutine" && <Sequence gameDescriptor={descriptor}/> }
       { gameId === "washHands" && <Sequence gameDescriptor={descriptor}/> }
+
+      { gameId === "changeRecords" && <ChangeRecords/> }
     </div>
   )
 }

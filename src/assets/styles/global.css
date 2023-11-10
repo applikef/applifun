@@ -16,14 +16,6 @@
   font-weight: normal;
 }
 
-.app-padding-top-16 {
-  padding-top: 16px;
-}
-
-.app-padding-top-32 {
-  padding-top: 32px;
-}
-
 .app-title-centered {
   text-align: center;
   font-size: 2rem;
@@ -63,16 +55,32 @@
   cursor: pointer; 
 }
 
-.app-indent-01 {
+.app-indent-right-08 {
   margin-right: var(--8);
 }
 
-.app-indent-02 {
+.app-indent-right-16 {
   margin-right: var(--16);
 }
 
-.app-indent-03 {
+.app-indent-right-20 {
   margin-right: var(--20);
+}
+
+.app-indent-top-08 {
+  margin-top: var(--8);
+}
+
+.app-indent-top-16 {
+  margin-top: var(--16);
+}
+
+.app-indent-top-20 {
+  margin-top: var(--20);
+}
+
+.app-indent-top-32 {
+  margin-top: var(--32);
 }
 
 .app-clickable {

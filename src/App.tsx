@@ -5,7 +5,6 @@ import { HomePage } from "./pages/HomePage";
 import { LaunchPage } from "./pages/LaunchPage";
 import { LandingPage } from "./pages/LandingPage";
 import { GamesProvider } from "./context/GamesContext";
-import { ChangeRecordsPage } from "./pages/ChangeRecordsPage/ChangeRecordsPage";
 
 function App() {
   return (
@@ -15,7 +14,6 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="home" element={<HomePage />} />
           <Route path="launch" element={<LaunchPage />} />
-          <Route path="changeRecords" element={<ChangeRecordsPage />} />
         </Routes>
       </BrowserRouter>
     </GamesProvider>  )
