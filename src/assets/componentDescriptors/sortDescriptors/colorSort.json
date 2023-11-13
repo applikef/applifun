@@ -1,0 +1,84 @@
+{
+  "gameType": "sort",
+  "gameId": "colorSort",
+  "titleTemplate": "בְּחַר צֶבַע, וְאָז בְּחַר תְּמוּנוֹת בְּאוֹתוֹ צֶבַע",
+  "selectGroupMessage": "צָרִיךְ לִבְחוֹר צֶבַע",
+  "groups": [
+    {
+      "id": "green",
+      "title": "יָרוֹק",
+      "cursor": "resources/cursors/green.png",
+      "image": "green-splash"
+    },
+    {
+      "id": "blue",
+      "title": "כָּחוֹל",
+      "cursor": "resources/cursors/blue.png",
+      "image": "blue-splash"
+    },
+    {
+      "id": "red",
+      "title": "אָדוֹם",
+      "cursor": "resources/cursors/red.png",
+      "image": "red-splash"
+    },
+    {
+      "id": "yellow",
+      "title": "צָהוֹב",
+      "cursor": "resources/cursors/yellow.png",
+      "image": "yellow-splash"
+    }
+  ],
+  "entities": [
+    {
+      "id": "baloon-yellow",
+      "file": "balloon-yellow-transparent",
+      "groupId": "yellow"
+    },
+    {
+      "id": "butterfly-blue",
+      "file": "blue-butterfly",
+      "groupId": "blue"
+    },
+    {
+      "id": "flower-red",
+      "file": "red-flower",
+      "groupId": "red"
+    },
+    {
+      "id": "flower-yellow",
+      "file": "yellow-flower",
+      "groupId": "yellow"
+    },
+    {
+      "id": "grapes-green",
+      "file": "green-grapes",
+      "groupId": "green"
+    },
+    {
+      "id": "lemon-yellow",
+      "file": "yellow-lemon",
+      "groupId": "yellow"
+    },
+    {
+      "id": "puff-red",
+      "file": "red-puff",
+      "groupId": "red"
+    },
+    {
+      "id": "halcyon-blue",
+      "file": "blue-halcyon",
+      "groupId": "blue"
+    },
+    {
+      "id": "tree-green",
+      "file": "tree",
+      "groupId": "green"
+    },
+    {
+      "id": "strawberry-red",
+      "file": "red-strawberry",
+      "groupId": "red"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './pages.css';
-import { WhatIsNew } from '../components/shared/WhatIsNew/WhatIsNew';
+import { WhatIsNew } from '../components/global/WhatIsNew/WhatIsNew';
 
 export const LandingPage = () => {
   const imageFill = "#6baed6";

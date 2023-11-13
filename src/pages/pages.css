@@ -26,19 +26,26 @@
 }
 
 .home-page-section-list {
-  padding-top: 20px;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: row;
+  min-width: 200px;
+  flex-wrap: wrap;
+}
+
+.home-page-games-list {
+  padding-top: 16px;
+  margin-left: 32px;
   display: flex;
   flex-direction: column;
   min-width: 200px;
   flex-wrap: wrap;
 }
 
-.home-page-games-list {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: row;
-  min-width: 200px;
-  flex-wrap: wrap;
+.home-page-games-list-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-left: 8px;
 }
 
 .app-select-game {

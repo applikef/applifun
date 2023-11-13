@@ -4,10 +4,13 @@ export function getGameDescriptor(gameId: string | null): any {
   }
 
   return(
-    gameId === "colorMatch" ? require("./../assets/componentDescriptors/matchDescriptors/colorMatch.json")
-    : gameId === "numberMatch" ? require("./../assets/componentDescriptors/matchDescriptors/numberMatch.json")
+    gameId === "bathroomRoutine" ? require("./../assets/componentDescriptors/sequenceDescriptors/bathroomRoutine.json")
+    : gameId === "colorMatch" ? require("./../assets/componentDescriptors/matchDescriptors/colorMatch.json")
+    : gameId === "colorSort" ? require("./../assets/componentDescriptors/sortDescriptors/colorSort.json")
     : gameId === "letterMatch" ? require("./../assets/componentDescriptors/matchDescriptors/letterMatch.json")
-    : gameId === "bathroomRoutine" ? require("./../assets/componentDescriptors/sequenceDescriptors/bathroomRoutine.json")
+    : gameId === "numberMatch" ? require("./../assets/componentDescriptors/matchDescriptors/numberMatch.json")
+    : gameId === "numberSort" ? require("./../assets/componentDescriptors/sortDescriptors/numberSort.json")
+    : gameId === "moodSort" ? require("./../assets/componentDescriptors/sortDescriptors/moodSort.json")
     : gameId === "morningRoutine" ? require("./../assets/componentDescriptors/sequenceDescriptors/morningRoutine.json")
     : gameId === "washHands" ? require("./../assets/componentDescriptors/sequenceDescriptors/washHands.json")
     : undefined

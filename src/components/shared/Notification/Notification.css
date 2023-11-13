@@ -21,3 +21,24 @@
   background-color: white;
   color: var(--blue-03);
 }
+
+.modal-notification-global {
+  border: solid 1px #d97b7b;
+  background-color: #fbd7d7;
+  color: #000;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.modal-notification-show {
+  display: inline;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.modal-notification-hide {
+  display: none;
+}

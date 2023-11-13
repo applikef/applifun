@@ -39,8 +39,6 @@ export const Sequence = (props: SequenceProps) => {
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
-  const smallDevice = DeviceUtil.isSmallDevice();
-
   let selectedSequenceSteps = useRef<string[]>([]);
   function addSequenceStep(id: string) {
     selectedSequenceSteps.current.push(id);
@@ -183,7 +181,7 @@ export const Sequence = (props: SequenceProps) => {
             shuffledImages.current.map((e:ImageDescriptorType,i:number) =>
               <TitledImage className="sequence-image" id={"bank-" + e.id} key={i} 
                 src={MediaUtil.getCatalogImage(e.file)} alt={e.title} 
-                height={smallDevice ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge} 
+                height={DeviceUtil.imageHeight()} 
                 maxWidth="200px"
                 onClick={() => verifyImage(e)}></TitledImage>
             )
@@ -222,7 +220,7 @@ export const Sequence = (props: SequenceProps) => {
                     <TitledImage className="sequence-feedback-image" 
                       id={"feedback-" + e.id} src={MediaUtil.getCatalogImage(e.file)} 
                       alt={e.title} 
-                      height={smallDevice ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge} 
+                      height={DeviceUtil.imageHeight()} 
                       maxWidth="200px"/> 
                 </span>
               )

@@ -1,6 +1,6 @@
 {
   "gameId": "colorMatch",
-  "titleTemplate": "בְּחַר תְּמוּנוֹת עִם דְּבָרִים שֶׁהַצֶּבַע שֶׁלָּהֶם $value$",
+  "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁהַצֶּבַע שֶׁלּוֹ $value$",
   "titleVariableValues": [
     "צָהוֹב",
     "כָּחוֹל",

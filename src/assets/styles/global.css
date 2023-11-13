@@ -16,6 +16,18 @@
   font-weight: normal;
 }
 
+.app-show-inline {
+  display: inline;
+}
+
+.app-show-flex {
+  display: flex;
+}
+
+.app-hide {
+  display: none;
+}
+
 .app-title-centered {
   text-align: center;
   font-size: 2rem;

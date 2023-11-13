@@ -7,62 +7,92 @@ export type HomePageItemType = {
   id: string;
   label: string;
   path: string;
-  media: string;
+  media?: string;
   height?: number;
 }
 
 export type HomePageSectionType = {
   title?: string;
+  media?: string;
   mobile?: boolean;
   items: HomePageItemType[];
 }
 
 export const homePageDescriptor: HomePageSectionType[] = [
   {
+    title: "חֶשְׁבּוֹן",
+    media: "resources/images/numbers-splash.png",
     items: [
       {
-        id: "colorMatch",
-        label: "מוֹצְאִים תְּמוּנוֹת בְּצֶבַע",
-        path: "/launch?gameId=colorMatch",
-        media: "resources/images/colors-splash.png",
-        height: 100
-      },
-      {
         id: "numberMatch",
-        label: "סוֹפְרִים דְּבָרִים",
+        label: "מוֹצְאִים מִסְפָּר דְּבָרִים",
         path: "/launch?gameId=numberMatch",
-        media: "resources/images/numbers-splash.png",
+        media: "resources/images/find-number-game.png",
         height: 100
       },
       {
-        id: "letterMatch",
-        label: "מוֹצְאִים אוֹתִיּוֹת",
-        path: "/launch?gameId=letterMatch",
-        media: "resources/images/letters-splash.png",
+        id: "numberSort",
+        label: "סוֹפְרִים דְּבָרִים",
+        path: "/launch?gameId=numberSort",
+        media: "resources/images/sort-by-number-game.png",
         height: 100
       }
     ]
   },
   {
-    "title": "אֲנִי עוֹשֶׂה",
-    "items": [
+    title: "קוֹרְאִים",
+    media: "resources/images/letters-splash.png",
+    items: [
+      {
+        id: "letterMatch",
+        label: "מוֹצְאִים אוֹתִיּוֹת",
+        path: "/launch?gameId=letterMatch",
+        media: "resources/images/find-letter-game.png",
+        height: 100
+      }
+    ]
+  },
+  {
+    title: "מְמַיְּנִים",
+    media: "resources/images/sort-games.png",
+    items: [
+      {
+        id: "colorMatch",
+        label: "מוֹצְאִים תְּמוּנוֹת בְּצֶבַע",
+        path: "/launch?gameId=colorMatch",
+        media: "resources/images/find-color-game.png",
+        height: 100
+      },
+      {
+        id: "colorSort",
+        label: "מְמַיְּנִים תְּמוּנוֹת לְצֶבַע",
+        path: "/launch?gameId=colorSort",
+        media: "resources/images/sort-by-color-game.png",
+        height: 100
+      },
+    ]
+  },
+  {
+    title: "עוֹד...",
+    media: "resources/images/more-games.png",
+    items: [
       {
         id: "washHands",
-        label: "שׁוֹטֵף יָדַיִם",
+        label: "שׁוֹטְפִים יָדַיִם",
         path: "/launch?gameId=washHands",
         media: "resources/images/wash-hands.jpg",
         height: 100
       },
       {
         id: "bathroomRoutine",
-        label: "הוֹלֵךְ לַשֵּׁרוּתִים",
+        label: "הוֹלְכִים לַשֵּׁרוּתִים",
         path: "/launch?gameId=bathroomRoutine",
         media: "resources/images/toilet.jpg",
         height: 100
       },
       {
         id: "morningRoutine",
-        label: "מִסְתַּדֵּר בַּבֹּקֶר",
+        label: "מִסְתַּדְּרִים בַּבֹּקֶר",
         path: "/launch?gameId=morningRoutine",
         media: "resources/images/wake-up.jpg",
         height: 100

@@ -43,8 +43,6 @@ export const Match = (props: MatchPropsType) => {
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
-  const smallDevice = DeviceUtil.isSmallDevice();
-
   const navigate = useNavigate();
 
   /***
@@ -223,7 +221,7 @@ export const Match = (props: MatchPropsType) => {
         {
           groupFiles && groupFiles.length > 0 ?
             <img src={groupFiles[activeIndex]} alt={ activeGroupName.current } 
-              width={smallDevice ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge} />
+              width={DeviceUtil.imageHeight()} />
           :
             <span className="groupNameTitle">
               { groupIds[activeIndex] }
@@ -237,7 +235,7 @@ export const Match = (props: MatchPropsType) => {
         {
           validImages.current.map((img,i) =>
             img.length > 0 &&
-              <img src={ img } alt="" key={i} height={smallDevice ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge}  
+              <img src={ img } alt="" key={i} height={DeviceUtil.imageHeight()}  
               onClick={(event:React.MouseEvent<HTMLElement>) => {
                 showImageTitleNotification.current = true;
                 setImageTitleNotification({

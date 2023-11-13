@@ -1,10 +1,10 @@
 const smallScreenWidth = 1300;
 
 export class DeviceUtil {
-  public static fullSizeIamge: string = "150px"; 
-  public static smallSizeIamge: string = "100px";
+  static fullSizeIamge: string = "150px"; 
+  static smallSizeIamge: string = "100px";
 
-  public static isSmallDevice() {
+  static isSmallDevice() {
     const isSmall = window.innerWidth < smallScreenWidth;
     return isSmall;
   }
@@ -20,5 +20,9 @@ export class DeviceUtil {
          || navigator.userAgent.match(/Windows Phone/i)
       );
     return mobile;
+  }
+  
+  public static imageHeight(): string {
+    return DeviceUtil.isSmallDevice() ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge;
   }
 }

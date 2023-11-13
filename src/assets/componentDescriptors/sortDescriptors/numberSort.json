@@ -1,0 +1,79 @@
+{
+  "gameType": "sort",
+  "gameId": "numberSort",
+  "titleTemplate": "בְּחַר מִסְפָּר, וְאָז בְּחַר תְּמוּנוֹת עִם מִסְפַּר דְּבָרִים כְּמוֹ הַמִּסְפָּר שֶׁבָּחַרְתָּ",
+  "groups": [
+    {
+      "id": "1",
+      "title": "1",
+      "cursor": "resources/cursors/one.png"
+    },
+    {
+      "id": "2",
+      "title": "2",
+      "cursor": "resources/cursors/two.png"
+    },
+    {
+      "id": "3",
+      "title": "3",
+      "cursor": "resources/cursors/three.png"
+    },
+    {
+      "id": "4",
+      "title": "4",
+      "cursor": "resources/cursors/four.png"
+    },
+    {
+      "id": "5",
+      "title": "5",
+      "cursor": "resources/cursors/five.png"
+    }
+  ],
+  "entities": [
+    {
+      "id": "baloon-yellow",
+      "file": "balloon-yellow-transparent",
+      "groupId": "1"
+    },
+    {
+      "id": "3Trees",
+      "file": "trees-3",
+      "groupId": "3"
+    },
+    {
+      "id": "4Apples",
+      "file": "apples-4",
+      "groupId": "4"
+    },
+    {
+      "id": "2Carrots",
+      "file": "carrots-2",
+      "groupId": "2"
+    },
+    {
+      "id": "5Birds",
+      "file": "birds-5",
+      "groupId": "5"
+    },
+    {
+      "id": "2Cats",
+      "file": "cats-2",
+      "groupId": "2"
+    },
+    {
+      "id": "4Chairs",
+      "file": "chairs-4",
+      "groupId": "4"
+    },
+    {
+      "id": "tree-green",
+      "file": "blue-butterfly",
+      "groupId": "1"
+    },
+    {
+      "id": "3Children",
+      "file": "children-3",
+      "groupId": "3"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "gameType": "sort",
+  "gameId": "moodSort",
+  "titleTemplate": "בְּחַר מַצַּב-רוּחַ, וְאָז בְּחַר תְּמוּנוֹת שֶׁמַּרְאוֹת אֶת אוֹתוֹ מַצַּב הָרוּחַ",
+  "selectGroupMessage": "קודם צריך לבחר מצב-רוח",
+  "groups": [
+    {
+      "id": "happy",
+      "title": "שָׂמֵחַ",
+      "cursor": "resources/cursors/happy-face-cursor.png",
+      "image": "resources/happy-face.png"
+    },
+    {
+      "id": "sad",
+      "title": "עָצוּב",
+      "cursor": "resources/cursors/worry-face-cursor.png",
+      "image": "resources/worry-face.png"
+    },
+    {
+      "id": "angry",
+      "title": "כּוֹעֵס",
+      "cursor": "resources/cursors/angry-face-cursor.png",
+      "image": "resources/angry-face.png"
+    }
+  ],
+  "entities": [
+    {
+      "id": "angry01",
+      "file": "resources/games/sortMood/angry01.jpeg",
+      "groupId": "angry"
+    },
+    {
+      "id": "happy02",
+      "file": "resources/games/sortMood/happy01.jpg",
+      "groupId": "happy"
+    },
+    {
+      "id": "angry03",
+      "file": "resources/games/sortMood/angry03.jpeg",
+      "groupId": "angry"
+    },
+    {
+      "id": "happy01",
+      "file": "resources/games/sortMood/happy03.jpg",
+      "groupId": "happy"
+    },
+    {
+      "id": "angry04",
+      "file": "resources/games/sortMood/angry04.jpeg",
+      "groupId": "angry"
+    },
+    {
+      "id": "happy03",
+      "file": "resources/games/sortMood/happy02.jpg",
+      "groupId": "happy"
+    },
+    {
+      "id": "sad02",
+      "file": "resources/games/sortMood/sad02.jpeg",
+      "groupId": "sad"
+    },
+    {
+      "id": "angry02",
+      "file": "resources/games/sortMood/angry02.jpeg",
+      "groupId": "angry"
+    },
+    {
+      "id": "sad03",
+      "file": "resources/games/sortMood/sad03.jpeg",
+      "groupId": "sad"
+    }
+  ]
+}
