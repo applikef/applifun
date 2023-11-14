@@ -1,0 +1,38 @@
+@import "./../../../assets/styles/global.css";
+
+.attention-arrow {
+  height: 120px;
+}
+
+.attention-arrow-area {
+  text-align: center;
+}
+
+.attention-arrow-float {
+  position: relative;
+  -webkit-animation: floatBubble 4s infinite  normal ease-out;
+  animation: floatBubble 4s infinite  normal ease-out;
+}
+
+@-webkit-keyframes floatBubble {
+  0% {
+      top: 0px;
+  }
+  50% {
+      top: 60px;
+  }
+  100% {
+      top: 0px;
+  }
+}
+@keyframes floatBubble {
+  0% {
+      top: 0px;
+  }
+  50% {
+    top: 60px;
+  }
+  100% {
+      top: 0px;
+  }
+}

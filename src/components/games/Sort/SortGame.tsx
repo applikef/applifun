@@ -10,6 +10,7 @@ import { ModalNotification } from "../../shared/Notification/ModalNotification";
 import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../shared/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
+import { AttentionArrow } from "../../shared/AttentionArrow/AttentionArrow";
 
 export interface SortGameProps {
   gameDescriptor: SortGameDescriptorType;
@@ -121,12 +122,7 @@ export const SortGame = (props: SortGameProps) => {
       </div>
 
       <div style={{height: "40px", cursor: cursorStyle}}>
-        { showStartArrow.current &&
-          <div className="sort-game-start-arrow-area">
-            <img src="resources/icons/top-down-arrow.png" alt="תסתכל למטה"
-              className="sort-game-start-arrow sort-game-start-arrow-float"/>
-          </div>
-        }
+        { showStartArrow.current && <AttentionArrow /> }
       </div>
       
       <div>

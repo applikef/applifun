@@ -1,42 +1,5 @@
 @import "./../../../assets/styles/global.css";
 
-.sort-game-start-arrow {
-  height: 120px;
-}
-
-.sort-game-start-arrow-area {
-  text-align: center;
-}
-
-.sort-game-start-arrow-float {
-  position: relative;
-  -webkit-animation: floatBubble 4s infinite  normal ease-out;
-  animation: floatBubble 4s infinite  normal ease-out;
-}
-
-@-webkit-keyframes floatBubble {
-  0% {
-      top: 0px;
-  }
-  50% {
-      top: 60px;
-  }
-  100% {
-      top: 0px;
-  }
-}
-@keyframes floatBubble {
-  0% {
-      top: 0px;
-  }
-  50% {
-    top: 60px;
-  }
-  100% {
-      top: 0px;
-  }
-}
-
 .sort-game-entities {
   text-align: center;
   padding-top: 20px;
