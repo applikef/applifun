@@ -48,6 +48,10 @@
   margin-left: 8px;
 }
 
+.home-page-games-list-items {
+  flex-wrap: wrap;
+}
+
 .app-select-game {
   padding-top: 20px;
   padding-right: 60px;

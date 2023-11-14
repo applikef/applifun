@@ -44,7 +44,8 @@ export const HomePage = () => {
           </div>
           <div>
             {homePageDescriptor.map((section: HomePageSectionType,i) =>
-              <div key={i} className={showSection[i] ? "app-show-flex" : "app-hide"} >
+              <div key={i} 
+                className={`home-page-games-list-items ${showSection[i] ? "app-show-flex" : "app-hide"}`} >
                 <div className="app-sub-title home-page-games-list-title">{section.title}</div>
                 {section.items.map((game: HomePageItemType,i) => 
                   <Card key={game.id}
