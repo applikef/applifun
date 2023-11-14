@@ -48,6 +48,7 @@ export const Sequence = (props: SequenceProps) => {
   const images = props.gameDescriptor.images;
   const numbers = props.gameDescriptor.numbers;
   const word = props.gameDescriptor.word;
+  const topImage = props.gameDescriptor.topImage;
 
   const [, setShowPage] = useState(false);
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
@@ -174,8 +175,12 @@ export const Sequence = (props: SequenceProps) => {
   return (
     <div className="app-page">
       <Banner/>
+      { topImage && word &&
+        <img src={MediaUtil.getCatalogImage(topImage)} alt={word.title}
+          height={DeviceUtil.imageHeightLarge()}></img>        
+      }
       <div className="sequence-container">
-        <h3>{ pageTitle }</h3>
+        <div className="app-title">{ pageTitle }</div>
         <div className="sequence-source-images" >
           {sequenceType === SequenceType.IMAGES ? 
             shuffledImages.current.map((e:ImageDescriptorType,i:number) =>

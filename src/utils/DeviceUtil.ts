@@ -1,8 +1,8 @@
 const smallScreenWidth = 1300;
 
 export class DeviceUtil {
-  static fullSizeIamge: string = "150px"; 
-  static smallSizeIamge: string = "100px";
+  static fullSizeIamge: number = 150; 
+  static smallSizeIamge: number = 100;
 
   static isSmallDevice() {
     const isSmall = window.innerWidth < smallScreenWidth;
@@ -23,6 +23,14 @@ export class DeviceUtil {
   }
   
   public static imageHeight(): string {
-    return DeviceUtil.isSmallDevice() ? DeviceUtil.smallSizeIamge : DeviceUtil.fullSizeIamge;
+    const smallSizeIamge: string = `${DeviceUtil.smallSizeIamge}px`;
+    const fullSizeIamge: string = `${DeviceUtil.fullSizeIamge}px`;
+    return DeviceUtil.isSmallDevice() ? smallSizeIamge : fullSizeIamge;
+  }
+  
+  public static imageHeightLarge(): string {
+    const smallSizeIamge: string = `${DeviceUtil.smallSizeIamge * 1.5}px`;
+    const fullSizeIamge: string = `${DeviceUtil.fullSizeIamge * 1.5}px`;
+    return DeviceUtil.isSmallDevice() ? smallSizeIamge : fullSizeIamge;
   }
 }

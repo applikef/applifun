@@ -4,6 +4,7 @@ import "./IWrite.css";
 import { Sequence } from "../Sequence/Sequence";
 import { SequenceDescriptorType, SequenceType } from "../Sequence/Sequence.types";
 import { WordDescriptorType } from "./Word.types";
+import { MediaUtil } from "../../../utils/MediaUtil";
 
 export interface IWriteProps {
   gameDescriptor: WordDescriptorType[];
@@ -11,19 +12,19 @@ export interface IWriteProps {
 
 export const IWrite = (props: IWriteProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0);
-  const sequenceTitle = "סדר את האותיות מהראשונה לאחרונה";
+  const sequenceTitle = "סַדֵּר אֶת הָאוֹתִיּוֹת מֵהָרִאשׁוֹנָה לָאַחֲרוֹנָה";
 
   let currentWord: WordDescriptorType = props.gameDescriptor[currentWordIndex];
 
   let sequenceDescriptor: SequenceDescriptorType = {
     type: SequenceType.WORD,
     title: sequenceTitle,
-    word: currentWord
+    word: currentWord,
+    topImage: currentWord.file
   };
 
   return (
     <div className="i-write-global">
-      <img src={currentWord.file} alt={currentWord.title}></img>
       <Sequence gameDescriptor={sequenceDescriptor} />
     </div>
   )

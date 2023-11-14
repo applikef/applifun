@@ -36,6 +36,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=numberSort",
         media: "resources/images/sort-by-number-game.png",
         height: 100
+      },
+      {
+        id: "iCount",
+        label: "מְסַדְּרִים מִסְפָּרִים",
+        path: "/launch?gameId=iCount",
+        media: "resources/images/order-numbers-game.png",
+        height: 100
       }
     ]
   },
@@ -48,6 +55,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
         label: "מוֹצְאִים אוֹתִיּוֹת",
         path: "/launch?gameId=letterMatch",
         media: "resources/images/find-letter-game.png",
+        height: 100
+      },
+      {
+        id: "iWriteWords",
+        label: "מְסַדְּרִים מִלִּים",
+        path: "/launch?gameId=iWriteWords",
+        media: "resources/images/order-letters-game.png",
         height: 100
       }
     ]

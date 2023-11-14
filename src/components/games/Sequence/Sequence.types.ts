@@ -12,6 +12,7 @@ export type SequenceDescriptorType = {
   images?: ImageDescriptorType[];
   word?: WordDescriptorType;
   numbers?: NumbersDescriptorType;
+  topImage?: string;
 }
 
 export type ImageDescriptorType = {

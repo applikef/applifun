@@ -43,13 +43,13 @@ export class MediaUtil {
       return [];
     }
 
-    const imageFiles = require("./../assets/imageRepository.json");
+    const imageFiles = require("./../assets/imageCatalog.json");
     let images: string[] = imageIds.map((id) => imageFiles[id]);
     return images;
   }
 
   public static getCatalogImage(imageId: string): string {
-    const imageFiles = require("./../assets/imageRepository.json");
+    const imageFiles = require("./../assets/imageCatalog.json");
     return imageFiles[imageId];
   }
 }
