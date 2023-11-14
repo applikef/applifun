@@ -73,7 +73,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
-    title: "עוֹד...",
+    title: "מִשְׁתַּלְּבִים",
     media: "resources/images/more-games.png",
     items: [
       {
