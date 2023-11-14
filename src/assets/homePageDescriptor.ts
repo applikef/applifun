@@ -91,6 +91,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
     media: "resources/images/more-games.png",
     items: [
       {
+        id: "moodSort",
+        label: "מַרְגִּישִׁים",
+        path: "/launch?gameId=moodSort",
+        media: "resources/images/feelings.jpg",
+        height: 100
+      },
+      {
         id: "washHands",
         label: "שׁוֹטְפִים יָדַיִם",
         path: "/launch?gameId=washHands",

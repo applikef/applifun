@@ -8,65 +8,60 @@
       "id": "happy",
       "title": "שָׂמֵחַ",
       "cursor": "resources/cursors/happy-face-cursor.png",
-      "image": "resources/happy-face.png"
+      "image": "happy-face"
     },
     {
       "id": "sad",
       "title": "עָצוּב",
       "cursor": "resources/cursors/worry-face-cursor.png",
-      "image": "resources/worry-face.png"
+      "image": "worry-face"
     },
     {
       "id": "angry",
       "title": "כּוֹעֵס",
       "cursor": "resources/cursors/angry-face-cursor.png",
-      "image": "resources/angry-face.png"
+      "image": "angry-face"
     }
   ],
   "entities": [
     {
-      "id": "angry01",
-      "file": "resources/games/sortMood/angry01.jpeg",
-      "groupId": "angry"
-    },
-    {
-      "id": "happy02",
-      "file": "resources/games/sortMood/happy01.jpg",
+      "id": "happy01",
+      "file": "happy-woman-01",
       "groupId": "happy"
     },
     {
       "id": "angry03",
-      "file": "resources/games/sortMood/angry03.jpeg",
-      "groupId": "angry"
-    },
-    {
-      "id": "happy01",
-      "file": "resources/games/sortMood/happy03.jpg",
-      "groupId": "happy"
-    },
-    {
-      "id": "angry04",
-      "file": "resources/games/sortMood/angry04.jpeg",
+      "file": "angry-boy",
       "groupId": "angry"
     },
     {
       "id": "happy03",
-      "file": "resources/games/sortMood/happy02.jpg",
+      "file": "happy-woman-03",
+      "groupId": "happy"
+    },
+    {
+      "id": "angry04",
+      "file": "angry-girl",
+      "groupId": "angry"
+    },
+    {
+      "id": "happy02",
+      "file": "happy-woman-02",
       "groupId": "happy"
     },
     {
       "id": "sad02",
-      "file": "resources/games/sortMood/sad02.jpeg",
+      "file": "sad-woman-02",
       "groupId": "sad"
     },
     {
       "id": "angry02",
-      "file": "resources/games/sortMood/angry02.jpeg",
+      "file": "angry-woman-transparent",
       "groupId": "angry"
     },
     {
       "id": "sad03",
-      "file": "resources/games/sortMood/sad03.jpeg",
+      "file": "sad-woman-03",
       "groupId": "sad"
     }
   ]
