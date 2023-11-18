@@ -17,6 +17,10 @@ export const showWellDone = (audioOn: boolean) => {
   // }, SHOW_TIME);
 }
 
+export const hideWellDone = () => {
+  document.getElementById("well-done")!.classList.remove("well-done-show");
+}
+
 export const WellDone = () => {
   return (
     <div className="well-done-global" id="well-done">

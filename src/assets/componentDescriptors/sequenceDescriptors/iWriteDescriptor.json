@@ -1,0 +1,85 @@
+{
+  "type": "word",
+  "gameType": "sequence",
+  "title": "סַדֵּר אֶת הָאוֹתִיּוֹת מֵהָרִאשׁוֹנָה לָאַחֲרוֹנָה",
+  "words": [
+    {
+      "id": "house",
+      "title": "בית",
+      "name": "בית",
+      "file": "house"
+    },
+    {
+      "id": "bird",
+      "title": "ציפור",
+      "name": "ציפור",
+      "file": "bird"
+    },
+    {
+      "id": "boy",
+      "title": "ילד",
+      "name": "ילד",
+      "file": "boy"
+    },
+    {
+      "id": "balloon",
+      "title": "בלון",
+      "name": "בלון",
+      "file": "balloon-yellow-transparent"
+    },
+    {
+      "id": "boat",
+      "title": "סירה",
+      "name": "סירה",
+      "file": "boat"
+    },
+    {
+      "id": "cat",
+      "title": "חתול",
+      "name": "חתול",
+      "file": "cat-transparent"
+    },
+    {
+      "id": "fense",
+      "title": "גדר",
+      "name": "גדר",
+      "file": "fense"
+    },
+    {
+      "id": "oranges",
+      "title": "תפוזים",
+      "name": "תפוזים",
+      "file": "oranges"
+    },
+    {
+      "id": "table",
+      "title": "שולחן",
+      "name": "שולחן",
+      "file": "table-transparent"
+    },
+    {
+      "id": "zebra",
+      "title": "זברה",
+      "name": "זברה",
+      "file": "zebra"
+    },
+    {
+      "id": "tree",
+      "title": "עץ",
+      "name": "עץ",
+      "file": "tree"
+    },
+    {
+      "id": "flower",
+      "title": "פרח",
+      "name": "פרח",
+      "file": "red-flower"
+    },
+    {
+      "id": "chair",
+      "title": "כיסא",
+      "name": "כיסא",
+      "file": "chair"
+    }
+  ]
+}

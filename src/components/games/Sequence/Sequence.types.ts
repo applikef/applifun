@@ -1,5 +1,3 @@
-import { WordDescriptorType } from "../IWrite/Word.types";
-
 export enum SequenceType {
   IMAGES = "images",
   WORD = "word",
@@ -10,15 +8,21 @@ export type SequenceDescriptorType = {
   type: SequenceType;
   title?: string;
   images?: ImageDescriptorType[];
-  word?: WordDescriptorType;
+  words?: WordDescriptorType[];
   numbers?: NumbersDescriptorType;
-  topImage?: string;
 }
 
 export type ImageDescriptorType = {
   id: string,
   title: string,
   name?: string;
+  file: string;
+}
+
+export type WordDescriptorType = {
+  id: string,
+  title: string,
+  name: string,
   file: string;
 }
 

@@ -8,7 +8,7 @@ export function getGameDescriptor(gameId: string | null): any {
     : gameId === "colorMatch" ? require("./../assets/componentDescriptors/matchDescriptors/colorMatch.json")
     : gameId === "colorSort" ? require("./../assets/componentDescriptors/sortDescriptors/colorSort.json")
     : gameId === "iCount" ? require("./../assets/componentDescriptors/sequenceDescriptors/numbersSequence.json")
-    : gameId === "iWriteWords" ? require("./../assets/componentDescriptors/iWriteDescriptors/iWriteDescriptor.json")
+    : gameId === "iWriteWords" ? require("./../assets/componentDescriptors/sequenceDescriptors/iWriteDescriptor.json")
     : gameId === "letterMatch" ? require("./../assets/componentDescriptors/matchDescriptors/letterMatch.json")
     : gameId === "numberMatch" ? require("./../assets/componentDescriptors/matchDescriptors/numberMatch.json")
     : gameId === "numberSort" ? require("./../assets/componentDescriptors/sortDescriptors/numberSort.json")

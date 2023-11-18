@@ -16,6 +16,7 @@
 }
 .imageStyle {
   margin-left: 12px;
+  cursor: pointer;
 }
 
 .game-settings-global-hide {
