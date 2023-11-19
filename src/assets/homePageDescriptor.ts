@@ -25,21 +25,21 @@ export const homePageDescriptor: HomePageSectionType[] = [
     items: [
       {
         id: "numberMatch",
-        label: "מוֹצְאִים מִסְפָּר דְּבָרִים",
+        label: "אֵיפֹה יֵשׁ מִסְפָּר?",
         path: "/launch?gameId=numberMatch",
         media: "resources/images/find-number-game.png",
         height: 100
       },
       {
         id: "numberSort",
-        label: "סוֹפְרִים דְּבָרִים",
+        label: "בָּתֵּי הַמִּסְפָּרִים",
         path: "/launch?gameId=numberSort",
         media: "resources/images/sort-by-number-game.png",
         height: 100
       },
       {
         id: "iCount",
-        label: "מְסַדְּרִים מִסְפָּרִים",
+        label: "מִסְפָּרִים בְּתוֹר",
         path: "/launch?gameId=iCount",
         media: "resources/images/order-numbers-game.png",
         height: 100
@@ -52,14 +52,14 @@ export const homePageDescriptor: HomePageSectionType[] = [
     items: [
       {
         id: "letterMatch",
-        label: "מוֹצְאִים אוֹתִיּוֹת",
+        label: "מִי מַתְחִיל בְּאוֹת?",
         path: "/launch?gameId=letterMatch",
         media: "resources/images/find-letter-game.png",
         height: 100
       },
       {
         id: "iWriteWords",
-        label: "מְסַדְּרִים מִלִּים",
+        label: "מִלִּים מְבֻלְבָּלוֹת",
         path: "/launch?gameId=iWriteWords",
         media: "resources/images/order-letters-game.png",
         height: 100
@@ -79,7 +79,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
       },
       {
         id: "colorSort",
-        label: "מְמַיְּנִים תְּמוּנוֹת לְצֶבַע",
+        label: "בָּתֵּי הַצְּבָעִים",
         path: "/launch?gameId=colorSort",
         media: "resources/images/sort-by-color-game.png",
         height: 100
@@ -92,7 +92,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     items: [
       {
         id: "moodSort",
-        label: "מַרְגִּישִׁים",
+        label: "אֵיךְ נִרְאָה כְּשֶׁמַּרְגִּישִׁים?",
         path: "/launch?gameId=moodSort",
         media: "resources/images/feelings.jpg",
         height: 100

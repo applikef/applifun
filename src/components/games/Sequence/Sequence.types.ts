@@ -7,6 +7,7 @@ export enum SequenceType {
 export type SequenceDescriptorType = {
   type: SequenceType;
   title?: string;
+  settingsTitle?: string,
   images?: ImageDescriptorType[];
   words?: WordDescriptorType[];
   numbers?: NumbersDescriptorType;

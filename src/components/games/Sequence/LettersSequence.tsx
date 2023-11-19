@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 
 import "./Sequence.css";
 
@@ -13,6 +13,7 @@ import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { SequenceDescriptorType, WordDescriptorType } from "./Sequence.types";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
+import { useNavigate } from "react-router-dom";
 
 interface ViewEntry {
   value: string;
@@ -24,10 +25,8 @@ export interface SequenceProps {
 };
 
 export const LettersSequence = (props: SequenceProps) => {
-  const numberOfWords:number = props.gameDescriptor.words!.length;
-  let words = useRef<WordDescriptorType[]>(props.gameDescriptor.words ?
-    ObjectsUtil.shuffleArrayItems(props.gameDescriptor.words) 
-  : []);
+  const wordsCatalog = props.gameDescriptor.words!;
+  const wordsCatalogSize = wordsCatalog.length;
   const gamePageTitle:string = props.gameDescriptor.title ? props.gameDescriptor.title : "";
 
   const { 
@@ -37,18 +36,39 @@ export const LettersSequence = (props: SequenceProps) => {
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
+  const navigate = useNavigate();
+
   let selectedSequenceSteps = useRef<string[]>([]);
   function addSequenceStep(id: string) {
     selectedSequenceSteps.current.push(id);
   };
 
+  const [words, setWords] = useState<WordDescriptorType[]>(props.gameDescriptor.words ?
+    ObjectsUtil.shuffleArrayItems(props.gameDescriptor.words) 
+  : []);
+  const numberOfWords = useRef<number>(props.gameDescriptor.words!.length);
+
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [pageTitle, setPageTitle] = useState(gamePageTitle);
-  const [word, setWord] = useState<WordDescriptorType>(words.current[0]);
+  const [word, setWord] = useState<WordDescriptorType>(words[0]);
   const [orderedLetters, setOrderedLetters] = useState<ViewEntry[]>([]);
   const [shuffledLetters, setShuffledLetters] = useState<ViewEntry[]>([]);
+  const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
+  const [pendingSelectedWordIndices, setPendingSelectedWordValueIndices] =
+    useState<boolean[]>([]);
+  const [selectedWordIndices, setSelectedWordIndices] =
+    useState<boolean[]>([])
 
   let currentIndex = useRef<number>(0);
+
+  useEffect(() => {
+    setSelectedWordIndices(() => Array(wordsCatalogSize).fill(true));
+  }, [wordsCatalogSize]);
+
+  useEffect(() => {
+    numberOfWords.current = words.length;
+    setWord(words[0]);
+  }, [words]);
 
   useEffect(() => {
     setOrderedLetters(word.name.split("").map((letter:string) => {
@@ -115,7 +135,7 @@ export const LettersSequence = (props: SequenceProps) => {
 
   function getNextWord() { 
     setTimeout(() =>{
-      if (currentIndex.current < numberOfWords-1) {
+      if (currentIndex.current < numberOfWords.current-1) {
         // reset view
         selectedSequenceSteps.current = [];
         setFeedbackFace(FACES.NONE);
@@ -123,15 +143,56 @@ export const LettersSequence = (props: SequenceProps) => {
         hideWellDone();
 
         currentIndex.current++;
-        setWord(words.current[currentIndex.current]);
+        setWord(words[currentIndex.current]);
     
+      }
+      else {
+        setTimeout(() => {
+          navigate("/home");
+        }, ConstantsUtil.hoorayTimeout);        
       }
     }, ConstantsUtil.hoorayTimeout)
   }
 
+  function handleSettingsSelectWord(e:ChangeEvent<HTMLInputElement>, index: number) : boolean[] {
+    const isChecked = e.target.checked;
+    let settingArr = new Array(...pendingSelectedWordIndices)
+    if (isChecked) {
+        settingArr[index] = true;
+    }
+    else {
+      settingArr[index] = false;
+    }
+    return settingArr;  
+  }
+  
+  function handleSettingsCancel() {
+    setGameSettinsDisplay(()=>"game-settings-global-hide"); 
+  }
+
+  function handleSettingsDone() {
+    let newWords:WordDescriptorType[] = [];
+    for (let i=0; i < wordsCatalogSize; i++) {
+      if (pendingSelectedWordIndices[i]) {
+        newWords.push(wordsCatalog[i]);
+      }
+    }
+    selectedSequenceSteps.current = [];
+    currentIndex.current = 0;
+    setFeedbackFace(FACES.NONE);
+    hideWellDone();
+
+    setWords(()=>ObjectsUtil.shuffleArrayItems(newWords));
+    setSelectedWordIndices(()=>pendingSelectedWordIndices);
+    setGameSettinsDisplay(()=>"game-settings-global-hide")
+  }
+
   return (
     <div className="app-page">
-      <Banner/>
+      <Banner settings={() => {
+        setPendingSelectedWordValueIndices(() => selectedWordIndices);
+        setGameSettinsDisplay("game-settings-global-show")
+      }}/>
 
       <div className="letters-sequence-global">
         <img src={MediaUtil.getCatalogImage(word.file)} alt={word.title}
@@ -168,6 +229,38 @@ export const LettersSequence = (props: SequenceProps) => {
       </div>
 
       <WellDone />
+
+      <div id="gameSettings" className={ gameSettinsDisplay }>
+        <div>
+          <div className="game-settings-title">
+            { props.gameDescriptor.settingsTitle ?
+                props.gameDescriptor.settingsTitle
+              : "" 
+            }
+          </div>
+          
+          { wordsCatalog.map(
+            (word, i) => 
+              <div className="game-settings-entry" key={i}>
+                <input type="checkbox"
+                  checked={pendingSelectedWordIndices[i]} 
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    const settingArr: boolean[] = handleSettingsSelectWord(e, i);
+                    setPendingSelectedWordValueIndices(settingArr);
+                  }}></input>
+                <span key={i}>{word.name}</span>
+              </div>
+          )}
+          <br/>
+          <button className="app-button-primary-sm" onClick={() => {
+            handleSettingsDone(); 
+          }}>שמור</button>
+          <button className="app-button-ghost-sm" onClick={() => {
+            handleSettingsCancel();
+          }}>בטל</button>
+        </div>
+      </div>
+
     </div>
   )
 }
