@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { SortGameDescriptorType, SortGameGroupType, SortGameImageType } from "./sortGame.types";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 
@@ -45,16 +45,10 @@ export const SortGame = (props: SortGameProps) => {
   const [sourceEntities, setSourceEntities] = 
     useState<SortGameImageType[]>(props.gameDescriptor.entities);
 
-  const [count, setCount] = useState(0);
+  const [entityIndex, setEntityIndex] = useState(0);
   const [colorSelectError, setColorSelectError] = useState(false);
 
   const showStartArrow = useRef<boolean>(true);
-
-  useEffect(() => {
-    if (count === numberOfEntities) {
-      showWellDone(audioOn);
-    }
-  }, [count, audioOn, numberOfEntities]);
 
   const verifyImage = (e: SortGameImageType) => {
     if (!currentGroup) {
@@ -82,8 +76,13 @@ export const SortGame = (props: SortGameProps) => {
       }
       
       setFeedbackFace(FACES.HAPPY);
-      MediaUtil.play(MediaUtil.pickAudio(PlayListNames.SHORT_HOORAY), audioOn);
-      setCount(count+1);
+      if (entityIndex === numberOfEntities-1) {
+        showWellDone(audioOn);
+      }
+      else {
+        MediaUtil.play(MediaUtil.pickAudio(PlayListNames.SHORT_HOORAY), audioOn);
+        setEntityIndex(entityIndex+1);
+      }
     }
     else {
       setFeedbackFace(FACES.WORRY);

@@ -86,11 +86,6 @@ export const LettersSequence = (props: SequenceProps) => {
     }));
   }, [word]);
 
-  function showSuccess() {
-    setPageTitle("כל הכבוד!");
-    showWellDone(audioOn);
-  }
-
   function getFeedbackId(letter: string): string {
     return `feedback-${word.id}-${letter}`;
   }
@@ -121,10 +116,14 @@ export const LettersSequence = (props: SequenceProps) => {
       setShuffledLetters([...shuffledLetters])
 
       setFeedbackFace(() => FACES.HAPPY);
-      MediaUtil.player(playerHooray, audioOn);
       if (letterOrderedIndex === orderedLetters.length-1) {
-        showSuccess();
-        getNextWord();
+        showWellDone(audioOn);
+        setTimeout(() => {
+          getNextWord();
+        }, ConstantsUtil.hoorayTimeout); 
+      }
+      else {
+        MediaUtil.player(playerHooray, audioOn);
       }
     }
     else {

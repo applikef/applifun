@@ -90,10 +90,11 @@ export const Sequence = (props: SequenceProps) => {
       document.getElementById("feedback-"+image.id)!.style.display = "inline-block";
       document.getElementById("bank-"+image.id)!.style.display = "none";
       setFeedbackFace(() => FACES.HAPPY);
-      MediaUtil.player(playerHooray, audioOn);
-    
       if (imageDescriptors.indexOf(image)+1 === imageDescriptors.length) {
         showSuccess();
+      }
+      else {
+        MediaUtil.player(playerHooray, audioOn);
       }
     }
     else {
@@ -109,9 +110,11 @@ export const Sequence = (props: SequenceProps) => {
       document.getElementById("feedback-"+ n)!.style.display = "inline-block";
       document.getElementById("bank-"+ n)!.style.display = "none";
       setFeedbackFace(() => FACES.HAPPY);
-      MediaUtil.player(playerHooray, audioOn);
       if (nIndex === orderedNumbers.current.length-1) {
         showSuccess();
+      }
+      else {
+        MediaUtil.player(playerHooray, audioOn);
       }
     }
     else {
