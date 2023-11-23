@@ -1,27 +1,36 @@
-export type SequenceDescriptorType = {
+export interface SequenceDescriptorType {
   title?: string;
   settingsTitle?: string,
-  images?: ImageDescriptorType[];
-  words?: WordDescriptorType[];
-  numberLists?: NumberListDescriptorType[];
 }
 
-export type ImageDescriptorType = {
+export interface ImageSequenceDescriptorType extends SequenceDescriptorType {
+  images: ImageDescriptorType[];
+}
+
+export interface ImageDescriptorType {
   id: string,
   title: string,
   name?: string;
   file: string;
 }
 
-export type WordDescriptorType = {
+export interface LetterSequenceDescriptorType extends SequenceDescriptorType {
+  words: WordDescriptorType[];
+}
+
+export interface WordDescriptorType {
   id: string,
   title: string,
   name: string,
   file: string;
 }
 
+export interface NumberSequenceDescriptorType extends SequenceDescriptorType {
+  numberLists: NumberListDescriptorType[];
+}
+
 // Either range or values should be specified. If both are specified range is ignored
-export type NumberListDescriptorType = {
+export interface NumberListDescriptorType {
   id: string,
   name: string,
   range?: number[];

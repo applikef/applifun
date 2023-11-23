@@ -6,7 +6,7 @@ import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 import { TitledImage } from "../../shared/TitledImage/TitledImage";
 import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
 
-import { ImageDescriptorType, SequenceDescriptorType } from "./Sequence.types";
+import { ImageDescriptorType, ImageSequenceDescriptorType } from "./Sequence.types";
 
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
@@ -15,13 +15,13 @@ import { Banner } from "../../shared/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 
-export interface SequenceProps {
-  gameDescriptor: SequenceDescriptorType;
+export interface ImagesSequenceProps {
+  gameDescriptor: ImageSequenceDescriptorType;
 };
 
 let imageDescriptors: ImageDescriptorType[] = [];
 
-export const Sequence = (props: SequenceProps) => {
+export const ImagesSequence = (props: ImagesSequenceProps) => {
   const { 
     audioOn 
   } = useContext(GamesContext) as GamesContextType;

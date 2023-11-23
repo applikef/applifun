@@ -10,7 +10,7 @@ import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../shared/Banner/Banner";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
-import { SequenceDescriptorType, NumberListDescriptorType } from "./Sequence.types";
+import { NumberSequenceDescriptorType, NumberListDescriptorType } from "./Sequence.types";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 
@@ -19,11 +19,11 @@ interface ViewEntry {
   show: boolean;
 }
 
-export interface SequenceProps {
-  gameDescriptor: SequenceDescriptorType;
+export interface NumbersSequenceProps {
+  gameDescriptor: NumberSequenceDescriptorType;
 };
 
-export const NumbersSequence = (props: SequenceProps) => {
+export const NumbersSequence = (props: NumbersSequenceProps) => {
   const numberListsCatalog = props.gameDescriptor.numberLists!;
   const numberListsCatalogSize = numberListsCatalog.length;
   const gamePageTitle:string = props.gameDescriptor.title ? props.gameDescriptor.title : "";

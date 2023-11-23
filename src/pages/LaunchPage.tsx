@@ -5,7 +5,7 @@ import "./pages.css";
 import { getGameDescriptor } from "./pages.util";
 
 import { Match } from "../components/games/Match/Match";
-import { Sequence } from "../components/games/Sequence/Sequence";
+import { ImagesSequence } from "../components/games/Sequence/ImagesSequence";
 import { ChangeRecords } from "./../components/global/ChangeRecords";
 import { SortGame } from "../components/games/Sort/SortGame";
 import { LettersSequence } from "../components/games/Sequence/LettersSequence";
@@ -22,11 +22,11 @@ export const LaunchPage = () => {
       { gameId === "numberMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "letterMatch" && <Match gameDescriptor={descriptor}/> }
       
-      { gameId === "bathroomRoutine" && <Sequence gameDescriptor={descriptor}/> }
+      { gameId === "bathroomRoutine" && <ImagesSequence gameDescriptor={descriptor}/> }
       { gameId === "iCount" && <NumbersSequence gameDescriptor={descriptor}/> }
       { gameId === "iWriteWords" && <LettersSequence gameDescriptor={descriptor} /> }
-      { gameId === "morningRoutine" && <Sequence gameDescriptor={descriptor}/> }
-      { gameId === "washHands" && <Sequence gameDescriptor={descriptor}/> }
+      { gameId === "morningRoutine" && <ImagesSequence gameDescriptor={descriptor}/> }
+      { gameId === "washHands" && <ImagesSequence gameDescriptor={descriptor}/> }
 
       { gameId === "colorSort" && <SortGame gameDescriptor={descriptor}/> }
       { gameId === "moodSort" && <SortGame gameDescriptor={descriptor}/> }

@@ -11,7 +11,7 @@ import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../shared/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
-import { SequenceDescriptorType, WordDescriptorType } from "./Sequence.types";
+import { LetterSequenceDescriptorType, WordDescriptorType } from "./Sequence.types";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 
@@ -20,11 +20,11 @@ interface ViewEntry {
   show: boolean;
 }
 
-export interface SequenceProps {
-  gameDescriptor: SequenceDescriptorType;
+export interface LettersSequenceProps {
+  gameDescriptor: LetterSequenceDescriptorType;
 };
 
-export const LettersSequence = (props: SequenceProps) => {
+export const LettersSequence = (props: LettersSequenceProps) => {
   const wordsCatalog = props.gameDescriptor.words!;
   const wordsCatalogSize = wordsCatalog.length;
   const gamePageTitle:string = props.gameDescriptor.title ? props.gameDescriptor.title : "";
