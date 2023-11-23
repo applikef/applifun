@@ -9,14 +9,13 @@ import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../shared/Banner/Banner";
-import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
-import { SequenceDescriptorType, WordDescriptorType } from "./Sequence.types";
+import { SequenceDescriptorType, NumberListDescriptorType } from "./Sequence.types";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 
 interface ViewEntry {
-  value: string;
+  value: number;
   show: boolean;
 }
 
@@ -24,9 +23,9 @@ export interface SequenceProps {
   gameDescriptor: SequenceDescriptorType;
 };
 
-export const LettersSequence = (props: SequenceProps) => {
-  const wordsCatalog = props.gameDescriptor.words!;
-  const wordsCatalogSize = wordsCatalog.length;
+export const NumbersSequence = (props: SequenceProps) => {
+  const numberListsCatalog = props.gameDescriptor.numberLists!;
+  const numberListsCatalogSize = numberListsCatalog.length;
   const gamePageTitle:string = props.gameDescriptor.title ? props.gameDescriptor.title : "";
 
   const { 
@@ -38,88 +37,97 @@ export const LettersSequence = (props: SequenceProps) => {
 
   const navigate = useNavigate();
 
-  let selectedSequenceSteps = useRef<string[]>([]);
-  function addSequenceStep(id: string) {
+  let selectedSequenceSteps = useRef<number[]>([]);
+  function addSequenceStep(id: number) {
     selectedSequenceSteps.current.push(id);
   };
 
-  const [words, setWords] = useState<WordDescriptorType[]>(props.gameDescriptor.words ?
-    ObjectsUtil.shuffleArrayItems(props.gameDescriptor.words) 
+  const [numberLists, setNumberLists] = useState<NumberListDescriptorType[]>(props.gameDescriptor.numberLists ?
+    ObjectsUtil.shuffleArrayItems(props.gameDescriptor.numberLists) 
   : []);
-  const numberOfWords = useRef<number>(props.gameDescriptor.words!.length);
+  const numberOfNumberLists = useRef<number>(props.gameDescriptor.numberLists!.length);
 
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [pageTitle, setPageTitle] = useState(gamePageTitle);
-  const [word, setWord] = useState<WordDescriptorType>(words[0]);
-  const [orderedLetters, setOrderedLetters] = useState<ViewEntry[]>([]);
-  const [shuffledLetters, setShuffledLetters] = useState<ViewEntry[]>([]);
+  const [numberList, setNumberList] = useState<NumberListDescriptorType>(numberLists[0]);
+  const [orderedNumbers, setOrderedNumbers] = useState<ViewEntry[]>([]);
+  const [shuffledNumbers, setShuffledNumbers] = useState<ViewEntry[]>([]);
   const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
-  const [pendingSelectedWordIndices, setPendingSelectedWordIndices] =
+  const [pendingSelectedNumberListIndices, setPendingSelectedNumberListIndices] =
     useState<boolean[]>([]);
-  const [selectedWordIndices, setSelectedWordIndices] =
+  const [selectedNumberListIndices, setSelectedNumberListIndices] =
     useState<boolean[]>([])
 
   let currentIndex = useRef<number>(0);
 
   useEffect(() => {
-    setSelectedWordIndices(() => Array(wordsCatalogSize).fill(true));
-  }, [wordsCatalogSize]);
+    setSelectedNumberListIndices(() => Array(numberListsCatalogSize).fill(true));
+  }, [numberListsCatalogSize]);
 
   useEffect(() => {
-    numberOfWords.current = words.length;
-    setWord(words[0]);
-  }, [words]);
+    numberOfNumberLists.current = numberLists.length;
+    setNumberList(numberLists[0]);
+  }, [numberLists]);
 
   useEffect(() => {
-    setOrderedLetters(word.name.split("").map((letter:string) => {
+    let tmpOrderedNumbers: number[] = [];
+    if (numberList.range !== undefined && numberList.range.length === 2) {
+      const length = numberList.range[1] - numberList.range[0] + 1;
+      tmpOrderedNumbers = Array.from({length: length}, (_, i) => i + numberList.range![0])
+    }
+    else {      // value is defined and numbers are provided in order
+      tmpOrderedNumbers = numberList.values!;
+    }
+    setOrderedNumbers(tmpOrderedNumbers.map((n:number) => {
+      return({
+        value: n,
+        show: false
+      });
+    }));    
+
+    setShuffledNumbers(() => 
+      ObjectsUtil.shuffleArrayItems(tmpOrderedNumbers).map((n:number) => {
         return({
-          value: letter,
-          show: false
-        });
-    }));
-    setShuffledLetters(() => 
-      ObjectsUtil.shuffleArrayItems(word.name.split("")).map((letter:string) => {
-        return({
-          value: letter,
+          value: n,
           show: true
         });
     }));
-  }, [word]);
+  }, [numberList]);
 
-  function getFeedbackId(letter: string): string {
-    return `feedback-${word.id}-${letter}`;
+  function getFeedbackId(n: number): string {
+    return `feedback-${numberList.id}-${n}`;
   }
 
-  function getBankId(letter: string): string {
-    return `bank-${word.id}-${letter}`;
+  function getBankId(n: number): string {
+    return `bank-${numberList.id}-${n}`;
   }
 
-  function getLetterIndex(lettersArr: ViewEntry[], letter: string) {
-    for (let i=0; i < lettersArr.length; i++) {
-      const letterItem: ViewEntry = lettersArr[i];
-      if (letterItem.value === letter) {
+  function getNumberIndex(numbersArr: ViewEntry[], n: number) {
+    for (let i=0; i < numbersArr.length; i++) {
+      const numberItem: ViewEntry = numbersArr[i];
+      if (numberItem.value === n) {
         return i;
       }
     }
     return -1;
   }
 
-  function verifyLetter(letter: ViewEntry) {
-    const letterValue: string = letter.value;
-    const letterOrderedIndex = getLetterIndex(orderedLetters, letterValue);
-    const letterShuffledIndex = getLetterIndex(shuffledLetters, letterValue);
-    if (letterOrderedIndex === selectedSequenceSteps.current.length) {
-      addSequenceStep(letterValue);
-      orderedLetters[letterOrderedIndex].show = true;
-      setOrderedLetters([...orderedLetters]);
-      shuffledLetters[letterShuffledIndex].show = false;
-      setShuffledLetters([...shuffledLetters])
+  function verifyNumber(number: ViewEntry) {
+    const numberValue: number = number.value;
+    const numberOrderedIndex = getNumberIndex(orderedNumbers, numberValue);
+    const numberShuffledIndex = getNumberIndex(shuffledNumbers, numberValue);
+    if (numberOrderedIndex === selectedSequenceSteps.current.length) {
+      addSequenceStep(numberValue);
+      orderedNumbers[numberOrderedIndex].show = true;
+      setOrderedNumbers([...orderedNumbers]);
+      shuffledNumbers[numberShuffledIndex].show = false;
+      setShuffledNumbers([...shuffledNumbers])
 
       setFeedbackFace(() => FACES.HAPPY);
-      if (letterOrderedIndex === orderedLetters.length-1) {
+      if (numberOrderedIndex === orderedNumbers.length-1) {
         showWellDone(audioOn);
         setTimeout(() => {
-          getNextWord();
+          getNextNumberList();
         }, ConstantsUtil.hoorayTimeout); 
       }
       else {
@@ -132,9 +140,9 @@ export const LettersSequence = (props: SequenceProps) => {
     }
   }
 
-  function getNextWord() { 
+  function getNextNumberList() { 
     setTimeout(() =>{
-      if (currentIndex.current < numberOfWords.current-1) {
+      if (currentIndex.current < numberOfNumberLists.current-1) {
         // reset view
         selectedSequenceSteps.current = [];
         setFeedbackFace(FACES.NONE);
@@ -142,7 +150,7 @@ export const LettersSequence = (props: SequenceProps) => {
         hideWellDone();
 
         currentIndex.current++;
-        setWord(words[currentIndex.current]);
+        setNumberList(numberLists[currentIndex.current]);
     
       }
       else {
@@ -153,9 +161,9 @@ export const LettersSequence = (props: SequenceProps) => {
     }, ConstantsUtil.hoorayTimeout)
   }
 
-  function handleSettingsSelectWord(e:ChangeEvent<HTMLInputElement>, index: number) : boolean[] {
+  function handleSettingsSelectNumberList(e:ChangeEvent<HTMLInputElement>, index: number) : boolean[] {
     const isChecked = e.target.checked;
-    let settingArr = new Array(...pendingSelectedWordIndices)
+    let settingArr = new Array(...pendingSelectedNumberListIndices)
     if (isChecked) {
         settingArr[index] = true;
     }
@@ -170,10 +178,10 @@ export const LettersSequence = (props: SequenceProps) => {
   }
 
   function handleSettingsDone() {
-    let newWords:WordDescriptorType[] = [];
-    for (let i=0; i < wordsCatalogSize; i++) {
-      if (pendingSelectedWordIndices[i]) {
-        newWords.push(wordsCatalog[i]);
+    let newNumberLists:NumberListDescriptorType[] = [];
+    for (let i=0; i < numberListsCatalogSize; i++) {
+      if (pendingSelectedNumberListIndices[i]) {
+        newNumberLists.push(numberListsCatalog[i]);
       }
     }
     selectedSequenceSteps.current = [];
@@ -181,39 +189,38 @@ export const LettersSequence = (props: SequenceProps) => {
     setFeedbackFace(FACES.NONE);
     hideWellDone();
 
-    setWords(()=>ObjectsUtil.shuffleArrayItems(newWords));
-    setSelectedWordIndices(()=>pendingSelectedWordIndices);
+    setNumberLists(()=>ObjectsUtil.shuffleArrayItems(newNumberLists));
+    setSelectedNumberListIndices(()=>pendingSelectedNumberListIndices);
     setGameSettinsDisplay(()=>"game-settings-global-hide")
   }
 
   return (
     <div className="app-page">
       <Banner settings={() => {
-        setPendingSelectedWordIndices(() => selectedWordIndices);
+        setPendingSelectedNumberListIndices(() => selectedNumberListIndices);
         setGameSettinsDisplay("game-settings-global-show")
       }}/>
 
       <div className="letters-sequence-global">
-        <img src={MediaUtil.getCatalogImage(word.file)} alt={word.title}
-          height={DeviceUtil.imageHeightLarge()}></img>        
-
         <div className="sequence-container">
           <div className="app-title">{ pageTitle }</div>
           <div id="bank-area" className="sequence-source-images" >
-            { shuffledLetters.map((e:ViewEntry, i:number) =>
-                  e.show && <span className="sequence-letter" 
-                    id={getBankId(e.value)} key={i} 
-                    onClick={() => verifyLetter(e)}>
-                      {e.value}
-                  </span>
-            )}
+            { shuffledNumbers.map((e:ViewEntry) =>
+                e.show && <span className="sequence-letter" id={getBankId(e.value)} key={e.value} 
+                  onClick={() => verifyNumber(e)}>{e.value}</span>
+              )
+            }
           </div>
         </div>
 
         <div className="sequence-feedback">
+          <h3>
+            פה למטה נראה את המספרים מסודרים
+          </h3>
+
           <div>
           <div id="feedback-area">
-            { orderedLetters.map((e:ViewEntry) =>
+            { orderedNumbers.map((e:ViewEntry) =>
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
                     id={getFeedbackId(e.value)} 
                     key={e.value}>
@@ -238,16 +245,16 @@ export const LettersSequence = (props: SequenceProps) => {
             }
           </div>
           
-          { wordsCatalog.map(
-            (word, i) => 
+          { numberListsCatalog.map(
+            (numberList, i) => 
               <div className="game-settings-entry" key={i}>
                 <input type="checkbox"
-                  checked={pendingSelectedWordIndices[i]} 
+                  checked={pendingSelectedNumberListIndices[i]} 
                   onChange={(e:ChangeEvent<HTMLInputElement>) => {
-                    const settingArr: boolean[] = handleSettingsSelectWord(e, i);
-                    setPendingSelectedWordIndices(settingArr);
+                    const settingArr: boolean[] = handleSettingsSelectNumberList(e, i);
+                    setPendingSelectedNumberListIndices(settingArr);
                   }}></input>
-                <span key={i}>{word.name}</span>
+                <span key={i}>{numberList.name}</span>
               </div>
           )}
           <br/>

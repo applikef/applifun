@@ -1,16 +1,9 @@
-export enum SequenceType {
-  IMAGES = "images",
-  WORD = "word",
-  NUMBERS = "numbers"
-}
-
 export type SequenceDescriptorType = {
-  type: SequenceType;
   title?: string;
   settingsTitle?: string,
   images?: ImageDescriptorType[];
   words?: WordDescriptorType[];
-  numbers?: NumbersDescriptorType;
+  numberLists?: NumberListDescriptorType[];
 }
 
 export type ImageDescriptorType = {
@@ -28,7 +21,9 @@ export type WordDescriptorType = {
 }
 
 // Either range or values should be specified. If both are specified range is ignored
-export type NumbersDescriptorType = {
+export type NumberListDescriptorType = {
+  id: string,
+  name: string,
   range?: number[];
   values?: number[]
 }
