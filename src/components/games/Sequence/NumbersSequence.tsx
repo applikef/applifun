@@ -14,9 +14,19 @@ import { NumberSequenceDescriptorType, NumberListDescriptorType } from "./Sequen
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 
+const enum NumbersOrder {
+  UP,
+  DOWN
+}
+
 interface ViewEntry {
   value: number;
   show: boolean;
+}
+
+export interface NumberSequenceSettings {
+  selectedNumberListIndices: boolean[],
+  direction: NumbersOrder
 }
 
 export interface NumbersSequenceProps {
@@ -24,7 +34,7 @@ export interface NumbersSequenceProps {
 };
 
 export const NumbersSequence = (props: NumbersSequenceProps) => {
-  const numberListsCatalog = props.gameDescriptor.numberLists!;
+  const numberListsCatalog = props.gameDescriptor.numberLists;
   const numberListsCatalogSize = numberListsCatalog.length;
   const gamePageTitle:string = props.gameDescriptor.title ? props.gameDescriptor.title : "";
 
@@ -35,6 +45,20 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
+  const Directions = {
+    "UP": {
+      id: NumbersOrder.UP,
+      title: "עולה"
+    },
+    "DOWN": {
+      id: NumbersOrder.DOWN,
+      title: "יורד"
+    }
+  }
+
+  const titleUp = gamePageTitle.replace("$value$", Directions.UP.title);
+  const titleDown = gamePageTitle.replace("$value$", Directions.DOWN.title);
+
   const navigate = useNavigate();
 
   let selectedSequenceSteps = useRef<number[]>([]);
@@ -42,13 +66,15 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
     selectedSequenceSteps.current.push(id);
   };
 
-  const [numberLists, setNumberLists] = useState<NumberListDescriptorType[]>(props.gameDescriptor.numberLists ?
-    ObjectsUtil.shuffleArrayItems(props.gameDescriptor.numberLists) 
-  : []);
+  const [numberLists, setNumberLists] = 
+    useState<NumberListDescriptorType[]>(props.gameDescriptor.numberLists ?
+      props.gameDescriptor.numberLists
+//    ObjectsUtil.shuffleArrayItems(props.gameDescriptor.numberLists) 
+    : []);
   const numberOfNumberLists = useRef<number>(props.gameDescriptor.numberLists!.length);
 
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
-  const [pageTitle, setPageTitle] = useState(gamePageTitle);
+  const [pageTitle, setPageTitle] = useState(titleUp);
   const [numberList, setNumberList] = useState<NumberListDescriptorType>(numberLists[0]);
   const [orderedNumbers, setOrderedNumbers] = useState<ViewEntry[]>([]);
   const [shuffledNumbers, setShuffledNumbers] = useState<ViewEntry[]>([]);
@@ -56,7 +82,10 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   const [pendingSelectedNumberListIndices, setPendingSelectedNumberListIndices] =
     useState<boolean[]>([]);
   const [selectedNumberListIndices, setSelectedNumberListIndices] =
-    useState<boolean[]>([])
+    useState<boolean[]>([]);
+
+  const [pendingDirection, setPendingDirection] = useState<NumbersOrder>(Directions.UP.id);
+  const [direction, setDirection] = useState<NumbersOrder>(Directions.UP.id);
 
   let currentIndex = useRef<number>(0);
 
@@ -78,6 +107,13 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
     else {      // value is defined and numbers are provided in order
       tmpOrderedNumbers = numberList.values!;
     }
+    alert(tmpOrderedNumbers[0]);
+    alert(direction);
+
+    if (direction === NumbersOrder.DOWN) {
+      tmpOrderedNumbers = tmpOrderedNumbers.reverse();
+    }
+
     setOrderedNumbers(tmpOrderedNumbers.map((n:number) => {
       return({
         value: n,
@@ -92,7 +128,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
           show: true
         });
     }));
-  }, [numberList]);
+  }, [numberList, direction]);
 
   function getFeedbackId(n: number): string {
     return `feedback-${numberList.id}-${n}`;
@@ -146,12 +182,11 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
         // reset view
         selectedSequenceSteps.current = [];
         setFeedbackFace(FACES.NONE);
-        setPageTitle(gamePageTitle);
+        //NETTA setPageTitle(() => direction === "UP" ? titleUp : titleDown);
         hideWellDone();
 
         currentIndex.current++;
-        setNumberList(numberLists[currentIndex.current]);
-    
+        setNumberList(numberLists[currentIndex.current]);    
       }
       else {
         setTimeout(() => {
@@ -189,8 +224,12 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
     setFeedbackFace(FACES.NONE);
     hideWellDone();
 
-    setNumberLists(()=>ObjectsUtil.shuffleArrayItems(newNumberLists));
+//    setNumberLists(()=>ObjectsUtil.shuffleArrayItems(newNumberLists));
+    setNumberLists(()=>newNumberLists);
     setSelectedNumberListIndices(()=>pendingSelectedNumberListIndices);
+    setDirection(() => pendingDirection);
+    setPageTitle(() => pendingDirection === NumbersOrder.UP ? titleUp : titleDown);
+
     setGameSettinsDisplay(()=>"game-settings-global-hide")
   }
 
@@ -198,6 +237,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
     <div className="app-page">
       <Banner settings={() => {
         setPendingSelectedNumberListIndices(() => selectedNumberListIndices);
+        setPendingDirection(() => direction);
         setGameSettinsDisplay("game-settings-global-show")
       }}/>
 
@@ -255,6 +295,19 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
                     setPendingSelectedNumberListIndices(settingArr);
                   }}></input>
                 <span key={i}>{numberList.name}</span>
+              </div>
+          )}
+          <br/>
+          <div>סדר המספרים</div>
+          { Object.values(Directions).map(
+            (d, i) => 
+              <div className="game-settings-entry" key={i}>
+                <input type="radio" name="direction"
+                  checked={pendingDirection === d.id} 
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setPendingDirection(d.id);
+                  }}></input>
+                <span key={i}>{d.title}</span>
               </div>
           )}
           <br/>

@@ -1,6 +1,6 @@
 {
   "gameType": "iCount",
-  "title": "סדר את המספרים בסדר עולה",
+  "title": "סדר את המספרים בסדר $value$",
   "numberLists": [
     {
       "id": "numbers1to5",
