@@ -74,24 +74,30 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   const numberOfNumberLists = useRef<number>(props.gameDescriptor.numberLists!.length);
 
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
-  const [pageTitle, setPageTitle] = useState(titleUp);
   const [numberList, setNumberList] = useState<NumberListDescriptorType>(numberLists[0]);
   const [orderedNumbers, setOrderedNumbers] = useState<ViewEntry[]>([]);
   const [shuffledNumbers, setShuffledNumbers] = useState<ViewEntry[]>([]);
   const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
-  const [pendingSelectedNumberListIndices, setPendingSelectedNumberListIndices] =
-    useState<boolean[]>([]);
-  const [selectedNumberListIndices, setSelectedNumberListIndices] =
-    useState<boolean[]>([]);
+  const [numberSequenceSettings, setNumberSequenceSettings] =
+    useState<NumberSequenceSettings>({
+      selectedNumberListIndices: [],
+      direction: NumbersOrder.UP
+    });
+  const [pendingNumberSequenceSettings, setPendingNumberSequenceSettings] =
+    useState<NumberSequenceSettings>({
+      selectedNumberListIndices: [],
+      direction: NumbersOrder.UP
+    });
 
-  const [pendingDirection, setPendingDirection] = useState<NumbersOrder>(Directions.UP.id);
-  const [direction, setDirection] = useState<NumbersOrder>(Directions.UP.id);
-
+  let pageTitle = useRef(titleUp);
   let currentIndex = useRef<number>(0);
 
   useEffect(() => {
-    setSelectedNumberListIndices(() => Array(numberListsCatalogSize).fill(true));
-  }, [numberListsCatalogSize]);
+    setNumberSequenceSettings({
+      selectedNumberListIndices: Array(numberListsCatalogSize).fill(true),
+      direction: numberSequenceSettings.direction
+    })
+  }, [numberListsCatalogSize, numberSequenceSettings]);
 
   useEffect(() => {
     numberOfNumberLists.current = numberLists.length;
@@ -107,10 +113,8 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
     else {      // value is defined and numbers are provided in order
       tmpOrderedNumbers = numberList.values!;
     }
-    alert(tmpOrderedNumbers[0]);
-    alert(direction);
 
-    if (direction === NumbersOrder.DOWN) {
+    if (numberSequenceSettings.direction === NumbersOrder.DOWN) {
       tmpOrderedNumbers = tmpOrderedNumbers.reverse();
     }
 
@@ -128,7 +132,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
           show: true
         });
     }));
-  }, [numberList, direction]);
+  }, [numberList, numberSequenceSettings.direction]);
 
   function getFeedbackId(n: number): string {
     return `feedback-${numberList.id}-${n}`;
@@ -198,7 +202,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
 
   function handleSettingsSelectNumberList(e:ChangeEvent<HTMLInputElement>, index: number) : boolean[] {
     const isChecked = e.target.checked;
-    let settingArr = new Array(...pendingSelectedNumberListIndices)
+    let settingArr = new Array(...pendingNumberSequenceSettings.selectedNumberListIndices)
     if (isChecked) {
         settingArr[index] = true;
     }
@@ -215,7 +219,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   function handleSettingsDone() {
     let newNumberLists:NumberListDescriptorType[] = [];
     for (let i=0; i < numberListsCatalogSize; i++) {
-      if (pendingSelectedNumberListIndices[i]) {
+      if (pendingNumberSequenceSettings.selectedNumberListIndices[i]) {
         newNumberLists.push(numberListsCatalog[i]);
       }
     }
@@ -226,24 +230,27 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
 
 //    setNumberLists(()=>ObjectsUtil.shuffleArrayItems(newNumberLists));
     setNumberLists(()=>newNumberLists);
-    setSelectedNumberListIndices(()=>pendingSelectedNumberListIndices);
-    setDirection(() => pendingDirection);
-    setPageTitle(() => pendingDirection === NumbersOrder.UP ? titleUp : titleDown);
-
+    setNumberSequenceSettings({
+      selectedNumberListIndices: pendingNumberSequenceSettings.selectedNumberListIndices,
+      direction: pendingNumberSequenceSettings.direction
+    })
+    pageTitle.current = pendingNumberSequenceSettings.direction === NumbersOrder.UP ? titleUp : titleDown;
     setGameSettinsDisplay(()=>"game-settings-global-hide")
   }
 
   return (
     <div className="app-page">
       <Banner settings={() => {
-        setPendingSelectedNumberListIndices(() => selectedNumberListIndices);
-        setPendingDirection(() => direction);
+        setPendingNumberSequenceSettings({
+          selectedNumberListIndices: numberSequenceSettings.selectedNumberListIndices,
+          direction: numberSequenceSettings.direction
+        });
         setGameSettinsDisplay("game-settings-global-show")
       }}/>
 
       <div className="letters-sequence-global">
         <div className="sequence-container">
-          <div className="app-title">{ pageTitle }</div>
+          <div className="app-title">{ pageTitle.current }</div>
           <div id="bank-area" className="sequence-source-images" >
             { shuffledNumbers.map((e:ViewEntry) =>
                 e.show && <span className="sequence-letter" id={getBankId(e.value)} key={e.value} 
@@ -289,10 +296,13 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
             (numberList, i) => 
               <div className="game-settings-entry" key={i}>
                 <input type="checkbox"
-                  checked={pendingSelectedNumberListIndices[i]} 
+                  checked={pendingNumberSequenceSettings.selectedNumberListIndices[i]} 
                   onChange={(e:ChangeEvent<HTMLInputElement>) => {
                     const settingArr: boolean[] = handleSettingsSelectNumberList(e, i);
-                    setPendingSelectedNumberListIndices(settingArr);
+                    setPendingNumberSequenceSettings({
+                      selectedNumberListIndices: settingArr,
+                      direction: pendingNumberSequenceSettings.direction
+                    })
                   }}></input>
                 <span key={i}>{numberList.name}</span>
               </div>
@@ -303,9 +313,12 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
             (d, i) => 
               <div className="game-settings-entry" key={i}>
                 <input type="radio" name="direction"
-                  checked={pendingDirection === d.id} 
+                  checked={pendingNumberSequenceSettings.direction === d.id} 
                   onChange={(e:ChangeEvent<HTMLInputElement>) => {
-                    setPendingDirection(d.id);
+                    setPendingNumberSequenceSettings({
+                      selectedNumberListIndices: pendingNumberSequenceSettings.selectedNumberListIndices,
+                      direction: d.id
+                    });
                   }}></input>
                 <span key={i}>{d.title}</span>
               </div>
