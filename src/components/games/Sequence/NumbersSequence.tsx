@@ -80,12 +80,12 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
   const [numberSequenceSettings, setNumberSequenceSettings] =
     useState<NumberSequenceSettings>({
-      selectedNumberListIndices: [],
+      selectedNumberListIndices: Array(numberListsCatalogSize).fill(true),
       direction: NumbersOrder.UP
     });
   const [pendingNumberSequenceSettings, setPendingNumberSequenceSettings] =
     useState<NumberSequenceSettings>({
-      selectedNumberListIndices: [],
+      selectedNumberListIndices: Array(numberListsCatalogSize).fill(true),
       direction: NumbersOrder.UP
     });
 
@@ -93,15 +93,13 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   let currentIndex = useRef<number>(0);
 
   useEffect(() => {
-    setNumberSequenceSettings({
-      selectedNumberListIndices: Array(numberListsCatalogSize).fill(true),
-      direction: numberSequenceSettings.direction
-    })
-  }, [numberListsCatalogSize, numberSequenceSettings]);
-
-  useEffect(() => {
     numberOfNumberLists.current = numberLists.length;
-    setNumberList(numberLists[0]);
+    setNumberList({
+      id: numberLists[0].id,
+      name: numberLists[0].name,
+      range: numberLists[0].range,
+      values: numberLists[0].values
+    });
   }, [numberLists]);
 
   useEffect(() => {
@@ -228,7 +226,6 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
     setFeedbackFace(FACES.NONE);
     hideWellDone();
 
-//    setNumberLists(()=>ObjectsUtil.shuffleArrayItems(newNumberLists));
     setNumberLists(()=>newNumberLists);
     setNumberSequenceSettings({
       selectedNumberListIndices: pendingNumberSequenceSettings.selectedNumberListIndices,
