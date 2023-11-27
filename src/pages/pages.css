@@ -52,6 +52,15 @@
   flex-wrap: wrap;
 }
 
+.home-page-games-list-large-device-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-page-games-list-large-device {
+  margin-top: 2rem;
+}
+
 .app-select-game {
   padding-top: 20px;
   padding-right: 60px;
