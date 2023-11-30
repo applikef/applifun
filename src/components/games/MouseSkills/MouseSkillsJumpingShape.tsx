@@ -68,10 +68,8 @@ export const MouseSkillsJumpingShape = (props: MouseSkillsProps) => {
     audioOn
   } = useContext(GamesContext) as GamesContextType;
 
-  const mouseOnTriangleColor = "#00ffff";
-
-  const svgWidth = 1200;
-  const svgHeight = 400;
+  const svgWidth = Math.min(window.innerWidth, 1200);
+  const svgHeight = Math.min(window.innerHeight, 400);
 
   const [pendingEventType, setPendingEventType] = useState<MOUSE_SKILL_TYPE>(props.eventType ? props.eventType : MOUSE_SKILL_TYPE.HOVER);
   const [targetPosition, setTargetPosition] = useState<[number,number]>([300,300]);
