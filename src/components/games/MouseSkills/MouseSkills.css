@@ -1,0 +1,9 @@
+@import "./../../../assets/styles/global.css";
+
+.mouse-skills-shape {
+  cursor: pointer;
+}
+
+.draggable {
+  cursor: move;
+}

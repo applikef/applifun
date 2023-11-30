@@ -62,7 +62,7 @@ export const Match = (props: MatchPropsType) => {
 
   const [activeIndex, setActiveIndex] = 
     useState<number>(Math.floor(Math.random() * maxNumberOfValidGroups));
-  const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
+  const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
   const [imageTitleNotification, setImageTitleNotification] = 
     useState<ImageTitleNotificationType>({
       top: 0,
@@ -200,7 +200,7 @@ export const Match = (props: MatchPropsType) => {
   function handleSettingsCancel() {
     validImages.current = getvalidImages();
     setSelectedGroupValueIndices(validGroupValueIndices.current);
-    setGameSettinsDisplay(()=>"game-settings-global-hide"); 
+    setGameSettingsDisplay(()=>"game-settings-global-hide"); 
   }
 
   function handleSettingsDone() {
@@ -208,12 +208,12 @@ export const Match = (props: MatchPropsType) => {
     validGroupValueIndices.current = selectedGroupValueIndices;
     validImages.current = getvalidImages();
     setActiveGroup();
-    setGameSettinsDisplay(()=>"game-settings-global-hide")
+    setGameSettingsDisplay(()=>"game-settings-global-hide")
   }
 
   return(
     <div className="app-page">
-      <Banner settings={() => setGameSettinsDisplay("game-settings-global-show")}/>
+      <Banner settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
       <div id="instructions" className="app-title-centered">
         { setTitle() }
       </div>
@@ -265,7 +265,7 @@ export const Match = (props: MatchPropsType) => {
         />
       }
       
-      <div id="gameSettings" className={ gameSettinsDisplay }>
+      <div id="gameSettings" className={ gameSettingsDisplay }>
         <div>
           <div className="game-settings-title">{ props.gameDescriptor.settingsTitle }</div>
           <div className="game-settings-title">ניתן לבחור עד {maxNumberOfValidGroups} כניסות</div>

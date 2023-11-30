@@ -10,6 +10,8 @@ import { ChangeRecords } from "./../components/global/ChangeRecords";
 import { SortGame } from "../components/games/Sort/SortGame";
 import { LettersSequence } from "../components/games/Sequence/LettersSequence";
 import { NumbersSequence } from "../components/games/Sequence/NumbersSequence";
+import { MouseSkillsJumpingShape } from "../components/games/MouseSkills/MouseSkillsJumpingShape";
+import { MOUSE_SKILL_TYPE } from "../components/games/MouseSkills/MouseSkills.types";
 
 export const LaunchPage = () => {
   const queryParameters = new URLSearchParams(window.location.search)
@@ -27,6 +29,8 @@ export const LaunchPage = () => {
       { gameId === "iWriteWords" && <LettersSequence gameDescriptor={descriptor} /> }
       { gameId === "morningRoutine" && <ImagesSequence gameDescriptor={descriptor}/> }
       { gameId === "washHands" && <ImagesSequence gameDescriptor={descriptor}/> }
+
+      { gameId === "mouseJumpingShapeClick" && <MouseSkillsJumpingShape eventType={MOUSE_SKILL_TYPE.CLICK}/> }
 
       { gameId === "colorSort" && <SortGame gameDescriptor={descriptor}/> }
       { gameId === "moodSort" && <SortGame gameDescriptor={descriptor}/> }

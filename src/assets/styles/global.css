@@ -159,15 +159,28 @@
   width: 100%;
 }
 
-.game-banner {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: 20px;
+.game-settings-global-hide {
+  display: none;
 }
 
-.game-banner-wide {
-  min-height: 100px;
+.game-settings-global-show {
+  display: block;
+
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  background-color: white;
+  padding: 16px;
+  border: solid 1px var(--gray-02) 
+}
+
+.game-settings-title {
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+
+.game-settings-entry {
+  line-height: 1.5rem;
 }
 
 

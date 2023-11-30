@@ -87,6 +87,19 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
+    title: "הָעַכְבָּר שֶׁלִּי",
+    media: "resources/images/mouse.png",
+    items: [
+      {
+        id: "mouseJumpingShapeClick",
+        label: "מִרְדָּף עַכְבָּר",
+        path: "/launch?gameId=mouseJumpingShapeClick",
+        media: "resources/images/mouse-frog-chase.png",
+        height: 100
+      }
+    ]
+  },
+  {
     title: "מִשְׁתַּלְּבִים",
     media: "resources/images/more-games.png",
     items: [
