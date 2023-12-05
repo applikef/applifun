@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Banner } from "../../global/Banner/Banner";
 import { LinkListDescriptorType } from "../../componentDescriptors.types";
 
 export interface LinkListPropsType {
@@ -9,7 +8,6 @@ export interface LinkListPropsType {
 export const LinkList = (props: LinkListPropsType) => {
   return(
     <div>
-      <Banner gameId="" />
       <h1>{ props.gameDescriptor.title }</h1>
       <div>
         <a target="yoga" href={props.gameDescriptor.href}>{ props.gameDescriptor.hrefTitle }</a>

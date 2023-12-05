@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Banner } from "../../global/Banner/Banner";
 import { TileDescriptorType } from "../../componentDescriptors.types";
 
 export interface TilePropsType {
@@ -9,7 +8,6 @@ export interface TilePropsType {
 export const Tile = (props: TilePropsType) => {
   return(
     <div>
-      <Banner gameId="" />
       <div className="app-title">{ props.gameDescriptor.title }</div>
       <div>
         <a target="yoga" href={props.gameDescriptor.href} className="app-link">
