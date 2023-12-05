@@ -8,7 +8,7 @@ import "./MouseSkills.css";
 
 import { PlayListNames } from "../../../assets/playLists";
 import { MediaUtil } from "../../../utils/MediaUtil";
-import { Banner } from "../../shared/Banner/Banner";
+import { Banner } from "../../global/Banner/Banner";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 
 const mouseEventTypeDescriptors = [

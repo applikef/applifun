@@ -3,7 +3,7 @@ import React, { ChangeEvent, useContext, useRef, useState } from "react";
 import "./../../../assets/styles/global.css";
 import "./Match.css";
 
-import { Banner } from "../../shared/Banner/Banner";
+import { Banner } from "../../global/Banner/Banner";
 import { MatchDescriptorType } from "../../componentDescriptors.types";
 import { Notification, NotificationType } from "../../shared/Notification/Notification";
 

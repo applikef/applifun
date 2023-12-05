@@ -3,7 +3,7 @@ import React from "react";
 import "./../../assets/styles/global.css";
 
 import { ChangeRecordItemType, getAllChangeRecords } from "../../assets/changeRecord";
-import { Banner } from "../shared/Banner/Banner";
+import { Banner } from "./Banner/Banner";
 
 export const ChangeRecords = () => {
   const entries: ChangeRecordItemType[] = getAllChangeRecords();

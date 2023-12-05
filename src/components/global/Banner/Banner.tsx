@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './Banner.css'
 import { useContext, useState } from "react";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
-import { Help } from "../../global/help/Help";
+import { Help } from "../help/Help";
 
 export interface BannerPropsType {
   gameId: string;

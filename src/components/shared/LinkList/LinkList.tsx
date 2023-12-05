@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Banner } from "../Banner/Banner";
+import { Banner } from "../../global/Banner/Banner";
 import { LinkListDescriptorType } from "../../componentDescriptors.types";
 
 export interface LinkListPropsType {

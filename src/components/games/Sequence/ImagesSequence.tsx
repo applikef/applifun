@@ -11,7 +11,7 @@ import { ImageDescriptorType, ImageSequenceDescriptorType } from "./Sequence.typ
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { PlayListNames } from "../../../assets/playLists";
-import { Banner } from "../../shared/Banner/Banner";
+import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 

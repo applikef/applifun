@@ -8,7 +8,7 @@ import { WellDone, hideWellDone, showWellDone } from "../../shared/WellDone/Well
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { PlayListNames } from "../../../assets/playLists";
-import { Banner } from "../../shared/Banner/Banner";
+import { Banner } from "../../global/Banner/Banner";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { NumberSequenceDescriptorType, NumberListDescriptorType } from "./Sequence.types";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";

@@ -8,7 +8,7 @@ import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ModalNotification } from "../../shared/Notification/ModalNotification";
 import { PlayListNames } from "../../../assets/playLists";
-import { Banner } from "../../shared/Banner/Banner";
+import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { AttentionArrow } from "../../shared/AttentionArrow/AttentionArrow";
 
