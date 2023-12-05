@@ -213,7 +213,7 @@ export const Match = (props: MatchPropsType) => {
 
   return(
     <div className="app-page">
-      <Banner settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
+      <Banner gameId={props.gameDescriptor.gameId} settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
       <div id="instructions" className="app-title-centered">
         { setTitle() }
       </div>

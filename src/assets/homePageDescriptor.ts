@@ -105,7 +105,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     items: [
       {
         id: "moodSort",
-        label: "אֵיךְ נִרְאָה כְּשֶׁמַּרְגִּישִׁים?",
+        label: "מַּרְגִּישִׁים",
         path: "/launch?gameId=moodSort",
         media: "resources/images/feelings.jpg",
         height: 100

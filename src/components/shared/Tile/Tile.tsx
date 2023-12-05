@@ -9,7 +9,7 @@ export interface TilePropsType {
 export const Tile = (props: TilePropsType) => {
   return(
     <div>
-      <Banner />
+      <Banner gameId="" />
       <div className="app-title">{ props.gameDescriptor.title }</div>
       <div>
         <a target="yoga" href={props.gameDescriptor.href} className="app-link">

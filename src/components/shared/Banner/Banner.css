@@ -39,6 +39,14 @@
   display: none;
 }
 
+.banner-help-content {
+  background-color: var(--notification-info);
+  position: absolute;
+  top: 16px;
+  left: 110px;
+  padding: 16px;
+}
+
 .banner-hr {
   margin-left: 20px;
   border-top: 1px solid var(--blue-02);

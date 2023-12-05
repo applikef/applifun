@@ -1,4 +1,6 @@
-export type SortGameDescriptorType = {
+import { GameDescriptorType } from "../../componentDescriptors.types";
+
+export interface SortGameDescriptorType extends GameDescriptorType {
   titleTemplate: string;
   groups: SortGameGroupType[];
   entities: SortGameImageType[];

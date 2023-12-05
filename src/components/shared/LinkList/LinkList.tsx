@@ -9,7 +9,7 @@ export interface LinkListPropsType {
 export const LinkList = (props: LinkListPropsType) => {
   return(
     <div>
-      <Banner />
+      <Banner gameId="" />
       <h1>{ props.gameDescriptor.title }</h1>
       <div>
         <a target="yoga" href={props.gameDescriptor.href}>{ props.gameDescriptor.hrefTitle }</a>

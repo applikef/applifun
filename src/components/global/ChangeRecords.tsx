@@ -10,7 +10,7 @@ export const ChangeRecords = () => {
   
   return (
     <div className="app-page">
-      <Banner/>
+      <Banner gameId=""/>
       <div className="app-indent-top-32">
         <div className="app-title">רשימת עדכוני משחקים</div>
         

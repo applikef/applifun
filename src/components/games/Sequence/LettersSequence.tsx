@@ -188,7 +188,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
   return (
     <div className="app-page">
-      <Banner settings={() => {
+      <Banner gameId={props.gameDescriptor.gameId} settings={() => {
         setPendingSelectedWordIndices(() => selectedWordIndices);
         setGameSettinsDisplay("game-settings-global-show")
       }}/>

@@ -7,11 +7,13 @@ import './pages.css';
 import { DeviceUtil } from "../utils/DeviceUtil";
 import { useState } from "react";
 import { LineBreak } from "../components/shared/LineBreak";
+import { Help } from "../components/global/help/Help";
 
 export const HomePage = () => {
   const isMobile = DeviceUtil.isMobileDevice();
   const isSmallScreen = DeviceUtil.isSmallDevice();
 
+  const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
   const [showSection, setShowSection] = useState<Array<boolean>>(new Array<boolean>(homePageDescriptor.length));
 
   function updateShowSection(index: number) {
@@ -23,7 +25,15 @@ export const HomePage = () => {
   return (
     <div className="home-page-app">
       <div className="home-page-content-area">
-        <div className="home-page-title">מְשַׂחֲקִים וְלוֹמְדִים</div>
+        <div onClick={() => {               
+          setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")}
+        }>
+          <img src="resources/icons/help.png" className="banner-icon home-page-help-icon"
+                    title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
+        </div>
+        <div className="home-page-title">
+          מְשַׂחֲקִים וְלוֹמְדִים
+        </div>
         { isSmallScreen ? 
           <div>
             <div className="home-page-sub-title app-indent-top-16">בְּחַר סוּג מִשְׂחָק לִרְאוֹת אֶת הַמִּשְׂחָקִים הַקַּיָּמִים</div>
@@ -85,6 +95,10 @@ export const HomePage = () => {
         <Link to="/launch?gameId=changeRecords" className="app-link-sm">
           לרשימת כל עדכוני המשחקים
         </Link> 
+      </div>
+
+      <div className={`banner-help-content ${showHelp}`}>
+        <Help gameId={"generalHelp"} />
       </div>
     </div>
   );

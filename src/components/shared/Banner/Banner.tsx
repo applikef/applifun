@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import './Banner.css'
 import { useContext, useState } from "react";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
+import { Help } from "../../global/help/Help";
 
 export interface BannerPropsType {
+  gameId: string;
   settings?: Function;
 }
 
@@ -12,7 +14,8 @@ export const Banner = (props: BannerPropsType) => {
   const { turnAudioOn, turnAudioOff, audioOn } = useContext(GamesContext) as GamesContextType;
 
   const [showBanner, setShowBanner] = useState<boolean>(true);
-
+  const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
+  
   return (
     <>
       {showBanner &&
@@ -34,6 +37,14 @@ export const Banner = (props: BannerPropsType) => {
                   title="החבא תפריט שליטה"  alt="החבא תפריט שליטה"
                   onClick={() => setShowBanner(false)} />
             </div>
+            { props.gameId.length > 0 &&
+              <div onClick={() => {               
+                setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")}
+              }>
+                <img src="resources/icons/help.png" className="banner-icon" 
+                  title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
+              </div>
+            }
             {
             audioOn && <img src="resources/icons/speaker.png" className="banner-icon"
               onClick={() => turnAudioOff()} 
@@ -55,6 +66,9 @@ export const Banner = (props: BannerPropsType) => {
               onClick={() => setShowBanner(true)} />
         </div>
       }
+      <div className={`banner-help-content ${showHelp}`}>
+        <Help gameId={props.gameId} />
+      </div>
     </>
   );
 }

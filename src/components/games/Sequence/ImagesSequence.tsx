@@ -74,7 +74,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
 
   return (
     <div className="app-page">
-      <Banner/>
+      <Banner gameId={props.gameDescriptor.gameId}/>
       <div className="sequence-container">
         <div className="app-title">{ pageTitle }</div>
         <div className="sequence-source-images" >

@@ -1,4 +1,6 @@
-export interface SequenceDescriptorType {
+import { GameDescriptorType } from "../../componentDescriptors.types";
+
+export interface SequenceDescriptorType extends GameDescriptorType {
   title?: string;
   settingsTitle?: string,
 }

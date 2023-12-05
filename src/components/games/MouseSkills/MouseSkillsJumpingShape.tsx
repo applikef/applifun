@@ -128,7 +128,7 @@ export const MouseSkillsJumpingShape = (props: MouseSkillsProps) => {
 
   return(
     <div className="app-page">
-      <Banner settings={() => setGameSettingsDisplay("game-settings-global-show")} />
+      <Banner gameId="mouseJumpingShapeClick" settings={() => setGameSettingsDisplay("game-settings-global-show")} />
 
       <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
         <circle cx={targetPosition[0]} cy={targetPosition[1]} r={levelLayout.current.size.r} 
