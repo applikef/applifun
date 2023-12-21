@@ -49,4 +49,14 @@ public static sortNumbers = (array: number[]) => {
   public static emptyString(str: string) {
     return str === undefined || str.length === 0;
   }
+
+  public static getTitle(titleTemplate: string, titleVariableValue: string) {
+    const titleAsArray = titleTemplate.split("$");
+    if (titleAsArray.length < 3) {
+      return "";
+    }    
+    return titleAsArray[0] + titleVariableValue + titleAsArray[2];
+  }
+
+
 }

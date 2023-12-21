@@ -22,6 +22,12 @@ export class DeviceUtil {
     return mobile;
   }
   
+  public static imageHeightSmall(): string {
+    const smallSizeIamge: string = `${DeviceUtil.smallSizeIamge * 0.5}px`;
+    const fullSizeIamge: string = `${DeviceUtil.fullSizeIamge * 0.5}px`;
+    return DeviceUtil.isSmallDevice() ? smallSizeIamge : fullSizeIamge;
+  }
+  
   public static imageHeight(): string {
     const smallSizeIamge: string = `${DeviceUtil.smallSizeIamge}px`;
     const fullSizeIamge: string = `${DeviceUtil.fullSizeIamge}px`;

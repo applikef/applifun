@@ -5,6 +5,7 @@ export function getGameDescriptor(gameId: string | null): any {
 
   return(
     gameId === "bathroomRoutine" ? require("./../assets/componentDescriptors/sequenceDescriptors/bathroomRoutine.json")
+    : gameId === "behaviorSelect" ? require("./../assets/componentDescriptors/selectDescriptors/behaviorSelect.json")
     : gameId === "colorMatch" ? require("./../assets/componentDescriptors/matchDescriptors/colorMatch.json")
     : gameId === "colorSort" ? require("./../assets/componentDescriptors/sortDescriptors/colorSort.json")
     : gameId === "iCount" ? require("./../assets/componentDescriptors/sequenceDescriptors/numbersSequence.json")

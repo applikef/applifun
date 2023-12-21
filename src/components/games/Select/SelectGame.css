@@ -1,35 +1,35 @@
 @import "./../../../assets/styles/global.css";
 
-.sort-game-entities {
+.select-game-entities {
   text-align: center;
   padding-top: 20px;
 }
 
-.sort-game-group-row {
-  border-top: solid 1px var(--gray-05);
+.select-game-group-row {
+  border-bottom: solid 1px var(--gray-05);
   border-right: solid 1px var(--gray-05);
   border-left: solid 1px var(--gray-05);
   min-height: 110px;
   padding-top: 5px;
 }
 
-.sort-game-group-label {
+.select-game-group-label {
   text-align: center;
   font-size: 2rem;
 }
 
-.sort-game-group-label-no-image {
+.select-game-group-label-no-image {
   text-align: center;
   font-size: 5rem;
   font-weight: 600;
 }
 
-.sort-game-group-cell {
+.select-game-group-cell {
   min-width: 150px;
   text-align: center;
 }
 
-.sort-game-group-entities {
+.select-game-group-entities {
   min-width: 100%;
   text-align: center;
   vertical-align: top;
@@ -39,13 +39,17 @@
   padding-top: 10px;
 }
 
-.sort-game-source-img {
+.select-game-source-img {
   margin-left: 16px;
   border: solid 1px var(--gray-05);
   padding: 5px;
 }
 
-.sort-game-face-feedback {
+.select-game-face-feedback {
   text-align: left;
   padding-left: 20px;
+}
+
+.select-game-selected-img {
+  margin-left: 10px;
 }

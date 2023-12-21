@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState } from "react";
-import { SortGameDescriptorType, SortGameGroupType, SortGameImageType } from "./sortGame.types";
+import { SelectGameDescriptorType, SelectGameGroupType, SelectGameImageType } from "./selectGame.types";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 
-import "./SortGame.css";
+import "./SelectGame.css";
 import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { MediaUtil } from "../../../utils/MediaUtil";
@@ -10,48 +10,41 @@ import { ModalNotification } from "../../shared/Notification/ModalNotification";
 import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
-import { AttentionArrow } from "../../shared/AttentionArrow/AttentionArrow";
+import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 
-export interface SortGameProps {
-  gameDescriptor: SortGameDescriptorType;
+export interface SelectGameProps {
+  gameDescriptor: SelectGameDescriptorType;
   errorMessage?: string;
 };
 
-export const SortGame = (props: SortGameProps) => {
+export const SelectGame = (props: SelectGameProps) => {
   const imgSize:string = DeviceUtil.imageHeight();
-  const groupImgSize:string = DeviceUtil.imageHeightSmall();
 
-  const title = props.gameDescriptor.titleTemplate;
-  const groups = props.gameDescriptor.groups;
-  const numberOfgroups = groups.length;
+  const activeGroup = props.gameDescriptor.groups[0];
+  const title = ObjectsUtil.getTitle(props.gameDescriptor.titleTemplate, activeGroup.title);
   const numberOfEntities = props.gameDescriptor.entities.length;
-  const selectGroupMessage = props.gameDescriptor.selectGroupMessage ? 
-    props.gameDescriptor.selectGroupMessage 
-  : "צריך לבחור קבוצה";
 
   const { 
     audioOn
   } = useContext(GamesContext) as GamesContextType;
 
   const [cursorStyle, setCursorStyle] = useState("pointer");
-  const [currentGroup, setCurrentGroup] = useState<SortGameGroupType | undefined>(undefined);
+  const [currentGroup, setCurrentGroup] = useState<SelectGameGroupType | undefined>(activeGroup);
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [selectedImages, setSelectedImages] = useState<Map<string,string[]>>(() => {
     let s = new Map();
-    for (let i=0; i < numberOfgroups; i++) {
-      s.set(groups[i].id, []);
-    }
+    s.set(activeGroup.id, []);
     return s;
   });
   const [sourceEntities, setSourceEntities] = 
-    useState<SortGameImageType[]>(props.gameDescriptor.entities);
+    useState<SelectGameImageType[]>(props.gameDescriptor.entities);
 
   const [entityIndex, setEntityIndex] = useState(0);
   const [colorSelectError, setColorSelectError] = useState(false);
 
   const showStartArrow = useRef<boolean>(true);
 
-  const verifyImage = (e: SortGameImageType) => {
+  const verifyImage = (e: SelectGameImageType) => {
     if (!currentGroup) {
       setColorSelectError(() => true);
       return;
@@ -69,7 +62,7 @@ export const SortGame = (props: SortGameProps) => {
       setSelectedImages(map => new Map(map.set(currentGroup.id, a!)));
 
       // Remove entity from source entities
-      let newArr: SortGameImageType[] = [ ...sourceEntities ];
+      let newArr: SelectGameImageType[] = [ ...sourceEntities ];
       let sIndex: number = newArr.indexOf(e);
       if (sIndex > -1) {
         newArr.splice(sIndex,1);
@@ -91,79 +84,51 @@ export const SortGame = (props: SortGameProps) => {
     }
   }
 
-  const closeModal = () => {
-    setColorSelectError(() => false);
-  }
-
-  const updateGroup = (group: SortGameGroupType) => {
+  const updateGroup = (group: SelectGameGroupType) => {
     setCursorStyle(() => group.cursor ? `url("${group.cursor}"), pointer` : 'pointer');
     showStartArrow.current = false;
     setCurrentGroup(group);
   }
 
-  const groupColumnWidth = (100 / numberOfgroups) + "%";
-
   return (
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId} />
-      <ModalNotification text={selectGroupMessage} show={colorSelectError ? true : false}
-        onDismiss={() => closeModal()}/>
       
       <div  className="app-title-centered">{title}</div>
 
       <div>
         <table width="100%">
           <tbody>
-          <tr>
-              {groups.map((group) =>
-                <td key={group.id} className="sort-game-group-row">
-                  <div className="sort-game-group-cell" style={{cursor: cursorStyle}}
-                    onClick={() => updateGroup(group)}>
-                    { group.image ?
-                        <img src={MediaUtil.getCatalogImage(group.image)} height={groupImgSize} 
-                          alt={group.title} /> 
-                      : <></>
-                    }
-                  </div>
-                  <div className={group.image ? "sort-game-group-label" : "sort-game-group-label-no-image"}  
-                    style={{cursor: cursorStyle}}
-                    onClick={() => updateGroup(group)}> 
-                      { group.title }
-                  </div>
-                </td>
-              )}
-              <td width={"100%"} className="sort-game-face-feedback"><FaceFeedback 
-                face={feedbackFace} /></td>
-            </tr>
             <tr>
-              {groups.map((group) => 
-                <td className="sort-game-group-entities" id={`entities-${group.id}`} key={group.id}
-                  width={ groupColumnWidth } onClick={() => updateGroup(group)}
-                  style={{cursor: cursorStyle}}>
-                    {selectedImages.get(group.id)!.map((imageFile,i) => 
-                      <span key={i}>
-                        <img src={MediaUtil.getCatalogImage(imageFile)} height="64px" 
-                          alt=""/>
-                      </span>
-                    )}
-                </td>
-              )}
+              <td className="select-game-group-entities" id={`entities-${activeGroup.id}`} 
+                key={activeGroup.id}
+                width="100%"
+                style={{cursor: cursorStyle}}>
+                  {selectedImages.get(activeGroup.id)!.map((imageFile,i) => 
+                    <span key={i}>
+                      <img src={MediaUtil.getCatalogImage(imageFile)} height="64px" 
+                        alt="" className="select-game-selected-img"/>
+                    </span>
+                  )}
+              </td>
               <td>
                 &nbsp;
               </td>
             </tr>
+            <td width={"100%"} className="sort-game-face-feedback"><FaceFeedback 
+                face={feedbackFace} /></td>
           </tbody>
         </table>
       </div>
-      
-      <div className="sort-game-entities">
+
+      <div className="select-game-entities">
         {sourceEntities.map((e,i) =>
           <img id={"bank-" + e.id} key={i} src={MediaUtil.getCatalogImage(e.file)} 
             alt={e.title} 
             height={imgSize}
             style={{cursor: cursorStyle}}
             onClick={() => verifyImage(e)}
-            className="sort-game-source-img"></img>
+            className="select-game-source-img"></img>
         )}
       </div>
 

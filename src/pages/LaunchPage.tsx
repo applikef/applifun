@@ -12,6 +12,7 @@ import { LettersSequence } from "../components/games/Sequence/LettersSequence";
 import { NumbersSequence } from "../components/games/Sequence/NumbersSequence";
 import { MouseSkillsJumpingShape } from "../components/games/MouseSkills/MouseSkillsJumpingShape";
 import { MOUSE_SKILL_TYPE } from "../components/games/MouseSkills/MouseSkills.types";
+import { SelectGame } from "../components/games/Select/SelectGame";
 
 export const LaunchPage = () => {
   const queryParameters = new URLSearchParams(window.location.search)
@@ -35,6 +36,8 @@ export const LaunchPage = () => {
       { gameId === "colorSort" && <SortGame gameDescriptor={descriptor}/> }
       { gameId === "moodSort" && <SortGame gameDescriptor={descriptor}/> }
       { gameId === "numberSort" && <SortGame gameDescriptor={descriptor}/> }
+
+      { gameId === "behaviorSelect" && <SelectGame gameDescriptor={descriptor}/> }
 
       { gameId === "changeRecords" && <ChangeRecords/> }
     </div>
