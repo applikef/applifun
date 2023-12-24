@@ -58,5 +58,22 @@ public static sortNumbers = (array: number[]) => {
     return titleAsArray[0] + titleVariableValue + titleAsArray[2];
   }
 
+  public static getEntityById(store: Array<any>, id: string): any | undefined {
+    for (let i=0; i < store.length; i++) {
+      if (store[i].id === id) {
+        return store[i];
+      }
+    }
+    return undefined;
+  }
+
+  public static getEntityIndexById(store: Array<any>, id: string): number {
+    for (let i=0; i < store.length; i++) {
+      if (store[i].id === id) {
+        return i;
+      }
+    }
+    return -1;
+  }
 
 }

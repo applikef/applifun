@@ -38,6 +38,7 @@ export const LaunchPage = () => {
       { gameId === "numberSort" && <SortGame gameDescriptor={descriptor}/> }
 
       { gameId === "behaviorSelect" && <SelectGame gameDescriptor={descriptor}/> }
+      { gameId === "moodSelect" && <SelectGame gameDescriptor={descriptor}/> }
 
       { gameId === "changeRecords" && <ChangeRecords/> }
     </div>

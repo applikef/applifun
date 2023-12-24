@@ -84,6 +84,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
         media: "resources/images/sort-by-color-game.png",
         height: 100
       },
+      {
+        id: "moodSort",
+        label: "מַּרְגִּישִׁים",
+        path: "/launch?gameId=moodSort",
+        media: "resources/images/feelings-sort.png",
+        height: 100
+      },
     ]
   },
   {
@@ -104,17 +111,17 @@ export const homePageDescriptor: HomePageSectionType[] = [
     media: "resources/images/more-games.png",
     items: [
       {
-        id: "behaviorSelect",
-        label: "מָה עוֹשִׂים?",
-        path: "/launch?gameId=behaviorSelect",
-        media: "resources/images/child-thinks.jpg",
+        id: "moodSelect",
+        label: "אֵיךְ הֵם מַרְגִּישִׁים?",
+        path: "/launch?gameId=moodSelect",
+        media: "resources/images/feelings.jpg",
         height: 100
       },
       {
-        id: "moodSort",
-        label: "מַּרְגִּישִׁים",
-        path: "/launch?gameId=moodSort",
-        media: "resources/images/feelings.jpg",
+        id: "behaviorSelect",
+        label: "מָה עוֹשִׂים?",
+        path: "/launch?gameId=behaviorSelect",
+        media: "resources/images/mood.png",
         height: 100
       },
       {

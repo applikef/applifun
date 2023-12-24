@@ -1,7 +1,7 @@
 {
   "gameType": "sort",
   "gameId": "moodSort",
-  "titleTemplate": "בְּחַר בְּחַר תְּמוּנוֹת שֶׁמַּרְאוֹת מִישֶׁהוּ $value$",
+  "titleTemplate": "מָה אֲנִי עוֹשֶׂה כְּשֶׁאֲנִי $value$?",
   "selectGroupMessage": "קודם צריך לבחר מצב-רוח",
   "groups": [
     {
@@ -21,18 +21,19 @@
       "title": "כּוֹעֵס",
       "cursor": "resources/cursors/angry-face-cursor.png",
       "image": "angry-face"
+    },
+    {
+      "id": "hungry",
+      "title": "רָעֵב",
+      "cursor": "resources/cursors/hungry-face-cursor.png",
+      "image": "hungry-face"
     }
   ],
   "entities": [
     {
-      "id": "happy01",
-      "file": "happy-woman-01",
-      "groupId": "happy"
-    },
-    {
       "id": "angry03",
       "file": "angry-boy",
-      "groupId": "angry"
+      "groupId": "not"
     },
     {
       "id": "happy03",
@@ -40,29 +41,34 @@
       "groupId": "happy"
     },
     {
+      "id": "boy-refrigerator",
+      "file": "boy-refrigerator",
+      "groupId": "hungry"
+    },
+    {
       "id": "angry04",
       "file": "angry-girl",
-      "groupId": "angry"
+      "groupId": "not"
     },
     {
-      "id": "happy02",
-      "file": "happy-woman-02",
-      "groupId": "happy"
-    },
-    {
-      "id": "sad02",
-      "file": "sad-woman-02",
-      "groupId": "sad"
-    },
-    {
-      "id": "angry02",
-      "file": "angry-woman-transparent",
+      "id": "talk-to-adult",
+      "file": "talk-to-adult",
       "groupId": "angry"
     },
     {
       "id": "sad03",
       "file": "sad-woman-03",
       "groupId": "sad"
+    },
+    {
+      "id": "eat",
+      "file": "eat",
+      "groupId": "hungry"
+    },
+    {
+      "id": "child-thinks",
+      "file": "child-thinks",
+      "groupId": "angry"
     }
   ]
 }

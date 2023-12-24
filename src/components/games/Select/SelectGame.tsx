@@ -1,12 +1,11 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { ChangeEvent, useContext, useState } from "react";
 import { SelectGameDescriptorType, SelectGameGroupType, SelectGameImageType } from "./selectGame.types";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 
 import "./SelectGame.css";
-import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { WellDone, hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { MediaUtil } from "../../../utils/MediaUtil";
-import { ModalNotification } from "../../shared/Notification/ModalNotification";
 import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
@@ -19,17 +18,15 @@ export interface SelectGameProps {
 
 export const SelectGame = (props: SelectGameProps) => {
   const imgSize:string = DeviceUtil.imageHeight();
-
-  const activeGroup = props.gameDescriptor.groups[0];
-  const title = ObjectsUtil.getTitle(props.gameDescriptor.titleTemplate, activeGroup.title);
-  const numberOfEntities = props.gameDescriptor.entities.length;
+  const groups = props.gameDescriptor.groups;
+  const entities = props.gameDescriptor.entities;
 
   const { 
     audioOn
   } = useContext(GamesContext) as GamesContextType;
 
-  const [cursorStyle, setCursorStyle] = useState("pointer");
-  const [currentGroup, setCurrentGroup] = useState<SelectGameGroupType | undefined>(activeGroup);
+  const [activeGroup, setActiveGroup] = useState<SelectGameGroupType>(groups[0]);
+  const [pendingGroup, setPendingGroup] = useState(activeGroup);
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [selectedImages, setSelectedImages] = useState<Map<string,string[]>>(() => {
     let s = new Map();
@@ -37,29 +34,37 @@ export const SelectGame = (props: SelectGameProps) => {
     return s;
   });
   const [sourceEntities, setSourceEntities] = 
-    useState<SelectGameImageType[]>(props.gameDescriptor.entities);
+    useState<SelectGameImageType[]>(entities);
 
   const [entityIndex, setEntityIndex] = useState(0);
-  const [colorSelectError, setColorSelectError] = useState(false);
+  const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
 
-  const showStartArrow = useRef<boolean>(true);
+  const title = ObjectsUtil.getTitle(props.gameDescriptor.titleTemplate, activeGroup.title);
+  const numberOfGroupEntities: number = entities.filter(e => e.groupId === activeGroup.id).length;
+
+  function initGame() {
+    setSelectedImages(() => {
+      let s = new Map();
+      s.set(pendingGroup.id, []);
+      return s;
+    });
+    setSourceEntities(entities);
+    setFeedbackFace(FACES.NONE);
+    setEntityIndex(0)
+    hideWellDone();
+  }
 
   const verifyImage = (e: SelectGameImageType) => {
-    if (!currentGroup) {
-      setColorSelectError(() => true);
-      return;
-    }
-
-    if (e.groupId === currentGroup.id) {
+    if (e.groupId === activeGroup.id) {
       // Update entities in group
-      let a: string[] | undefined = [...(selectedImages.get(currentGroup.id)!)];
+      let a: string[] | undefined = [...(selectedImages.get(activeGroup.id)!)];
       if (!a) {
         a = [];
       }
       if (!a.includes(e.file)) {
         a = [...a, e.file];
       }
-      setSelectedImages(map => new Map(map.set(currentGroup.id, a!)));
+      setSelectedImages(map => new Map(map.set(activeGroup.id, a!)));
 
       // Remove entity from source entities
       let newArr: SelectGameImageType[] = [ ...sourceEntities ];
@@ -70,7 +75,8 @@ export const SelectGame = (props: SelectGameProps) => {
       }
       
       setFeedbackFace(FACES.HAPPY);
-      if (entityIndex === numberOfEntities-1) {
+      if (entityIndex === numberOfGroupEntities-1) {
+        setFeedbackFace(FACES.NONE);
         showWellDone(audioOn);
       }
       else {
@@ -84,17 +90,33 @@ export const SelectGame = (props: SelectGameProps) => {
     }
   }
 
-  const updateGroup = (group: SelectGameGroupType) => {
-    setCursorStyle(() => group.cursor ? `url("${group.cursor}"), pointer` : 'pointer');
-    showStartArrow.current = false;
-    setCurrentGroup(group);
+  function handleSettingsCancel() {
+    if (pendingGroup.id !== activeGroup.id) {
+      setPendingGroup(activeGroup);
+    }
+    setGameSettingsDisplay(()=>"game-settings-global-hide"); 
+  }
+
+  function handleSettingsDone() {
+    setGameSettingsDisplay(()=>"game-settings-global-hide"); 
+    initGame();
+    setActiveGroup(pendingGroup);
   }
 
   return (
     <div className="app-page">
-      <Banner gameId={props.gameDescriptor.gameId} />
+      <Banner gameId={props.gameDescriptor.gameId} 
+         settings={() => {
+          setPendingGroup(activeGroup);
+          setGameSettingsDisplay("game-settings-global-show")
+         }}
+      />
       
-      <div  className="app-title-centered">{title}</div>
+      <div  className="app-title-centered">
+        {title}&nbsp;&nbsp;
+        <img src={activeGroup.cursor} height="32px" alt={activeGroup.title} />
+        
+      </div>
 
       <div>
         <table width="100%">
@@ -102,8 +124,7 @@ export const SelectGame = (props: SelectGameProps) => {
             <tr>
               <td className="select-game-group-entities" id={`entities-${activeGroup.id}`} 
                 key={activeGroup.id}
-                width="100%"
-                style={{cursor: cursorStyle}}>
+                width="100%">
                   {selectedImages.get(activeGroup.id)!.map((imageFile,i) => 
                     <span key={i}>
                       <img src={MediaUtil.getCatalogImage(imageFile)} height="64px" 
@@ -115,8 +136,6 @@ export const SelectGame = (props: SelectGameProps) => {
                 &nbsp;
               </td>
             </tr>
-            <td width={"100%"} className="sort-game-face-feedback"><FaceFeedback 
-                face={feedbackFace} /></td>
           </tbody>
         </table>
       </div>
@@ -126,12 +145,38 @@ export const SelectGame = (props: SelectGameProps) => {
           <img id={"bank-" + e.id} key={i} src={MediaUtil.getCatalogImage(e.file)} 
             alt={e.title} 
             height={imgSize}
-            style={{cursor: cursorStyle}}
             onClick={() => verifyImage(e)}
-            className="select-game-source-img"></img>
+            className="select-game-source-img app-clickable"></img>
         )}
       </div>
 
+      <div id="gameSettings" className={ gameSettingsDisplay }>
+        <div>
+          <div className="game-settings-title">בחרי את מצב הרוח למשחק</div>
+          
+          { props.gameDescriptor.groups.map(
+            (group, i) => 
+              <div className="game-settings-entry" key={i}>
+                <input type="radio"
+                  id={group.id}
+                  checked={pendingGroup === group} 
+                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
+                    setPendingGroup(ObjectsUtil.getEntityById(groups, e.target.id));
+                  }}></input>
+                <span key={i}>{group.title}</span>
+              </div>
+          )}
+          <br/>
+          <button className="app-button-primary-sm" onClick={() => {
+            handleSettingsDone(); 
+          }}>שמור</button>
+          <button className="app-button-ghost-sm" onClick={() => {
+            handleSettingsCancel();
+          }}>בטל</button>
+        </div>
+      </div>
+
+      <span><FaceFeedback face={feedbackFace} /></span>
       <WellDone />
     </div>
   )

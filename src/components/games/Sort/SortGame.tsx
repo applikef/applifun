@@ -78,6 +78,7 @@ export const SortGame = (props: SortGameProps) => {
       
       setFeedbackFace(FACES.HAPPY);
       if (entityIndex === numberOfEntities-1) {
+        setFeedbackFace(FACES.NONE);
         showWellDone(audioOn);
       }
       else {

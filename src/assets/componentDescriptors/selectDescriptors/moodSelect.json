@@ -1,0 +1,68 @@
+{
+  "gameType": "sort",
+  "gameId": "moodSort",
+  "titleTemplate": "בְּחַר בְּחַר תְּמוּנוֹת שֶׁמַּרְאוֹת מִישֶׁהוּ $value$",
+  "selectGroupMessage": "קודם צריך לבחר מצב-רוח",
+  "groups": [
+    {
+      "id": "happy",
+      "title": "שָׂמֵחַ",
+      "cursor": "resources/cursors/happy-face-cursor.png",
+      "image": "happy-face"
+    },
+    {
+      "id": "sad",
+      "title": "עָצוּב",
+      "cursor": "resources/cursors/worry-face-cursor.png",
+      "image": "worry-face"
+    },
+    {
+      "id": "angry",
+      "title": "כּוֹעֵס",
+      "cursor": "resources/cursors/angry-face-cursor.png",
+      "image": "angry-face"
+    }
+  ],
+  "entities": [
+    {
+      "id": "happy01",
+      "file": "happy-woman-01",
+      "groupId": "happy"
+    },
+    {
+      "id": "angry03",
+      "file": "angry-boy",
+      "groupId": "angry"
+    },
+    {
+      "id": "happy03",
+      "file": "happy-woman-03",
+      "groupId": "happy"
+    },
+    {
+      "id": "angry04",
+      "file": "angry-girl",
+      "groupId": "angry"
+    },
+    {
+      "id": "happy02",
+      "file": "happy-woman-02",
+      "groupId": "happy"
+    },
+    {
+      "id": "sad02",
+      "file": "sad-woman-02",
+      "groupId": "sad"
+    },
+    {
+      "id": "angry02",
+      "file": "angry-woman-transparent",
+      "groupId": "angry"
+    },
+    {
+      "id": "sad03",
+      "file": "sad-woman-03",
+      "groupId": "sad"
+    }
+  ]
+}
