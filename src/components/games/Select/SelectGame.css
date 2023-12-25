@@ -41,8 +41,8 @@
 
 .select-game-source-img {
   margin-left: 16px;
-  border: solid 1px var(--gray-05);
   padding: 5px;
+  display: inline-block;
 }
 
 .select-game-face-feedback {

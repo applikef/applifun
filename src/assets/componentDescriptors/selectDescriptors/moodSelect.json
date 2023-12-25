@@ -25,11 +25,6 @@
   ],
   "entities": [
     {
-      "id": "happy01",
-      "file": "happy-woman-01",
-      "groupIds": ["happy"]
-    },
-    {
       "id": "angry03",
       "file": "angry-boy",
       "groupIds": ["angry"]

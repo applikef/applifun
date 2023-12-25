@@ -32,41 +32,49 @@
   "entities": [
     {
       "id": "angry03",
+      "title": "צוֹעֵק",
       "file": "angry-boy",
       "groupIds": []
     },
     {
       "id": "happy03",
+      "title": "צוֹחֵק",
       "file": "happy-woman-03",
       "groupIds": ["happy"]
     },
     {
       "id": "boy-refrigerator",
+      "title": "אוֹכֵל",
       "file": "boy-refrigerator",
       "groupIds": ["hungry"]
     },
     {
       "id": "angry04",
+      "title": "צוֹעֵק",
       "file": "angry-girl",
       "groupIds": []
     },
     {
       "id": "talk-to-adult",
+      "title": "מְדַבֵּר עִם מְבֻוגָּר",
       "file": "talk-to-adult",
       "groupIds": ["angry", "sad", "hungry"]
     },
     {
       "id": "sad03",
+      "title": "יוֹשֵׁב עִם עַצְמִי",
       "file": "sad-woman-03",
       "groupIds": ["sad"]
     },
     {
       "id": "eat",
+      "title": "אוֹכֵל",
       "file": "eat",
       "groupIds": ["hungry"]
     },
     {
       "id": "child-thinks",
+      "title": "מִסְתַּכֵּל עַל מַשֶּׁהוּ נָעִים",
       "file": "child-thinks",
       "groupIds": ["angry", "sad"]
     }

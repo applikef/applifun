@@ -10,6 +10,7 @@ import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
+import { TitledImage } from "../../shared/TitledImage/TitledImage";
 
 export interface SelectGameProps {
   gameDescriptor: SelectGameDescriptorType;
@@ -143,11 +144,11 @@ export const SelectGame = (props: SelectGameProps) => {
 
       <div className="select-game-entities">
         {sourceEntities.map((e,i) =>
-          <img id={"bank-" + e.id} key={i} src={MediaUtil.getCatalogImage(e.file)} 
+          <TitledImage id={"bank-" + e.id} key={i} src={MediaUtil.getCatalogImage(e.file)} 
             alt={e.title} 
             height={imgSize}
             onClick={() => verifyImage(e)}
-            className="select-game-source-img app-clickable"></img>
+            className="select-game-source-img app-clickable"></TitledImage>
         )}
       </div>
 
