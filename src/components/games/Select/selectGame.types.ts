@@ -19,5 +19,5 @@ export type SelectGameImageType = {
   id: string;
   title: string;
   file: string;
-  groupId: string;
+  groupIds: Array<string>;
 }

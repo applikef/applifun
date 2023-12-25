@@ -33,42 +33,42 @@
     {
       "id": "angry03",
       "file": "angry-boy",
-      "groupId": "not"
+      "groupIds": []
     },
     {
       "id": "happy03",
       "file": "happy-woman-03",
-      "groupId": "happy"
+      "groupIds": ["happy"]
     },
     {
       "id": "boy-refrigerator",
       "file": "boy-refrigerator",
-      "groupId": "hungry"
+      "groupIds": ["hungry"]
     },
     {
       "id": "angry04",
       "file": "angry-girl",
-      "groupId": "not"
+      "groupIds": []
     },
     {
       "id": "talk-to-adult",
       "file": "talk-to-adult",
-      "groupId": "angry"
+      "groupIds": ["angry", "sad", "hungry"]
     },
     {
       "id": "sad03",
       "file": "sad-woman-03",
-      "groupId": "sad"
+      "groupIds": ["sad"]
     },
     {
       "id": "eat",
       "file": "eat",
-      "groupId": "hungry"
+      "groupIds": ["hungry"]
     },
     {
       "id": "child-thinks",
       "file": "child-thinks",
-      "groupId": "angry"
+      "groupIds": ["angry", "sad"]
     }
   ]
 }

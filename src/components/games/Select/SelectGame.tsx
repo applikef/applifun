@@ -40,7 +40,8 @@ export const SelectGame = (props: SelectGameProps) => {
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
 
   const title = ObjectsUtil.getTitle(props.gameDescriptor.titleTemplate, activeGroup.title);
-  const numberOfGroupEntities: number = entities.filter(e => e.groupId === activeGroup.id).length;
+  const numberOfGroupEntities: number = 
+    entities.filter(e => e.groupIds ? e.groupIds.includes(activeGroup.id) : false).length;
 
   function initGame() {
     setSelectedImages(() => {
@@ -55,7 +56,7 @@ export const SelectGame = (props: SelectGameProps) => {
   }
 
   const verifyImage = (e: SelectGameImageType) => {
-    if (e.groupId === activeGroup.id) {
+    if (e.groupIds.includes(activeGroup.id)) {
       // Update entities in group
       let a: string[] | undefined = [...(selectedImages.get(activeGroup.id)!)];
       if (!a) {
