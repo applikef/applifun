@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useState } from "react";
+import React, { ChangeEvent, useContext, useRef, useState } from "react";
 import { SelectGameDescriptorType, SelectGameGroupType, SelectGameImageType } from "./selectGame.types";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 
@@ -40,6 +40,8 @@ export const SelectGame = (props: SelectGameProps) => {
   const [entityIndex, setEntityIndex] = useState(0);
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
 
+  let gameComplete = useRef<boolean>(false);
+
   const title = ObjectsUtil.getTitle(props.gameDescriptor.titleTemplate, activeGroup.title);
   const numberOfGroupEntities: number = 
     entities.filter(e => e.groupIds ? e.groupIds.includes(activeGroup.id) : false).length;
@@ -54,9 +56,12 @@ export const SelectGame = (props: SelectGameProps) => {
     setFeedbackFace(FACES.NONE);
     setEntityIndex(0)
     hideWellDone();
+    gameComplete.current = false;
   }
 
-  const verifyImage = (e: SelectGameImageType) => {
+  let verifyImage = gameComplete.current ?
+    () => {}
+  : (e: SelectGameImageType) => {
     if (e.groupIds.includes(activeGroup.id)) {
       // Update entities in group
       let a: string[] | undefined = [...(selectedImages.get(activeGroup.id)!)];
@@ -79,6 +84,7 @@ export const SelectGame = (props: SelectGameProps) => {
       setFeedbackFace(FACES.HAPPY);
       if (entityIndex === numberOfGroupEntities-1) {
         setFeedbackFace(FACES.NONE);
+        gameComplete.current = true;
         showWellDone(audioOn);
       }
       else {
