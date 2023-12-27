@@ -1,0 +1,13 @@
+.page-header-title {
+  height: 100px;
+  line-height: 100px;
+  margin-left: -60px;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  text-align: right;
+}
+
+.page-header-feedback-face {
+  float: left;
+  margin-left: 16px;
+}

@@ -2,7 +2,7 @@ import React, { ChangeEvent, useContext, useEffect, useRef, useState } from "rea
 
 import "./Sequence.css";
 
-import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { WellDone, hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
 
 import { MediaUtil } from "../../../utils/MediaUtil";
@@ -14,6 +14,7 @@ import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { LetterSequenceDescriptorType, WordDescriptorType } from "./Sequence.types";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
 
 interface ViewEntry {
   value: string;
@@ -198,7 +199,9 @@ export const LettersSequence = (props: LettersSequenceProps) => {
           height={DeviceUtil.imageHeightLarge()}></img>        
 
         <div className="sequence-container">
-          <div className="app-title">{ pageTitle }</div>
+
+          <PageHeader title={ pageTitle } feedbackFace={ feedbackFace } />
+
           <div id="bank-area" className="sequence-source-images" >
             { shuffledLetters.map((e:ViewEntry, i:number) =>
                   e.show && <span className="sequence-letter" 
@@ -211,7 +214,6 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         </div>
 
         <div className="sequence-feedback">
-          <div>
           <div id="feedback-area">
             { orderedLetters.map((e:ViewEntry) =>
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
@@ -222,8 +224,6 @@ export const LettersSequence = (props: LettersSequenceProps) => {
                 )
             }
           </div>  
-            <span><FaceFeedback face={feedbackFace} /></span>
-          </div>
         </div>
       </div>
 

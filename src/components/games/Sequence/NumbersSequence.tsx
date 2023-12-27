@@ -2,7 +2,7 @@ import React, { ChangeEvent, useContext, useEffect, useRef, useState } from "rea
 
 import "./Sequence.css";
 
-import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { WellDone, hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
 
 import { MediaUtil } from "../../../utils/MediaUtil";
@@ -13,6 +13,7 @@ import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { NumberSequenceDescriptorType, NumberListDescriptorType } from "./Sequence.types";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
 
 const enum NumbersOrder {
   UP,
@@ -247,7 +248,9 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
 
       <div className="letters-sequence-global">
         <div className="sequence-container">
-          <div className="app-title">{ pageTitle.current }</div>
+
+          <PageHeader title={ pageTitle.current } feedbackFace={ feedbackFace } />
+
           <div id="bank-area" className="sequence-source-images" >
             { shuffledNumbers.map((e:ViewEntry) =>
                 e.show && <span className="sequence-letter" id={getBankId(e.value)} key={e.value} 
@@ -262,7 +265,6 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
             פה למטה נראה את המספרים מסודרים
           </h3>
 
-          <div>
           <div id="feedback-area">
             { orderedNumbers.map((e:ViewEntry) =>
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
@@ -273,8 +275,6 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
                 )
             }
           </div>  
-            <span><FaceFeedback face={feedbackFace} /></span>
-          </div>
         </div>
       </div>
 

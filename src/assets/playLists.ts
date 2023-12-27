@@ -12,15 +12,12 @@ export const PlayLists: Map<string, string[]> = new Map([
     "resources/audio/wonderful-all-done.mp3",
   ]],
   ["ShortHooray", [
-    "resources/audio/hooray-short-1.mp3",
     "resources/audio/yes.mp3",
     "resources/audio/great.mp3",
   ]],
   ["Ouch", [
     "resources/audio/ouch-2.mp3",
-    "resources/audio/ouch-3.mp3",
     "resources/audio/try-again.mp3",
-    "resources/audio/not-exactly.mp3",
   ]],
   ["default", [
     "resources/audio/great.mp3"

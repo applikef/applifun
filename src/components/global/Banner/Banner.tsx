@@ -59,6 +59,7 @@ export const Banner = (props: BannerPropsType) => {
         </div>
       }
       {showBanner && <hr className="banner-hr"/>}
+      
       {!showBanner &&
         <div>
           <img src="resources/icons/show.png" className="banner-icon" 
