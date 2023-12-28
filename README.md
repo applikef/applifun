@@ -1,5 +1,5 @@
 # applifun
-The objective of this project is to provide learning activities for medium-low spectrum autistic children. Children with other disabilities might benefit from it as well. 
+This project provides web application of learning activities for children that are on medium-low position of the autistic spectrum. Children with other disabilities might benefit from it as well. 
 
 Working with such autistic children we identified a gap of software, where educational software normally requires skills that these children should acquire. The activities provided by this project are aimed at helping these children to acquire these skills.
 
