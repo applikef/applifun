@@ -195,13 +195,13 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         setGameSettinsDisplay("game-settings-global-show")
       }}/>
 
+      <PageHeader title={ pageTitle } feedbackFace={ feedbackFace } />
+
       <div className="letters-sequence-global">
         <img src={MediaUtil.getCatalogImage(word.file)} alt={word.title}
           height={DeviceUtil.imageHeightLarge()}></img>        
 
         <div className="sequence-container">
-
-          <PageHeader title={ pageTitle } feedbackFace={ feedbackFace } />
 
           <div id="bank-area" className="sequence-source-images" >
             { shuffledLetters.map((e:ViewEntry, i:number) =>

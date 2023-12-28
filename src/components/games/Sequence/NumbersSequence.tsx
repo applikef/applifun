@@ -186,7 +186,6 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
         // reset view
         selectedSequenceSteps.current = [];
         setFeedbackFace(FACES.NONE);
-        //NETTA setPageTitle(() => direction === "UP" ? titleUp : titleDown);
         hideWellDone();
 
         currentIndex.current++;
@@ -263,10 +262,10 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
 
         <div className="sequence-feedback">
           <h3>
-            פה למטה נראה את המספרים מסודרים
+            פֹּה לְמַטָּה נִרְאֶה אֶת הַמִּסְפָּרִים מְסֻדָּרִים
           </h3>
 
-          <div id="feedback-area">
+          <div id="feedback-area" className="sequence-feedback-numbers">
             { orderedNumbers.map((e:ViewEntry) =>
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
                     id={getFeedbackId(e.value)} 

@@ -101,7 +101,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
       <div className="sequence-feedback">
         {
           <h3>
-            פה למטה נראה את התמונות מסודרות
+            פֹּה לְמַטָּה נִרְאֶה אֶת הַתְּמוּנוֹת מְסֻדָּרוֹת
           </h3>
         }
         <div>
