@@ -24,7 +24,7 @@ export const hideWellDone = () => {
 export const WellDone = () => {
   return (
     <div className="well-done-global" id="well-done">
-      <img src="resources/images/well-done-200.png" alt="well done" />
+      <img src="resources/images/well-done-200.png" className="well-done-img" alt="well done" />
     </div>
   )
 }

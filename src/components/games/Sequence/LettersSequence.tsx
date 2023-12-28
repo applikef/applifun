@@ -3,7 +3,7 @@ import React, { ChangeEvent, useContext, useEffect, useRef, useState } from "rea
 import "./Sequence.css";
 
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
-import { WellDone, hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
 
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
@@ -116,14 +116,15 @@ export const LettersSequence = (props: LettersSequenceProps) => {
       shuffledLetters[letterShuffledIndex].show = false;
       setShuffledLetters([...shuffledLetters])
 
-      setFeedbackFace(() => FACES.HAPPY);
       if (letterOrderedIndex === orderedLetters.length-1) {
+        setFeedbackFace(() => FACES.NONE);
         showWellDone(audioOn);
         setTimeout(() => {
           getNextWord();
         }, ConstantsUtil.hoorayTimeout); 
       }
       else {
+        setFeedbackFace(() => FACES.HAPPY);
         MediaUtil.player(playerHooray, audioOn);
       }
     }
@@ -226,8 +227,6 @@ export const LettersSequence = (props: LettersSequenceProps) => {
           </div>  
         </div>
       </div>
-
-      <WellDone />
 
       <div id="gameSettings" className={ gameSettinsDisplay }>
         <div>

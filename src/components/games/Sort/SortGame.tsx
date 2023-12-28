@@ -3,7 +3,7 @@ import { SortGameDescriptorType, SortGameGroupType, SortGameImageType } from "./
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 
 import "./SortGame.css";
-import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { showWellDone } from "../../shared/WellDone/WellDone";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ModalNotification } from "../../shared/Notification/ModalNotification";
@@ -165,8 +165,6 @@ export const SortGame = (props: SortGameProps) => {
             className="sort-game-source-img"></img>
         )}
       </div>
-
-      <WellDone />
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { SelectGameDescriptorType, SelectGameGroupType, SelectGameImageType } fr
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 
 import "./SelectGame.css";
-import { WellDone, hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { PlayListNames } from "../../../assets/playLists";
@@ -183,8 +183,6 @@ export const SelectGame = (props: SelectGameProps) => {
           }}>בטל</button>
         </div>
       </div>
-
-      <WellDone />
     </div>
   )
 }

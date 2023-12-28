@@ -12,7 +12,7 @@ import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
-import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { showWellDone } from "../../shared/WellDone/WellDone";
 import { useNavigate } from "react-router-dom";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PlayListNames } from "../../../assets/playLists";
@@ -249,8 +249,6 @@ export const Match = (props: MatchPropsType) => {
           )
         }
       </div>
-      
-      <WellDone />
       
       { showImageTitleNotification.current &&
         <Notification 

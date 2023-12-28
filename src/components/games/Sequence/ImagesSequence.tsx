@@ -4,7 +4,7 @@ import "./Sequence.css";
 
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { TitledImage } from "../../shared/TitledImage/TitledImage";
-import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { showWellDone } from "../../shared/WellDone/WellDone";
 
 import { ImageDescriptorType, ImageSequenceDescriptorType } from "./Sequence.types";
 
@@ -56,6 +56,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
 
   function showSuccess() {
     setPageTitle("כל הכבוד!");
+    setFeedbackFace(() => FACES.NONE);
     showWellDone(audioOn);
   }
 
@@ -116,8 +117,6 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
           }
         </div>
       </div>
-
-      <WellDone />
     </div>
   )
 }
