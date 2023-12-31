@@ -15,15 +15,15 @@ import { PageHeader } from "../../shared/PageHeader/PageHeader";
 const mouseEventTypeDescriptors = [
   {
     id: MOUSE_SKILL_TYPE.HOVER,
-    title: "עֲמִידָה מֵעַל"
+    title: "רִחוּף"
   }, 
   {
     id: MOUSE_SKILL_TYPE.CLICK,
-    title: "לְחִיצָה"
+    title: "הַקְלָקָה"
   }, 
   {
     id: MOUSE_SKILL_TYPE.DOUBLE_CLICK,
-    title: "לְחִיצָה כְּפוּלָה"
+    title: "הַקְלָקָה כְּפוּלָה"
   }, 
 ];
 

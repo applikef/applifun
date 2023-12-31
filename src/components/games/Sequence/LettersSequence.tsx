@@ -56,10 +56,8 @@ export const LettersSequence = (props: LettersSequenceProps) => {
   const [orderedLetters, setOrderedLetters] = useState<ViewEntry[]>([]);
   const [shuffledLetters, setShuffledLetters] = useState<ViewEntry[]>([]);
   const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
-  const [pendingSelectedWordIndices, setPendingSelectedWordIndices] =
-    useState<boolean[]>([]);
-  const [selectedWordIndices, setSelectedWordIndices] =
-    useState<boolean[]>([])
+  const [pendingSelectedWordIndices, setPendingSelectedWordIndices] = useState<boolean[]>([]);
+  const [selectedWordIndices, setSelectedWordIndices] = useState<boolean[]>([])
 
   let currentIndex = useRef<number>(0);
 
@@ -206,7 +204,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
         <div className="sequence-container">
           <div className="sequence-letters-advise">  
-            <Advise text={ word.title } />
+            <Advise text={ word.title } default={ true } />
           </div>
 
           <div id="bank-area" className="sequence-source-images" >
@@ -222,6 +220,10 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         </div>
 
         <div className="sequence-feedback">
+          <h3>
+            פֹּה לְמַטָּה נִרְאֶה אֶת הַמִּילָּה כְּתוּבָה נָכוֹן
+          </h3>
+
           <div id="feedback-area">
             { orderedLetters.map((e:ViewEntry) =>
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
