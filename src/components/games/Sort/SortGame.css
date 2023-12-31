@@ -32,7 +32,7 @@
 .sort-game-group-entities {
   min-width: 100%;
   text-align: center;
-  vertical-align: top;
+  vertical-align: middle;
   height: 100px;
   border: solid 1px  var(--gray-05);
   background: var(--gray-02);
