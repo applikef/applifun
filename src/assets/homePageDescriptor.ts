@@ -18,7 +18,38 @@ export type HomePageSectionType = {
   items: HomePageItemType[];
 }
 
+/*
+      {
+        id: "moodSelect",
+        label: "אֵיךְ הֵם מַרְגִּישִׁים?",
+        path: "/launch?gameId=moodSelect",
+        media: "resources/images/feelings.jpg",
+        height: 100
+      },
+      {
+        id: "behaviorSelect",
+        label: "מָה עוֹשִׂים?",
+        path: "/launch?gameId=behaviorSelect",
+        media: "resources/images/mood.png",
+        height: 100
+      },
+
+*/
+
 export const homePageDescriptor: HomePageSectionType[] = [
+  {
+    title: "הָעַכְבָּר שֶׁלִּי",
+    media: "resources/images/mouse.png",
+    items: [
+      {
+        id: "mouseJumpingShapeClick",
+        label: "מִרְדָּף עַכְבָּר",
+        path: "/launch?gameId=mouseJumpingShapeClick",
+        media: "resources/images/mouse-frog-chase.png",
+        height: 100
+      }
+    ]
+  },
   {
     title: "חֶשְׁבּוֹן",
     media: "resources/images/numbers-splash.png",
@@ -67,6 +98,33 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
+    title: "עוֹשִׂים",
+    media: "resources/images/more-games.png",
+    items: [
+      {
+        id: "washHands",
+        label: "שׁוֹטְפִים יָדַיִם",
+        path: "/launch?gameId=washHands",
+        media: "resources/images/wash-hands.jpg",
+        height: 100
+      },
+      {
+        id: "bathroomRoutine",
+        label: "הוֹלְכִים לַשֵּׁרוּתִים",
+        path: "/launch?gameId=bathroomRoutine",
+        media: "resources/images/toilet.jpg",
+        height: 100
+      },
+      {
+        id: "morningRoutine",
+        label: "מִסְתַּדְּרִים בַּבֹּקֶר",
+        path: "/launch?gameId=morningRoutine",
+        media: "resources/images/wake-up.jpg",
+        height: 100
+      }
+    ]
+  },
+  {
     title: "מְמַיְּנִים",
     media: "resources/images/sort-games.png",
     items: [
@@ -91,60 +149,6 @@ export const homePageDescriptor: HomePageSectionType[] = [
         media: "resources/images/feelings-sort.png",
         height: 100
       },
-    ]
-  },
-  {
-    title: "הָעַכְבָּר שֶׁלִּי",
-    media: "resources/images/mouse.png",
-    items: [
-      {
-        id: "mouseJumpingShapeClick",
-        label: "מִרְדָּף עַכְבָּר",
-        path: "/launch?gameId=mouseJumpingShapeClick",
-        media: "resources/images/mouse-frog-chase.png",
-        height: 100
-      }
-    ]
-  },
-  {
-    title: "מִשְׁתַּלְּבִים",
-    media: "resources/images/more-games.png",
-    items: [
-      {
-        id: "moodSelect",
-        label: "אֵיךְ הֵם מַרְגִּישִׁים?",
-        path: "/launch?gameId=moodSelect",
-        media: "resources/images/feelings.jpg",
-        height: 100
-      },
-      {
-        id: "behaviorSelect",
-        label: "מָה עוֹשִׂים?",
-        path: "/launch?gameId=behaviorSelect",
-        media: "resources/images/mood.png",
-        height: 100
-      },
-      {
-        id: "washHands",
-        label: "שׁוֹטְפִים יָדַיִם",
-        path: "/launch?gameId=washHands",
-        media: "resources/images/wash-hands.jpg",
-        height: 100
-      },
-      {
-        id: "bathroomRoutine",
-        label: "הוֹלְכִים לַשֵּׁרוּתִים",
-        path: "/launch?gameId=bathroomRoutine",
-        media: "resources/images/toilet.jpg",
-        height: 100
-      },
-      {
-        id: "morningRoutine",
-        label: "מִסְתַּדְּרִים בַּבֹּקֶר",
-        path: "/launch?gameId=morningRoutine",
-        media: "resources/images/wake-up.jpg",
-        height: 100
-      }
     ]
   }
 ];

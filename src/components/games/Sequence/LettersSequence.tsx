@@ -2,8 +2,8 @@ import React, { ChangeEvent, useContext, useEffect, useRef, useState } from "rea
 
 import "./Sequence.css";
 
-import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
-import { WellDone, hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
+import { hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
 
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
@@ -14,6 +14,8 @@ import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { LetterSequenceDescriptorType, WordDescriptorType } from "./Sequence.types";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
+import { Advise } from "../../shared/Advise/Advise";
 
 interface ViewEntry {
   value: string;
@@ -29,14 +31,14 @@ export const LettersSequence = (props: LettersSequenceProps) => {
   const wordsCatalogSize = wordsCatalog.length;
   const gamePageTitle:string = props.gameDescriptor.title ? props.gameDescriptor.title : "";
 
+  const navigate = useNavigate();
+
   const { 
     audioOn 
   } = useContext(GamesContext) as GamesContextType;
 
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
-
-  const navigate = useNavigate();
 
   let selectedSequenceSteps = useRef<string[]>([]);
   function addSequenceStep(id: string) {
@@ -54,10 +56,8 @@ export const LettersSequence = (props: LettersSequenceProps) => {
   const [orderedLetters, setOrderedLetters] = useState<ViewEntry[]>([]);
   const [shuffledLetters, setShuffledLetters] = useState<ViewEntry[]>([]);
   const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
-  const [pendingSelectedWordIndices, setPendingSelectedWordIndices] =
-    useState<boolean[]>([]);
-  const [selectedWordIndices, setSelectedWordIndices] =
-    useState<boolean[]>([])
+  const [pendingSelectedWordIndices, setPendingSelectedWordIndices] = useState<boolean[]>([]);
+  const [selectedWordIndices, setSelectedWordIndices] = useState<boolean[]>([])
 
   let currentIndex = useRef<number>(0);
 
@@ -115,14 +115,15 @@ export const LettersSequence = (props: LettersSequenceProps) => {
       shuffledLetters[letterShuffledIndex].show = false;
       setShuffledLetters([...shuffledLetters])
 
-      setFeedbackFace(() => FACES.HAPPY);
       if (letterOrderedIndex === orderedLetters.length-1) {
+        setFeedbackFace(() => FACES.NONE);
         showWellDone(audioOn);
         setTimeout(() => {
           getNextWord();
         }, ConstantsUtil.hoorayTimeout); 
       }
       else {
+        setFeedbackFace(() => FACES.HAPPY);
         MediaUtil.player(playerHooray, audioOn);
       }
     }
@@ -145,7 +146,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         setWord(words[currentIndex.current]);
     
       }
-      else {
+      else {  
         setTimeout(() => {
           navigate("/home");
         }, ConstantsUtil.hoorayTimeout);        
@@ -193,15 +194,23 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         setGameSettinsDisplay("game-settings-global-show")
       }}/>
 
+      <PageHeader title={ pageTitle } feedbackFace={ feedbackFace } />
+
       <div className="letters-sequence-global">
-        <img src={MediaUtil.getCatalogImage(word.file)} alt={word.title}
-          height={DeviceUtil.imageHeightLarge()}></img>        
+        <div>
+          <img src={MediaUtil.getCatalogImage(word.file)} alt={word.title}
+            height={DeviceUtil.imageHeightLarge()}></img>  
+        </div>
 
         <div className="sequence-container">
-          <div className="app-title">{ pageTitle }</div>
+          <div className="sequence-letters-advise">  
+            <Advise text={ word.title } default={ true } />
+          </div>
+
           <div id="bank-area" className="sequence-source-images" >
             { shuffledLetters.map((e:ViewEntry, i:number) =>
-                  e.show && <span className="sequence-letter" 
+                  e.show && <span 
+                    className={`sequence-letter ${i===shuffledLetters.length-1 ? "sequence-letter-last-letter" : ""}`} 
                     id={getBankId(e.value)} key={i} 
                     onClick={() => verifyLetter(e)}>
                       {e.value}
@@ -211,7 +220,10 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         </div>
 
         <div className="sequence-feedback">
-          <div>
+          <h3>
+            פֹּה לְמַטָּה נִרְאֶה אֶת הַמִּילָּה כְּתוּבָה נָכוֹן
+          </h3>
+
           <div id="feedback-area">
             { orderedLetters.map((e:ViewEntry) =>
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
@@ -222,12 +234,8 @@ export const LettersSequence = (props: LettersSequenceProps) => {
                 )
             }
           </div>  
-            <span><FaceFeedback face={feedbackFace} /></span>
-          </div>
         </div>
       </div>
-
-      <WellDone />
 
       <div id="gameSettings" className={ gameSettinsDisplay }>
         <div>

@@ -10,12 +10,13 @@ import { Notification, NotificationType } from "../../shared/Notification/Notifi
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { MediaUtil } from "../../../utils/MediaUtil";
-import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
-import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { showWellDone } from "../../shared/WellDone/WellDone";
 import { useNavigate } from "react-router-dom";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PlayListNames } from "../../../assets/playLists";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
 
 type ImageTitleNotificationType = {
   top: number,
@@ -214,9 +215,9 @@ export const Match = (props: MatchPropsType) => {
   return(
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId} settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
-      <div id="instructions" className="app-title-centered">
-        { setTitle() }
-      </div>
+
+      <PageHeader title={setTitle()} feedbackFace={feedbackFace}/>      
+
       <div id="groupSplash" className="groupImage">
         {
           groupFiles && groupFiles.length > 0 ?
@@ -248,9 +249,6 @@ export const Match = (props: MatchPropsType) => {
           )
         }
       </div>
-      
-      <span><FaceFeedback face={feedbackFace} /></span>
-      <WellDone />
       
       { showImageTitleNotification.current &&
         <Notification 

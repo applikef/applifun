@@ -2,8 +2,8 @@ import React, { ChangeEvent, useContext, useEffect, useRef, useState } from "rea
 
 import "./Sequence.css";
 
-import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
-import { WellDone, hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
+import { hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
 
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
@@ -13,6 +13,7 @@ import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { NumberSequenceDescriptorType, NumberListDescriptorType } from "./Sequence.types";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
 
 const enum NumbersOrder {
   UP,
@@ -161,14 +162,15 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
       shuffledNumbers[numberShuffledIndex].show = false;
       setShuffledNumbers([...shuffledNumbers])
 
-      setFeedbackFace(() => FACES.HAPPY);
       if (numberOrderedIndex === orderedNumbers.length-1) {
+        setFeedbackFace(() => FACES.NONE);
         showWellDone(audioOn);
         setTimeout(() => {
           getNextNumberList();
         }, ConstantsUtil.hoorayTimeout); 
       }
       else {
+        setFeedbackFace(() => FACES.HAPPY);
         MediaUtil.player(playerHooray, audioOn);
       }
     }
@@ -184,7 +186,6 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
         // reset view
         selectedSequenceSteps.current = [];
         setFeedbackFace(FACES.NONE);
-        //NETTA setPageTitle(() => direction === "UP" ? titleUp : titleDown);
         hideWellDone();
 
         currentIndex.current++;
@@ -247,7 +248,9 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
 
       <div className="letters-sequence-global">
         <div className="sequence-container">
-          <div className="app-title">{ pageTitle.current }</div>
+
+          <PageHeader title={ pageTitle.current } feedbackFace={ feedbackFace } />
+
           <div id="bank-area" className="sequence-source-images" >
             { shuffledNumbers.map((e:ViewEntry) =>
                 e.show && <span className="sequence-letter" id={getBankId(e.value)} key={e.value} 
@@ -259,11 +262,10 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
 
         <div className="sequence-feedback">
           <h3>
-            פה למטה נראה את המספרים מסודרים
+            פֹּה לְמַטָּה נִרְאֶה אֶת הַמִּסְפָּרִים מְסֻדָּרִים
           </h3>
 
-          <div>
-          <div id="feedback-area">
+          <div id="feedback-area" className="sequence-feedback-numbers">
             { orderedNumbers.map((e:ViewEntry) =>
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
                     id={getFeedbackId(e.value)} 
@@ -273,12 +275,8 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
                 )
             }
           </div>  
-            <span><FaceFeedback face={feedbackFace} /></span>
-          </div>
         </div>
       </div>
-
-      <WellDone />
 
       <div id="gameSettings" className={ gameSettinsDisplay }>
         <div>

@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 
 import "./Sequence.css";
 
-import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { TitledImage } from "../../shared/TitledImage/TitledImage";
-import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { showWellDone } from "../../shared/WellDone/WellDone";
 
 import { ImageDescriptorType, ImageSequenceDescriptorType } from "./Sequence.types";
 
@@ -14,6 +14,7 @@ import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
 
 export interface ImagesSequenceProps {
   gameDescriptor: ImageSequenceDescriptorType;
@@ -38,7 +39,12 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
   
   const [, setShowPage] = useState(false);
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
-  const [pageTitle, setPageTitle] = useState(props.gameDescriptor.title ? props.gameDescriptor.title : "");
+  const [pageTitle, setPageTitle] = 
+    useState(props.gameDescriptor.title ? 
+      props.gameDescriptor.title 
+    : 
+      "סַדֵּר אֶת הַתְּמוּנוֹת לְפִי סֵדֶר הַפְּעֻולּוֹת"
+    );
 
   let shuffledImages = useRef<ImageDescriptorType[]>([]);
 
@@ -50,6 +56,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
 
   function showSuccess() {
     setPageTitle("כל הכבוד!");
+    setFeedbackFace(() => FACES.NONE);
     showWellDone(audioOn);
   }
 
@@ -76,7 +83,9 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId}/>
       <div className="sequence-container">
-        <div className="app-title">{ pageTitle }</div>
+
+        <PageHeader title={ pageTitle } feedbackFace={ feedbackFace } />
+
         <div className="sequence-source-images" >
           {shuffledImages.current.map((e:ImageDescriptorType,i:number) =>
               <TitledImage className="sequence-image" id={"bank-" + e.id} key={i} 
@@ -92,7 +101,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
       <div className="sequence-feedback">
         {
           <h3>
-            פה למטה נראה את התמונות מסודרות
+            פֹּה לְמַטָּה נִרְאֶה אֶת הַתְּמוּנוֹת מְסֻדָּרוֹת
           </h3>
         }
         <div>
@@ -106,11 +115,8 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
                 </span>
               )
           }
-          <span><FaceFeedback face={feedbackFace} /></span>
         </div>
       </div>
-
-      <WellDone />
     </div>
   )
 }

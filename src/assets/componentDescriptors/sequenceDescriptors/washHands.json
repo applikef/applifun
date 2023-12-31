@@ -1,5 +1,6 @@
 {
     "gameId": "washHands",
+    "title": "סַדֵּר אֶת הַתְּמוּנוֹת מֵהַפְּעֻלָּה הָרִאשׁוֹנָה לַפְּעֻלָּה הָאַחֲרוֹנָה",
     "images": [
       {
         "id": "open-faucet",
@@ -14,7 +15,7 @@
       {
         "id": "put-soap",
         "file": "put-soap-on-hands",
-        "title": "שָׂם סַבּוֹן"
+        "title": "לוֹקֵחַ סַבּוֹן"
       },
       {
         "id": "clean-with-soap",

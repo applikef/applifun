@@ -1,16 +1,16 @@
 import React, { useContext, useRef, useState } from "react";
 import { SortGameDescriptorType, SortGameGroupType, SortGameImageType } from "./sortGame.types";
-import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 
 import "./SortGame.css";
-import { WellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { showWellDone } from "../../shared/WellDone/WellDone";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ModalNotification } from "../../shared/Notification/ModalNotification";
 import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
-import { AttentionArrow } from "../../shared/AttentionArrow/AttentionArrow";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
 
 export interface SortGameProps {
   gameDescriptor: SortGameDescriptorType;
@@ -110,7 +110,7 @@ export const SortGame = (props: SortGameProps) => {
       <ModalNotification text={selectGroupMessage} show={colorSelectError ? true : false}
         onDismiss={() => closeModal()}/>
       
-      <div  className="app-title-centered">{title}</div>
+      <PageHeader title={title} feedbackFace={feedbackFace}/>      
 
       <div>
         <table width="100%">
@@ -133,8 +133,6 @@ export const SortGame = (props: SortGameProps) => {
                   </div>
                 </td>
               )}
-              <td width={"100%"} className="sort-game-face-feedback"><FaceFeedback 
-                face={feedbackFace} /></td>
             </tr>
             <tr>
               {groups.map((group) => 
@@ -143,7 +141,7 @@ export const SortGame = (props: SortGameProps) => {
                   style={{cursor: cursorStyle}}>
                     {selectedImages.get(group.id)!.map((imageFile,i) => 
                       <span key={i}>
-                        <img src={MediaUtil.getCatalogImage(imageFile)} height="64px" 
+                        <img src={MediaUtil.getCatalogImage(imageFile)} height="72px" 
                           alt=""/>
                       </span>
                     )}
@@ -167,8 +165,6 @@ export const SortGame = (props: SortGameProps) => {
             className="sort-game-source-img"></img>
         )}
       </div>
-
-      <WellDone />
     </div>
   )
 }

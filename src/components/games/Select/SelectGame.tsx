@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useContext, useRef, useState } from "react";
 import { SelectGameDescriptorType, SelectGameGroupType, SelectGameImageType } from "./selectGame.types";
-import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 
 import "./SelectGame.css";
-import { WellDone, hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { PlayListNames } from "../../../assets/playLists";
@@ -11,6 +11,7 @@ import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { TitledImage } from "../../shared/TitledImage/TitledImage";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
 
 export interface SelectGameProps {
   gameDescriptor: SelectGameDescriptorType;
@@ -121,9 +122,8 @@ export const SelectGame = (props: SelectGameProps) => {
       />
       
       <div  className="app-title-centered">
-        {title}&nbsp;&nbsp;
-        <img src={activeGroup.cursor} height="32px" alt={activeGroup.title} />
-        
+        { /* <img src={activeGroup.cursor} height="32px" alt={activeGroup.title} /> */ }
+        <PageHeader title={title} feedbackFace={ feedbackFace } />
       </div>
 
       <div>
@@ -183,9 +183,6 @@ export const SelectGame = (props: SelectGameProps) => {
           }}>בטל</button>
         </div>
       </div>
-
-      <span><FaceFeedback face={feedbackFace} /></span>
-      <WellDone />
     </div>
   )
 }

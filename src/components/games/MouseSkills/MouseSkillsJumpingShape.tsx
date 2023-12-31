@@ -1,5 +1,5 @@
-import React, { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
-import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
+import React, { ChangeEvent, useContext, useRef, useState } from "react";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { MOUSE_SKILL_LEVEL, MOUSE_SKILL_TYPE } from "./MouseSkills.types";
@@ -10,19 +10,20 @@ import { PlayListNames } from "../../../assets/playLists";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { Banner } from "../../global/Banner/Banner";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
 
 const mouseEventTypeDescriptors = [
   {
     id: MOUSE_SKILL_TYPE.HOVER,
-    title: "עֲמִידָה מֵעַל"
+    title: "רִחוּף"
   }, 
   {
     id: MOUSE_SKILL_TYPE.CLICK,
-    title: "לְחִיצָה"
+    title: "הַקְלָקָה"
   }, 
   {
     id: MOUSE_SKILL_TYPE.DOUBLE_CLICK,
-    title: "לְחִיצָה כְּפוּלָה"
+    title: "הַקְלָקָה כְּפוּלָה"
   }, 
 ];
 
@@ -130,6 +131,8 @@ export const MouseSkillsJumpingShape = (props: MouseSkillsProps) => {
     <div className="app-page">
       <Banner gameId="mouseJumpingShapeClick" settings={() => setGameSettingsDisplay("game-settings-global-show")} />
 
+      <PageHeader title="" feedbackFace={ feedbackFace } />
+      
       <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
         <circle cx={targetPosition[0]} cy={targetPosition[1]} r={levelLayout.current.size.r} 
           stroke="#FF7F50" strokeWidth="1" 
@@ -173,8 +176,6 @@ export const MouseSkillsJumpingShape = (props: MouseSkillsProps) => {
           }} 
         />
       </svg>
-
-      <FaceFeedback face={ feedbackFace } marginRight="10px" />
 
       <div id="gameSettings" className={ gameSettingsDisplay }>
         <div>

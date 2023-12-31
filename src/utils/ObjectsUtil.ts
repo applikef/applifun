@@ -39,12 +39,28 @@ public static sortNumbers = (array: number[]) => {
 
   public static shuffleArrayItems = (array: any[]) => { 
     let shuffledArray = [...array];
-    for (let i = shuffledArray.length - 1; i > 0; i--) { 
-      const j = Math.floor(Math.random() * (i + 1)); 
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; 
-    } 
+    do {
+      for (let i = shuffledArray.length - 1; i > 0; i--) { 
+        const j = Math.floor(Math.random() * (i + 1)); 
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; 
+      } 
+    } while (ObjectsUtil.equalByValue(shuffledArray, array))
     return shuffledArray; 
   }; 
+
+  // Used and tested for simple elements as strings
+  public static equalByValue = (arr1: any[], arr2: any[]) => {
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+
+    for (let i=0; i < arr1.length; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   public static emptyString(str: string) {
     return str === undefined || str.length === 0;
