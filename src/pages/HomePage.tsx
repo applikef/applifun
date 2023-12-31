@@ -95,6 +95,10 @@ export const HomePage = () => {
         <Link to="/launch?gameId=changeRecords" className="app-link-sm">
           לרשימת כל עדכוני המשחקים
         </Link> 
+        <br/>
+        <div className="app-link-sm">
+          Many images of this site were designed by brgfx / Freepik at freepik.com
+        </div> 
       </div>
 
       <div className={`banner-help-content ${showHelp}`}>
