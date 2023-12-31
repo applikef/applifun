@@ -31,6 +31,8 @@ export const LettersSequence = (props: LettersSequenceProps) => {
   const wordsCatalogSize = wordsCatalog.length;
   const gamePageTitle:string = props.gameDescriptor.title ? props.gameDescriptor.title : "";
 
+  const navigate = useNavigate();
+
   const { 
     audioOn 
   } = useContext(GamesContext) as GamesContextType;
@@ -146,11 +148,11 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         setWord(words[currentIndex.current]);
     
       }
-      // else {  NETTA - DELETE?
-      //   setTimeout(() => {
-      //     navigate("/home");
-      //   }, ConstantsUtil.hoorayTimeout);        
-      // }
+      else {  
+        setTimeout(() => {
+          navigate("/home");
+        }, ConstantsUtil.hoorayTimeout);        
+      }
     }, ConstantsUtil.hoorayTimeout)
   }
 
