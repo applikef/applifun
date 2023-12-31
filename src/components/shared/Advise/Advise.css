@@ -1,0 +1,18 @@
+.advise-icon {
+  height: 64px;
+  width: 64px;
+  cursor: pointer;
+}
+
+.advise-text {
+  margin-right: 8px;
+  font-size: 2rem;
+}
+
+.advise-hide {
+  display: none;
+}
+
+.advise-show {
+  display: inline-block;
+}

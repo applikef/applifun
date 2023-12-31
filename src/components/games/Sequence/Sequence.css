@@ -70,3 +70,12 @@
   text-align: left;
 }
 
+.sequence-letter-last-letter {
+  margin-left: -40px;
+}
+
+.sequence-letters-advise {
+  margin-right: 16px;
+}
+
+

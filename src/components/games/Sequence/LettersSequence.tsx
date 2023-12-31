@@ -15,6 +15,7 @@ import { LetterSequenceDescriptorType, WordDescriptorType } from "./Sequence.typ
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
+import { Advise } from "../../shared/Advise/Advise";
 
 interface ViewEntry {
   value: string;
@@ -36,8 +37,6 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
-
-  const navigate = useNavigate();
 
   let selectedSequenceSteps = useRef<string[]>([]);
   function addSequenceStep(id: string) {
@@ -147,11 +146,11 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         setWord(words[currentIndex.current]);
     
       }
-      else {
-        setTimeout(() => {
-          navigate("/home");
-        }, ConstantsUtil.hoorayTimeout);        
-      }
+      // else {  NETTA - DELETE?
+      //   setTimeout(() => {
+      //     navigate("/home");
+      //   }, ConstantsUtil.hoorayTimeout);        
+      // }
     }, ConstantsUtil.hoorayTimeout)
   }
 
@@ -198,14 +197,20 @@ export const LettersSequence = (props: LettersSequenceProps) => {
       <PageHeader title={ pageTitle } feedbackFace={ feedbackFace } />
 
       <div className="letters-sequence-global">
-        <img src={MediaUtil.getCatalogImage(word.file)} alt={word.title}
-          height={DeviceUtil.imageHeightLarge()}></img>        
+        <div>
+          <img src={MediaUtil.getCatalogImage(word.file)} alt={word.title}
+            height={DeviceUtil.imageHeightLarge()}></img>  
+        </div>
 
         <div className="sequence-container">
+          <div className="sequence-letters-advise">  
+            <Advise text={ word.title } />
+          </div>
 
           <div id="bank-area" className="sequence-source-images" >
             { shuffledLetters.map((e:ViewEntry, i:number) =>
-                  e.show && <span className="sequence-letter" 
+                  e.show && <span 
+                    className={`sequence-letter ${i===shuffledLetters.length-1 ? "sequence-letter-last-letter" : ""}`} 
                     id={getBankId(e.value)} key={i} 
                     onClick={() => verifyLetter(e)}>
                       {e.value}
