@@ -34,7 +34,7 @@ export const HomePage = () => {
         <div className="home-page-title">
           מְשַׂחֲקִים וְלוֹמְדִים
         </div>
-        { isSmallScreen ? 
+        { true ? 
           <div>
             <div className="home-page-sub-title app-indent-top-16">בְּחַר סוּג מִשְׂחָק לִרְאוֹת אֶת הַמִּשְׂחָקִים הַקַּיָּמִים</div>
             <div className='home-page-section-list' data-walkthrough="app-games-list">

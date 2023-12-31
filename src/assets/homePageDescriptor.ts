@@ -98,33 +98,6 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
-    title: "מְמַיְּנִים",
-    media: "resources/images/sort-games.png",
-    items: [
-      {
-        id: "colorMatch",
-        label: "מוֹצְאִים תְּמוּנוֹת בְּצֶבַע",
-        path: "/launch?gameId=colorMatch",
-        media: "resources/images/find-color-game.png",
-        height: 100
-      },
-      {
-        id: "colorSort",
-        label: "בָּתֵּי הַצְּבָעִים",
-        path: "/launch?gameId=colorSort",
-        media: "resources/images/sort-by-color-game.png",
-        height: 100
-      },
-      {
-        id: "moodSort",
-        label: "מַּרְגִּישִׁים",
-        path: "/launch?gameId=moodSort",
-        media: "resources/images/feelings-sort.png",
-        height: 100
-      },
-    ]
-  },
-  {
     title: "עוֹשִׂים",
     media: "resources/images/more-games.png",
     items: [
@@ -149,6 +122,33 @@ export const homePageDescriptor: HomePageSectionType[] = [
         media: "resources/images/wake-up.jpg",
         height: 100
       }
+    ]
+  },
+  {
+    title: "מְמַיְּנִים",
+    media: "resources/images/sort-games.png",
+    items: [
+      {
+        id: "colorMatch",
+        label: "מוֹצְאִים תְּמוּנוֹת בְּצֶבַע",
+        path: "/launch?gameId=colorMatch",
+        media: "resources/images/find-color-game.png",
+        height: 100
+      },
+      {
+        id: "colorSort",
+        label: "בָּתֵּי הַצְּבָעִים",
+        path: "/launch?gameId=colorSort",
+        media: "resources/images/sort-by-color-game.png",
+        height: 100
+      },
+      {
+        id: "moodSort",
+        label: "מַּרְגִּישִׁים",
+        path: "/launch?gameId=moodSort",
+        media: "resources/images/feelings-sort.png",
+        height: 100
+      },
     ]
   }
 ];
