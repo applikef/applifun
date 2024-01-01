@@ -18,24 +18,6 @@ export type HomePageSectionType = {
   items: HomePageItemType[];
 }
 
-/*
-      {
-        id: "moodSelect",
-        label: "אֵיךְ הֵם מַרְגִּישִׁים?",
-        path: "/launch?gameId=moodSelect",
-        media: "resources/images/feelings.jpg",
-        height: 100
-      },
-      {
-        id: "behaviorSelect",
-        label: "מָה עוֹשִׂים?",
-        path: "/launch?gameId=behaviorSelect",
-        media: "resources/images/mood.png",
-        height: 100
-      },
-
-*/
-
 export const homePageDescriptor: HomePageSectionType[] = [
   {
     title: "הָעַכְבָּר שֶׁלִּי",
@@ -120,6 +102,26 @@ export const homePageDescriptor: HomePageSectionType[] = [
         label: "מִסְתַּדְּרִים בַּבֹּקֶר",
         path: "/launch?gameId=morningRoutine",
         media: "resources/images/wake-up.jpg",
+        height: 100
+      }
+    ]
+  },
+  {
+    title: "מַרְגִּישִׁים",
+    media: "resources/images/feeling-transparent.png",
+    items: [
+      {
+        id: "moodSelect",
+        label: "אֵיךְ הֵם מַרְגִּישִׁים?",
+        path: "/launch?gameId=moodSelect",
+        media: "resources/images/feelings.jpg",
+        height: 100
+      },
+      {
+        id: "behaviorSelect",
+        label: "מָה עוֹשִׂים?",
+        path: "/launch?gameId=behaviorSelect",
+        media: "resources/images/mood.png",
         height: 100
       }
     ]

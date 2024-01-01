@@ -48,7 +48,7 @@ export const HomePage = () => {
                       } 
                       <LineBreak />
                       {section.media &&
-                        <img src={section.media} height={DeviceUtil.imageHeight()} 
+                        <img src={section.media} height={DeviceUtil.imageHeightMedium()} 
                           alt={section.title} />
                       } 
                     </div>

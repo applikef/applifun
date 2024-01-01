@@ -28,6 +28,12 @@ export class DeviceUtil {
     return DeviceUtil.isSmallDevice() ? smallSizeIamge : fullSizeIamge;
   }
   
+  public static imageHeightMedium(): string {
+    const smallSizeIamge: string = `${DeviceUtil.smallSizeIamge * 0.75}px`;
+    const fullSizeIamge: string = `${DeviceUtil.fullSizeIamge * 0.75}px`;
+    return DeviceUtil.isSmallDevice() ? smallSizeIamge : fullSizeIamge;
+  }
+  
   public static imageHeight(): string {
     const smallSizeIamge: string = `${DeviceUtil.smallSizeIamge}px`;
     const fullSizeIamge: string = `${DeviceUtil.fullSizeIamge}px`;
