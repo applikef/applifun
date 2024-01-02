@@ -1,15 +1,9 @@
 {
   "gameType": "sort",
   "gameId": "moodSort",
-  "titleTemplate": "מָה אֲנִי עוֹשֶׂה כְּשֶׁאֲנִי $value$?",
+  "titleTemplate": "מָה עוֹזֵר לִי כְּשֶׁאֲנִי $value$?",
   "selectGroupMessage": "קודם צריך לבחר מצב-רוח",
   "groups": [
-    {
-      "id": "happy",
-      "title": "שָׂמֵחַ",
-      "cursor": "resources/cursors/happy-face-cursor.png",
-      "image": "happy-face"
-    },
     {
       "id": "sad",
       "title": "עָצוּב",
@@ -32,51 +26,38 @@
   "entities": [
     {
       "id": "angry03",
-      "title": "צוֹעֵק",
+      "title": "לִצְעֹק",
       "file": "angry-boy",
-      "groupIds": []
-    },
-    {
-      "id": "happy03",
-      "title": "צוֹחֵק",
-      "file": "happy-woman-03",
-      "groupIds": ["happy"]
+      "validGroupIds": ["angry"],
+      "groupIds": ["angry"]
     },
     {
       "id": "boy-refrigerator",
-      "title": "אוֹכֵל",
+      "title": "לֶאֱכֹל",
       "file": "eat-sandwich",
-      "groupIds": ["hungry"]
+      "validGroupIds": ["hungry", "angry"],
+      "groupIds": ["hungry", "angry"]
     },
     {
       "id": "angry04",
-      "title": "צוֹעֵק",
+      "title": "לִצְעֹק",
       "file": "angry-girl",
-      "groupIds": []
+      "validGroupIds": ["angry"],
+      "groupIds": ["angry", "hungry"]
     },
     {
       "id": "talk-to-adult",
-      "title": "מְדַבֵּר עִם מְבֻוגָּר",
+      "title": "לְדַבֵּר עִם מְבֻגָּר",
       "file": "talk-to-adult",
+      "validGroupIds": ["angry", "sad", "hungry"],
       "groupIds": ["angry", "sad", "hungry"]
     },
     {
-      "id": "sad03",
-      "title": "יוֹשֵׁב עִם עַצְמִי",
-      "file": "sad-woman-03",
-      "groupIds": ["sad"]
-    },
-    {
       "id": "eat",
-      "title": "אוֹכֵל",
+      "title": "לֶאֱכֹל",
       "file": "eat",
-      "groupIds": ["hungry"]
-    },
-    {
-      "id": "child-thinks",
-      "title": "מִסְתַּכֵּל עַל מַשֶּׁהוּ נָעִים",
-      "file": "child-thinks",
-      "groupIds": ["angry", "sad"]
+      "validGroupIds": ["hungry", "angry"],
+      "groupIds": ["hungry", "angry"]
     }
   ]
 }

@@ -18,7 +18,7 @@ export interface SelectGameProps {
   errorMessage?: string;
 };
 
-export const SelectGame = (props: SelectGameProps) => {
+export const SelectSetsGame = (props: SelectGameProps) => {
   const imgSize:string = DeviceUtil.imageHeight();
   const groups = props.gameDescriptor.groups;
   const entities = props.gameDescriptor.entities;
@@ -35,16 +35,8 @@ export const SelectGame = (props: SelectGameProps) => {
     s.set(activeGroup.id, []);
     return s;
   });
-  const [sourceEntities, setSourceEntities] = useState<SelectGameImageType[]>(() => {
-    let entityList: SelectGameImageType[] = [];
-    entities.map((e) => e.groupIds === undefined ? 
-      entityList.push(e) 
-    : 
-      e.groupIds.includes(activeGroup.id) ? 
-        entityList.push(e) : undefined
-    )
-    return entityList;
-  });
+  const [sourceEntities, setSourceEntities] = 
+    useState<SelectGameImageType[]>(entities);
 
   const [entityIndex, setEntityIndex] = useState(0);
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
@@ -61,16 +53,7 @@ export const SelectGame = (props: SelectGameProps) => {
       s.set(pendingGroup.id, []);
       return s;
     });
-    setSourceEntities(() => {
-      let entityList: SelectGameImageType[] = [];
-      entities.map((e) => e.groupIds === undefined ? 
-        entityList.push(e) 
-      : 
-        e.groupIds.includes(pendingGroup.id) ? 
-          entityList.push(e) : undefined
-      )
-      return entityList;
-    });
+    setSourceEntities(entities);
     setFeedbackFace(FACES.NONE);
     setEntityIndex(0)
     hideWellDone();

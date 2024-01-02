@@ -27,37 +27,37 @@
     {
       "id": "angry03",
       "file": "angry-boy",
-      "groupIds": ["angry"]
+      "validGroupIds": ["angry"]
     },
     {
       "id": "happy03",
       "file": "happy-woman-03",
-      "groupIds": ["happy"]
+      "validGroupIds": ["happy"]
     },
     {
       "id": "angry04",
       "file": "angry-girl",
-      "groupIds": ["angry"]
+      "validGroupIds": ["angry"]
     },
     {
       "id": "happy02",
       "file": "happy-woman-02",
-      "groupIds": ["happy"]
+      "validGroupIds": ["happy"]
     },
     {
       "id": "sad02",
       "file": "sad-woman-02",
-      "groupIds": ["sad"]
+      "validGroupIds": ["sad"]
     },
     {
       "id": "angry02",
       "file": "angry-woman-transparent",
-      "groupIds": ["angry"]
+      "validGroupIds": ["angry"]
     },
     {
       "id": "sad03",
       "file": "sad-woman-03",
-      "groupIds": ["sad"]
+      "validGroupIds": ["sad"]
     }
   ]
 }
