@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import "./../../../assets/styles/global.css";
 import "./Match.css";
@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PlayListNames } from "../../../assets/playLists";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
+import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
 
 type ImageTitleNotificationType = {
   top: number,
@@ -72,9 +73,6 @@ export const Match = (props: MatchPropsType) => {
     });
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
 
-  const [selectedGroupValueIndices, setSelectedGroupValueIndices] = 
-    useState<boolean[]>((new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false));
-
   let validGroupValueIndices = 
     useRef<boolean[]>((new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false));
   let validImages = useRef<string[]>(getvalidImages());
@@ -106,7 +104,7 @@ export const Match = (props: MatchPropsType) => {
   }
 
   function multipleGroupsProvided(): boolean {
-    return (selectedGroupValueIndices.filter(x => x===true).length > 1)
+    return (validGroupValueIndices.current.filter(x => x===true).length > 1)
   }
 
   function setActiveGroup() {
@@ -149,7 +147,7 @@ export const Match = (props: MatchPropsType) => {
       }
       setTimeout(() => {
         updateValidGroupsOnItemMatch(imageIndex);
-        setSelectedGroupValueIndices(validGroupValueIndices.current);
+        // NETTA REQUIRED? setSelectedGroupValueIndices(validGroupValueIndices.current);
         setFeedbackFace(() => FACES.NONE);
         updateActiveGroup();
       }, ConstantsUtil.hoorayTimeout)
@@ -180,33 +178,14 @@ export const Match = (props: MatchPropsType) => {
     }
   }
 
-  function handleSettingsSelectGroup(e:ChangeEvent<HTMLInputElement>, index: number) : boolean[] {
-    const isChecked = e.target.checked;
-    let settingArr = new Array(...selectedGroupValueIndices)
-    const nSelected = settingArr.filter(Boolean).length;
-    if (isChecked) {
-      if (nSelected < maxNumberOfValidGroups) {
-        settingArr[index] = true;
-      }
-      else {
-        alert(`בחרת כבר ${maxNumberOfValidGroups} כניסות`);
-      }
-    }
-    else {
-      settingArr[index] = false;
-    }
-    return settingArr;  
-  }
-  
   function handleSettingsCancel() {
     validImages.current = getvalidImages();
-    setSelectedGroupValueIndices(validGroupValueIndices.current);
     setGameSettingsDisplay(()=>"game-settings-global-hide"); 
   }
 
-  function handleSettingsDone() {
+  function handleSettingsDone(groupValueIndices: boolean[]) {
+    validGroupValueIndices.current = groupValueIndices;
     showImageTitleNotification.current = false;
-    validGroupValueIndices.current = selectedGroupValueIndices;
     validImages.current = getvalidImages();
     setActiveGroup();
     setGameSettingsDisplay(()=>"game-settings-global-hide")
@@ -214,7 +193,8 @@ export const Match = (props: MatchPropsType) => {
 
   return(
     <div className="app-page">
-      <Banner gameId={props.gameDescriptor.gameId} settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
+      <Banner gameId={props.gameDescriptor.gameId} 
+        settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
 
       <PageHeader title={setTitle()} feedbackFace={feedbackFace}/>      
 
@@ -263,32 +243,14 @@ export const Match = (props: MatchPropsType) => {
         />
       }
       
-      <div id="gameSettings" className={ gameSettingsDisplay }>
-        <div>
-          <div className="game-settings-title">{ props.gameDescriptor.settingsTitle }</div>
-          <div className="game-settings-title">ניתן לבחור עד {maxNumberOfValidGroups} כניסות</div>
-          
-          { props.gameDescriptor.groupNames.map(
-            (group, i) => 
-              <div className="game-settings-entry" key={i}>
-                <input type="checkbox"
-                  checked={selectedGroupValueIndices[i]} 
-                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
-                    const settingArr: boolean[] = handleSettingsSelectGroup(e, i);
-                    setSelectedGroupValueIndices(settingArr);
-                  }}></input>
-                <span key={i}>{group}</span>
-              </div>
-          )}
-          <br/>
-          <button className="app-button-primary-sm" onClick={() => {
-            handleSettingsDone(); 
-          }}>שמור</button>
-          <button className="app-button-ghost-sm" onClick={() => {
-            handleSettingsCancel();
-          }}>בטל</button>
-        </div>
-      </div>
+        <MultiSelectionSettings
+          className={ gameSettingsDisplay }
+          title={props.gameDescriptor.settingsTitle}
+          maxNumberOfValidGroups={maxNumberOfValidGroups}
+          options={props.gameDescriptor.groupNames}
+          handleSettingsDone={handleSettingsDone}
+          handleSettingsCancel={handleSettingsCancel}
+        />
     </div>
   )
 }
