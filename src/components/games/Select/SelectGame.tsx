@@ -162,7 +162,7 @@ export const SelectGame = (props: SelectGameProps) => {
       />
       
       <div  className="app-title-centered">
-        <PageHeader title={title} feedbackFace={ feedbackFace } />
+        <PageHeader title={title} image={activeGroup.current.image} feedbackFace={ feedbackFace } />
       </div>
 
       <div>

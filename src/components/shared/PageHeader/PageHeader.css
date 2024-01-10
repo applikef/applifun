@@ -7,6 +7,12 @@
   text-align: right;
 }
 
+.page-header-image {
+  height: 64px;
+  padding-left: 32px;
+  vertical-align: middle;
+}
+
 .page-header-feedback-face {
   float: left;
   margin-left: 16px;

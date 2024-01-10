@@ -1,5 +1,6 @@
 {
   "angry-boy": "resources/imageCatalog/angry03.jpeg", 
+  "angry-child": "resources/imageCatalog/angry-child.jpg", 
   "angry-face": "resources/imageCatalog/angry-face.png", 
   "angry-girl": "resources/imageCatalog/angry04.jpeg", 
   "angry-woman": "resources/imageCatalog/angry02.jpeg",
@@ -51,6 +52,7 @@
   "green-splash": "resources/imageCatalog/green.png",
   "green-tree": "resources/imageCatalog/tree-green.png",
   "happy-face": "resources/imageCatalog/happy-face.png", 
+  "happy-girl": "resources/imageCatalog/happy-girl.jpg", 
   "happy-woman-01": "resources/imageCatalog/happy01.jpg", 
   "happy-woman-02": "resources/imageCatalog/happy02.jpg", 
   "happy-woman-03": "resources/imageCatalog/happy03.jpg", 
@@ -81,6 +83,7 @@
   "red-puff": "resources/imageCatalog/puff-red.png",
   "red-splash": "resources/imageCatalog/red.png",
   "red-strawberry": "resources/imageCatalog/strawberry-red.png",
+  "sad-child": "resources/imageCatalog/sad-child.jpg", 
   "sad-woman-02": "resources/imageCatalog/sad02.jpeg", 
   "sad-woman-03": "resources/imageCatalog/sad03.jpeg",
   "sit-3": "resources/imageCatalog/sit.png",

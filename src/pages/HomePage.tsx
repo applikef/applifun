@@ -97,7 +97,7 @@ export const HomePage = () => {
         </Link> 
         <br/>
         <div className="app-link-sm">
-          Many images of this site were designed by brgfx / Freepik at freepik.com
+          Many images of this site were downloaded from https://pixabay.com/ or designed by brgfx / Freepik at freepik.com
         </div> 
       </div>
 

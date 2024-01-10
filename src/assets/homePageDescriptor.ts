@@ -38,16 +38,9 @@ export const homePageDescriptor: HomePageSectionType[] = [
     items: [
       {
         id: "numberMatch",
-        label: "אֵיפֹה יֵשׁ מִסְפָּר?",
+        label: "סוֹפְרִים",
         path: "/launch?gameId=numberMatch",
         media: "resources/images/find-number-game.png",
-        height: 100
-      },
-      {
-        id: "numberSort",
-        label: "בָּתֵּי הַמִּסְפָּרִים",
-        path: "/launch?gameId=numberSort",
-        media: "resources/images/sort-by-number-game.png",
         height: 100
       },
       {
@@ -116,13 +109,6 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=moodSelect",
         media: "resources/images/feelings.jpg",
         height: 100
-      },
-      {
-        id: "behaviorSelect",
-        label: "מָה עוֹשִׂים?",
-        path: "/launch?gameId=behaviorSelect",
-        media: "resources/images/mood.png",
-        height: 100
       }
     ]
   },
@@ -142,6 +128,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
         label: "בָּתֵּי הַצְּבָעִים",
         path: "/launch?gameId=colorSort",
         media: "resources/images/sort-by-color-game.png",
+        height: 100
+      },
+      {
+        id: "numberSort",
+        label: "בָּתֵּי הַמִּסְפָּרִים",
+        path: "/launch?gameId=numberSort",
+        media: "resources/images/sort-by-number-game.png",
         height: 100
       },
       {

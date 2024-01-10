@@ -9,19 +9,19 @@
       "id": "happy",
       "title": "שָׂמֵחַ",
       "cursor": "resources/cursors/happy-face-cursor.png",
-      "image": "happy-face"
+      "image": "happy-girl"
     },
     {
       "id": "sad",
       "title": "עָצוּב",
       "cursor": "resources/cursors/worry-face-cursor.png",
-      "image": "worry-face"
+      "image": "sad-child"
     },
     {
       "id": "angry",
       "title": "כּוֹעֵס",
       "cursor": "resources/cursors/angry-face-cursor.png",
-      "image": "angry-face"
+      "image": "angry-child"
     }
   ],
   "entities": [
