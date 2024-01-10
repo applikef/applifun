@@ -13,6 +13,7 @@ export interface SelectGameDescriptorType extends GameDescriptorType {
   groups: SelectGameGroupType[];
   entities: SelectGameImageType[];
   selectGroupMessage?: string;
+  settingsTitle: string;
 }
 
 export type SelectGameImageType = {

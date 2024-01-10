@@ -92,4 +92,16 @@ public static sortNumbers = (array: number[]) => {
     return -1;
   }
 
+  public static getNextIndexInBooleanArray(arrayOfIndices: boolean[], currentIndex: number): number | undefined {
+    if (arrayOfIndices.length <= currentIndex + 1) {
+      return undefined
+    }
+
+    let tmpArray = Array(arrayOfIndices.length).fill(-1);
+    tmpArray = tmpArray.map((e,i) => (i > currentIndex && arrayOfIndices[i] === true) ? i : -1);
+    tmpArray = tmpArray.filter((e) => e > 0);
+    
+    return tmpArray && tmpArray.length > 0 ? tmpArray[0] : undefined;
+  }
+
 }
