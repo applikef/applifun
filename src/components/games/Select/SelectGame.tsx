@@ -30,9 +30,35 @@ export const SelectGame = (props: SelectGameProps) => {
   const groupNames = groups.map((g) => g.title);
   const entities = props.gameDescriptor.entities;
 
+  const playListYes: string = props.gameDescriptor.playLists && props.gameDescriptor.playLists.yes ?
+    props.gameDescriptor.playLists.yes
+  : PlayListNames.SHORT_HOORAY;
+  const playListNo: string = props.gameDescriptor.playLists && props.gameDescriptor.playLists.no ?
+    props.gameDescriptor.playLists.no
+  : PlayListNames.OUCH;
+
+
   const { 
     audioOn
   } = useContext(GamesContext) as GamesContextType;
+
+  function getSourceEntities() {
+    let entityList: SelectGameImageType[] = [];
+    entities.map((e) => e.groupIds === undefined ? 
+      entityList.push(e) 
+    : 
+      e.groupIds.includes(activeGroup.current.id) ? 
+        entityList.push(e) : undefined
+    )
+    return entityList;
+  }
+  
+  function getNumberOfValidGroupEntities() {
+    let n = sourceEntities.current.filter(e => e.validGroupIds ? 
+      e.validGroupIds.includes(activeGroup.current.id) 
+    : false).length;
+    return n;
+  }
 
   let activeGroup = useRef<SelectGameGroupType>(groups[0]);
 
@@ -42,27 +68,17 @@ export const SelectGame = (props: SelectGameProps) => {
     s.set(activeGroup.current.id, []);
     return s;
   });
-  const [sourceEntities, setSourceEntities] = useState<SelectGameImageType[]>(() => {
-    let entityList: SelectGameImageType[] = [];
-    entities.map((e) => e.groupIds === undefined ? 
-      entityList.push(e) 
-    : 
-      e.groupIds.includes(activeGroup.current.id) ? 
-        entityList.push(e) : undefined
-    )
-    return entityList;
-  });
-
   const [entityIndex, setEntityIndex] = useState(0);
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
+
+  let sourceEntities = useRef<SelectGameImageType[]>(getSourceEntities());
+  let numberOfValidGroupEntities = useRef<number>(getNumberOfValidGroupEntities());
 
   let validGroupIndices = useRef<boolean[]>(Array(numberOfGroups).fill(true));
   let activeGroupIndex = useRef<number>(0);
   let gameComplete = useRef<boolean>(false);
 
   const title = ObjectsUtil.getTitle(props.gameDescriptor.titleTemplate, activeGroup.current.title);
-  const numberOfGroupEntities: number = 
-    entities.filter(e => e.validGroupIds ? e.validGroupIds.includes(activeGroup.current.id) : false).length;
 
   function initGame() {
     setSelectedImages(() => {
@@ -70,16 +86,8 @@ export const SelectGame = (props: SelectGameProps) => {
       s.set(activeGroup.current.id, []);
       return s;
     });
-    setSourceEntities(() => {
-      let entityList: SelectGameImageType[] = [];
-      entities.map((e) => e.groupIds === undefined ? 
-        entityList.push(e) 
-      : 
-        e.groupIds.includes(activeGroup.current.id) ? 
-          entityList.push(e) : undefined
-      )
-      return entityList;
-    });
+    sourceEntities.current = getSourceEntities();
+    numberOfValidGroupEntities.current = getNumberOfValidGroupEntities();
     setFeedbackFace(FACES.NONE);
     setEntityIndex(0)
     hideWellDone();
@@ -101,15 +109,15 @@ export const SelectGame = (props: SelectGameProps) => {
       setSelectedImages(map => new Map(map.set(activeGroup.current.id, a!)));
 
       // Remove entity from source entities
-      let newArr: SelectGameImageType[] = [ ...sourceEntities ];
+      let newArr: SelectGameImageType[] = [ ...sourceEntities.current ];
       let sIndex: number = newArr.indexOf(e);
       if (sIndex > -1) {
         newArr.splice(sIndex,1);
-        setSourceEntities(newArr);
+        sourceEntities.current = newArr;
       }
       
       setFeedbackFace(FACES.HAPPY);
-      if (entityIndex === numberOfGroupEntities-1) {
+      if (entityIndex === numberOfValidGroupEntities.current-1) {
         setFeedbackFace(FACES.NONE);
         gameComplete.current = true;
         showWellDone(audioOn);
@@ -128,13 +136,13 @@ export const SelectGame = (props: SelectGameProps) => {
         }, ConstantsUtil.hoorayTimeout);
       }
       else {
-        MediaUtil.play(MediaUtil.pickAudio(PlayListNames.SHORT_HOORAY), audioOn);
+        MediaUtil.play(MediaUtil.pickAudio(playListYes), audioOn);
         setEntityIndex(entityIndex+1);
       }
     }
     else {
       setFeedbackFace(FACES.WORRY);
-      MediaUtil.play(MediaUtil.pickAudio(PlayListNames.OUCH), audioOn);
+      MediaUtil.play(MediaUtil.pickAudio(playListNo), audioOn);
     }
   }
 
@@ -174,7 +182,7 @@ export const SelectGame = (props: SelectGameProps) => {
                 width="100%">
                   {selectedImages.get(activeGroup.current.id)!.map((imageFile,i) => 
                     <span key={i}>
-                      <img src={MediaUtil.getCatalogImage(imageFile)} height="64px" 
+                      <img src={MediaUtil.getCatalogImage(imageFile)} height="120px" 
                         alt="" className="select-game-selected-img"/>
                     </span>
                   )}
@@ -188,7 +196,7 @@ export const SelectGame = (props: SelectGameProps) => {
       </div>
 
       <div className="select-game-entities">
-        {sourceEntities.map((e,i) =>
+        {sourceEntities.current.map((e,i) =>
           <TitledImage id={"bank-" + e.id} key={i} src={MediaUtil.getCatalogImage(e.file)} 
             alt={e.title} 
             height={imgSize}

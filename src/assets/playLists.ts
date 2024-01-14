@@ -2,6 +2,7 @@ export enum PlayListNames {
   LONG_HOORAY = "LongHooray",
   SHORT_HOORAY = "ShortHooray",
   OUCH = "Ouch",
+  NO_NO_NO = "NoNoNo",
   DEFAULT = "default",
 }
 
@@ -17,6 +18,10 @@ export const PlayLists: Map<string, string[]> = new Map([
   ]],
   ["Ouch", [
     "resources/audio/ouch-2.mp3",
+    "resources/audio/try-again.mp3",
+  ]],
+  ["NoNoNo", [
+    "resources/audio/no-no-no.mp3",
     "resources/audio/try-again.mp3",
   ]],
   ["default", [

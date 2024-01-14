@@ -8,12 +8,18 @@ export type SelectGameGroupType = {
   image?: string;
 }
 
+export interface PlayListsType {
+  no?: string;
+  yes?: string;
+}
+
 export interface SelectGameDescriptorType extends GameDescriptorType {
   titleTemplate: string;
   groups: SelectGameGroupType[];
   entities: SelectGameImageType[];
   selectGroupMessage?: string;
   settingsTitle: string;
+  playLists: PlayListsType;
 }
 
 export type SelectGameImageType = {

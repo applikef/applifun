@@ -109,6 +109,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=moodSelect",
         media: "resources/images/feelings.jpg",
         height: 100
+      },
+      {
+        id: "behaviorSelect",
+        label: "כְּשֶׁאֲנִי מַרְגִּישׁ",
+        path: "/launch?gameId=behaviorSelect",
+        media: "resources/images/mood.png",
+        height: 100
       }
     ]
   },

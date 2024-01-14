@@ -4,24 +4,27 @@
   "titleTemplate": "מָה עוֹזֵר לִי כְּשֶׁאֲנִי $value$?",
   "selectGroupMessage": "קודם צריך לבחר מצב-רוח",
   "settingsTitle": "בחרי את מצב הרוח למשחק",
+  "playLists": {
+    "no": "NoNoNo"
+  },
   "groups": [
     {
       "id": "sad",
       "title": "עָצוּב",
       "cursor": "resources/cursors/worry-face-cursor.png",
-      "image": "worry-face"
+      "image": "sad-child"
     },
     {
       "id": "angry",
       "title": "כּוֹעֵס",
       "cursor": "resources/cursors/angry-face-cursor.png",
-      "image": "angry-face"
+      "image": "angry-child"
     },
     {
       "id": "hungry",
       "title": "רָעֵב",
       "cursor": "resources/cursors/hungry-face-cursor.png",
-      "image": "hungry-face"
+      "image": "hungry-girl"
     }
   ],
   "entities": [
@@ -30,21 +33,112 @@
       "title": "לִצְעֹק",
       "file": "angry-boy",
       "validGroupIds": ["angry"],
-      "groupIds": ["angry"]
+      "groupIds": ["angry", "hungry"]
     },
     {
       "id": "boy-refrigerator",
       "title": "לֶאֱכֹל",
       "file": "eat-sandwich",
       "validGroupIds": ["hungry", "angry"],
-      "groupIds": ["hungry", "angry"]
+      "groupIds": ["hungry"]
     },
     {
-      "id": "angry04",
-      "title": "לִצְעֹק",
-      "file": "angry-girl",
+      "id": "girl-gets-hug",
+      "title": "לְבַקֵּשׁ חִבּוּק",
+      "file": "girl-gets-hug",
+      "validGroupIds": ["angry", "sad"],
+      "groupIds": ["angry", "sad"]
+    },
+    {
+      "id": "girl-bites",
+      "title": "לִנְשֹׁךְ",
+      "file": "girl-bites",
+      "validGroupIds": [],
+      "groupIds": ["angry"]
+    },
+    {
+      "id": "child-counting",
+      "title": "לִסְפֹּר עַד 10",
+      "file": "child-counting",
       "validGroupIds": ["angry"],
+      "groupIds": ["angry"]
+    },
+    {
+      "id": "girl-hits",
+      "title": "לְהַרְבִּיץ",
+      "file": "girl-hits",
+      "validGroupIds": [],
+      "groupIds": ["angry"]
+    },
+    {
+      "id": "child-breath",
+      "title": "לִנְשֹׁם",
+      "file": "child-breath",
+      "validGroupIds": ["angry"],
+      "groupIds": ["angry"]
+    },
+    {
+      "id": "bamba",
+      "title": "לְבַקֵּשׁ חֲטִיף",
+      "file": "bamba",
+      "validGroupIds": ["angry", "sad", "hungry"],
+      "groupIds": ["angry", "sad", "hungry"]
+    },
+    {
+      "id": "girl-throws",
+      "title": "לִזְרֹק דְּבָרִים",
+      "file": "girl-throws",
+      "validGroupIds": [],
       "groupIds": ["angry", "hungry"]
+    },
+    {
+      "id": "child-playing",
+      "title": "לְבַקֵּשׁ מִשְׂחָק",
+      "file": "child-playing",
+      "validGroupIds": ["angry", "sad"],
+      "groupIds": ["angry", "sad"]
+    },
+    {
+      "id": "girl-pushes",
+      "title": "לִדְחֹף",
+      "file": "girl-pushes",
+      "validGroupIds": [],
+      "groupIds": ["angry"]
+    },
+    {
+      "id": "teddy-bear",
+      "title": "לְשַׂחֵק עִם בֻּבַּת פַּרְוָה",
+      "file": "teddy-bear",
+      "validGroupIds": ["sad"],
+      "groupIds": ["sad"]
+    },
+    {
+      "id": "child-on-mattress",
+      "title": "לִשְׁכַּב עַל הַמִּזְרָן",
+      "file": "child-on-mattress",
+      "validGroupIds": ["sad"],
+      "groupIds": ["sad"]
+    },
+    {
+      "id": "yoga-tree",
+      "title": "לַעֲשׂוֹת תַּרְגִּילֵי יוֹגָה",
+      "file": "yoga-tree",
+      "validGroupIds": ["angry"],
+      "groupIds": ["angry"]
+    },
+    {
+      "id": "girl-breaks",
+      "title": "לִשְׁבֹּר",
+      "file": "girl-breaks",
+      "validGroupIds": [],
+      "groupIds": ["angry"]
+    },
+    {
+      "id": "girl-in-playground",
+      "title": "לְבַקֵּשׁ לָצֵאת לֶחָצֵר",
+      "file": "girl-in-playground",
+      "validGroupIds": ["angry","sad"],
+      "groupIds": ["angry","sad"]
     },
     {
       "id": "talk-to-adult",
@@ -54,11 +148,11 @@
       "groupIds": ["angry", "sad", "hungry"]
     },
     {
-      "id": "eat",
-      "title": "לֶאֱכֹל",
-      "file": "eat",
-      "validGroupIds": ["hungry", "angry"],
-      "groupIds": ["hungry", "angry"]
+      "id": "broken-teddy-bear",
+      "title": "לִקְרֹעַ",
+      "file": "girl-tears",
+      "validGroupIds": [],
+      "groupIds": ["angry"]
     }
   ]
 }
