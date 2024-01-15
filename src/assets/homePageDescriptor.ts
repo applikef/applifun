@@ -145,6 +145,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
         height: 100
       },
       {
+        id: "shapeSort",
+        label: "בָּתֵּי הַצּוּרוֹת",
+        path: "/launch?gameId=shapeSort",
+        media: "resources/images/shape-sort-game.png",
+        height: 100
+      },
+      {
         id: "moodSort",
         label: "מַּרְגִּישִׁים",
         path: "/launch?gameId=moodSort",

@@ -11,7 +11,6 @@ import { Help } from "../components/global/help/Help";
 
 export const HomePage = () => {
   const isMobile = DeviceUtil.isMobileDevice();
-  const isSmallScreen = DeviceUtil.isSmallDevice();
 
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
   const [showSection, setShowSection] = useState<Array<boolean>>(new Array<boolean>(homePageDescriptor.length));
@@ -97,7 +96,7 @@ export const HomePage = () => {
         </Link> 
         <br/>
         <div className="app-link-sm">
-          Many images of this site were downloaded from https://pixabay.com/ or designed by brgfx / Freepik at freepik.com
+          Many images of this site were downloaded from https://www.pexels.com/, https://pixabay.com/ or freepik.com
         </div> 
       </div>
 

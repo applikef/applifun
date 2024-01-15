@@ -1,6 +1,6 @@
 {
   "gameType": "sort",
-  "gameId": "moodSort",
+  "gameId": "moodSelect",
   "titleTemplate": "בְּחַר תְּמוּנוֹת שֶׁמַּרְאוֹת מִישֶׁהוּ $value$",
   "selectGroupMessage": "קודם צריך לבחר מצב-רוח",
   "settingsTitle": "בחרי את מצב הרוח למשחק",

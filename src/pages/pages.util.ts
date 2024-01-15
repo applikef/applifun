@@ -16,6 +16,7 @@ export function getGameDescriptor(gameId: string | null): any {
     : gameId === "moodSelect" ? require("./../assets/componentDescriptors/selectDescriptors/moodSelect.json")
     : gameId === "moodSort" ? require("./../assets/componentDescriptors/sortDescriptors/moodSort.json")
     : gameId === "morningRoutine" ? require("./../assets/componentDescriptors/sequenceDescriptors/morningRoutine.json")
+    : gameId === "shapeSort" ? require("./../assets/componentDescriptors/sortDescriptors/shapeSort.json")
     : gameId === "washHands" ? require("./../assets/componentDescriptors/sequenceDescriptors/washHands.json")
     : undefined
   )

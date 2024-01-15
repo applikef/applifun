@@ -1,0 +1,64 @@
+{
+  "gameType": "sort",
+  "gameId": "shapeSort",
+  "titleTemplate": "בְּחַר צוּרָה, וְאָז בְּחַר תְּמוּנוֹת עִם דָּבָר בְּאוֹתָהּ צוּרָה",
+  "selectGroupMessage": "צָרִיךְ לִבְחֹר צוּרָה",
+  "groups": [
+    {
+      "id": "circle",
+      "title": "עִגּוּל",
+      "cursor": "resources/cursors/circle.png",
+      "image": "circle"
+    },
+    {
+      "id": "square",
+      "title": "רִבּוּעַ",
+      "cursor": "resources/cursors/square.png",
+      "image": "square"
+    },
+    {
+      "id": "triangle",
+      "title": "מְשֻׁלָּשׁ",
+      "cursor": "resources/cursors/triangle.png",
+      "image": "triangle"
+    },
+    {
+      "id": "rectangle",
+      "title": "מַלְבֵּן",
+      "cursor": "resources/cursors/rectangle.png",
+      "image": "rectangle"
+    }
+  ],
+  "entities": [
+    {
+      "id": "car-wheel",
+      "file": "car-wheel",
+      "groupId": "circle"
+    },
+    {
+      "id": "chess-board",
+      "file": "chess-board",
+      "groupId": "square"
+    },
+    {
+      "id": "school-board",
+      "file": "school-board",
+      "groupId": "rectangle"
+    },
+    {
+      "id": "basketball",
+      "file": "basketball",
+      "groupId": "circle"
+    },
+    {
+      "id": "sign-causion-warning",
+      "file": "sign-causion-warning",
+      "groupId": "triangle"
+    },
+    {
+      "id": "clock",
+      "file": "clock",
+      "groupId": "circle"
+    }
+  ]
+}
