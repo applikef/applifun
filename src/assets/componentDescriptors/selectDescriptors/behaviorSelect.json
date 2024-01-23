@@ -12,19 +12,19 @@
       "id": "sad",
       "title": "עָצוּב",
       "cursor": "resources/cursors/worry-face-cursor.png",
-      "image": "sad-child"
+      "image": "sad-child-transparent"
     },
     {
       "id": "angry",
       "title": "כּוֹעֵס",
       "cursor": "resources/cursors/angry-face-cursor.png",
-      "image": "angry-child"
+      "image": "angry-child-transparent"
     },
     {
       "id": "hungry",
       "title": "רָעֵב",
       "cursor": "resources/cursors/hungry-face-cursor.png",
-      "image": "hungry-girl"
+      "image": "hungry-girl-transparent"
     }
   ],
   "entities": [
