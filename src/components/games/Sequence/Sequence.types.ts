@@ -25,6 +25,7 @@ export interface WordDescriptorType {
   title: string,
   name: string,
   file: string;
+  audio?: string;
 }
 
 export interface NumberSequenceDescriptorType extends SequenceDescriptorType {

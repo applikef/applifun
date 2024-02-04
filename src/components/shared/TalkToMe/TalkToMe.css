@@ -1,0 +1,19 @@
+.talk-to-me-icon {
+  height: 40px;
+  width: 40px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+
+.talk-to-me-global {
+  display: none;
+}
+
+.talk-to-me-show {
+  display: inline;
+}
+
+.talk-to-me-img {
+  height: 100px;
+}

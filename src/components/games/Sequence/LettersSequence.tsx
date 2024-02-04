@@ -16,6 +16,7 @@ import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { Advise } from "../../shared/Advise/Advise";
+import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
 
 interface ViewEntry {
   value: string;
@@ -204,7 +205,11 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
         <div className="sequence-container">
           <div className="sequence-letters-advise">  
-            <Advise text={ word.title } default={ true } />
+            <Advise text={ word.title } 
+              default={ true } />
+            { MediaUtil.getCatalogAudio(word.audio) &&
+                <TalkToMe audioList={[MediaUtil.getCatalogAudio(word.audio)!]} />
+            }
           </div>
 
           <div id="bank-area" className="sequence-source-images" >

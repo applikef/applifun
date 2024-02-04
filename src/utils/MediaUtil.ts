@@ -1,12 +1,19 @@
 import { PlayListNames, PlayLists } from "../assets/playLists";
 
 export class MediaUtil {
+  public static LTR = "LTR";
+  public static RTL = "RTL";
+
   public static getDefaultHoorayPlayer() {
     return new Audio("resources/audio/hooray-short-1.mp3");
   }
 
   public static getDefaultOuchPlayer() {
     return new Audio("resources/audio/ouch-2.mp3");
+  }
+
+  public static getPlayer(url: string) {
+    return new Audio(url);
   }
 
   public static play(url: string, audioOn: boolean) {
@@ -51,5 +58,24 @@ export class MediaUtil {
   public static getCatalogImage(imageId: string): string {
     const imageFiles = require("./../assets/imageCatalog.json");
     return imageFiles[imageId];
+  }
+
+  public static getCatalogAudios(audioIds: string[] | undefined): string[] {
+    if (audioIds === undefined) {
+      return [];
+    }
+
+    const audioFiles = require("./../assets/audioCatalog.json");
+    let audios: string[] = audioIds.map((id) => audioFiles[id]);
+    return audios;
+  }
+
+  public static getCatalogAudio(audioId: string | undefined): string | undefined {
+    if (audioId === undefined) {
+      return undefined;
+    }
+
+    const audioFiles = require("./../assets/audioCatalog.json");
+    return audioFiles[audioId];
   }
 }
