@@ -5,91 +5,91 @@
   "words": [
     {
       "id": "house",
-      "title": "בית",
+      "title": "בַּיִת",
       "name": "בית",
       "file": "house",
       "audio": "house"
     },
     {
       "id": "bird",
-      "title": "ציפור",
+      "title": "צִפּוֹר",
       "name": "ציפור",
       "file": "bird",
       "audio": "bird"
     },
     {
       "id": "boy",
-      "title": "ילד",
+      "title": "יֶלֶד",
       "name": "ילד",
       "file": "boy",
       "audio": "boy"
     },
     {
       "id": "balloon",
-      "title": "בלון",
+      "title": "בָּלוֹן",
       "name": "בלון",
       "file": "balloon-yellow-transparent",
       "audio": "balloon"
     },
     {
       "id": "boat",
-      "title": "סירה",
+      "title": "סִירָה",
       "name": "סירה",
       "file": "boat",
       "audio": "boat"
     },
     {
       "id": "cat",
-      "title": "חתול",
+      "title": "חָתוּל",
       "name": "חתול",
       "file": "cat-transparent",
       "audio": "cat"
     },
     {
       "id": "fence",
-      "title": "גדר",
+      "title": "גָּדֵר",
       "name": "גדר",
       "file": "fence",
       "audio": "fence"
     },
     {
       "id": "oranges",
-      "title": "תפוזים",
+      "title": "תַּפּוּזִים",
       "name": "תפוזים",
       "file": "oranges",
       "audio": "oranges"
     },
     {
       "id": "table",
-      "title": "שולחן",
+      "title": "שׁוּלְחָן",
       "name": "שולחן",
       "file": "table-transparent",
       "audio": "table"
     },
     {
       "id": "zebra",
-      "title": "זברה",
+      "title": "זֶבְּרָה",
       "name": "זברה",
       "file": "zebra",
       "audio": "zebra"
     },
     {
       "id": "tree",
-      "title": "עץ",
+      "title": "עֵץ",
       "name": "עץ",
       "file": "tree",
       "audio": "tree"
     },
     {
       "id": "flower",
-      "title": "פרח",
+      "title": "פֶּרַח",
       "name": "פרח",
       "file": "red-flower",
       "audio": "flower"
     },
     {
       "id": "chair",
-      "title": "כיסא",
+      "title": "כִּיסֵּא",
       "name": "כיסא",
       "file": "chair",
       "audio": "chair"

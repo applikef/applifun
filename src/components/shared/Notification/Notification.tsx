@@ -29,7 +29,7 @@ export const Notification = (props: NotificationPropsType) => {
         <div>{ props.title}</div>
       }
 
-      { props.content.map((row) => <div>{row}</div>) }
+      { props.content.map((row,i) => <div key={i}>{row}</div>) }
     </div>
   )
 }

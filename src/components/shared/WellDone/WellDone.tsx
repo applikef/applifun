@@ -5,16 +5,7 @@ import { PlayListNames } from "../../../assets/playLists";
 
 export const showWellDone = (audioOn: boolean) => {
   MediaUtil.play(MediaUtil.pickAudio(PlayListNames.LONG_HOORAY), audioOn);
-  
-//  const SHOW_TIME = 3000;
-
   document.getElementById("well-done")!.classList.add("well-done-show");
-  // setTimeout(() => {
-  //   const e = document.getElementById("well-done");
-  //   if (e) {
-  //     e.classList.remove("well-done-show");
-  //   }
-  // }, SHOW_TIME);
 }
 
 export const hideWellDone = () => {

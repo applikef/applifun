@@ -39,12 +39,14 @@ public static sortNumbers = (array: number[]) => {
 
   public static shuffleArrayItems = (array: any[]) => { 
     let shuffledArray = [...array];
-    do {
-      for (let i = shuffledArray.length - 1; i > 0; i--) { 
-        const j = Math.floor(Math.random() * (i + 1)); 
-        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; 
-      } 
-    } while (ObjectsUtil.equalByValue(shuffledArray, array))
+    if (array.length > 1) {
+      do {
+        for (let i = shuffledArray.length - 1; i > 0; i--) { 
+          const j = Math.floor(Math.random() * (i + 1)); 
+          [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; 
+        } 
+      } while (ObjectsUtil.equalByValue(shuffledArray, array))
+    }
     return shuffledArray; 
   }; 
 

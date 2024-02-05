@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { Advise } from "../../shared/Advise/Advise";
 import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
+import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
 
 interface ViewEntry {
   value: string;
@@ -31,7 +32,9 @@ export const LettersSequence = (props: LettersSequenceProps) => {
   const wordsCatalog = props.gameDescriptor.words!;
   const wordsCatalogSize = wordsCatalog.length;
   const gamePageTitle:string = props.gameDescriptor.title ? props.gameDescriptor.title : "";
-
+  const settingsTitle = props.gameDescriptor.settingsTitle ?
+    props.gameDescriptor.settingsTitle
+  : "";
   const navigate = useNavigate();
 
   const { 
@@ -50,13 +53,13 @@ export const LettersSequence = (props: LettersSequenceProps) => {
     ObjectsUtil.shuffleArrayItems(props.gameDescriptor.words) 
   : []);
   const numberOfWords = useRef<number>(props.gameDescriptor.words!.length);
-
+    
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [pageTitle, setPageTitle] = useState(gamePageTitle);
   const [word, setWord] = useState<WordDescriptorType>(words[0]);
   const [orderedLetters, setOrderedLetters] = useState<ViewEntry[]>([]);
   const [shuffledLetters, setShuffledLetters] = useState<ViewEntry[]>([]);
-  const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
+  const [gameSettingsDisplay, setgameSettingsDisplay] = useState<string>("game-settings-global-hide");
   const [pendingSelectedWordIndices, setPendingSelectedWordIndices] = useState<boolean[]>([]);
   const [selectedWordIndices, setSelectedWordIndices] = useState<boolean[]>([])
 
@@ -168,13 +171,13 @@ export const LettersSequence = (props: LettersSequenceProps) => {
   }
   
   function handleSettingsCancel() {
-    setGameSettinsDisplay(()=>"game-settings-global-hide"); 
+    setgameSettingsDisplay(()=>"game-settings-global-hide"); 
   }
 
-  function handleSettingsDone() {
+  function handleSettingsDone(groupValueIndices: boolean[]) {
     let newWords:WordDescriptorType[] = [];
     for (let i=0; i < wordsCatalogSize; i++) {
-      if (pendingSelectedWordIndices[i]) {
+      if (groupValueIndices[i]) {
         newWords.push(wordsCatalog[i]);
       }
     }
@@ -185,14 +188,14 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
     setWords(()=>ObjectsUtil.shuffleArrayItems(newWords));
     setSelectedWordIndices(()=>pendingSelectedWordIndices);
-    setGameSettinsDisplay(()=>"game-settings-global-hide")
+    setgameSettingsDisplay(()=>"game-settings-global-hide")
   }
 
   return (
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId} settings={() => {
         setPendingSelectedWordIndices(() => selectedWordIndices);
-        setGameSettinsDisplay("game-settings-global-show")
+        setgameSettingsDisplay("game-settings-global-show")
       }}/>
 
       <PageHeader title={ pageTitle } feedbackFace={ feedbackFace } />
@@ -242,36 +245,13 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         </div>
       </div>
 
-      <div id="gameSettings" className={ gameSettinsDisplay }>
-        <div>
-          <div className="game-settings-title">
-            { props.gameDescriptor.settingsTitle ?
-                props.gameDescriptor.settingsTitle
-              : "" 
-            }
-          </div>
-          
-          { wordsCatalog.map(
-            (word, i) => 
-              <div className="game-settings-entry" key={i}>
-                <input type="checkbox"
-                  checked={pendingSelectedWordIndices[i]} 
-                  onChange={(e:ChangeEvent<HTMLInputElement>) => {
-                    const settingArr: boolean[] = handleSettingsSelectWord(e, i);
-                    setPendingSelectedWordIndices(settingArr);
-                  }}></input>
-                <span key={i}>{word.name}</span>
-              </div>
-          )}
-          <br/>
-          <button className="app-button-primary-sm" onClick={() => {
-            handleSettingsDone(); 
-          }}>שמור</button>
-          <button className="app-button-ghost-sm" onClick={() => {
-            handleSettingsCancel();
-          }}>בטל</button>
-        </div>
-      </div>
+      <MultiSelectionSettings
+          className={ gameSettingsDisplay }
+          title={settingsTitle}
+          options={wordsCatalog.map((word) => word.name)}
+          handleSettingsDone={handleSettingsDone}
+          handleSettingsCancel={handleSettingsCancel}
+      />
 
     </div>
   )
