@@ -9,7 +9,7 @@ interface TalkToMeProps {
 
 export const TalkToMe = (props: TalkToMeProps) => {
   const direction = props.direction ? props.direction : MediaUtil.LTR;
-  const icon = direction == MediaUtil.LTR ?
+  const icon = direction === MediaUtil.LTR ?
     "resources/icons/talk-to-me-ltr.png"
   :
     "resources/icons/talk-to-me-rtl.png";

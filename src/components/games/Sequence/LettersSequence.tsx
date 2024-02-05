@@ -158,18 +158,6 @@ export const LettersSequence = (props: LettersSequenceProps) => {
     }, ConstantsUtil.hoorayTimeout)
   }
 
-  function handleSettingsSelectWord(e:ChangeEvent<HTMLInputElement>, index: number) : boolean[] {
-    const isChecked = e.target.checked;
-    let settingArr = new Array(...pendingSelectedWordIndices)
-    if (isChecked) {
-        settingArr[index] = true;
-    }
-    else {
-      settingArr[index] = false;
-    }
-    return settingArr;  
-  }
-  
   function handleSettingsCancel() {
     setgameSettingsDisplay(()=>"game-settings-global-hide"); 
   }
