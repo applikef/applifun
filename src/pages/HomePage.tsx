@@ -47,13 +47,14 @@ export const HomePage = () => {
                       } 
                       <LineBreak />
                       {section.media &&
-                        <img src={section.media} height={DeviceUtil.imageHeightMedium()} 
+                        <img src={section.media} height={DeviceUtil.imageHeightSmall()} 
                           alt={section.title} />
                       } 
                     </div>
                   </div>
               )}
             </div>
+            <hr className="home-page-hr"/>
             <div>
               {homePageDescriptor.map((section: HomePageSectionType,i) =>
                 <div key={i} 
