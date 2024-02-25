@@ -1,15 +1,23 @@
 {
-  "balloon": "resources/audioCatalog/balloon.mp3",
-  "bird": "resources/audioCatalog/bird.mp3",
-  "boat": "resources/audioCatalog/boat.mp3",
-  "boy": "resources/audioCatalog/boy.mp3",
-  "cat": "resources/audioCatalog/cat.mp3",
-  "chair": "resources/audioCatalog/chair.mp3",
-  "fence": "resources/audioCatalog/fence.mp3",
-  "flower": "resources/audioCatalog/flower.mp3",
-  "house": "resources/audioCatalog/house.mp3",
-  "oranges": "resources/audioCatalog/oranges.mp3",
-  "table": "resources/audioCatalog/table.mp3",
-  "tree": "resources/audioCatalog/tree.mp3",
-  "zebra": "resources/audioCatalog/zebra.mp3"
+  "resources": {
+    "balloon": "resources/audioCatalog/balloon.mp3",
+    "bird": "resources/audioCatalog/bird.mp3",
+    "boat": "resources/audioCatalog/boat.mp3",
+    "boy": "resources/audioCatalog/boy.mp3",
+    "cat": "resources/audioCatalog/cat.mp3",
+    "chair": "resources/audioCatalog/chair.mp3",
+    "fence": "resources/audioCatalog/fence.mp3",
+    "flower": "resources/audioCatalog/flower.mp3",
+    "house": "resources/audioCatalog/house.mp3",
+    "oranges": "resources/audioCatalog/oranges.mp3",
+    "table": "resources/audioCatalog/table.mp3",
+    "tree": "resources/audioCatalog/tree.mp3",
+    "zebra": "resources/audioCatalog/zebra.mp3"
+  },
+  "text-to-speech": {
+    "correct-image-order": "resources/audio/text-to-speech/correct-image-order.mp3",
+    "correct-word": "resources/audio/text-to-speech/correct-word.mp3",
+    "order-actions": "resources/audio/text-to-speech/order-actions.mp3",
+    "order-letters": "resources/audio/text-to-speech/order-letters.mp3"
+  }
 }

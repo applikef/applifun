@@ -186,7 +186,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         setgameSettingsDisplay("game-settings-global-show")
       }}/>
 
-      <PageHeader title={ pageTitle } feedbackFace={ feedbackFace } />
+      <PageHeader title={ pageTitle } audio="order-letters" feedbackFace={ feedbackFace } />
 
       <div className="letters-sequence-global">
         <div>
@@ -216,7 +216,11 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         </div>
 
         <div className="sequence-feedback">
+
           <h3>
+            <TalkToMe audioList={[MediaUtil.getTextToSpeechAudio("correct-word")!]} 
+              direction={MediaUtil.RTL}/>
+
             פֹּה לְמַטָּה נִרְאֶה אֶת הַמִּילָּה כְּתוּבָה נָכוֹן
           </h3>
 

@@ -66,7 +66,7 @@ export class MediaUtil {
     }
 
     const audioFiles = require("./../assets/audioCatalog.json");
-    let audios: string[] = audioIds.map((id) => audioFiles[id]);
+    let audios: string[] = audioIds.map((id) => audioFiles["resources"][id]);
     return audios;
   }
 
@@ -76,6 +76,25 @@ export class MediaUtil {
     }
 
     const audioFiles = require("./../assets/audioCatalog.json");
-    return audioFiles[audioId];
+    return audioFiles["resources"][audioId];
+  }
+
+  public static getTextToSpeechAudios(audioIds: string[] | undefined): string[] {
+    if (audioIds === undefined) {
+      return [];
+    }
+
+    const audioFiles = require("./../assets/audioCatalog.json");
+    let audios: string[] = audioIds.map((id) => audioFiles["text-to-speech"][id]);
+    return audios;
+  }
+
+  public static getTextToSpeechAudio(audioId: string | undefined): string | undefined {
+    if (audioId === undefined) {
+      return undefined;
+    }
+
+    const audioFiles = require("./../assets/audioCatalog.json");
+    return audioFiles["text-to-speech"][audioId];
   }
 }

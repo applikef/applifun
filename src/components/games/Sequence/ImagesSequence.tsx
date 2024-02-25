@@ -15,6 +15,7 @@ import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
+import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
 
 export interface ImagesSequenceProps {
   gameDescriptor: ImageSequenceDescriptorType;
@@ -84,7 +85,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
       <Banner gameId={props.gameDescriptor.gameId}/>
       <div className="sequence-container">
 
-        <PageHeader title={ pageTitle } feedbackFace={ feedbackFace } />
+        <PageHeader title={ pageTitle } audio="order-actions" feedbackFace={ feedbackFace } />
 
         <div className="sequence-source-images" >
           {shuffledImages.current.map((e:ImageDescriptorType,i:number) =>
@@ -101,6 +102,9 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
       <div className="sequence-feedback">
         {
           <h3>
+            <TalkToMe audioList={[MediaUtil.getTextToSpeechAudio("correct-image-order")!]} 
+              direction={MediaUtil.RTL}/>
+
             פֹּה לְמַטָּה נִרְאֶה אֶת הַתְּמוּנוֹת מְסֻדָּרוֹת
           </h3>
         }
