@@ -197,7 +197,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         <div className="sequence-container">
           <div className="sequence-letters-advise">  
             <Advise text={ word.title } 
-              default={ true } />
+              default={ false } />
             { MediaUtil.getCatalogAudio(word.audio) &&
                 <TalkToMe audioList={[MediaUtil.getCatalogAudio(word.audio)!]} />
             }
