@@ -11,19 +11,26 @@ import { MediaUtil } from "../../../utils/MediaUtil";
 import { Banner } from "../../global/Banner/Banner";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
+import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 
 const mouseEventTypeDescriptors = [
   {
     id: MOUSE_SKILL_TYPE.HOVER,
-    title: "רִחוּף"
+    title: "רִחוּף",
+    instructions: "שִׂים אֶת הָעַכְבָּר מֵעַל הַצְּפַרְדֵּעַ",
+    instructionsAudio: "mouse-instructions-hover"
   }, 
   {
     id: MOUSE_SKILL_TYPE.CLICK,
-    title: "הַקְלָקָה"
+    title: "הַקְלָקָה",
+    instructions: "הַקְלֵק עִם הָעַכְבָּר עַל הַצְּפַרְדֵּעַ",
+    instructionsAudio: "mouse-instructions-click"
   }, 
   {
     id: MOUSE_SKILL_TYPE.DOUBLE_CLICK,
-    title: "הַקְלָקָה כְּפוּלָה"
+    title: "הַקְלָקָה כְּפוּלָה",
+    instructions: "הַקְלֵק  עִם הָעַכְבָּר הַקְלָקָה כְּפוּלָה עַל הַצְּפַרְדֵּעַ",
+    instructionsAudio: "mouse-instructions-double-click"
   }, 
 ];
 
@@ -127,11 +134,15 @@ export const MouseSkillsJumpingShape = (props: MouseSkillsProps) => {
     setGameSettingsDisplay(()=>"game-settings-global-hide")
   }
 
+  const currentEventTypeDescriptor = ObjectsUtil.getEntityById(mouseEventTypeDescriptors, eventType.current);
+
   return(
     <div className="app-page">
       <Banner gameId="mouseJumpingShapeClick" settings={() => setGameSettingsDisplay("game-settings-global-show")} />
 
-      <PageHeader title="" feedbackFace={ feedbackFace } />
+      <PageHeader title={currentEventTypeDescriptor ? currentEventTypeDescriptor.instructions : ""} 
+        audio={currentEventTypeDescriptor ? currentEventTypeDescriptor.instructionsAudio : ""}
+        feedbackFace={ feedbackFace } />
       
       <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
         <circle cx={targetPosition[0]} cy={targetPosition[1]} r={levelLayout.current.size.r} 

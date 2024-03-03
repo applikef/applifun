@@ -17,6 +17,9 @@
   "text-to-speech": {
     "correct-image-order": "resources/audio/text-to-speech/correct-image-order.mp3",
     "correct-word": "resources/audio/text-to-speech/correct-word.mp3",
+    "mouse-instructions-click": "resources/audio/text-to-speech/mouse-instructions-click.mp3",
+    "mouse-instructions-double-click": "resources/audio/text-to-speech/mouse-instructions-double-click.mp3",
+    "mouse-instructions-hover": "resources/audio/text-to-speech/mouse-instructions-hover.mp3",
     "order-actions": "resources/audio/text-to-speech/order-actions.mp3",
     "order-letters": "resources/audio/text-to-speech/order-letters.mp3"
   }
