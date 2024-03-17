@@ -10,7 +10,7 @@ interface PageHeaderPropsType {
   feedbackFace: FACES;
   title: string;
   image?: string;
-  audio?: string;
+  audio?: string[];
 }
 
 export const PageHeader = (props: PageHeaderPropsType) => {
@@ -28,7 +28,7 @@ export const PageHeader = (props: PageHeaderPropsType) => {
         }
         <span>
           { props.audio &&
-            <TalkToMe audioList={[MediaUtil.getTextToSpeechAudio(props.audio)!]} 
+            <TalkToMe audioList={props.audio!}
               direction={MediaUtil.RTL}/>
           }
           {props.title}

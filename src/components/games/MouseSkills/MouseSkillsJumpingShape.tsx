@@ -141,7 +141,7 @@ export const MouseSkillsJumpingShape = (props: MouseSkillsProps) => {
       <Banner gameId="mouseJumpingShapeClick" settings={() => setGameSettingsDisplay("game-settings-global-show")} />
 
       <PageHeader title={currentEventTypeDescriptor ? currentEventTypeDescriptor.instructions : ""} 
-        audio={currentEventTypeDescriptor ? currentEventTypeDescriptor.instructionsAudio : ""}
+        audio={[currentEventTypeDescriptor ? currentEventTypeDescriptor.instructionsAudio : ""]}
         feedbackFace={ feedbackFace } />
       
       <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>

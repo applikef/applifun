@@ -196,7 +196,8 @@ export const Match = (props: MatchPropsType) => {
       <Banner gameId={props.gameDescriptor.gameId} 
         settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
 
-      <PageHeader title={setTitle()} feedbackFace={feedbackFace}/>      
+      <PageHeader title={setTitle()} 
+        audio={MediaUtil.getTextToSpeechAudios([])} feedbackFace={feedbackFace}/>      
 
       <div id="groupSplash" className="groupImage">
         {

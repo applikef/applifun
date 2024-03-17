@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import "./Sequence.css";
 
@@ -186,7 +186,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         setgameSettingsDisplay("game-settings-global-show")
       }}/>
 
-      <PageHeader title={ pageTitle } audio="order-letters" feedbackFace={ feedbackFace } />
+      <PageHeader title={ pageTitle } audio={["order-letters"]} feedbackFace={ feedbackFace } />
 
       <div className="letters-sequence-global">
         <div>
@@ -198,8 +198,8 @@ export const LettersSequence = (props: LettersSequenceProps) => {
           <div className="sequence-letters-advise">  
             <Advise text={ word.title } 
               default={ false } />
-            { MediaUtil.getCatalogAudio(word.audio) &&
-                <TalkToMe audioList={[MediaUtil.getCatalogAudio(word.audio)!]} />
+            { word.audio &&
+                <TalkToMe audioList={[word.audio!]} isAudioCatalog={true}/>
             }
           </div>
 
@@ -218,7 +218,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
         <div className="sequence-feedback">
 
           <h3>
-            <TalkToMe audioList={[MediaUtil.getTextToSpeechAudio("correct-word")!]} 
+            <TalkToMe audioList={["correct-word"!]} 
               direction={MediaUtil.RTL}/>
 
             פֹּה לְמַטָּה נִרְאֶה אֶת הַמִּילָּה כְּתוּבָה נָכוֹן

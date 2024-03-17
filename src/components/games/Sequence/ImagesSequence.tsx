@@ -85,7 +85,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
       <Banner gameId={props.gameDescriptor.gameId}/>
       <div className="sequence-container">
 
-        <PageHeader title={ pageTitle } audio="order-actions" feedbackFace={ feedbackFace } />
+        <PageHeader title={ pageTitle } audio={["order-actions"]} feedbackFace={ feedbackFace } />
 
         <div className="sequence-source-images" >
           {shuffledImages.current.map((e:ImageDescriptorType,i:number) =>
@@ -102,8 +102,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
       <div className="sequence-feedback">
         {
           <h3>
-            <TalkToMe audioList={[MediaUtil.getTextToSpeechAudio("correct-image-order")!]} 
-              direction={MediaUtil.RTL}/>
+            <TalkToMe audioList={["correct-image-order"!]} direction={MediaUtil.RTL}/>
 
             פֹּה לְמַטָּה נִרְאֶה אֶת הַתְּמוּנוֹת מְסֻדָּרוֹת
           </h3>
