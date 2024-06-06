@@ -8,8 +8,11 @@ export interface LinkListDescriptorType extends GameDescriptorType {
   hrefTitle: string;
 }
 export interface MatchDescriptorType extends GameDescriptorType {
-  titleTemplate: string;
-  titleVariableValues: string[];
+  titles?: string[];
+  titleAudioKeys?: string[];
+  titleAudioHover?: string;
+  titleTemplate?: string;
+  titleVariableValues?: string[];
   groupIds: string[];
   groupFiles?: string[];
   groupNames: string[];

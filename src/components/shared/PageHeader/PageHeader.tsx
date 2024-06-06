@@ -11,6 +11,7 @@ interface PageHeaderPropsType {
   title: string;
   image?: string;
   audio?: string[];
+  audioHover?: string;
 }
 
 export const PageHeader = (props: PageHeaderPropsType) => {
@@ -29,6 +30,7 @@ export const PageHeader = (props: PageHeaderPropsType) => {
         <span>
           { props.audio &&
             <TalkToMe audioList={props.audio!}
+              audioHover={props.audioHover}
               direction={MediaUtil.RTL}/>
           }
           {props.title}

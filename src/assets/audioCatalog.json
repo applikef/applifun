@@ -21,6 +21,17 @@
     "mouse-instructions-double-click": "resources/audio/text-to-speech/mouse-instructions-double-click.mp3",
     "mouse-instructions-hover": "resources/audio/text-to-speech/mouse-instructions-hover.mp3",
     "order-actions": "resources/audio/text-to-speech/order-actions.mp3",
-    "order-letters": "resources/audio/text-to-speech/order-letters.mp3"
+    "order-letters": "resources/audio/text-to-speech/order-letters.mp3",
+
+    "selectImageWithOne": "resources/audio/text-to-speech/selectImageWithOne.mp3",
+    "selectImageWithTwo": "resources/audio/text-to-speech/selectImageWithTwo.mp3",
+    "selectImageWithThree": "resources/audio/text-to-speech/selectImageWithThree.mp3",
+    "selectImageWithFour": "resources/audio/text-to-speech/selectImageWithFour.mp3",
+    "selectImageWithFive": "resources/audio/text-to-speech/selectImageWithFive.mp3",
+    "selectImageWithSix": "resources/audio/text-to-speech/selectImageWithSix.mp3",
+    "selectImageWithSeven": "resources/audio/text-to-speech/selectImageWithSeven.mp3",
+    "selectImageWithEight": "resources/audio/text-to-speech/selectImageWithEight.mp3",
+    "selectImageWithNine": "resources/audio/text-to-speech/selectImageWithNine.mp3",
+    "selectImageWithTen": "resources/audio/text-to-speech/selectImageWithTen.mp3"
   }
 }

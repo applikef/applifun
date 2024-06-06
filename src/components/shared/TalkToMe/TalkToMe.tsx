@@ -6,6 +6,7 @@ interface TalkToMeProps {
   audioList: Array<string>;
   isAudioCatalog?: boolean;
   direction?: string;
+  audioHover?: string;
 }
 
 export const TalkToMe = (props: TalkToMeProps) => {
@@ -17,6 +18,7 @@ export const TalkToMe = (props: TalkToMeProps) => {
     return url ? url : "";
   });
   const direction = props.direction ? props.direction : MediaUtil.LTR;
+  const audioHover = props.audioHover ? props.audioHover : "הַקְלֵק כְּדֵי לִשְׁמֹעַ";
   const icon = direction === MediaUtil.LTR ?
     "resources/icons/talk-to-me-ltr.png"
   :
@@ -33,7 +35,7 @@ export const TalkToMe = (props: TalkToMeProps) => {
       { (players.length > 0) &&
             <img src={icon} alt="Talk to me"
               className="talk-to-me-icon"
-              title="הַקְלֵק כְּדֵי לִשְׁמֹעַ אֶת הַמִּלָּה"
+              title={audioHover}
               onClick={() => play()}/>
       }
     </span>

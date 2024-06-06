@@ -50,6 +50,9 @@ export const Match = (props: MatchPropsType) => {
   /***
    * Retrieve game descriptor values to local variables
    */
+  const titles = props.gameDescriptor.titles;
+  const titleAudioKeys = props.gameDescriptor.titleAudioKeys;
+  const titleAudioHover = props.gameDescriptor.titleAudioHover ? props.gameDescriptor.titleAudioHover : undefined;
   const titleTemplate = props.gameDescriptor.titleTemplate;
   const titleVariableValues = props.gameDescriptor.titleVariableValues;
   const groupIds = props.gameDescriptor.groupIds;
@@ -90,17 +93,25 @@ export const Match = (props: MatchPropsType) => {
     })
   }
 
-  function setTitle() {
+  function setTitle() : string {
     if (validImages.current.filter(x => x.length > 0).length === 0) {
       return "כל הכבוד!";
     }
 
-    const titleAsArray = titleTemplate.split("$");
-    if (titleAsArray.length < 3) {
-      return "";
-    }    
-    const titleVariableValue = titleVariableValues[activeIndex];
-    return titleAsArray[0] + titleVariableValue + titleAsArray[2];
+    if (titleTemplate) {
+      const titleAsArray = titleTemplate.split("$");
+      if (titleAsArray.length < 3) {
+        return titleAsArray[0];
+      } 
+      else if (titleVariableValues) {   
+        const titleVariableValue = titleVariableValues[activeIndex];
+        return titleAsArray[0] + titleVariableValue + titleAsArray[2];
+      }
+    }
+    else if (titles && !ObjectsUtil.emptyString(titles[activeIndex])) {
+      return titles[activeIndex];
+    }
+    return "";
   }
 
   function multipleGroupsProvided(): boolean {
@@ -197,7 +208,9 @@ export const Match = (props: MatchPropsType) => {
         settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
 
       <PageHeader title={setTitle()} 
-        audio={MediaUtil.getTextToSpeechAudios([])} feedbackFace={feedbackFace}/>      
+        audio={titleAudioKeys ? [titleAudioKeys[activeIndex]] : undefined} 
+        audioHover={titleAudioHover}
+        feedbackFace={feedbackFace}/>      
 
       <div id="groupSplash" className="groupImage">
         {

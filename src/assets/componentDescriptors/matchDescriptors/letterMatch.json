@@ -1,6 +1,6 @@
 {
   "gameId": "letterMatch",
-  "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בְּ$value$",
+  "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
   "titleVariableValues": [
     "אָלֶף",
     "בֵּית",
