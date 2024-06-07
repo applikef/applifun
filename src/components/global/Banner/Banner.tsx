@@ -21,7 +21,7 @@ export const Banner = (props: BannerPropsType) => {
       {showBanner &&
         <div className="banner-icon-bar">
           <div className="banner-right-icon-bar">
-            <Link to="/home">
+            <Link to="/">
               <img src="resources/icons/home128.png" className="banner-icon" 
                 title="עמוד הבית"  alt="עמוד הבית" />
             </Link>

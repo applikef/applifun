@@ -193,7 +193,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
       }
       else {
         setTimeout(() => {
-          navigate("/home");
+          navigate("/");
         }, ConstantsUtil.hoorayTimeout);        
       }
     }, ConstantsUtil.hoorayTimeout)

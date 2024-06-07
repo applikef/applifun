@@ -10,6 +10,8 @@ import { LineBreak } from "../components/shared/LineBreak";
 import { Help } from "../components/global/help/Help";
 
 export const HomePage = () => {
+  const baseUrl = "applifun/";
+
   const isMobile = DeviceUtil.isMobileDevice();
 
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
@@ -27,7 +29,7 @@ export const HomePage = () => {
         <div onClick={() => {               
           setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")}
         }>
-          <img src="resources/icons/help.png" className="banner-icon home-page-help-icon"
+          <img src={baseUrl + "resources/icons/help.png"} className="banner-icon home-page-help-icon"
                     title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
         </div>
         <div className="home-page-title">
@@ -47,7 +49,7 @@ export const HomePage = () => {
                       } 
                       <LineBreak />
                       {section.media &&
-                        <img src={section.media} height={DeviceUtil.imageHeightSmall()} 
+                        <img src={baseUrl + section.media} height={DeviceUtil.imageHeightSmall()} 
                           alt={section.title} />
                       } 
                     </div>
@@ -63,7 +65,7 @@ export const HomePage = () => {
                   {section.items.map((game: HomePageItemType,i) => 
                     <Card key={game.id}
                         content={<Link to={game.path} className="app-link app-default-text">{game.label}</Link>}
-                        media={game.media ? game.media : undefined}
+                        media={game.media ? baseUrl + game.media : undefined}
                         linkMedia={game.path}
                         height={game.height ? game.height : undefined}
                     />
@@ -81,7 +83,7 @@ export const HomePage = () => {
                 {section.items.map((game: HomePageItemType,i) => 
                   <Card key={game.id}
                       content={<Link to={game.path} className="app-link app-default-text">{game.label}</Link>}
-                      media={game.media ? game.media : undefined}
+                      media={game.media ? baseUrl + game.media : undefined}
                       linkMedia={game.path}
                       height={game.height ? game.height : undefined}
                   />
@@ -102,7 +104,7 @@ export const HomePage = () => {
       </div>
 
       <div className={`banner-help-content ${showHelp}`}>
-        <Help gameId={"generalHelp"} />
+        <Help gameId={"generalHelp"} baseUrl={baseUrl}/>
       </div>
     </div>
   );

@@ -149,7 +149,7 @@ export const Match = (props: MatchPropsType) => {
         showWellDone(audioOn);
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
-          navigate("/home");
+          navigate("/");
         }, ConstantsUtil.pauseTimeout);
       }
       else {

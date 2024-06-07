@@ -126,7 +126,7 @@ export const SelectGame = (props: SelectGameProps) => {
           const nextIndex = 
             ObjectsUtil.getNextIndexInBooleanArray(validGroupIndices.current, activeGroupIndex.current);
           if (nextIndex === undefined) {
-            navigate("/home");
+            navigate("/");
           }
           else {
             activeGroupIndex.current = nextIndex;
@@ -155,7 +155,7 @@ export const SelectGame = (props: SelectGameProps) => {
     validGroupIndices.current = groupIndices;
     activeGroupIndex.current = groupIndices.indexOf(true);
     if (activeGroupIndex.current === -1) {
-      navigate("/home");
+      navigate("/");
     }
     activeGroup.current = groups[activeGroupIndex.current];
     initGame();

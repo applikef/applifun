@@ -152,7 +152,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
       }
       else {  
         setTimeout(() => {
-          navigate("/home");
+          navigate("/");
         }, ConstantsUtil.hoorayTimeout);        
       }
     }, ConstantsUtil.hoorayTimeout)
