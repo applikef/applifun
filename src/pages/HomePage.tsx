@@ -10,7 +10,7 @@ import { LineBreak } from "../components/shared/LineBreak";
 import { Help } from "../components/global/help/Help";
 
 export const HomePage = () => {
-  const baseUrl = "applifun/";
+  const baseUrl = "/applifun/";
 
   const isMobile = DeviceUtil.isMobileDevice();
 
