@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/applifun/static/css/main.3928c06d.css",
-    "main.js": "/applifun/static/js/main.cb745194.js",
+    "main.css": "/applifun/static/css/main.f84af203.css",
+    "main.js": "/applifun/static/js/main.530b44dc.js",
     "static/js/787.bdb9125a.chunk.js": "/applifun/static/js/787.bdb9125a.chunk.js",
     "index.html": "/applifun/index.html",
-    "main.3928c06d.css.map": "/applifun/static/css/main.3928c06d.css.map",
-    "main.cb745194.js.map": "/applifun/static/js/main.cb745194.js.map",
+    "main.f84af203.css.map": "/applifun/static/css/main.f84af203.css.map",
+    "main.530b44dc.js.map": "/applifun/static/js/main.530b44dc.js.map",
     "787.bdb9125a.chunk.js.map": "/applifun/static/js/787.bdb9125a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3928c06d.css",
-    "static/js/main.cb745194.js"
+    "static/css/main.f84af203.css",
+    "static/js/main.530b44dc.js"
   ]
 }
