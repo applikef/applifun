@@ -1,4 +1,4 @@
-const smallScreenWidth = 1200;
+const smallScreenWidth = 1000;
 
 export class DeviceUtil {
   static fullSizeIamge: number = 150; 

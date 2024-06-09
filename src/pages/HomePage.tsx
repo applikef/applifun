@@ -8,6 +8,7 @@ import { DeviceUtil } from "../utils/DeviceUtil";
 import { useState } from "react";
 import { LineBreak } from "../components/shared/LineBreak";
 import { Help } from "../components/global/help/Help";
+import { AttentionArrow } from "../components/shared/AttentionArrow/AttentionArrow";
 
 export const HomePage = () => {
   const baseUrl = "/applifun/";
@@ -16,11 +17,16 @@ export const HomePage = () => {
 
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
   const [showSection, setShowSection] = useState<Array<boolean>>(new Array<boolean>(homePageDescriptor.length));
+  const [showArrow, setShowArrow] = useState<Array<number>|undefined>(undefined);
 
   function updateShowSection(index: number) {
     let arr = new Array<boolean>(homePageDescriptor.length);
     arr[index] = true;
     setShowSection(arr);
+  }
+
+  function showDownArrow(event: React.MouseEvent<HTMLElement>) {
+    setShowArrow([event.clientX, event.clientY]);
   }
 
   return (
@@ -50,7 +56,7 @@ export const HomePage = () => {
                       <LineBreak />
                       {section.media &&
                         <img src={baseUrl + section.media} height={DeviceUtil.imageHeightSmall()} 
-                          alt={section.title} />
+                          alt={section.title} onClick={(evt) => showDownArrow(evt)}/>
                       } 
                     </div>
                   </div>
@@ -106,6 +112,13 @@ export const HomePage = () => {
       <div className={`banner-help-content ${showHelp}`}>
         <Help gameId={"generalHelp"} baseUrl={baseUrl}/>
       </div>
+
+      { DeviceUtil.isSmallDevice() && 
+        <div className={showArrow ? "app-show-inline": "app-hide"}
+          style={{position: "absolute", left: showArrow ? showArrow[0] : 0, top: showArrow ? showArrow[1] : 0}}>
+          <AttentionArrow></AttentionArrow>
+        </div>
+      }
     </div>
   );
 }
