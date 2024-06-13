@@ -21,6 +21,11 @@ const changeRecord: ChangeRecordType = {
   "first": 3,
   "entries": [
     {
+      "title": "מסכים קטניים",
+      "date": "09-06-2024",
+      "content": "שיפור LAYOUT על מסכים קטנים והוספת חץ המורה על תפריט המשנה בעמוד הבית"
+    },
+    {
       "title": "מסך כניסה",
       "date": "07-06-2024",
       "content": "מסך הכניסה הוא התפריט הראשי ולכן מאפשר REFRESH במידת הצורך"

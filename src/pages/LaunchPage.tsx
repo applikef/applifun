@@ -13,6 +13,7 @@ import { NumbersSequence } from "../components/games/Sequence/NumbersSequence";
 import { MouseSkillsJumpingShape } from "../components/games/MouseSkills/MouseSkillsJumpingShape";
 import { MOUSE_SKILL_TYPE } from "../components/games/MouseSkills/MouseSkills.types";
 import { SelectGame } from "../components/games/Select/SelectGame";
+import { NumberLanguages } from "../components/games/NumberLanguages/NumberLanguages";
 
 export const LaunchPage = () => {
   const queryParameters = new URLSearchParams(window.location.search)
@@ -30,6 +31,8 @@ export const LaunchPage = () => {
       { gameId === "iWriteWords" && <LettersSequence gameDescriptor={descriptor} /> }
       { gameId === "morningRoutine" && <ImagesSequence gameDescriptor={descriptor}/> }
       { gameId === "washHands" && <ImagesSequence gameDescriptor={descriptor}/> }
+
+      { gameId === "numberLanguagesShow" && <NumberLanguages scope={ 100 }/> }
 
       { gameId === "mouseJumpingShapeClick" && <MouseSkillsJumpingShape eventType={MOUSE_SKILL_TYPE.CLICK}/> }
 

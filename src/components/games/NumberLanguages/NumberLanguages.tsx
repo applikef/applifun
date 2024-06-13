@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NumberLanguages.css";
+import { Banner } from "../../global/Banner/Banner";
+import { PageHeader } from "../../shared/PageHeader/PageHeader";
+import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
+import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 
 export interface NumberLanguagesProps {
   scope: number;
@@ -28,6 +32,8 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   const tenIdBankPrefix = "tenSource_";
   const unitIdTargetPrefix = "unitTarget_";
   const tenIdTargetPrefix = "tenTarget_";
+
+  const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
 
   function add(
     serialNo: number, 
@@ -81,8 +87,18 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     }
   }
 
+  const titleTemplate = "הַקְלֵק עַל עֲשָׂרוֹת וְעַל יְחִידוֹת שֶׁמַּתְאִימוֹת לַמִּסְפָּר $number$";
+  const title = ObjectsUtil.getTitle(titleTemplate, number.toString());
+
   return(
-    <div className="page">
+    <div className="app-page">
+      <Banner gameId="numberLanguagesShow"/>
+      
+      <div  className="app-title-centered">
+        <PageHeader title={title} 
+          feedbackFace={ feedbackFace } />
+      </div>
+
       <h1 className="number-header">{ number }</h1>
       <div style={{display: "flex", flexDirection: "row"}}>
         <div style={{display: "flex"}}>
@@ -144,15 +160,15 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
           </tr>
           <tr>
             <td>
-              <img src="./resources/worry-face.png" alt="worry-face" width="100px"
+              <img src="./resources/images/worry-face.png" alt="worry-face" width="100px"
                 id="units-worry-face" style={{ display: "none", marginRight: "20px" }}></img>
-              <img src="./resources/happy-face.png" alt="happy-face" width="100px"
+              <img src="./resources/images/happy-face.png" alt="happy-face" width="100px"
                 id="units-happy-face" style={{ display: "none", marginRight: "20px" }}></img>
             </td>
             <td>
-              <img src="./resources/worry-face.png" alt="worry-face" width="100px"
+              <img src="./resources/images/worry-face.png" alt="worry-face" width="100px"
                 id="tens-worry-face" style={{ display: "none", marginRight: "20px" }}></img>
-              <img src="./resources/happy-face.png" alt="happy-face" width="100px"
+              <img src="./resources/images/happy-face.png" alt="happy-face" width="100px"
                 id="tens-happy-face" style={{ display: "none", marginRight: "20px" }}></img>
             </td>
           </tr>

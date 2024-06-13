@@ -37,6 +37,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
     media: "resources/images/numbers-splash.png",
     items: [
       {
+        id: "numberLanguagesShow",
+        label: "מָה אוֹמֵר הַמִּסְפָּר?",
+        path: "/launch?gameId=numberLanguagesShow",
+        media: "resources/images/number-languages-show-game.png",
+        height: 100
+      },
+      {
         id: "numberMatch",
         label: "סוֹפְרִים",
         path: "/launch?gameId=numberMatch",
