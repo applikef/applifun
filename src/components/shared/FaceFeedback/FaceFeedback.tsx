@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./FaceFeedback.css";
+import { APPLI_SIZE } from "../../../utils/ConstantsUtil";
 
 export const enum FACES {
   HAPPY,
@@ -9,7 +10,7 @@ export const enum FACES {
 };
 
 export interface FaceFeedbackProps {
-  size?: string;
+  size?: APPLI_SIZE;
   marginRight?: string;
   face: FACES;
 };
@@ -18,13 +19,17 @@ export const FaceFeedback = (props: FaceFeedbackProps) => {
   const happyDisplay = props.face === FACES.HAPPY ? "inline" : "none";
   const worryDisplay = props.face === FACES.WORRY ? "inline" : "none";
   
+  const zoomValue: string = (props.size === APPLI_SIZE.M) ? "50%" : ((props.size === APPLI_SIZE.S) ? "25%" : "100%");
+
   return (
     <>
       <img src="./resources/images/worry-face.png" alt="אוי"
-            id="worry-face" className="face-feedback-global" style={{ display: worryDisplay }} />
+            id="worry-face" className="face-feedback-global" 
+            style={{ display: worryDisplay, zoom: zoomValue }} />
 
       <img src="./resources/images/happy-face.png" alt="אני שמח"
-             id="happy-face" className="face-feedback-global" style={{ display: happyDisplay }} />
+             id="happy-face" className="face-feedback-global" 
+             style={{ display: happyDisplay, zoom: zoomValue }} />
     </>
   );
 }

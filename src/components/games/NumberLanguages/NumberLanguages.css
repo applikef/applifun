@@ -1,8 +1,16 @@
 @import "./../../../assets/styles/global.css";
 
-.number-header {
+.number-title {
   text-align: center;
   font-size: 4rem;
+}
+
+.number-sub-title {
+  text-align: center;
+}
+
+.number-languages-item-bank {
+  fill: #61dafb49
 }
 
 .number-languages-item {
