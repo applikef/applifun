@@ -18,7 +18,7 @@ export const ChangeRecords = () => {
           return(
             <div key={i}>
               <div className="what-is-new-info-title">
-                {item.title}&nbsp;&nbsp;&nbsp;
+                <span style={{fontWeight: "bold" }}>{item.title}&nbsp;&nbsp;&nbsp;</span>
                 <span className="app-font-sm">{item.date}</span>
               </div>
               <div>{item.content}</div>
