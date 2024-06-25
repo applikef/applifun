@@ -18,7 +18,7 @@
 }
 
 .home-page-content-area {
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   font-size: var(--font-size-normal);

@@ -1,0 +1,63 @@
+@import "./../../assets/styles/global.css";
+
+.kid-dev-home {
+  display: flex;
+  flex-direction: column;
+}
+
+.kid-dev-workbench {
+  display: flex;
+  flex-direction: row;
+}
+
+.kid-dev-code {
+  display: flex; 
+  flex-direction: column; 
+  width: 20%;
+}
+
+.kid-dev-code-action-bar {
+  margin-bottom: 16px;
+}
+
+.kd-code-area {
+  border-collapse: collapse;
+}
+
+.kd-statement-line {
+  background-color: #f0f8ff;
+  border: solid 1px #6495ed;
+}
+
+.kd-statement-line-icon {
+  width: 40px;
+  padding-right: 8px;
+}
+
+.kid-dev-display {
+  display: flex; 
+  flex-direction: column; 
+  width: 80%;
+}
+
+.kid-dev-display-attribute {
+  font-size: 0.75rem;
+  align-self: flex-end;
+}
+
+.settings-area {
+  position: absolute;
+  top: 54px;
+  right: 74px;
+  background-color: #f0f8ff;
+  padding: 8px;
+  border: solid 1px #87ceeb;
+}
+
+.settings-display-hide {
+  display: none;
+}
+
+.settings-display-show {
+  display: block;
+}
