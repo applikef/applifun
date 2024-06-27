@@ -98,14 +98,6 @@ export const HomePage = () => {
             )}
           </div>
         }  
-      </div>
-        <div>
-          <Link to={"/kidDev"}>
-            כּוֹתְבִים תָּכְנָה
-          </Link>
-        </div>
-    <div>
-
         <Link to="/launch?gameId=changeRecords" className="app-link-sm">
           לרשימת כל עדכוני המשחקים
         </Link> 
