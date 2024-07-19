@@ -80,8 +80,21 @@
   color: var(--text);
 }
 
-.app-headless-landing-hide {
+.home-page-hide-mail-help {
   display: none;
+}
+
+.home-page-show-mail-help {
+  display: inline;
+}
+
+.home-page-mail-help {
+  background-color: var(--notification-info);
+  border: solid 1px var(--blue-01); 
+  position: absolute;
+  top: 64px;
+  left: 80px;
+  padding: 8px;
 }
 
 .home-page-headless-games-icon {
@@ -92,6 +105,17 @@
   width: 32px;
 }
 
+.home-page-top-banner {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.home-page-mail {
+  margin-left: 24px;
+}
 .home-page-hr {
   margin-bottom: 20px;
 }

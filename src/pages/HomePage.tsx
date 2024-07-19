@@ -16,6 +16,7 @@ export const HomePage = () => {
   const isMobile = DeviceUtil.isMobileDevice();
 
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
+  const [showMailHelp, setShowMailHelp] = useState<string>("home-page-hide-mail-help");
   const [showSection, setShowSection] = useState<Array<boolean>>(new Array<boolean>(homePageDescriptor.length));
   const [showArrow, setShowArrow] = useState<Array<number>|undefined>(undefined);
 
@@ -32,11 +33,21 @@ export const HomePage = () => {
   return (
     <div className="home-page-app">
       <div className="home-page-content-area">
-        <div onClick={() => {               
-          setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")}
-        }>
-          <img src={baseUrl + "resources/icons/help.png"} className="banner-icon home-page-help-icon"
-                    title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
+        <div className="home-page-top-banner">
+          <div className="home-page-mail app-clickable"
+            onClick={() => {               
+              setShowMailHelp(() => showMailHelp === "home-page-show-mail-help" ? "home-page-hide-mail-help" : "home-page-show-mail-help")}
+            }
+          >
+            הערות? חוויות? הצעות? נשמח לשמוע. כתבו לנו ל-goofarimhaifa@gmail.com
+          </div>
+          <img src={baseUrl + "resources/icons/help.png"} 
+            className="banner-icon app-clickable"
+            title="עזרה: קליק לפתיחה ולסגירה"  
+            onClick={() => {               
+              setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")}
+            }
+            alt="עזרה" />
         </div>
         <div className="home-page-title">
           מְשַׂחֲקִים וְלוֹמְדִים
@@ -109,6 +120,14 @@ export const HomePage = () => {
 
       <div className={`banner-help-content ${showHelp}`}>
         <Help gameId={"generalHelp"} baseUrl={baseUrl}/>
+      </div>
+      <div 
+        className={`home-page-mail-help app-clickable ${showMailHelp}`}
+        onClick={() => {               
+          setShowMailHelp("home-page-hide-mail-help")}
+        }
+      >
+        העתק את כתובת המייל לאפליקצית המייל שלך ושלח אלינו מייל. תודה!
       </div>
 
       { DeviceUtil.isSmallDevice() && 
