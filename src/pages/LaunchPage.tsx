@@ -14,6 +14,7 @@ import { MouseSkillsJumpingShape } from "../components/games/MouseSkills/MouseSk
 import { MOUSE_SKILL_TYPE } from "../components/games/MouseSkills/MouseSkills.types";
 import { SelectGame } from "../components/games/Select/SelectGame";
 import { NumberLanguages } from "../components/games/NumberLanguages/NumberLanguages";
+import { CodePlay } from "../components/games/CodePlay/CodePlay";
 
 export const LaunchPage = () => {
   const queryParameters = new URLSearchParams(window.location.search)
@@ -22,6 +23,8 @@ export const LaunchPage = () => {
 
   return (
     <div className="app-page">
+      { gameId === "codePlay" && <CodePlay /> }
+
       { gameId === "colorMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "numberMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "letterMatch" && <Match gameDescriptor={descriptor}/> }

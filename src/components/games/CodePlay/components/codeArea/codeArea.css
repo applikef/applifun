@@ -1,0 +1,89 @@
+@import url("./../../../../../assets/styles/codePlay.css");
+
+.kd-code-area {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+}
+
+.kd-code-area-control-bar {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.kd-code-area-control-bar-icon {
+  margin-left: 24px;
+}
+
+.kd-code-area-message-area {
+  align-self:center;
+  color: var(--notification-error);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-left: 4px;
+}
+
+.kd-code-area-work-area {
+  display: flex;
+  flex-direction: row;
+}
+
+.kd-statement-control-bar-global {
+  display: flex;
+  flex-direction: row;
+  padding-left: 16px;
+  border-left: solid 1px var(--gray-05);
+  margin-left: 16px;
+}
+
+.kd-statement-control-bar-color-icon {
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  margin-bottom: 8px;
+}
+
+.kd-statement-control-main-menu {
+  width: 64px;
+  border-left: solid 1px var( --gray-02);
+  margin-left: 16px;
+}
+
+.kd-statement-control-submenu {
+  width: 32px;
+}
+
+.kd-statement-control-bar-menu-entry {
+  font-weight: bold;
+  margin-bottom: 8px;
+  cursor: pointer;
+  color: var(--clickable);
+}
+
+.kd-statement-line-global {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 4px;
+}
+
+.kd-statement-line-icons {
+  padding: 8px;
+}
+
+.kd-movement-menu-show {
+  display: inline;
+}
+
+.kd-movement-menu-hide {
+  display: none;
+}
+
+.kd-look-menu-show {
+  display: inline;
+}
+.kd-look-menu-hide {
+  display: none;
+}

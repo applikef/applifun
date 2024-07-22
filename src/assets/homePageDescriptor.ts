@@ -166,5 +166,17 @@ export const homePageDescriptor: HomePageSectionType[] = [
         height: 100
       },
     ]
+  },
+  {
+    title: "מְצַיְּרִים",
+    media: "resources/images/pencil128.png",
+    items: [
+      {
+        id: "codePlay",
+        label: "מְצַיְּרִים",
+        path: "/launch?gameId=codePlay",
+        media: "resources/images/pencil128.png",
+      }
+    ]
   }
 ];

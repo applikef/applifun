@@ -8,6 +8,8 @@ import { Help } from "../help/Help";
 export interface BannerPropsType {
   gameId: string;
   settings?: Function;
+  hideAudio?: boolean;
+  helpFile?: string;
 }
 
 export const Banner = (props: BannerPropsType) => {
@@ -46,12 +48,12 @@ export const Banner = (props: BannerPropsType) => {
               </div>
             }
             {
-            audioOn && <img src="resources/icons/speaker.png" className="banner-icon"
-              onClick={() => turnAudioOff()} 
-                title="קול" alt="קול" />
+              !props.hideAudio && audioOn && <img src="resources/icons/speaker.png" className="banner-icon"
+                onClick={() => turnAudioOff()} 
+                  title="קול" alt="קול" />
             }
             {
-              !audioOn && <img src="resources/icons/speaker-off.png" className="banner-icon" 
+              !props.hideAudio && !audioOn && <img src="resources/icons/speaker-off.png" className="banner-icon" 
                 onClick={() => turnAudioOn()}
                   title="קול" alt="קול" />
             }
@@ -68,7 +70,11 @@ export const Banner = (props: BannerPropsType) => {
         </div>
       }
       <div className={`banner-help-content ${showHelp}`}>
-        <Help gameId={props.gameId} />
+        { props.helpFile ?
+            <Help fileName={props.helpFile} />
+          :
+            <Help gameId={props.gameId} />
+        }
       </div>
     </>
   );

@@ -1,0 +1,17 @@
+@import url("./../../../../../assets/styles/codePlay.css");
+
+.kd-display-area {
+  line-height: 50px; 
+  overflow:hidden;
+}
+
+.kd-display-area-attribute {
+  font-size: 0.75rem;
+  align-self: flex-end;
+  padding-left: 8px;
+}
+
+.kd-display-area-drawing-area {
+  border: solid 1px var(--gray-05);
+}
+

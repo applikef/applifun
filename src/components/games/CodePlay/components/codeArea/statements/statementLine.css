@@ -1,0 +1,33 @@
+@import url("./../../../../../../assets/styles/codePlay.css");
+
+.kd-statement-line {
+  display: flex;
+  flex-direction: row;
+  
+  background-color: #f0f8ff;
+}
+
+.kd-statement-line-correct {
+  border: solid 1px #6495ed;
+}
+
+.kd-statement-line-error {
+  border: solid 1px var(--notification-error);
+}
+
+.kd-statement-line-icon {
+  width: 40px;
+  padding-right: 8px;
+  padding-top: 4px;
+}
+
+.kd-statement-line-title {
+  padding-left: 8px;
+  align-self: center;
+}
+
+.kd-statement-line-parameters {
+  padding-left: 8px;
+  align-self: center;
+}
+

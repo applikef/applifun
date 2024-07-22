@@ -1,0 +1,58 @@
+@import "./global.css";
+
+.kd-user-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.kd-user-card {
+  display: flex; 
+  flex-direction: column
+}
+
+.kd-user-card-image {
+  margin-left: 64px;
+  padding: 8px;  
+}
+
+.kd-user-card-image-selected {
+  background-color: #f0f8ff;
+  border: solid 1px #6495ed;
+}
+
+.kd-user-card-title-selected {
+  font-weight: bold;
+}
+
+.kd-home {
+  display: flex;
+  flex-direction: column;
+}
+
+.kd-workbench {
+  display: flex;
+  flex-direction: row;
+}
+
+.kd-code {
+  display: flex; 
+  flex-direction: column; 
+  min-width: 350px;
+}
+
+.kd-settings-area {
+  position: absolute;
+  top: 54px;
+  right: 74px;
+  background-color: #f0f8ff;
+  padding: 8px;
+  border: solid 1px #87ceeb;
+}
+
+.kd-settings-display-hide {
+  display: none;
+}
+
+.kd-settings-display-show {
+  display: block;
+}

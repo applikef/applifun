@@ -96,10 +96,13 @@ export const HomePage = () => {
             {homePageDescriptor.map((section: HomePageSectionType,i) =>
               <div key={i} 
                 className="home-page-games-list-items home-page-games-list-large-device app-show-flex">
-                <div className="app-sub-title home-page-games-list-title">{section.title}</div>
+                <div className="app-sub-title home-page-games-list-title">
+                  {section.title}
+                </div>
                 {section.items.map((game: HomePageItemType,i) => 
                   <Card key={game.id}
-                      content={<Link to={game.path} className="app-link app-default-text">{game.label}</Link>}
+                      content={<Link to={game.path} 
+                      className="app-link app-default-text">{game.label}</Link>}
                       media={game.media ? baseUrl + game.media : undefined}
                       linkMedia={game.path}
                       height={game.height ? game.height : undefined}
