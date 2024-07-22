@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Card } from "../components/shared/Card/Card";
 import { HomePageItemType, HomePageSectionType, homePageDescriptor } from  "../assets/homePageDescriptor";
@@ -20,10 +20,17 @@ export const HomePage = () => {
   const [showSection, setShowSection] = useState<Array<boolean>>(new Array<boolean>(homePageDescriptor.length));
   const [showArrow, setShowArrow] = useState<Array<number>|undefined>(undefined);
 
+  const navigate = useNavigate();
+  
   function updateShowSection(index: number) {
-    let arr = new Array<boolean>(homePageDescriptor.length);
-    arr[index] = true;
-    setShowSection(arr);
+    if (homePageDescriptor[index].items.length > 1) {
+      let arr = new Array<boolean>(homePageDescriptor.length);
+      arr[index] = true;
+      setShowSection(arr);
+    }
+    else {
+      navigate(homePageDescriptor[index].items[0].path);
+    }
   }
 
   function showDownArrow(event: React.MouseEvent<HTMLElement>) {
