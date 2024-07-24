@@ -23,6 +23,8 @@
   --background: var(--gray-01);
   --text: var(--blue-03);
   --link: var(--blue-03);
+  --clickable: var(--blue-01);
+  --highlight: var(--red-02);
 
   --notification-info: var(--blue-00);
   --notification-warning: var(--yellow-01);

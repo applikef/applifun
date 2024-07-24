@@ -21,7 +21,10 @@ export const CodeArea = (props: CodeAreaProps) =>
     setCode
   } = useContext(KDContext) as KDContextType;
 
-  const [codeLength, setCodeLength] = useState<number>(code.code[0].statements.length);
+  const [codeLength, setCodeLength] = useState<number>(
+    (code.code[0] && code.code[0].statements) ? 
+      code.code[0].statements.length 
+    : 0);
 
   function updateCode(newStatement: KDCodeStatement) {
     setCode(addStatement(code, newStatement));

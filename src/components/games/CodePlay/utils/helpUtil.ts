@@ -1,32 +1,34 @@
-export function getHelpFileName(helpPageId: string) {
-  let fileName = `codePlay/${helpPageId}.`;
+import { DISPLAY_LEVEL } from "../constants/displayLevelConstants";
+
+export function getHelpFileName(helpPageId: number) {
+  let fileName = `codePlay/`;
   switch (helpPageId) {
-    case "0":
-      fileName += "pencilOnly";
-      break;
-    case "1":
+    case DISPLAY_LEVEL.JUMP_NO_ATTR:
       fileName += "jump";
       break;
-    case "2":
+    case DISPLAY_LEVEL.JUMP:
       fileName += "jumpWithParameters";
       break;
-    case "3":
+    case DISPLAY_LEVEL.RESET:
       fileName += "resetDisplay";
       break;
-    case "4":
+    case DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT:
       fileName += "deleteAndAddStatement";
       break;
-    case "5":
+    case DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS:
       fileName += "stroke";
       break;
-    case "6":
+    case DISPLAY_LEVEL.STATEMENT_GROUPS:
       fileName += "statementGroups";
       break;
-    case "7":
+    case DISPLAY_LEVEL.SET_STROKE_WITH_PARAMS:
       fileName += "strokeWithParameters";
       break;
-    case "8":
+    case DISPLAY_LEVEL.TURN_NO_ATTR:
       fileName += "turn";
+      break;
+    case DISPLAY_LEVEL.OTHER:
+      fileName += "noHelp";
       break;
     default: 
       fileName += "noHelp";

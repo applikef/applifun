@@ -16,6 +16,10 @@
   font-weight: normal;
 }
 
+.app-font-highlight {
+  color: var(--highlight);
+}
+
 .app-show-inline {
   display: inline;
 }

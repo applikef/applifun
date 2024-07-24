@@ -40,6 +40,36 @@
   min-width: 350px;
 }
 
+.kd-levels-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.kd-levels-bar-entries {
+  display: flex;
+  flex-direction: row;
+}
+
+.kd-levels-bar-hr-block {
+  display: inline-block;
+}
+
+.kd-levels-bar-hr {
+  margin-left: 20px;
+  border-top: 1px solid var(--gray-02);
+}
+
+.kd-levels-bar-entry {
+  margin-left: 16px;
+  font-weight: bold;
+}
+
+.kd-levels-bar-entry:hover {
+  color: var(--clickable);
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .kd-settings-area {
   position: absolute;
   top: 54px;

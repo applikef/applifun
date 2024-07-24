@@ -37,11 +37,6 @@ export const JumpStatement = (props: JumpStatementProps) =>
           title="התקדם"  alt="התקדם"/>
       </div>
       <div className="kd-statement-line-title">{StatementTitle.get(s.name)}</div>
-      {/*displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ?
-        <div className="kd-statement-line-parameters">
-          {s.numberValue ? `${s.numberValue} ${NumberValueTitle.get(s.name) ? NumberValueTitle.get(s.name) : ""}` : ""}
-        </div>
-      : */}
       {displayLevel > DISPLAY_LEVEL.JUMP_NO_ATTR &&
         <div className="kd-statement-line-parameters">
           <div style={{display: "flex"}}>

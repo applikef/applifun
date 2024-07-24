@@ -9,11 +9,9 @@ import { toRadians } from "../utils/generalUtils";
 import { KDPencil, DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL, PENCIL_IMAGE } from "./KDPencil";
 
 export class CodeInterpreter { 
-  private displayLevel: number;
   private code: KDCode;
 
   constructor(context: KDContextType) {
-    this.displayLevel = context.displayLevel;
     this.code = context.code;
   }
 
@@ -58,10 +56,6 @@ export class CodeInterpreter {
   }
 
   public execute() {
-    if (this.displayLevel === 0) {
-      return;
-    }
-
     let stopExecution: boolean = false;
     for (let i=0; (!stopExecution && i < this.code.code.length); i++) {
       const blockStatements: Array<KDCodeStatement> = this.code.code[i].statements;
