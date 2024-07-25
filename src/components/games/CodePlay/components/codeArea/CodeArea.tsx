@@ -4,8 +4,8 @@ import { StatementLine } from "./statements/StatementLine";
 import { CodeAreaControlBar } from "./CodeAreaControlBar";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import { StatementsControlBar } from "./StatementsControlBar";
-import { KDCodeStatement } from "../../model/kidDevModel";
-import { addStatement, deleteStatement, getNumberOfStatements } from "../../utils/codeUtil";
+import { KDCode, KDCodeStatement } from "../../model/kidDevModel";
+import { addStatement, deleteStatement, getNumberOfStatements, initCode } from "../../utils/codeUtil";
 import "./codeArea.css";
 import { IMAGE_ROOT } from "../../constants/appConstants";
 
@@ -21,10 +21,17 @@ export const CodeArea = (props: CodeAreaProps) =>
     setCode
   } = useContext(KDContext) as KDContextType;
 
-  const [codeLength, setCodeLength] = useState<number>(
-    (code.code[0] && code.code[0].statements) ? 
-      code.code[0].statements.length 
-    : 0);
+  let length = -1;
+  if (!code.code[0] || !code.code[0].statements || code.code[0].statements.length === 0) {
+    const localCode: KDCode = initCode(displayLevel);
+    length = localCode.code[0].statements.length;
+    setCode(initCode(displayLevel));
+  }
+  else {
+    length = code.code[0].statements.length;
+  }
+
+  const [codeLength, setCodeLength] = useState<number>(length);
 
   function updateCode(newStatement: KDCodeStatement) {
     setCode(addStatement(code, newStatement));

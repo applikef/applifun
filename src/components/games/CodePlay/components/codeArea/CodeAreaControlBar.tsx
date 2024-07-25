@@ -11,15 +11,17 @@ export interface CodeAreaControlBarProps {
 
 export const CodeAreaControlBar = (props: CodeAreaControlBarProps) => 
 {  
-  const context = useContext(KDContext) as KDContextType;
-  const interpreter = new CodeInterpreter(context)
+  const {displayLevel,
+    code
+  } = useContext(KDContext) as KDContextType;
+  const interpreter = new CodeInterpreter();
 
   return(
     <div className="kd-code-area-control-bar">
       <img src={`${IMAGE_ROOT}/play32.png`} className="kd-code-area-control-bar-icon app-clickable"
         title="בצע"  alt="בצע"
-        onClick={() => interpreter.execute()}/>
-      { context.displayLevel >= DISPLAY_LEVEL.RESET &&
+        onClick={() => interpreter.execute(code)}/>
+      { displayLevel >= DISPLAY_LEVEL.RESET &&
         <img src={`${IMAGE_ROOT}/reset32.png`} className="kd-code-area-control-bar-icon app-clickable"
           title="מחק הכל"  alt="מחק הכל"
           onClick={() => interpreter.reset()}/>

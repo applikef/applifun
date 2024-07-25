@@ -21,11 +21,14 @@ export const JumpStatement = (props: JumpStatementProps) =>
     setCodeStatement
   } = useContext(KDContext) as KDContextType;
  
-  const length = (s.numberValue !== undefined && s.numberValue > 0) ? s.numberValue! : 
+  const lineLength = (s.numberValue !== undefined && s.numberValue > 0) ? 
+    s.numberValue! 
+  : 
     (displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ? 
       DefaultNumberValue.get(StatementCode.JUMP)! 
-      : 0);
-  const [numberInput, setNumberInput] = useState<number>(length);
+      : 
+      0);
+  const [numberInput, setNumberInput] = useState<number>(lineLength);
 
   const [statementBorder, setStatementBorder] = useState<string>("kd-statement-line-correct");
 

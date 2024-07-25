@@ -7,10 +7,11 @@ import { Banner } from "../../global/Banner/Banner";
 import { getHelpFileName } from "./utils/helpUtil";
 import { CodeInterpreter } from "./model/CodeInterpreter";
 import { NO_OF_LEVELS } from "./constants/appConstants";
+import { CodeArea } from "./components/codeArea/CodeArea";
+import { DisplayArea } from "./components/displayArea/DisplayArea";
 
 export const CodePlay = () => 
 {  
-  const context = useContext(KDContext) as KDContextType;
   const { 
     displayLevel,
     setDisplayLevel,
@@ -20,7 +21,7 @@ export const CodePlay = () =>
   function handleLevelSelected(level: number) {
     setCode(initCode(level));
     setDisplayLevel(level);
-    (new CodeInterpreter(context)).reset();
+    (new CodeInterpreter()).reset();
   }
 
   return(
@@ -50,7 +51,11 @@ export const CodePlay = () =>
       </div>
 
       <div className="kd-home">
-        <Workbench />
+        {/* <Workbench /> */}
+        <div className="kd-workbench">
+          <CodeArea></CodeArea>
+          <DisplayArea></DisplayArea>
+        </div>
       </div>
     </div>
   )

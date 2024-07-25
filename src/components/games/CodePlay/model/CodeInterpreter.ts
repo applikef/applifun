@@ -1,5 +1,4 @@
 import { StatementCode } from "../constants/modelConstants";
-import { KDContextType } from "./KDContext";
 import { KDCode, KDCodeStatement } from "./kidDevModel";
 import { DefaultNumberValue, DefaultStringValue } from "./../constants/modelConstants";
 import { showError } from "../utils/errorsUtil";
@@ -8,14 +7,9 @@ import { CodeValidator } from "./CodeValidator";
 import { toRadians } from "../utils/generalUtils";
 import { KDPencil, DEFAULT_PENCIL_PEN_DELTA_X, DEFAULT_PENCIL_PEN_DELTA_Y, DEFAULT_PENCIL, PENCIL_IMAGE } from "./KDPencil";
 
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
 export class CodeInterpreter { 
-  private code: KDCode;
-
-  constructor(context: KDContextType) {
-    this.code = context.code;
-  }
-
-  private SVG_NS = 'http://www.w3.org/2000/svg';
   private pencil:KDPencil = DEFAULT_PENCIL;
 
   private setPencilPosition(penX: number, penY: number) {
@@ -44,7 +38,7 @@ export class CodeInterpreter {
       svg.removeChild(svg.lastChild);
     }
 
-    var newPencil = document.createElementNS(this.SVG_NS,'image');
+    var newPencil = document.createElementNS(SVG_NS,'image');
     newPencil.setAttribute('id', 'pencil');
     newPencil.setAttribute('href', PENCIL_IMAGE);
     newPencil.setAttribute('x', DEFAULT_PENCIL.x.toString());
@@ -55,10 +49,10 @@ export class CodeInterpreter {
     this.pencil = DEFAULT_PENCIL;
   }
 
-  public execute() {
+  public execute(code: KDCode) {
     let stopExecution: boolean = false;
-    for (let i=0; (!stopExecution && i < this.code.code.length); i++) {
-      const blockStatements: Array<KDCodeStatement> = this.code.code[i].statements;
+    for (let i=0; (!stopExecution && i < code.code.length); i++) {
+      const blockStatements: Array<KDCodeStatement> = code.code[i].statements;
       for (let j=0; j < blockStatements.length; j++) {
         const statement: KDCodeStatement = blockStatements[j];
         if (CodeValidator.isValid(statement)) {
@@ -105,7 +99,7 @@ export class CodeInterpreter {
     const newPenX: number = (this.pencil.penX+(delta*Math.cos(toRadians(this.pencil.angle))));
     const newPenY: number = (this.pencil.penY-(delta*Math.sin(toRadians(this.pencil.angle))));
 
-    var newLine = document.createElementNS(this.SVG_NS,'line');
+    var newLine = document.createElementNS(SVG_NS,'line');
     newLine.setAttribute('id', 'line2');
     newLine.setAttribute('x1', this.pencil.penX.toString());
     newLine.setAttribute('y1', this.pencil.penY.toString());
