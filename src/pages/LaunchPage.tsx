@@ -14,7 +14,7 @@ import { MouseSkillsJumpingShape } from "../components/games/MouseSkills/MouseSk
 import { MOUSE_SKILL_TYPE } from "../components/games/MouseSkills/MouseSkills.types";
 import { SelectGame } from "../components/games/Select/SelectGame";
 import { NumberLanguages } from "../components/games/NumberLanguages/NumberLanguages";
-import { CodePlay } from "../components/games/CodePlay/CodePlay";
+import { CodePlay } from "../CodePlay/CodePlay";
 
 export const LaunchPage = () => {
   const queryParameters = new URLSearchParams(window.location.search)

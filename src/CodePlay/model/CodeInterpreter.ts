@@ -1,6 +1,6 @@
 import { StatementCode } from "../constants/modelConstants";
 import { KDCode, KDCodeStatement } from "./kidDevModel";
-import { DefaultNumberValue, DefaultStringValue } from "./../constants/modelConstants";
+import { DefaultNumberValue, DefaultStringValue } from "../constants/modelConstants";
 import { showError } from "../utils/errorsUtil";
 import { KD_APP_ERROR_MESSAGES } from "../constants/appErrorMessages";
 import { CodeValidator } from "./CodeValidator";

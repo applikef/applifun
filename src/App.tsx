@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { LaunchPage } from "./pages/LaunchPage";
 import { GamesProvider } from "./context/GamesContext";
-import { KidDevProvider } from "./components/games/CodePlay/model/KDContext";
+import { KidDevProvider } from "./CodePlay/model/KDContext";
 
 function App() {
   return (

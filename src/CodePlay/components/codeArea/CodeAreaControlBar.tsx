@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import KDContext, { KDContextType } from "./../../model/KDContext";
+import KDContext, { KDContextType } from "../../model/KDContext";
 import { CodeInterpreter } from "../../model/CodeInterpreter";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
-import "./../../../../../assets/styles/codePlay.css";
+import "./../../../assets/styles/codePlay.css";
 import { IMAGE_ROOT } from "../../constants/appConstants";
 
 export interface CodeAreaControlBarProps {

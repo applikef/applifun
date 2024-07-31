@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import KDContext, { KDContextType } from "./model/KDContext";
-import { Workbench } from "./components/Workbenck";
 import { initCode } from "./utils/codeUtil";
-import "./../../../assets/styles/codePlay.css";
-import { Banner } from "../../global/Banner/Banner";
+import "./../assets/styles/codePlay.css";
+import { Banner } from "../components/global/Banner/Banner";
 import { getHelpFileName } from "./utils/helpUtil";
 import { CodeInterpreter } from "./model/CodeInterpreter";
 import { NO_OF_LEVELS } from "./constants/appConstants";

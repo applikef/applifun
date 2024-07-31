@@ -15,6 +15,7 @@ export type HomePageSectionType = {
   title?: string;
   media?: string;
   mobile?: boolean;
+  hide?: boolean;
   items: HomePageItemType[];
 }
 
@@ -168,6 +169,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
+    hide: true,
     title: "מְצַיְּרִים",
     media: "resources/images/pencil128.png",
     items: [

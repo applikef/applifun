@@ -64,8 +64,8 @@ export const HomePage = () => {
             <div className="home-page-sub-title app-indent-top-16">בְּחַר סוּג מִשְׂחָק לִרְאוֹת אֶת הַמִּשְׂחָקִים הַקַּיָּמִים</div>
             <div className='home-page-section-list' data-walkthrough="app-games-list">
               {homePageDescriptor.map((section: HomePageSectionType,i) =>
-                (!isMobile ||
-                  (isMobile && (section.mobile ? section.mobile : true))) &&
+                (section.hide !== true && (!isMobile ||
+                  (isMobile && (section.mobile ? section.mobile : true)))) &&
                   <div className="home-page-games-list" key={i}>
                     <div className="app-clickable" onClick={() => updateShowSection(i)}>
                       {section.title &&

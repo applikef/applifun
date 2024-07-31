@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import KDContext, { KDContextType } from "./../../model/KDContext";
+import KDContext, { KDContextType } from "../../model/KDContext";
 import { StatementLine } from "./statements/StatementLine";
 import { CodeAreaControlBar } from "./CodeAreaControlBar";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
