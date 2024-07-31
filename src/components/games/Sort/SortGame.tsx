@@ -142,7 +142,8 @@ export const SortGame = (props: SortGameProps) => {
                   style={{cursor: cursorStyle}}>
                     {selectedImages.get(group.id)!.map((imageFile,i) => 
                       <span key={i}>
-                        <img src={MediaUtil.getCatalogImage(imageFile)} height="92px" 
+                        <img src={MediaUtil.getCatalogImage(imageFile)} 
+                          height={DeviceUtil.getImageSizeAsStr(isTablet, 92)} 
                           alt=""/>
                       </span>
                     )}

@@ -17,12 +17,15 @@ export const HomePage = () => {
   const baseUrl = "/applifun/";
 
   const {
-    isTablet,
     setIsTablet,
     setIsPortrait
   } = useContext(GamesContext) as GamesContextType;
 
-  setIsTablet(useMediaQuery({ query: `(max-width: ${ConstantsUtil.smallScreenWidth}px)` }));
+  /* Local isTablet for the value to be used in this component before 
+     context is updated
+  */
+  const isTablet = useMediaQuery({ query: `(max-width: ${ConstantsUtil.smallScreenWidth}px)` });
+  setIsTablet(isTablet);
   setIsPortrait(useMediaQuery({ query: `(orientation: portrait)` }));
 
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
@@ -66,6 +69,7 @@ export const HomePage = () => {
             }
             alt="עזרה" />
         </div>
+        {isTablet && <br/>}
         <div className="home-page-title">
           מְשַׂחֲקִים וְלוֹמְדִים
         </div>
@@ -83,7 +87,8 @@ export const HomePage = () => {
                       } 
                       <LineBreak />
                       {section.media &&
-                        <img src={baseUrl + section.media} height={DeviceUtil.imageHeightSmall(isTablet)} 
+                        <img src={baseUrl + section.media} 
+                          height={DeviceUtil.imageHeightMedium(isTablet)} 
                           alt={section.title} onClick={(evt) => showDownArrow(evt)}/>
                       } 
                     </div>
@@ -101,7 +106,7 @@ export const HomePage = () => {
                         content={<Link to={game.path} className="app-link app-default-text">{game.label}</Link>}
                         media={game.media ? baseUrl + game.media : undefined}
                         linkMedia={game.path}
-                        height={game.height ? game.height : undefined}
+                        height={ DeviceUtil.getImageSize(isTablet, (game.height ? game.height : ConstantsUtil.defaultImageHeight))}
                     />
                   )}
                 </div>

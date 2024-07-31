@@ -16,7 +16,6 @@ import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
-import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 
 export interface ImagesSequenceProps {
   gameDescriptor: ImageSequenceDescriptorType;

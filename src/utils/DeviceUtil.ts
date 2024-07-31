@@ -21,4 +21,12 @@ export class DeviceUtil {
     const sizedIamge: number = DeviceUtil.imageSize * 1.5;
     return `${(isTablet ? (sizedIamge * DeviceUtil.tabletRatio) : sizedIamge).toString()}px`;
   }
+
+  public static getImageSizeAsStr(isTablet: boolean, size: number): string {
+    return `${(isTablet ? (size * DeviceUtil.tabletRatio) : size).toString()}px`;
+  }
+
+  public static getImageSize(isTablet: boolean, size: number): number {
+    return isTablet ? (size * DeviceUtil.tabletRatio) : size;
+  }
 }
