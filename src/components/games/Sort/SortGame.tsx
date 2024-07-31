@@ -18,8 +18,13 @@ export interface SortGameProps {
 };
 
 export const SortGame = (props: SortGameProps) => {
-  const imgSize:string = DeviceUtil.imageHeight();
-  const groupImgSize:string = DeviceUtil.imageHeightSmall();
+  const { 
+    audioOn,
+    isTablet 
+  } = useContext(GamesContext) as GamesContextType;
+
+  const imgSize:string = DeviceUtil.imageHeight(isTablet);
+  const groupImgSize:string = DeviceUtil.imageHeightSmall(isTablet);
 
   const title = props.gameDescriptor.titleTemplate;
   const groups = props.gameDescriptor.groups;
@@ -28,10 +33,6 @@ export const SortGame = (props: SortGameProps) => {
   const selectGroupMessage = props.gameDescriptor.selectGroupMessage ? 
     props.gameDescriptor.selectGroupMessage 
   : "צריך לבחור קבוצה";
-
-  const { 
-    audioOn
-  } = useContext(GamesContext) as GamesContextType;
 
   const [cursorStyle, setCursorStyle] = useState("pointer");
   const [currentGroup, setCurrentGroup] = useState<SortGameGroupType | undefined>(undefined);

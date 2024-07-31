@@ -24,7 +24,11 @@ export interface SelectGameProps {
 export const SelectGame = (props: SelectGameProps) => {
   const navigate = useNavigate();
 
-  const imgSize:string = DeviceUtil.imageHeight();
+  const {
+    isTablet,
+  } = useContext(GamesContext) as GamesContextType;
+
+  const imgSize:string = DeviceUtil.imageHeight(isTablet);
   const groups = props.gameDescriptor.groups;
   const numberOfGroups = groups.length;
   const groupNames = groups.map((g) => g.title);

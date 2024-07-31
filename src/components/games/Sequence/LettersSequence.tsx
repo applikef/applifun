@@ -38,7 +38,8 @@ export const LettersSequence = (props: LettersSequenceProps) => {
   const navigate = useNavigate();
 
   const { 
-    audioOn 
+    audioOn,
+    isTablet 
   } = useContext(GamesContext) as GamesContextType;
 
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
@@ -191,7 +192,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
       <div className="letters-sequence-global">
         <div>
           <img src={MediaUtil.getCatalogImage(word.file)} alt={word.title}
-            height={DeviceUtil.imageHeightLarge()}></img>  
+            height={DeviceUtil.imageHeightLarge(isTablet)}></img>  
         </div>
 
         <div className="sequence-container">

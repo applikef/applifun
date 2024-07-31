@@ -16,6 +16,7 @@ import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
+import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 
 export interface ImagesSequenceProps {
   gameDescriptor: ImageSequenceDescriptorType;
@@ -25,7 +26,8 @@ let imageDescriptors: ImageDescriptorType[] = [];
 
 export const ImagesSequence = (props: ImagesSequenceProps) => {
   const { 
-    audioOn 
+    audioOn,
+    isTablet 
   } = useContext(GamesContext) as GamesContextType;
 
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
@@ -91,7 +93,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
           {shuffledImages.current.map((e:ImageDescriptorType,i:number) =>
               <TitledImage className="sequence-image" id={"bank-" + e.id} key={i} 
                 src={MediaUtil.getCatalogImage(e.file)} alt={e.title} 
-                height={DeviceUtil.imageHeight()} 
+                height={DeviceUtil.imageHeight(isTablet)} 
                 maxWidth="200px"
                 onClick={() => verifyImage(e)}></TitledImage>
             )
@@ -113,7 +115,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
                     <TitledImage className="sequence-feedback-image" 
                       id={"feedback-" + e.id} src={MediaUtil.getCatalogImage(e.file)} 
                       alt={e.title} 
-                      height={DeviceUtil.imageHeight()} 
+                      height={DeviceUtil.imageHeight(isTablet)} 
                       maxWidth="200px"/> 
                 </span>
               )

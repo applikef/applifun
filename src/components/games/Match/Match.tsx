@@ -39,7 +39,8 @@ export interface MatchPropsType {
 
 export const Match = (props: MatchPropsType) => {
   const { 
-    audioOn 
+    audioOn, 
+    isTablet
   } = useContext(GamesContext) as GamesContextType;
 
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
@@ -216,7 +217,7 @@ export const Match = (props: MatchPropsType) => {
         {
           groupFiles && groupFiles.length > 0 ?
             <img src={groupFiles[activeIndex]} alt={ activeGroupName.current } 
-              width={DeviceUtil.imageHeight()} />
+              width={DeviceUtil.imageHeight(isTablet)} />
           :
             <span className="groupNameTitle">
               { groupIds[activeIndex] }
@@ -230,7 +231,7 @@ export const Match = (props: MatchPropsType) => {
         {
           validImages.current.map((img,i) =>
             img.length > 0 &&
-              <img src={ img } alt="" key={i} height={DeviceUtil.imageHeight()}  
+              <img src={ img } alt="" key={i} height={DeviceUtil.imageHeight(isTablet)}  
               onClick={(event:React.MouseEvent<HTMLElement>) => {
                 showImageTitleNotification.current = true;
                 setImageTitleNotification({

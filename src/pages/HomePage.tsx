@@ -1,19 +1,29 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive'
 
 import { Card } from "../components/shared/Card/Card";
 import { HomePageItemType, HomePageSectionType, homePageDescriptor } from  "../assets/homePageDescriptor";
 
 import './pages.css';
-import { DeviceUtil } from "../utils/DeviceUtil";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LineBreak } from "../components/shared/LineBreak";
 import { Help } from "../components/global/help/Help";
 import { AttentionArrow } from "../components/shared/AttentionArrow/AttentionArrow";
+import { ConstantsUtil } from "../utils/ConstantsUtil";
+import GamesContext, { GamesContextType } from "../context/GamesContext";
+import { DeviceUtil } from "../utils/DeviceUtil";
 
 export const HomePage = () => {
   const baseUrl = "/applifun/";
 
-  const isMobile = DeviceUtil.isMobileDevice();
+  const {
+    isTablet,
+    setIsTablet,
+    setIsPortrait
+  } = useContext(GamesContext) as GamesContextType;
+
+  setIsTablet(useMediaQuery({ query: `(max-width: ${ConstantsUtil.smallScreenWidth}px)` }));
+  setIsPortrait(useMediaQuery({ query: `(orientation: portrait)` }));
 
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
   const [showMailHelp, setShowMailHelp] = useState<string>("home-page-hide-mail-help");
@@ -64,8 +74,8 @@ export const HomePage = () => {
             <div className="home-page-sub-title app-indent-top-16">בְּחַר סוּג מִשְׂחָק לִרְאוֹת אֶת הַמִּשְׂחָקִים הַקַּיָּמִים</div>
             <div className='home-page-section-list' data-walkthrough="app-games-list">
               {homePageDescriptor.map((section: HomePageSectionType,i) =>
-                (section.hide !== true && (!isMobile ||
-                  (isMobile && (section.mobile ? section.mobile : true)))) &&
+                (section.hide !== true && (!isTablet ||
+                  (isTablet && (section.mobile ? section.mobile : true)))) &&
                   <div className="home-page-games-list" key={i}>
                     <div className="app-clickable" onClick={() => updateShowSection(i)}>
                       {section.title &&
@@ -73,7 +83,7 @@ export const HomePage = () => {
                       } 
                       <LineBreak />
                       {section.media &&
-                        <img src={baseUrl + section.media} height={DeviceUtil.imageHeightSmall()} 
+                        <img src={baseUrl + section.media} height={DeviceUtil.imageHeightSmall(isTablet)} 
                           alt={section.title} onClick={(evt) => showDownArrow(evt)}/>
                       } 
                     </div>
@@ -140,7 +150,7 @@ export const HomePage = () => {
         העתק את כתובת המייל לאפליקצית המייל שלך ושלח אלינו מייל. תודה!
       </div>
 
-      { DeviceUtil.isSmallDevice() && 
+      { isTablet && 
         <div className={showArrow ? "app-show-inline": "app-hide"}
           style={{position: "absolute", left: showArrow ? showArrow[0] : 0, top: showArrow ? showArrow[1] : 0}}>
           <AttentionArrow></AttentionArrow>

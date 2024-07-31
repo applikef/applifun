@@ -1,5 +1,5 @@
-import React from "react";
-import { DeviceUtil } from "../../../utils/DeviceUtil";
+import React, { useContext } from "react";
+import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 
 export interface HelpProps {
   baseUrl?: string;
@@ -8,9 +8,14 @@ export interface HelpProps {
 }
 
 export const Help = (props: HelpProps) => {
+  const {
+    isTablet,
+  } = useContext(GamesContext) as GamesContextType;
+
+
   const baseUrl = props.baseUrl ? props.baseUrl : "";
   const fileName = props.gameId ? `${props.gameId}.html` : props.fileName;
-  const smallDevice = DeviceUtil.isSmallDevice();
+  const smallDevice = isTablet;
 
   return(
       <iframe title="mouseJumpingShapeClick" src={`${baseUrl}resources/help/${fileName}`} 
