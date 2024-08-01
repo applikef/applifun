@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import "./NumberLanguages.css";
 import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { APPLI_SIZE } from "../../../utils/ConstantsUtil";
+import { DeviceUtil } from "../../../utils/DeviceUtil";
+import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 
 export interface NumberLanguagesProps {
   scope: number;
@@ -50,7 +52,11 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   const [tenFeedbackFace, setTenFeedbackFace] = 
     useState<FACES>(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
 
-  function add(
+    const {
+      isTablet,
+    } = useContext(GamesContext) as GamesContextType;
+  
+    function add(
     serialNo: number, 
     sourceArray: Array<number>, 
     sourcePrefix: string, 
@@ -160,7 +166,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     <div className="app-page">
       <Banner gameId="numberLanguagesShow"/>
       
-      <div  className="app-title-centered">
+      <div className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, 'xl')}`}>
         <PageHeader title={title} 
           feedbackFace={ feedbackFace } />
       </div>

@@ -29,4 +29,8 @@ export class DeviceUtil {
   public static getImageSize(isTablet: boolean, size: number): number {
     return isTablet ? (size * DeviceUtil.tabletRatio) : size;
   }
+
+  public static getFontSize(isTablet: boolean, size: string) {
+    return isTablet ? `font-size-${size}-tablet` : `font-size-${size}`;
+  }
 }

@@ -70,7 +70,7 @@ export const HomePage = () => {
             alt="עזרה" />
         </div>
         {isTablet && <br/>}
-        <div className="home-page-title">
+        <div className={`home-page-title ${DeviceUtil.getFontSize(isTablet, 'xxl')}`}>
           מְשַׂחֲקִים וְלוֹמְדִים
         </div>
         { true ? 

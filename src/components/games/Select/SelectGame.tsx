@@ -173,7 +173,7 @@ export const SelectGame = (props: SelectGameProps) => {
          }}
       />
       
-      <div  className="app-title-centered">
+      <div  className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, 'xl')}`}>
         <PageHeader title={title} image={activeGroup.current.image} feedbackFace={ feedbackFace } />
       </div>
 

@@ -8,15 +8,6 @@
   line-height: 40px;
 }
 
-.landing-page-app {
-  background-color: var(--background);
-  direction: rtl;
-  padding-top: 50px;
-  line-height: 40px;
-  overflow: auto;
-  height: 100vh;
-}
-
 .home-page-content-area {
   min-height: 70vh;
   display: flex;
@@ -72,14 +63,6 @@
   text-align: center;
 }
 
-.app-headless-landing {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-size: var(--font-size-normal);
-  color: var(--text);
-}
-
 .home-page-hide-mail-help {
   display: none;
 }
@@ -125,20 +108,7 @@
 }
 
 .home-page-title {
-  font-size: 3rem;
   font-weight: bold;
-}
-
-.landing-page-title {
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 5rem;
-}
-
-.landing-page-image {
-  padding-top: 30px;
-  text-align: center;
 }
 
 .home-page-help-icon {

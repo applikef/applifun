@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 
 import "./PageHeader.css";
 import { WellDone } from "../WellDone/WellDone";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { TalkToMe } from "../TalkToMe/TalkToMe";
+import { DeviceUtil } from "../../../utils/DeviceUtil";
+import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 
 interface PageHeaderPropsType {
   feedbackFace: FACES;
@@ -15,14 +17,18 @@ interface PageHeaderPropsType {
 }
 
 export const PageHeader = (props: PageHeaderPropsType) => {
-  return(
+  const {
+    isTablet,
+  } = useContext(GamesContext) as GamesContextType;
+
+return(
     <div>
       <div className="page-header-feedback-face">
         <FaceFeedback face={props.feedbackFace} />
         <WellDone />
       </div>
     
-      <div className="page-header-title">
+      <div className={`page-header-title ${DeviceUtil.getFontSize(isTablet, 'xl')}`}>
         { props.image && 
           <img src={ MediaUtil.getCatalogImage(props.image)} 
             alt="" className="page-header-image" />

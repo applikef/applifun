@@ -6,20 +6,6 @@
   height: 0;
 }
 
-.app-font-normal {
-  font-size: 1rem;
-  font-weight: normal;
-}
-
-.app-font-sm {
-  font-size: 0.75rem;
-  font-weight: normal;
-}
-
-.app-font-highlight {
-  color: var(--highlight);
-}
-
 .app-show-inline {
   display: inline;
 }
@@ -34,18 +20,11 @@
 
 .app-title-centered {
   text-align: center;
-  font-size: 2rem;
   padding-bottom: 1rem;
 }
 
 .app-title {
   font-size: 2rem;
-  padding-bottom: 1rem;
-}
-
-.app-sub-title-centered {
-  text-align: center;
-  font-size: 1.5rem;
   padding-bottom: 1rem;
 }
 
