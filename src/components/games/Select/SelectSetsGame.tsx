@@ -12,6 +12,7 @@ import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { TitledImage } from "../../shared/TitledImage/TitledImage";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
+import { FONT_SIZE } from "../../../utils/ConstantsUtil";
 
 export interface SelectGameProps {
   gameDescriptor: SelectGameDescriptorType;
@@ -125,7 +126,7 @@ export const SelectSetsGame = (props: SelectGameProps) => {
          }}
       />
       
-      <div  className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, 'xl')}`}>
+      <div  className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XL)}`}>
         { /* <img src={activeGroup.cursor} height="32px" alt={activeGroup.title} /> */ }
         <PageHeader title={title} feedbackFace={ feedbackFace } />
       </div>

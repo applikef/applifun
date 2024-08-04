@@ -12,6 +12,7 @@ export interface TitledImageProps {
 }
 
 export const TitledImage = (props: TitledImageProps) => {
+
   return (
     <span  id={props.id}
       className={`titled-image-global ${props.className}`}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./FaceFeedback.css";
-import { APPLI_SIZE } from "../../../utils/ConstantsUtil";
+import { FEEDBACK_FACE_SIZE } from "../../../utils/ConstantsUtil";
 
 export const enum FACES {
   HAPPY,
@@ -10,7 +10,7 @@ export const enum FACES {
 };
 
 export interface FaceFeedbackProps {
-  size?: APPLI_SIZE;
+  size?: FEEDBACK_FACE_SIZE;
   marginRight?: string;
   face: FACES;
 };
@@ -19,7 +19,7 @@ export const FaceFeedback = (props: FaceFeedbackProps) => {
   const happyDisplay = props.face === FACES.HAPPY ? "inline" : "none";
   const worryDisplay = props.face === FACES.WORRY ? "inline" : "none";
   
-  const zoomValue: string = (props.size === APPLI_SIZE.M) ? "50%" : ((props.size === APPLI_SIZE.S) ? "25%" : "100%");
+  const zoomValue: string = (props.size === FEEDBACK_FACE_SIZE.M) ? "50%" : ((props.size === FEEDBACK_FACE_SIZE.S) ? "25%" : "100%");
 
   return (
     <>

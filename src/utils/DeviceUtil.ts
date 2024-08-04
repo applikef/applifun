@@ -1,3 +1,5 @@
+import { FONT_SIZE } from "./ConstantsUtil";
+
 export class DeviceUtil {
   static imageSize: number = 150; 
   static tabletRatio: number = 0.5;
@@ -30,7 +32,7 @@ export class DeviceUtil {
     return isTablet ? (size * DeviceUtil.tabletRatio) : size;
   }
 
-  public static getFontSize(isTablet: boolean, size: string) {
+  public static getFontSize(isTablet: boolean, size: FONT_SIZE) {
     return isTablet ? `font-size-${size}-tablet` : `font-size-${size}`;
   }
 }

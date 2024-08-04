@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { LineBreak } from "../components/shared/LineBreak";
 import { Help } from "../components/global/help/Help";
 import { AttentionArrow } from "../components/shared/AttentionArrow/AttentionArrow";
-import { ConstantsUtil } from "../utils/ConstantsUtil";
+import { ConstantsUtil, FONT_SIZE } from "../utils/ConstantsUtil";
 import GamesContext, { GamesContextType } from "../context/GamesContext";
 import { DeviceUtil } from "../utils/DeviceUtil";
 
@@ -70,7 +70,7 @@ export const HomePage = () => {
             alt="עזרה" />
         </div>
         {isTablet && <br/>}
-        <div className={`home-page-title ${DeviceUtil.getFontSize(isTablet, 'xxl')}`}>
+        <div className={`home-page-title ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XXL)}`}>
           מְשַׂחֲקִים וְלוֹמְדִים
         </div>
         { true ? 

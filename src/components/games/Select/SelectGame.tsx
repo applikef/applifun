@@ -13,7 +13,7 @@ import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { TitledImage } from "../../shared/TitledImage/TitledImage";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
-import { ConstantsUtil } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, FONT_SIZE } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 
 export interface SelectGameProps {
@@ -173,7 +173,7 @@ export const SelectGame = (props: SelectGameProps) => {
          }}
       />
       
-      <div  className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, 'xl')}`}>
+      <div  className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XL)}`}>
         <PageHeader title={title} image={activeGroup.current.image} feedbackFace={ feedbackFace } />
       </div>
 
@@ -201,16 +201,17 @@ export const SelectGame = (props: SelectGameProps) => {
 
       <div className="select-game-entities">
         {sourceEntities.current.map((e,i) =>
-          <TitledImage id={"bank-" + e.id} key={i} src={MediaUtil.getCatalogImage(e.file)} 
+          <TitledImage id={"bank-" + e.id} key={i} 
+            src={MediaUtil.getCatalogImage(e.file)} 
             alt={e.title} 
             height={imgSize}
             onClick={() => verifyImage(e)}
-            className="select-game-source-img app-clickable"></TitledImage>
+            className={`select-game-source-img app-clickable ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.L)}`}></TitledImage>
         )}
       </div>
 
       <MultiSelectionSettings
-          className={ gameSettingsDisplay }
+          className={ gameSettingsDisplay  }
           title={props.gameDescriptor.settingsTitle}
           options={groupNames}
           handleSettingsDone={handleSettingsDone}

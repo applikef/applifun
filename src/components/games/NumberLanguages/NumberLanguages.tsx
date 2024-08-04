@@ -4,7 +4,7 @@ import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
-import { APPLI_SIZE } from "../../../utils/ConstantsUtil";
+import { FEEDBACK_FACE_SIZE, FONT_SIZE } from "../../../utils/ConstantsUtil";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 
@@ -166,7 +166,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     <div className="app-page">
       <Banner gameId="numberLanguagesShow"/>
       
-      <div className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, 'xl')}`}>
+      <div className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XL)}`}>
         <PageHeader title={title} 
           feedbackFace={ feedbackFace } />
       </div>
@@ -191,13 +191,13 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
           <table style={{ border:"1px solid #FFFFFF", height: "100px", marginRight: "60px" }}><tbody>
             <tr>
               <td className="unit-header">
-                <FaceFeedback face={unitFeedbackFace} size={APPLI_SIZE.S}></FaceFeedback>
+                <FaceFeedback face={unitFeedbackFace} size={FEEDBACK_FACE_SIZE.S}></FaceFeedback>
                 <span style={{marginRight: "10px"}}>{unitTargetCount} יְחִידוֹת</span>                 
               </td>
               {
                 props.scope > 10 &&
                   <td className="unit-header">
-                    <FaceFeedback face={tenFeedbackFace} size={APPLI_SIZE.S}></FaceFeedback>
+                    <FaceFeedback face={tenFeedbackFace} size={FEEDBACK_FACE_SIZE.S}></FaceFeedback>
                     <span style={{marginRight: "10px"}}>{tenTargetCount} עֲשָׂרוֹת</span>
                   </td>
               }

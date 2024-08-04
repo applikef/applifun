@@ -7,6 +7,7 @@ import { MediaUtil } from "../../../utils/MediaUtil";
 import { TalkToMe } from "../TalkToMe/TalkToMe";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
+import { FONT_SIZE } from "../../../utils/ConstantsUtil";
 
 interface PageHeaderPropsType {
   feedbackFace: FACES;
@@ -28,7 +29,7 @@ return(
         <WellDone />
       </div>
     
-      <div className={`page-header-title ${DeviceUtil.getFontSize(isTablet, 'xl')}`}>
+      <div className={`page-header-title ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XL)}`}>
         { props.image && 
           <img src={ MediaUtil.getCatalogImage(props.image)} 
             alt="" className="page-header-image" />

@@ -16,6 +16,7 @@ import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
+import { FONT_SIZE } from "../../../utils/ConstantsUtil";
 
 export interface ImagesSequenceProps {
   gameDescriptor: ImageSequenceDescriptorType;
@@ -90,7 +91,8 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
 
         <div className="sequence-source-images" >
           {shuffledImages.current.map((e:ImageDescriptorType,i:number) =>
-              <TitledImage className="sequence-image" id={"bank-" + e.id} key={i} 
+              <TitledImage 
+                className={`sequence-image ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.L)}`} id={"bank-" + e.id} key={i} 
                 src={MediaUtil.getCatalogImage(e.file)} alt={e.title} 
                 height={DeviceUtil.imageHeight(isTablet)} 
                 maxWidth="200px"
