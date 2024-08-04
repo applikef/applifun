@@ -7,9 +7,6 @@ export type GamesContextType = {
 
   isTablet: boolean;
   setIsTablet: (val: boolean) => void;
-
-  isPortrait: boolean;
-  setIsPortrait: (val: boolean) => void;
 };
 
 const GamesContext = React.createContext<GamesContextType | null>(null);
@@ -29,14 +26,8 @@ export const GamesProvider: React.FC<React.PropsWithChildren> = ({
   }
 
   const [isTablet, setIsTabletState] = useState<boolean>(false);
-  const [isPortrait, setIsPortraitState] = useState<boolean>(false);
-
   const setIsTablet = (val: boolean) => {
     setIsTabletState(val);
-  }
-
-  const setIsPortrait = (val: boolean) => {
-    setIsPortraitState(val);
   }
 
   return (
@@ -47,8 +38,6 @@ export const GamesProvider: React.FC<React.PropsWithChildren> = ({
         turnAudioOff,
         isTablet,
         setIsTablet,      
-        isPortrait,
-        setIsPortrait
       }}
     >
       {children}

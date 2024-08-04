@@ -5,7 +5,7 @@ import { Card } from "../components/shared/Card/Card";
 import { HomePageItemType, HomePageSectionType, homePageDescriptor } from  "../assets/homePageDescriptor";
 
 import './pages.css';
-import { useContext, useState } from "react";
+import { useContext, useLayoutEffect, useState } from "react";
 import { LineBreak } from "../components/shared/LineBreak";
 import { Help } from "../components/global/help/Help";
 import { AttentionArrow } from "../components/shared/AttentionArrow/AttentionArrow";
@@ -18,15 +18,15 @@ export const HomePage = () => {
 
   const {
     setIsTablet,
-    setIsPortrait
   } = useContext(GamesContext) as GamesContextType;
 
   /* Local isTablet for the value to be used in this component before 
      context is updated
   */
   const isTablet = useMediaQuery({ query: `(max-width: ${ConstantsUtil.smallScreenWidth}px)` });
-  setIsTablet(isTablet);
-  setIsPortrait(useMediaQuery({ query: `(orientation: portrait)` }));
+  useLayoutEffect(() => {
+    setIsTablet(isTablet);
+  }, [isTablet, setIsTablet]);
 
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
   const [showMailHelp, setShowMailHelp] = useState<string>("home-page-hide-mail-help");
