@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { StrokeColors, StrokeColorsHex } from "../../constants/displayConstants";
 import { KDCodeStatement } from "../../model/kidDevModel";
 import { StatementCode } from "../../constants/modelConstants";
@@ -59,11 +59,17 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
 
   const [submenusClass, setSubmenusClass] = useState<any>(showFirstEntry())
 
-  const showColorsBar = useRef<boolean>(displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS ? 
-    true : false);
-  const showJump = useRef<boolean>(
-    (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT || displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) ? 
-    true : false);
+  const showColorsBar = 
+      displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS ? 
+      true : false;
+  const showJump =
+      (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT || displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) ? 
+      true : false;
+
+console.log("display level " + displayLevel + "level " + 
+  DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS + "compare " +
+  (DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS === displayLevel) + 
+    "showColorsBar " + showColorsBar);
 
   function showSubMenu(menuId: string) {
     let newState = hideAllEntries();
@@ -130,7 +136,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
         </div>
       }
       <div className="kd-statement-control-submenu">
-        <div className={showJump.current ? "" : submenusClass.get("movement")}>
+        <div className={showJump ? "" : submenusClass.get("movement")}>
           <div>
             <img src={`${IMAGE_ROOT}/menuEntries/jump32.png`} alt={KD_APP_STRINGS.JUMP}
               title = {KD_APP_STRINGS.JUMP}
@@ -158,7 +164,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
             }
           </div>
         </div>
-        <div className={showColorsBar.current ? "" : submenusClass.get("look")}>
+        <div className={showColorsBar ? "" : submenusClass.get("look")}>
         { StrokeColors.map((color, i) => 
             <div className="kd-statement-control-bar-color-icon" 
               key={color}

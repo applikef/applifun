@@ -169,7 +169,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
-    hide: true,
+    /* hide: true, */
     title: "מְצַיְּרִים",
     media: "resources/images/pencil128.png",
     items: [
