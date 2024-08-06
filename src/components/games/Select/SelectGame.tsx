@@ -186,7 +186,8 @@ export const SelectGame = (props: SelectGameProps) => {
                 width="100%">
                   {selectedImages.get(activeGroup.current.id)!.map((imageFile,i) => 
                     <span key={i}>
-                      <img src={MediaUtil.getCatalogImage(imageFile)} height="120px" 
+                      <img src={MediaUtil.getCatalogImage(imageFile)} 
+                        height={DeviceUtil.imageHeight(isTablet)} 
                         alt="" className="select-game-selected-img"/>
                     </span>
                   )}
