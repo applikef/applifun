@@ -29,7 +29,6 @@
   margin-left: 32px;
   display: flex;
   flex-direction: column;
-  min-width: 200px;
   flex-wrap: wrap;
 }
 
