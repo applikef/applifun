@@ -38,7 +38,7 @@ export function initCode(displayLevel: number): KDCode {
         numberValue: DefaultNumberValue.get(StatementCode.JUMP)
       }]}]});
     }
-    else if (displayLevel >= DISPLAY_LEVEL.TURN_NO_ATTR) {
+    else if (displayLevel === DISPLAY_LEVEL.TURN_NO_ATTR) {
       return ({code: [{statements: [
         {
           id: '1',
@@ -62,6 +62,25 @@ export function initCode(displayLevel: number): KDCode {
         },
         {
           id: '5',
+          name: StatementCode.JUMP,
+          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+        }
+    ]}]});
+    }
+    else if (displayLevel >= DISPLAY_LEVEL.TURN_TO_ANGLE) {
+      return ({code: [{statements: [
+        {
+          id: '1',
+          name: StatementCode.SET_STROKE,
+          stringValue: DefaultStringValue.get(StatementCode.SET_STROKE)
+        },      
+        {
+          id: '3',
+          name: StatementCode.TURN,
+          numberValue: DefaultNumberValue.get(StatementCode.TURN)
+        },
+        {
+          id: '2',
           name: StatementCode.JUMP,
           numberValue: DefaultNumberValue.get(StatementCode.JUMP)
         }

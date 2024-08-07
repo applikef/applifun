@@ -27,6 +27,9 @@ export function getHelpFileName(helpPageId: number) {
     case DISPLAY_LEVEL.TURN_NO_ATTR:
       fileName += "turn";
       break;
+    case DISPLAY_LEVEL.TURN_TO_ANGLE:
+      fileName += "turnToAngle";
+      break;
     case DISPLAY_LEVEL.OTHER:
       fileName += "noHelp";
       break;
