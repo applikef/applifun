@@ -66,11 +66,6 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
       (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT || displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) ? 
       true : false;
 
-console.log("display level " + displayLevel + "level " + 
-  DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS + "compare " +
-  (DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS === displayLevel) + 
-    "showColorsBar " + showColorsBar);
-
   function showSubMenu(menuId: string) {
     let newState = hideAllEntries();
     newState.set(menuId, MenuEntries.get(menuId).showClass);
@@ -122,6 +117,15 @@ console.log("display level " + displayLevel + "level " +
     props.updateCode(turnStatement);
   }
 
+  function addTurnToAngleStatement() {
+    const turnStatement: KDCodeStatement = {
+      id: getTimestamp(),
+      name: StatementCode.TURN,
+      numberValue: DefaultNumberValue.get(StatementCode.TURN)
+    }; 
+    props.updateCode(turnStatement);
+  }
+
   return (
     <div className="kd-statement-control-bar-global">
       {displayLevel >= DISPLAY_LEVEL.STATEMENT_GROUPS &&
@@ -144,21 +148,34 @@ console.log("display level " + displayLevel + "level " +
             />
             { displayLevel >= DISPLAY_LEVEL.TURN_NO_ATTR &&
               <span>
-                <img src={`${IMAGE_ROOT}/menuEntries/turnUp32.png`} alt={KD_APP_STRINGS.JUMP}
+                <img src={`${IMAGE_ROOT}/menuEntries/turnUp32.png`} 
+                  alt={KD_APP_STRINGS.TURN_UP}
                   title = {KD_APP_STRINGS.TURN_UP}
                   onClick={() => addTurnStatement(90)}
                 />
-                <img src={`${IMAGE_ROOT}/menuEntries/turnDown32.png`} alt={KD_APP_STRINGS.JUMP}
+                <img src={`${IMAGE_ROOT}/menuEntries/turnDown32.png`} 
+                  alt={KD_APP_STRINGS.TURN_DOWN}
                   title = {KD_APP_STRINGS.TURN_DOWN}
                   onClick={() => addTurnStatement(270)}
                 />
-                <img src={`${IMAGE_ROOT}/menuEntries/turnRight32.png`} alt={KD_APP_STRINGS.JUMP}
+                <img src={`${IMAGE_ROOT}/menuEntries/turnRight32.png`} 
+                  alt={KD_APP_STRINGS.TURN_RIGHT}
                   title = {KD_APP_STRINGS.TURN_RIGHT}
                   onClick={() => addTurnStatement(0)}
                 />
-                <img src={`${IMAGE_ROOT}/menuEntries/turnLeft32.png`} alt={KD_APP_STRINGS.JUMP}
+                <img src={`${IMAGE_ROOT}/menuEntries/turnLeft32.png`} 
+                  alt={KD_APP_STRINGS.TURN_LEFT}
                   title = {KD_APP_STRINGS.TURN_LEFT}
                   onClick={() => addTurnStatement(180)}
+                />
+              </span>
+            }
+            { displayLevel >= DISPLAY_LEVEL.TURN_TO_ANGLE &&
+              <span>
+                <img src={`${IMAGE_ROOT}/menuEntries/turnToAngle32.png`} 
+                  alt={KD_APP_STRINGS.TURN_TO_ANGLE}
+                  title = {KD_APP_STRINGS.TURN_TO_ANGLE}
+                  onClick={() => addTurnToAngleStatement()}
                 />
               </span>
             }

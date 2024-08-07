@@ -17,14 +17,17 @@ export const StatementTitle = new Map<StatementCode, string>([
   [StatementCode.TURN_DOWN, KD_APP_STRINGS.TURN_DOWN],
   [StatementCode.TURN_RIGHT, KD_APP_STRINGS.TURN_RIGHT],
   [StatementCode.TURN_LEFT, KD_APP_STRINGS.TURN_LEFT],
+  [StatementCode.TURN, KD_APP_STRINGS.TURN_TO_ANGLE]
 ]);
 
 export const NumberValueTitle = new Map<StatementCode, string>([
-  [StatementCode.JUMP,'צעדים']
+  [StatementCode.JUMP,'צעדים'],
+  [StatementCode.TURN,'מעלות']
 ]);
 
 export const DefaultNumberValue = new Map<StatementCode, number>([
-  [StatementCode.JUMP,50]
+  [StatementCode.JUMP,50],
+  [StatementCode.TURN,45]
 ]);
 
 export const DefaultStringValue = new Map<StatementCode, string>([

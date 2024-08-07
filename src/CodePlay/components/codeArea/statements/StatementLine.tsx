@@ -22,7 +22,8 @@ export const StatementLine = (props: StatementLineProps) =>
       { (props.statement.name === StatementCode.TURN_DOWN ||
           props.statement.name === StatementCode.TURN_UP ||
           props.statement.name === StatementCode.TURN_RIGHT ||
-          props.statement.name === StatementCode.TURN_LEFT
+          props.statement.name === StatementCode.TURN_LEFT ||
+          props.statement.name === StatementCode.TURN
         )
         && 
         <TurnStatement statement={props.statement} /> 

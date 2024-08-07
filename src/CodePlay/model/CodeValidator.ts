@@ -19,7 +19,7 @@ export class CodeValidator {
       return false;
     }
 
-    if (isNaN(value) || value <= 0) {
+    if (isNaN(value) || value < 0) {
       return false;
     }
     return true;

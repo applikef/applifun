@@ -7,5 +7,6 @@ export const enum KD_APP_STRINGS {
   TURN_LEFT="פְּנֵה שְׂמֹאלָה",
   TURN_RIGHT="פְּנֵה יָמִינָה",
   TURN_UP="פְּנֵה לְמַעְלָה",
+  TURN_TO_ANGLE="פְּנֵה לְזָוִית",
   TURN="פְּנֵה"
 }
