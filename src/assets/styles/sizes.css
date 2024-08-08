@@ -1,11 +1,11 @@
 :root {
-  --04: 4px;
-  --08: 08px;
-  --16: 16px;
-  --20: 20px;
-  --24: 24px;
-  --32: 32px;
-  --48: 48px;
+  --size-xs: 4px;
+  --size-s: 08px;
+  --size-normal: 16px;
+  --size-l: 20px;
+  --size-xl: 24px;
+  --size-xxl: 32px;
+  --size-xxxl: 48px;
   
   --font-size-xxl: 3rem;
   --font-size-xl: 2rem;

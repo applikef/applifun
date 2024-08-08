@@ -1,0 +1,6 @@
+@import "./../../../assets/styles/global.css";
+
+.help-close {
+  padding-bottom: var(--size-normal);
+  font-weight: bold;
+}
