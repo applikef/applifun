@@ -22,6 +22,7 @@ export class CodeInterpreter {
       penX: penX,
       penY: penY,
       stroke: this.pencil.stroke,
+      strokeWidth: this.pencil.strokeWidth,
       angle: this.pencil.angle,
       rotate: this.pencil.rotate
     };
@@ -83,13 +84,18 @@ export class CodeInterpreter {
         s.stringValue 
       : DefaultStringValue.get(s.name)!);
     }
+    else if (s.name === StatementCode.SET_STROKE_WIDTH) {
+      this.execSetStrokeWidth(s.numberValue ? 
+        s.numberValue 
+      : DefaultNumberValue.get(s.name)!);
+    }
     else if (s.name === StatementCode.TURN_DOWN || 
       s.name === StatementCode.TURN_UP ||
       s.name === StatementCode.TURN_RIGHT ||
       s.name === StatementCode.TURN_LEFT ||
       s.name === StatementCode.TURN) {
         this.execTurn(s.numberValue);
-    }
+      }
   }
 
   public execJump(delta: number) {
@@ -106,6 +112,8 @@ export class CodeInterpreter {
     newLine.setAttribute('x2', newPenX.toString());
     newLine.setAttribute('y2', newPenY.toString());
     newLine.setAttribute("stroke", this.pencil.stroke)
+    newLine.setAttribute("stroke-width", this.pencil.strokeWidth.toString())
+    pencil.setAttribute('transform', `rotate(${-this.pencil.angle},${this.pencil.penX},${this.pencil.penY})`);
     svg.append(newLine);
 
 
@@ -117,6 +125,10 @@ export class CodeInterpreter {
 
   public execSetStroke(stroke: string) {
     this.pencil.stroke = stroke;
+  } 
+
+  public execSetStrokeWidth(width: number) {
+    this.pencil.strokeWidth = width;
   } 
 
   public execTurn(angle: number | undefined) {

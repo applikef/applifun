@@ -7,12 +7,14 @@ export enum StatementCode {
   TURN_DOWN,
   TURN_LEFT,
   TURN_RIGHT,
-  SET_STROKE
+  SET_STROKE,
+  SET_STROKE_WIDTH
 }
 
 export const StatementTitle = new Map<StatementCode, string>([
   [StatementCode.JUMP, KD_APP_STRINGS.JUMP],
   [StatementCode.SET_STROKE, KD_APP_STRINGS.PENCIL_COLOR],
+  [StatementCode.SET_STROKE_WIDTH, KD_APP_STRINGS.PENCIL_WIDTH],
   [StatementCode.TURN_UP, KD_APP_STRINGS.TURN_UP],
   [StatementCode.TURN_DOWN, KD_APP_STRINGS.TURN_DOWN],
   [StatementCode.TURN_RIGHT, KD_APP_STRINGS.TURN_RIGHT],
@@ -27,6 +29,7 @@ export const NumberValueTitle = new Map<StatementCode, string>([
 
 export const DefaultNumberValue = new Map<StatementCode, number>([
   [StatementCode.JUMP,50],
+  [StatementCode.SET_STROKE_WIDTH,1],
   [StatementCode.TURN,45]
 ]);
 

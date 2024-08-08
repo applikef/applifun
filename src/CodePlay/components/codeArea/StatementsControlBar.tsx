@@ -126,6 +126,15 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     props.updateCode(turnStatement);
   }
 
+  function addSetStrokeWidthStatement() {
+    const turnStatement: KDCodeStatement = {
+      id: getTimestamp(),
+      name: StatementCode.SET_STROKE_WIDTH,
+      numberValue: DefaultNumberValue.get(StatementCode.SET_STROKE_WIDTH)
+    }; 
+    props.updateCode(turnStatement);
+  }
+
   return (
     <div className="kd-statement-control-bar-global">
       {displayLevel >= DISPLAY_LEVEL.STATEMENT_GROUPS &&
@@ -182,6 +191,15 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
           </div>
         </div>
         <div className={showColorsBar ? "" : submenusClass.get("look")}>
+        { displayLevel >= DISPLAY_LEVEL.SET_STROKE_WIDTH &&
+              <span>
+              <img src={`${IMAGE_ROOT}/menuEntries/strokeWidth32.png`} 
+                alt={KD_APP_STRINGS.PENCIL_WIDTH}
+                title = {KD_APP_STRINGS.PENCIL_WIDTH}
+                onClick={() => addSetStrokeWidthStatement()}
+              />
+            </span>
+        }
         { StrokeColors.map((color, i) => 
             <div className="kd-statement-control-bar-color-icon" 
               key={color}

@@ -1,6 +1,7 @@
 export const enum KD_APP_STRINGS {
   JUMP = "הִתְקַדֵּם",
   PENCIL_COLOR = "צֶבַע עִפָּרוֹן",
+  PENCIL_WIDTH = "עוֹבִי עִפָּרוֹן",
   STAGE = "שָׁלָב",
   START_IN_ZERO = "הַתְחֵל בְּרָמָה 0",
   TURN_DOWN="פְּנֵה לְמַטָּה",

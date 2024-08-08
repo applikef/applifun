@@ -67,7 +67,7 @@ export function initCode(displayLevel: number): KDCode {
         }
     ]}]});
     }
-    else if (displayLevel >= DISPLAY_LEVEL.TURN_TO_ANGLE) {
+    else if (displayLevel === DISPLAY_LEVEL.TURN_TO_ANGLE) {
       return ({code: [{statements: [
         {
           id: '1',
@@ -81,6 +81,50 @@ export function initCode(displayLevel: number): KDCode {
         },
         {
           id: '2',
+          name: StatementCode.JUMP,
+          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+        }
+    ]}]});
+    }
+    else if (displayLevel === DISPLAY_LEVEL.SET_STROKE_WIDTH) {
+      return ({code: [{statements: [
+        {
+          id: '1',
+          name: StatementCode.SET_STROKE,
+          stringValue: DefaultStringValue.get(StatementCode.SET_STROKE)
+        },      
+        {
+          id: '2',
+          name: StatementCode.JUMP,
+          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+        },
+        {
+          id: '3',
+          name: StatementCode.SET_STROKE,
+          stringValue: "#ff0000"
+        },      
+        {
+          id: '4',
+          name: StatementCode.SET_STROKE_WIDTH,
+          numberValue: 5
+        },      
+        {
+          id: '5',
+          name: StatementCode.JUMP,
+          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+        },
+        {
+          id: '6',
+          name: StatementCode.SET_STROKE,
+          stringValue: "#0000ff"
+        },      
+        {
+          id: '7',
+          name: StatementCode.SET_STROKE_WIDTH,
+          numberValue: 10
+        },      
+        {
+          id: '8',
           name: StatementCode.JUMP,
           numberValue: DefaultNumberValue.get(StatementCode.JUMP)
         }

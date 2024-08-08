@@ -1,4 +1,5 @@
 import { StatementCode } from "../constants/modelConstants";
+import { MAX_STROKE_WIDTH } from "./KDPencil";
 import { KDCodeStatement } from "./kidDevModel";
 
 export class CodeValidator {
@@ -36,6 +37,17 @@ export class CodeValidator {
     for (let i=1; i < color.length; i++) {
       if ("0123456789abcdef".indexOf(color.substring(i,i+1)) === -1)
         return false;
+    }
+    return true;
+  }
+
+  public static isValidSetStrokeWidth(value: number | undefined): boolean {
+    if (value === undefined) {
+      return false;
+    }
+
+    if (isNaN(value) || value < 0 || value > MAX_STROKE_WIDTH) {
+      return false;
     }
     return true;
   }
