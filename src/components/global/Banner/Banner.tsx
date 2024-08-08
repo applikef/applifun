@@ -17,6 +17,10 @@ export const Banner = (props: BannerPropsType) => {
 
   const [showBanner, setShowBanner] = useState<boolean>(true);
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
+
+  function setHelpState() {              
+    setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")
+  }  
   
   return (
     <>
@@ -40,9 +44,7 @@ export const Banner = (props: BannerPropsType) => {
                   onClick={() => setShowBanner(false)} />
             </div>
             { props.gameId.length > 0 &&
-              <div onClick={() => {               
-                setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")}
-              }>
+              <div onClick={() => setHelpState()}>
                 <img src="resources/icons/help.png" className="banner-icon" 
                   title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
               </div>
@@ -71,9 +73,9 @@ export const Banner = (props: BannerPropsType) => {
       }
       <div className={`banner-help-content ${showHelp}`}>
         { props.helpFile ?
-            <Help fileName={props.helpFile} />
+            <Help fileName={props.helpFile} onClose={setHelpState}/>
           :
-            <Help gameId={props.gameId} />
+            <Help gameId={props.gameId} onClose={setHelpState}/>
         }
       </div>
     </>

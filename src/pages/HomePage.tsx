@@ -50,16 +50,20 @@ export const HomePage = () => {
     setShowArrow([event.clientX, event.clientY]);
   }
 
+  function setHelpState() {
+    setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help");
+  }
+
   return (
     <div className="home-page-app">
       <div className="home-page-content-area">
         <div className="home-page-top-banner">
           <div className="home-page-mail app-clickable"
-            onClick={() => {               
-              setShowMailHelp(() => showMailHelp === "home-page-show-mail-help" ? "home-page-hide-mail-help" : "home-page-show-mail-help")}
-            }
-          >
-            הערות? חוויות? הצעות? נשמח לשמוע. כתבו לנו ל-goofarimhaifa@gmail.com
+            onClick={() => {
+              setShowMailHelp(() => showMailHelp === "home-page-show-mail-help" ? "home-page-hide-mail-help" : "home-page-show-mail-help");
+            }}>
+            הערות? חוויות? הצעות? נשמח לשמוע. 
+            <span className="app-bold"> כתבו לנו ל-goofarimhaifa@gmail.com</span>
           </div>
           <img src={baseUrl + "resources/icons/help.png"} 
             className="banner-icon app-clickable"
@@ -144,7 +148,7 @@ export const HomePage = () => {
       </div>
 
       <div className={`banner-help-content ${showHelp}`}>
-        <Help gameId={"generalHelp"} baseUrl={baseUrl}/>
+        <Help gameId={"generalHelp"} baseUrl={baseUrl} onClose={setHelpState}/>
       </div>
       <div 
         className={`home-page-mail-help app-clickable ${showMailHelp}`}

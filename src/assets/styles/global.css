@@ -14,6 +14,16 @@
   display: flex;
 }
 
+.app-show-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-show-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .app-hide {
   display: none;
 }
@@ -42,11 +52,16 @@
   margin-bottom: -4px;
 }
 
+.app-bold {
+  font-weight: bold;
+}
+
 .app-link {
   color: var(--link);
   text-decoration: none;
   cursor: pointer; 
-} 
+}
+
 .app-link-sm {
   font-size: 0.75rem;
   color: var(--link);
@@ -55,31 +70,31 @@
 }
 
 .app-indent-right-08 {
-  margin-right: var(--8);
+  margin-right: var(--size-s);
 }
 
 .app-indent-right-16 {
-  margin-right: var(--16);
+  margin-right: var(--size-normal);
 }
 
 .app-indent-right-20 {
-  margin-right: var(--20);
+  margin-right: var(--size-l);
 }
 
 .app-indent-top-08 {
-  margin-top: var(--8);
+  margin-top: var(--size-s);
 }
 
 .app-indent-top-16 {
-  margin-top: var(--16);
+  margin-top: var(--size-normal);
 }
 
 .app-indent-top-20 {
-  margin-top: var(--20);
+  margin-top: var(--size-l);
 }
 
 .app-indent-top-32 {
-  margin-top: var(--32);
+  margin-top: var(--size-xxl);
 }
 
 .app-clickable {
