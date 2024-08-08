@@ -38,11 +38,16 @@
   margin-bottom: -4px;
 }
 
+.app-bold {
+  font-weight: bold;
+}
+
 .app-link {
   color: var(--link);
   text-decoration: none;
   cursor: pointer; 
-} 
+}
+ 
 .app-link-sm {
   font-size: 0.75rem;
   color: var(--link);

@@ -59,7 +59,8 @@ export const HomePage = () => {
               setShowMailHelp(() => showMailHelp === "home-page-show-mail-help" ? "home-page-hide-mail-help" : "home-page-show-mail-help")}
             }
           >
-            הערות? חוויות? הצעות? נשמח לשמוע. כתבו לנו ל-goofarimhaifa@gmail.com
+            הערות? חוויות? הצעות? נשמח לשמוע. 
+            <span className="app-bold"> כתבו לנו ל-goofarimhaifa@gmail.com</span>
           </div>
           <img src={baseUrl + "resources/icons/help.png"} 
             className="banner-icon app-clickable"
