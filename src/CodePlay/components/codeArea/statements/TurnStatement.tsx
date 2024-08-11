@@ -22,10 +22,12 @@ export const TurnStatement = (props: TurnStatementProps) =>
   } = useContext(KDContext) as KDContextType;
  
   const [numberInput, setNumberInput] = useState<number>(
-    (s.numberValue !== undefined && s.numberValue > 0) ? s.numberValue : 0
+    (s.numberValues !== undefined && 
+      s.numberValues[0] !== undefined && 
+      s.numberValues[0] > 0) ? s.numberValues[0] : 0
   );
   const [statementBorder, setStatementBorder] = useState<string>("kd-statement-line-correct");
-  const angleValue = s.numberValue ? s.numberValue : 0;
+  const angleValue = s.numberValues &&  s.numberValues[0] ? s.numberValues[0] : 0;
   const [angle, setAngle] = useState<number>(angleValue);
 
     return (
@@ -63,7 +65,7 @@ export const TurnStatement = (props: TurnStatementProps) =>
                   newValue = 0;
                 }
                 setNumberInput(newValue); 
-                s.numberValue = newValue;
+                s.numberValues = [newValue];
                 setCodeStatement(s);}}>
             </input>
             {NumberValueTitle.get(s.name) ? NumberValueTitle.get(s.name) : ""}

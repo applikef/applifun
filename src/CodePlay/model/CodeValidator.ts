@@ -1,3 +1,4 @@
+import { DISPLAY_AREA_HEIGHT, DISPLAY_AREA_WIDTH } from "../constants/displayConstants";
 import { StatementCode } from "../constants/modelConstants";
 import { MAX_STROKE_WIDTH } from "./KDPencil";
 import { KDCodeStatement } from "./kidDevModel";
@@ -6,11 +7,15 @@ export class CodeValidator {
    public static isValid(s: KDCodeStatement): boolean {
     switch (s.name) {
       case StatementCode.JUMP:
-        return CodeValidator.isValidJump(s.numberValue);
+        return CodeValidator.isValidJump(
+          s.numberValues ? s.numberValues[0] : undefined);
+      case StatementCode.SET_PENCIL_POSITION:
+        return CodeValidator.isValidSetPencilPosition(s.numberValues );
       case StatementCode.SET_STROKE:
         return CodeValidator.isValidSetStroke(s.stringValue); 
       case StatementCode.TURN_DOWN:
-        return CodeValidator.isValidTurn(s.numberValue, 270);
+        return CodeValidator.isValidTurn(
+          s.numberValues ? s.numberValues[0] : undefined, 270);
       default: return true;
     }
   }
@@ -23,6 +28,21 @@ export class CodeValidator {
     if (isNaN(value) || value < 0) {
       return false;
     }
+    return true;
+  }
+
+  public static isValidSetPencilPosition(values: Array<number> | undefined): boolean {
+    if (values === undefined) {
+      return false;
+    }
+
+    if (values[0] === undefined || values[1] === undefined ||
+      isNaN(values[0]) || isNaN(values[1]) || 
+      values[0] < 0 || values[1] < 0 ||
+      values[0] > DISPLAY_AREA_WIDTH || values[1] > DISPLAY_AREA_HEIGHT) {
+        return false;
+    }
+    
     return true;
   }
 

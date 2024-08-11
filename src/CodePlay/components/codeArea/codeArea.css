@@ -34,7 +34,6 @@
   flex-direction: row;
   padding-left: 16px;
   border-left: solid 1px var(--gray-05);
-  margin-left: 16px;
 }
 
 .kd-statement-control-bar-color-icon {

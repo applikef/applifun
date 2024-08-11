@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
-import { DefaultNumberValue, NumberValueTitle, StatementCode, StatementTitle } from "../../../constants/modelConstants";
+import { DefaultNumberValues, NumberValueTitle, StatementCode, StatementTitle } from "../../../constants/modelConstants";
 import KDContext, { KDContextType } from "../../../model/KDContext";
 import { DISPLAY_LEVEL } from "../../../constants/displayLevelConstants";
 import './statementLine.css';
@@ -21,11 +21,13 @@ export const JumpStatement = (props: JumpStatementProps) =>
     setCodeStatement
   } = useContext(KDContext) as KDContextType;
  
-  const lineLength = (s.numberValue !== undefined && s.numberValue > 0) ? 
-    s.numberValue! 
+  const lineLength = (s.numberValues !== undefined && 
+    s.numberValues[0] !== undefined && 
+    s.numberValues[0] > 0) ? 
+    s.numberValues[0]! 
   : 
     (displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ? 
-      DefaultNumberValue.get(StatementCode.JUMP)! 
+      DefaultNumberValues.get(StatementCode.JUMP)![0] 
       : 
       0);
   const [numberInput, setNumberInput] = useState<number>(lineLength);
@@ -57,7 +59,7 @@ export const JumpStatement = (props: JumpStatementProps) =>
                   newValue = 0;
                 }
                 setNumberInput(newValue); 
-                s.numberValue = newValue;
+                s.numberValues = [newValue];
                 setCodeStatement(s);}}>
             </input>
             {NumberValueTitle.get(s.name) ? NumberValueTitle.get(s.name) : ""}

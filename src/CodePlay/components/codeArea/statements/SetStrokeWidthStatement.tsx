@@ -1,8 +1,7 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
-import { DefaultNumberValue, NumberValueTitle, StatementCode, StatementTitle } from "../../../constants/modelConstants";
+import { DefaultNumberValues, NumberValueTitle, StatementCode, StatementTitle } from "../../../constants/modelConstants";
 import KDContext, { KDContextType } from "../../../model/KDContext";
-import { DISPLAY_LEVEL } from "../../../constants/displayLevelConstants";
 import './statementLine.css';
 import { KD_APP_ERROR_MESSAGES } from "../../../constants/appErrorMessages";
 import { clearErrors, showError } from "../../../utils/errorsUtil";
@@ -17,14 +16,15 @@ export const SetStrokeWidthStatement = (props: SetStrokeWidthStatementProps) =>
 {
   const s: KDCodeStatement = props.statement;
   const {
-    displayLevel,
     setCodeStatement
   } = useContext(KDContext) as KDContextType;
  
-  const width = (s.numberValue !== undefined && s.numberValue > 0) ? 
-    s.numberValue! 
+  const width = (s.numberValues !== undefined && 
+    s.numberValues[0] !== undefined &&
+    s.numberValues[0] > 0) ? 
+    s.numberValues![0] 
   : 
-    DefaultNumberValue.get(StatementCode.SET_STROKE_WIDTH)!;
+    DefaultNumberValues.get(StatementCode.SET_STROKE_WIDTH)![0];
   const [numberInput, setNumberInput] = useState<number>(width);
 
   const [statementBorder, setStatementBorder] = useState<string>("kd-statement-line-correct");
@@ -53,7 +53,7 @@ export const SetStrokeWidthStatement = (props: SetStrokeWidthStatementProps) =>
                   newValue = 0;
                 }
                 setNumberInput(newValue); 
-                s.numberValue = newValue;
+                s.numberValues = [newValue];
                 setCodeStatement(s);}}>
             </input>
             {NumberValueTitle.get(s.name) ? NumberValueTitle.get(s.name) : ""}

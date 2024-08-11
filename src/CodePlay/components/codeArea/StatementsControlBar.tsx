@@ -6,7 +6,7 @@ import { getTimestamp } from "../../utils/generalUtils";
 import KDContext, { KDContextType } from "../../model/KDContext";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import { KD_APP_STRINGS } from "../../constants/appStrings";
-import { DefaultNumberValue } from "../../constants/modelConstants";
+import { DefaultNumberValues } from "../../constants/modelConstants";
 import "./codeArea.css";
 import { IMAGE_ROOT } from "../../constants/appConstants";
 
@@ -76,9 +76,18 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     const jumpStatement: KDCodeStatement = {
       id: getTimestamp(),
       name: StatementCode.JUMP,
-      numberValue: DefaultNumberValue.get(StatementCode.JUMP)      
+      numberValues: DefaultNumberValues.get(StatementCode.JUMP)      
     }; 
     props.updateCode(jumpStatement);
+  }
+
+  function addSetPencilPositionStatement() {
+    const setPositionStatement: KDCodeStatement = {
+      id: getTimestamp(),
+      name: StatementCode.SET_PENCIL_POSITION,
+      numberValues: DefaultNumberValues.get(StatementCode.SET_PENCIL_POSITION)      
+    }; 
+    props.updateCode(setPositionStatement);
   }
 
   function addStrokeStatement(strokeHex: string) {
@@ -112,7 +121,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     const turnStatement: KDCodeStatement = {
       id: getTimestamp(),
       name: turnStatemnetName,
-      numberValue: angle
+      numberValues: [angle]
     }; 
     props.updateCode(turnStatement);
   }
@@ -121,7 +130,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     const turnStatement: KDCodeStatement = {
       id: getTimestamp(),
       name: StatementCode.TURN,
-      numberValue: DefaultNumberValue.get(StatementCode.TURN)
+      numberValues: DefaultNumberValues.get(StatementCode.TURN)
     }; 
     props.updateCode(turnStatement);
   }
@@ -130,7 +139,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     const turnStatement: KDCodeStatement = {
       id: getTimestamp(),
       name: StatementCode.SET_STROKE_WIDTH,
-      numberValue: DefaultNumberValue.get(StatementCode.SET_STROKE_WIDTH)
+      numberValues: DefaultNumberValues.get(StatementCode.SET_STROKE_WIDTH)
     }; 
     props.updateCode(turnStatement);
   }
@@ -155,6 +164,12 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
               title = {KD_APP_STRINGS.JUMP}
               onClick={() => addJumpStatement()}
             />
+            { displayLevel >= DISPLAY_LEVEL.SET_PENCIL_POSITION &&
+              <img src={`${IMAGE_ROOT}/menuEntries/setPosition32.png`} alt={KD_APP_STRINGS.SET_PENCIL_POSITION}
+                title = {KD_APP_STRINGS.SET_PENCIL_POSITION}
+                onClick={() => addSetPencilPositionStatement()}
+              />
+            }
             { displayLevel >= DISPLAY_LEVEL.TURN_NO_ATTR &&
               <span>
                 <img src={`${IMAGE_ROOT}/menuEntries/turnUp32.png`} 

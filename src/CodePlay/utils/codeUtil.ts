@@ -1,5 +1,5 @@
 import { DISPLAY_LEVEL } from "../constants/displayLevelConstants";
-import { DefaultNumberValue, DefaultStringValue, StatementCode } from "../constants/modelConstants";
+import { DefaultNumberValues, DefaultStringValue, StatementCode } from "../constants/modelConstants";
 import { KDCode, KDCodeBlock, KDCodeStatement } from "../model/kidDevModel";
 
 export function initCode(displayLevel: number): KDCode {
@@ -7,21 +7,21 @@ export function initCode(displayLevel: number): KDCode {
       return ({code: [{statements: [{
         id: '1',
         name: StatementCode.JUMP,
-        numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+        numberValues: DefaultNumberValues.get(StatementCode.JUMP)
       }]}]});
     }  
     else if (displayLevel === DISPLAY_LEVEL.JUMP) {
       return ({code: [{statements: [{
         id: '1',
         name: StatementCode.JUMP,
-        numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+        numberValues: DefaultNumberValues.get(StatementCode.JUMP)
       }]}]});
     }
     else if (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT) {
       return ({code: [{statements: [{
         id: '1',
         name: StatementCode.JUMP,
-        numberValue: 100
+        numberValues: [100]
       }]}]});
     }
     else if (displayLevel >= DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS &&
@@ -35,7 +35,7 @@ export function initCode(displayLevel: number): KDCode {
         {
         id: '2',
         name: StatementCode.JUMP,
-        numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+        numberValues: DefaultNumberValues.get(StatementCode.JUMP)
       }]}]});
     }
     else if (displayLevel === DISPLAY_LEVEL.TURN_NO_ATTR) {
@@ -48,12 +48,12 @@ export function initCode(displayLevel: number): KDCode {
         {
           id: '2',
           name: StatementCode.JUMP,
-          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+          numberValues: DefaultNumberValues.get(StatementCode.JUMP)
         },
         {
           id: '3',
           name: StatementCode.TURN_UP,
-          numberValue: 90
+          numberValues: [90]
         },
         {
           id: '4',
@@ -63,7 +63,7 @@ export function initCode(displayLevel: number): KDCode {
         {
           id: '5',
           name: StatementCode.JUMP,
-          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+          numberValues: DefaultNumberValues.get(StatementCode.JUMP)
         }
     ]}]});
     }
@@ -77,12 +77,12 @@ export function initCode(displayLevel: number): KDCode {
         {
           id: '3',
           name: StatementCode.TURN,
-          numberValue: DefaultNumberValue.get(StatementCode.TURN)
+          numberValues: DefaultNumberValues.get(StatementCode.TURN)
         },
         {
           id: '2',
           name: StatementCode.JUMP,
-          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+          numberValues: DefaultNumberValues.get(StatementCode.JUMP)
         }
     ]}]});
     }
@@ -96,7 +96,7 @@ export function initCode(displayLevel: number): KDCode {
         {
           id: '2',
           name: StatementCode.JUMP,
-          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+          numberValues: DefaultNumberValues.get(StatementCode.JUMP)
         },
         {
           id: '3',
@@ -106,12 +106,12 @@ export function initCode(displayLevel: number): KDCode {
         {
           id: '4',
           name: StatementCode.SET_STROKE_WIDTH,
-          numberValue: 5
+          numberValues: [5]
         },      
         {
           id: '5',
           name: StatementCode.JUMP,
-          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+          numberValues: DefaultNumberValues.get(StatementCode.JUMP)
         },
         {
           id: '6',
@@ -121,20 +121,38 @@ export function initCode(displayLevel: number): KDCode {
         {
           id: '7',
           name: StatementCode.SET_STROKE_WIDTH,
-          numberValue: 10
+          numberValues: [10]
         },      
         {
           id: '8',
           name: StatementCode.JUMP,
-          numberValue: DefaultNumberValue.get(StatementCode.JUMP)
+          numberValues: DefaultNumberValues.get(StatementCode.JUMP)
         }
     ]}]});
     }
+    else if (displayLevel === DISPLAY_LEVEL.SET_PENCIL_POSITION) {
+      return ({code: [{statements: [{
+        id: '1',
+        name: StatementCode.JUMP,
+        numberValues: DefaultNumberValues.get(StatementCode.JUMP)
+      },
+      {
+        id: '2',
+        name: StatementCode.SET_PENCIL_POSITION,
+        numberValues: [300,100]
+      },
+      {
+        id: '3',
+        name: StatementCode.JUMP,
+        numberValues: DefaultNumberValues.get(StatementCode.JUMP)
+      }
+    ]}]});
+    }  
     else {
       return ({code: [{statements: [{
         id: '1',
         name: StatementCode.JUMP,
-        numberValue: 100
+        numberValues: [100]
       }]}]});
     }
   }

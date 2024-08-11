@@ -7,6 +7,7 @@ export enum StatementCode {
   TURN_DOWN,
   TURN_LEFT,
   TURN_RIGHT,
+  SET_PENCIL_POSITION,
   SET_STROKE,
   SET_STROKE_WIDTH
 }
@@ -27,10 +28,11 @@ export const NumberValueTitle = new Map<StatementCode, string>([
   [StatementCode.TURN,'מעלות']
 ]);
 
-export const DefaultNumberValue = new Map<StatementCode, number>([
-  [StatementCode.JUMP,50],
-  [StatementCode.SET_STROKE_WIDTH,1],
-  [StatementCode.TURN,45]
+export const DefaultNumberValues = new Map<StatementCode, Array<number>>([
+  [StatementCode.JUMP,[50]],
+  [StatementCode.SET_PENCIL_POSITION, [0,0]],
+  [StatementCode.SET_STROKE_WIDTH,[1]],
+  [StatementCode.TURN,[45]]
 ]);
 
 export const DefaultStringValue = new Map<StatementCode, string>([

@@ -33,6 +33,9 @@ export function getHelpFileName(helpPageId: number) {
     case DISPLAY_LEVEL.SET_STROKE_WIDTH:
       fileName += "setStrokeWidth";
       break;
+    case DISPLAY_LEVEL.SET_PENCIL_POSITION:
+      fileName += "setPencilPosition";
+      break;
     case DISPLAY_LEVEL.OTHER:
       fileName += "noHelp";
       break;
