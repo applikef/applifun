@@ -63,7 +63,8 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
       displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS ? 
       true : false;
   const showJump =
-      (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT || displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) ? 
+      (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT || 
+        displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) ? 
       true : false;
 
   function showSubMenu(menuId: string) {
