@@ -40,10 +40,10 @@ export const SetStrokeStatement = (props: SetStrokeStatementProps) =>
         {displayLevel >= DISPLAY_LEVEL.SET_STROKE_WITH_PARAMS && 
           <div className="kd-statement-line-parameters">
             <div style={{display: "flex"}}>
-              <input value={newStroke}
-                style={{width: "50px", marginLeft: "8px"}}
+              <input value={newStroke.substring(1)}
+                style={{width: "50px", marginLeft: "8px", "direction": "ltr"}}
                 onChange={(e:ChangeEvent<HTMLInputElement>)=>{
-                  let newValue = e.target.value;
+                  let newValue = `#${e.target.value}`;
                   if (CodeValidator.isValidSetStroke(newValue)) {
                     setStatementBorder("kd-statement-line-correct");
                     clearErrors();
