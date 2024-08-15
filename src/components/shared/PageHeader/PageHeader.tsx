@@ -23,7 +23,7 @@ export const PageHeader = (props: PageHeaderPropsType) => {
   } = useContext(GamesContext) as GamesContextType;
 
 return(
-    <div>
+    <div className="page-header-global">
       <div className="page-header-feedback-face">
         <FaceFeedback face={props.feedbackFace} />
         <WellDone />

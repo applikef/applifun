@@ -18,6 +18,7 @@ export function getGameDescriptor(gameId: string | null): any {
     : gameId === "morningRoutine" ? require("./../assets/componentDescriptors/sequenceDescriptors/morningRoutine.json")
     : gameId === "shapeSort" ? require("./../assets/componentDescriptors/sortDescriptors/shapeSort.json")
     : gameId === "washHands" ? require("./../assets/componentDescriptors/sequenceDescriptors/washHands.json")
+    : gameId === "wordMatch" ? require("./../assets/componentDescriptors/matchDescriptors/wordMatch.json")
     : undefined
   )
 }

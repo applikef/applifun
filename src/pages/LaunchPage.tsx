@@ -28,6 +28,7 @@ export const LaunchPage = () => {
       { gameId === "colorMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "numberMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "letterMatch" && <Match gameDescriptor={descriptor}/> }
+      { gameId === "wordMatch" && <Match gameDescriptor={descriptor}/> }
       
       { gameId === "bathroomRoutine" && <ImagesSequence gameDescriptor={descriptor}/> }
       { gameId === "iCount" && <NumbersSequence gameDescriptor={descriptor}/> }

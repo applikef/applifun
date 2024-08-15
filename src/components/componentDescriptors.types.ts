@@ -14,6 +14,7 @@ export interface MatchDescriptorType extends GameDescriptorType {
   titleTemplate?: string;
   titleVariableValues?: string[];
   groupIds: string[];
+  groupIdTitles?: string[];
   groupFiles?: string[];
   groupNames: string[];
   images: string[];

@@ -72,6 +72,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
         height: 100
       },
       {
+        id: "wordMatch",
+        label: "קוֹרְאִים מִלִּים",
+        path: "/launch?gameId=wordMatch",
+        media: "resources/images/words-game.png",
+        height: 100
+      },
+      {
         id: "iWriteWords",
         label: "מִלִּים מְבֻלְבָּלוֹת",
         path: "/launch?gameId=iWriteWords",

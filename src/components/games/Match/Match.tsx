@@ -57,6 +57,9 @@ export const Match = (props: MatchPropsType) => {
   const titleTemplate = props.gameDescriptor.titleTemplate;
   const titleVariableValues = props.gameDescriptor.titleVariableValues;
   const groupIds = props.gameDescriptor.groupIds;
+  const groupIdTitles = props.gameDescriptor.groupIdTitles ?
+    props.gameDescriptor.groupIdTitles :
+    props.gameDescriptor.groupIds;
   const groupFiles = MediaUtil.getCatalogImages(props.gameDescriptor.groupFiles);
   const groupNames = props.gameDescriptor.groupNames;
   const imageGroupIds = props.gameDescriptor.imageGroupIds;
@@ -82,6 +85,7 @@ export const Match = (props: MatchPropsType) => {
   let validImages = useRef<string[]>(getvalidImages());
 
   let activeGroupId = useRef(groupIds[activeIndex]);
+  let activeGroupIdTitle = useRef(groupIdTitles[activeIndex]);
   let activeGroup = useRef(groupNames[activeIndex]);
   let activeGroupName = useRef(groupNames[activeIndex]);
 
@@ -129,6 +133,7 @@ export const Match = (props: MatchPropsType) => {
     newIndex = relevantIndices[newIndex];
 
     activeGroupId.current = groupIds[newIndex];
+    activeGroupIdTitle.current = groupIdTitles[newIndex];
     activeGroup.current = groupNames[newIndex];
     activeGroupName.current = groupNames[newIndex];
 
@@ -220,11 +225,13 @@ export const Match = (props: MatchPropsType) => {
               width={DeviceUtil.imageHeight(isTablet)} />
           :
             <span className="groupNameTitle">
-              { groupIds[activeIndex] }
+              { groupIdTitles[activeIndex] }
             </span> 
         }
-        <div className="groupName">
-          { activeGroupName.current } 
+        <div className="groupName">          
+          { groupIdTitles[activeIndex] !== activeGroupName.current && 
+              <span>{ activeGroupName.current }</span> 
+          } 
         </div>
       </div>
       <div className="imagesArea">
