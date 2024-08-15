@@ -1,6 +1,6 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
-import { NumberValueTitle, StatementTitle } from "../../../constants/modelConstants";
+import { NumberValueTitle, StatementCode, StatementTitle } from "../../../constants/modelConstants";
 import KDContext, { KDContextType } from "../../../model/KDContext";
 import { DISPLAY_LEVEL } from "../../../constants/displayLevelConstants";
 import './statementLine.css';
@@ -22,18 +22,31 @@ export const TurnStatement = (props: TurnStatementProps) =>
   } = useContext(KDContext) as KDContextType;
  
   const [numberInput, setNumberInput] = useState<number>(
-    (s.numberValue !== undefined && s.numberValue > 0) ? s.numberValue : 0
+    (s.numberValues !== undefined && 
+      s.numberValues[0] !== undefined && 
+      s.numberValues[0] > 0) ? s.numberValues[0] : 0
   );
   const [statementBorder, setStatementBorder] = useState<string>("kd-statement-line-correct");
+  const angleValue = s.numberValues &&  s.numberValues[0] ? s.numberValues[0] : 0;
+  const [angle, setAngle] = useState<number>(angleValue);
 
     return (
     <div className={`kd-statement-line ${statementBorder}`}>
       <div className="kd-statement-line-icon">
-        <img src={getTurnStatementIcon(s.name)} className="banner-icon" 
-          title={getTurnStatementTitle(s.name)}  alt={getTurnStatementTitle(s.name)}/>
+        {s.name === StatementCode.TURN ?
+          <img src={getTurnStatementIcon(s.name)} className="banner-icon" 
+            title={getTurnStatementTitle(s.name)}  
+            alt={getTurnStatementTitle(s.name)}
+            style = {{ "transform": `rotate(${360-angle}deg)` }}/>
+          :
+          <img src={getTurnStatementIcon(s.name)} className="banner-icon" 
+            title={getTurnStatementTitle(s.name)}  
+            alt={getTurnStatementTitle(s.name)}/>
+        }
       </div>
       <div className="kd-statement-line-title">{StatementTitle.get(s.name)}</div>
-      {displayLevel <= DISPLAY_LEVEL.TURN_NO_ATTR ?
+      {(displayLevel <= DISPLAY_LEVEL.TURN_NO_ATTR || 
+        s.name !== StatementCode.TURN) ?
         <div></div>
       : <div className="kd-statement-line-parameters">
           <div style={{display: "flex"}}>
@@ -43,6 +56,7 @@ export const TurnStatement = (props: TurnStatementProps) =>
                 let newValue = Number(e.target.value);
                 if (CodeValidator.isValidJump(newValue)) {
                   setStatementBorder("kd-statement-line-correct");
+                  setAngle(newValue);
                   clearErrors();
                 }
                 else {
@@ -51,7 +65,7 @@ export const TurnStatement = (props: TurnStatementProps) =>
                   newValue = 0;
                 }
                 setNumberInput(newValue); 
-                s.numberValue = newValue;
+                s.numberValues = [newValue];
                 setCodeStatement(s);}}>
             </input>
             {NumberValueTitle.get(s.name) ? NumberValueTitle.get(s.name) : ""}

@@ -50,6 +50,12 @@
   flex-direction: row;
 }
 
+.kd-levels-bar-display-level-title {
+  font-weight: 500;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 .kd-levels-bar-hr-block {
   display: inline-block;
 }

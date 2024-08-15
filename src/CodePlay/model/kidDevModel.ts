@@ -13,5 +13,5 @@ export interface KDCodeStatement {
   name: StatementCode;
   coords?: Array<number>;
   stringValue?: string;
-  numberValue?: number;
+  numberValues?: Array<number>;
 }

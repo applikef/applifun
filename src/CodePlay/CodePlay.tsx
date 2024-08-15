@@ -8,6 +8,7 @@ import { CodeInterpreter } from "./model/CodeInterpreter";
 import { NO_OF_LEVELS } from "./constants/appConstants";
 import { CodeArea } from "./components/codeArea/CodeArea";
 import { DisplayArea } from "./components/displayArea/DisplayArea";
+import { DisplayLevelTitles } from "./constants/displayLevelConstants";
 
 export const CodePlay = () => 
 {  
@@ -43,6 +44,9 @@ export const CodePlay = () =>
                 </span>
               </div>
         )}
+        </div>
+        <div className="kd-levels-bar-display-level-title">
+          שלב {displayLevel}: {DisplayLevelTitles.get(displayLevel)}
         </div>
         <div className="kd-levels-bar-hr-block">
           <hr className="kd-levels-bar-hr"/>

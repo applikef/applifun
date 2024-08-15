@@ -28,6 +28,10 @@
   display: none;
 }
 
+.app-font-highlight {
+  color: var(--highlight);
+}
+
 .app-title-centered {
   text-align: center;
   padding-bottom: 1rem;

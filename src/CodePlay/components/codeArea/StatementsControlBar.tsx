@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { StrokeColors, StrokeColorsHex } from "../../constants/displayConstants";
 import { KDCodeStatement } from "../../model/kidDevModel";
 import { StatementCode } from "../../constants/modelConstants";
@@ -6,7 +6,7 @@ import { getTimestamp } from "../../utils/generalUtils";
 import KDContext, { KDContextType } from "../../model/KDContext";
 import { DISPLAY_LEVEL } from "../../constants/displayLevelConstants";
 import { KD_APP_STRINGS } from "../../constants/appStrings";
-import { DefaultNumberValue } from "../../constants/modelConstants";
+import { DefaultNumberValues } from "../../constants/modelConstants";
 import "./codeArea.css";
 import { IMAGE_ROOT } from "../../constants/appConstants";
 
@@ -59,11 +59,12 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
 
   const [submenusClass, setSubmenusClass] = useState<any>(showFirstEntry())
 
-  const showColorsBar = useRef<boolean>(displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS ? 
-    true : false);
-  const showJump = useRef<boolean>(
-    (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT || displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) ? 
-    true : false);
+  const showColorsBar = 
+      displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS ? 
+      true : false;
+  const showJump =
+      (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT || displayLevel === DISPLAY_LEVEL.JUMP_AND_COLORS_STMTS) ? 
+      true : false;
 
   function showSubMenu(menuId: string) {
     let newState = hideAllEntries();
@@ -75,9 +76,18 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     const jumpStatement: KDCodeStatement = {
       id: getTimestamp(),
       name: StatementCode.JUMP,
-      numberValue: DefaultNumberValue.get(StatementCode.JUMP)      
+      numberValues: DefaultNumberValues.get(StatementCode.JUMP)      
     }; 
     props.updateCode(jumpStatement);
+  }
+
+  function addSetPencilPositionStatement() {
+    const setPositionStatement: KDCodeStatement = {
+      id: getTimestamp(),
+      name: StatementCode.SET_PENCIL_POSITION,
+      numberValues: DefaultNumberValues.get(StatementCode.SET_PENCIL_POSITION)      
+    }; 
+    props.updateCode(setPositionStatement);
   }
 
   function addStrokeStatement(strokeHex: string) {
@@ -111,7 +121,25 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
     const turnStatement: KDCodeStatement = {
       id: getTimestamp(),
       name: turnStatemnetName,
-      numberValue: angle
+      numberValues: [angle]
+    }; 
+    props.updateCode(turnStatement);
+  }
+
+  function addTurnToAngleStatement() {
+    const turnStatement: KDCodeStatement = {
+      id: getTimestamp(),
+      name: StatementCode.TURN,
+      numberValues: DefaultNumberValues.get(StatementCode.TURN)
+    }; 
+    props.updateCode(turnStatement);
+  }
+
+  function addSetStrokeWidthStatement() {
+    const turnStatement: KDCodeStatement = {
+      id: getTimestamp(),
+      name: StatementCode.SET_STROKE_WIDTH,
+      numberValues: DefaultNumberValues.get(StatementCode.SET_STROKE_WIDTH)
     }; 
     props.updateCode(turnStatement);
   }
@@ -130,35 +158,63 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
         </div>
       }
       <div className="kd-statement-control-submenu">
-        <div className={showJump.current ? "" : submenusClass.get("movement")}>
+        <div className={showJump ? "" : submenusClass.get("movement")}>
           <div>
             <img src={`${IMAGE_ROOT}/menuEntries/jump32.png`} alt={KD_APP_STRINGS.JUMP}
               title = {KD_APP_STRINGS.JUMP}
               onClick={() => addJumpStatement()}
             />
+            { displayLevel >= DISPLAY_LEVEL.SET_PENCIL_POSITION &&
+              <img src={`${IMAGE_ROOT}/menuEntries/setPosition32.png`} alt={KD_APP_STRINGS.SET_PENCIL_POSITION}
+                title = {KD_APP_STRINGS.SET_PENCIL_POSITION}
+                onClick={() => addSetPencilPositionStatement()}
+              />
+            }
             { displayLevel >= DISPLAY_LEVEL.TURN_NO_ATTR &&
               <span>
-                <img src={`${IMAGE_ROOT}/menuEntries/turnUp32.png`} alt={KD_APP_STRINGS.JUMP}
+                <img src={`${IMAGE_ROOT}/menuEntries/turnUp32.png`} 
+                  alt={KD_APP_STRINGS.TURN_UP}
                   title = {KD_APP_STRINGS.TURN_UP}
                   onClick={() => addTurnStatement(90)}
                 />
-                <img src={`${IMAGE_ROOT}/menuEntries/turnDown32.png`} alt={KD_APP_STRINGS.JUMP}
+                <img src={`${IMAGE_ROOT}/menuEntries/turnDown32.png`} 
+                  alt={KD_APP_STRINGS.TURN_DOWN}
                   title = {KD_APP_STRINGS.TURN_DOWN}
                   onClick={() => addTurnStatement(270)}
                 />
-                <img src={`${IMAGE_ROOT}/menuEntries/turnRight32.png`} alt={KD_APP_STRINGS.JUMP}
+                <img src={`${IMAGE_ROOT}/menuEntries/turnRight32.png`} 
+                  alt={KD_APP_STRINGS.TURN_RIGHT}
                   title = {KD_APP_STRINGS.TURN_RIGHT}
                   onClick={() => addTurnStatement(0)}
                 />
-                <img src={`${IMAGE_ROOT}/menuEntries/turnLeft32.png`} alt={KD_APP_STRINGS.JUMP}
+                <img src={`${IMAGE_ROOT}/menuEntries/turnLeft32.png`} 
+                  alt={KD_APP_STRINGS.TURN_LEFT}
                   title = {KD_APP_STRINGS.TURN_LEFT}
                   onClick={() => addTurnStatement(180)}
                 />
               </span>
             }
+            { displayLevel >= DISPLAY_LEVEL.TURN_TO_ANGLE &&
+              <span>
+                <img src={`${IMAGE_ROOT}/menuEntries/turnToAngle32.png`} 
+                  alt={KD_APP_STRINGS.TURN_TO_ANGLE}
+                  title = {KD_APP_STRINGS.TURN_TO_ANGLE}
+                  onClick={() => addTurnToAngleStatement()}
+                />
+              </span>
+            }
           </div>
         </div>
-        <div className={showColorsBar.current ? "" : submenusClass.get("look")}>
+        <div className={showColorsBar ? "" : submenusClass.get("look")}>
+        { displayLevel >= DISPLAY_LEVEL.SET_STROKE_WIDTH &&
+              <span>
+              <img src={`${IMAGE_ROOT}/menuEntries/strokeWidth32.png`} 
+                alt={KD_APP_STRINGS.PENCIL_WIDTH}
+                title = {KD_APP_STRINGS.PENCIL_WIDTH}
+                onClick={() => addSetStrokeWidthStatement()}
+              />
+            </span>
+        }
         { StrokeColors.map((color, i) => 
             <div className="kd-statement-control-bar-color-icon" 
               key={color}
