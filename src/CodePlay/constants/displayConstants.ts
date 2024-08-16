@@ -1,5 +1,9 @@
+export const DEFAULT_PENCIL_INIT_X = 250;
+export const DEFAULT_PENCIL_INIT_Y = 150;
 export const DISPLAY_AREA_WIDTH = 800; 
 export const DISPLAY_AREA_HEIGHT = 600; 
+export const DISPLAY_AREA_WIDTH_TABLET = 500; 
+export const DISPLAY_AREA_HEIGHT_TABLET = 300; 
 
 export const StrokeColors: Array<string> = [
   "RED",

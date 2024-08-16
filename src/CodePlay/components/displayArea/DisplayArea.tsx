@@ -1,21 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { KDPencil, 
   DEFAULT_PENCIL, 
   PENCIL_IMAGE } from "../../model/KDPencil";
-import { DISPLAY_AREA_HEIGHT, DISPLAY_AREA_WIDTH } from "../../constants/displayConstants";
+import { DISPLAY_AREA_HEIGHT, DISPLAY_AREA_HEIGHT_TABLET, DISPLAY_AREA_WIDTH, DISPLAY_AREA_WIDTH_TABLET } from "../../constants/displayConstants";
 import "./displayArea.css";
+import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 
 export interface DisplayAreaProps {
 }
 
 export const DisplayArea = (props: DisplayAreaProps) => {
+  const {
+    isTablet
+  } = useContext(GamesContext) as GamesContextType;
+
   const [pencil, setPencil] = useState<KDPencil>(DEFAULT_PENCIL);
 
   return(
     <div className="kd-display-area">
       <div>
         <div className="kd-display-area-drawing-area">
-          <svg width={DISPLAY_AREA_WIDTH} height={DISPLAY_AREA_HEIGHT}
+          <svg 
+            width={isTablet ? DISPLAY_AREA_WIDTH_TABLET : DISPLAY_AREA_WIDTH} 
+            height={isTablet ? DISPLAY_AREA_HEIGHT_TABLET : DISPLAY_AREA_HEIGHT}
             viewBox={`0 0 ${DISPLAY_AREA_WIDTH} ${DISPLAY_AREA_HEIGHT}`}>
             <image id="pencil" href={PENCIL_IMAGE} x={pencil.x} y={pencil.y} />
           </svg>

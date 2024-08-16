@@ -40,7 +40,7 @@ export const SetStrokeWidthStatement = (props: SetStrokeWidthStatementProps) =>
         <div className="kd-statement-line-parameters">
           <div style={{display: "flex"}}>
             <input value={numberInput}
-              style={{width: "50px", marginLeft: "8px"}}
+              className="kd-statement-line-input-number"
               onChange={(e:ChangeEvent<HTMLInputElement>)=>{
                 let newValue = Number(e.target.value);
                 if (CodeValidator.isValidSetStrokeWidth(newValue)) {

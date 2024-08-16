@@ -17,22 +17,12 @@ export const SetPencilPositionStatement = (props: SetPencilPositionStatementProp
 {
   const s: KDCodeStatement = props.statement;
   const {
-    displayLevel,
     setCodeStatement
   } = useContext(KDContext) as KDContextType;
  
   const x = s.numberValues![0]!;
   const y = s.numberValues![1]!;
 
-  // const lineLength = (s.numberValues !== undefined && 
-  //   s.numberValues[0] !== undefined && 
-  //   s.numberValues[0] > 0) ? 
-  //   s.numberValues[0]! 
-  // : 
-  //   (displayLevel <= DISPLAY_LEVEL.JUMP_NO_ATTR ? 
-  //     DefaultNumberValues.get(StatementCode.JUMP)![0] 
-  //     : 
-  //     0);
   const [xInput, setXInput] = useState<number>(x);
   const [yInput, setYInput] = useState<number>(y);
 
@@ -53,7 +43,8 @@ export const SetPencilPositionStatement = (props: SetPencilPositionStatementProp
       <div className="kd-statement-line-parameters">
         <div style={{display: "flex"}}>
           <input value={yInput}
-            style={{width: "50px"}}
+            className="kd-statement-line-input-number"
+            style={{marginLeft: "0px"}}
             onChange={(e:ChangeEvent<HTMLInputElement>)=>{
               newY = Number(e.target.value);
               if (CodeValidator.isValidSetPencilPosition([newX ? newX : x, newY])) {
@@ -71,7 +62,8 @@ export const SetPencilPositionStatement = (props: SetPencilPositionStatementProp
           </input>
           =Y
           <input value={xInput}
-            style={{width: "50px", marginRight: "8px"}}
+            className="kd-statement-line-input-number"
+            style={{marginLeft: "0px", marginRight: "4px"}}
             onChange={(e:ChangeEvent<HTMLInputElement>)=>{
               newX = Number(e.target.value);
               if (CodeValidator.isValidSetPencilPosition([newX,newY ? newY : y])) {

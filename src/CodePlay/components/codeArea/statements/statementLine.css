@@ -31,3 +31,10 @@
   align-self: center;
 }
 
+.kd-statement-line-input-number {
+  width: 50px; 
+  margin-left: 4px;
+  padding-left: 8px;
+  direction: ltr
+}
+

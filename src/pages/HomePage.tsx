@@ -12,27 +12,32 @@ import { AttentionArrow } from "../components/shared/AttentionArrow/AttentionArr
 import { ConstantsUtil, FONT_SIZE } from "../utils/ConstantsUtil";
 import GamesContext, { GamesContextType } from "../context/GamesContext";
 import { DeviceUtil } from "../utils/DeviceUtil";
+import { ModalNotification } from "../components/shared/Notification/ModalNotification";
 
 export const HomePage = () => {
   const baseUrl = "/applifun/";
 
   const {
     setIsTablet,
+    setIsPortrait
   } = useContext(GamesContext) as GamesContextType;
 
   /* Local isTablet for the value to be used in this component before 
      context is updated
   */
   const isTablet = useMediaQuery({ query: `(max-width: ${ConstantsUtil.smallScreenWidth}px)` });
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
   useLayoutEffect(() => {
     setIsTablet(isTablet);
-  }, [isTablet, setIsTablet]);
+    setIsPortrait(isPortrait);
+  }, [setIsPortrait, isPortrait, isTablet, setIsTablet]);
 
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
   const [showMailHelp, setShowMailHelp] = useState<string>("home-page-hide-mail-help");
   const [showSection, setShowSection] = useState<Array<boolean>>(new Array<boolean>(homePageDescriptor.length));
   const [showArrow, setShowArrow] = useState<Array<number>|undefined>(undefined);
-
+  const [dismissPortrait, setDismissPortrait] = useState<boolean>(false);
+  
   const navigate = useNavigate();
   
   function updateShowSection(index: number) {
@@ -74,6 +79,11 @@ export const HomePage = () => {
             alt="עזרה" />
         </div>
         {isTablet && <br/>}
+
+        <ModalNotification text="הַחְזֵק אֶת הַמַּכְשִׁיר שֶׁלְּךָ לָרוֹחַב" 
+          show={(isTablet && isPortrait) && !dismissPortrait}
+          onDismiss={() => setDismissPortrait(true)}/>
+
         <div className={`home-page-title ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XXL)}`}>
           מְשַׂחֲקִים וְלוֹמְדִים
         </div>

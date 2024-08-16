@@ -1,3 +1,5 @@
+import { DEFAULT_PENCIL_INIT_X, DEFAULT_PENCIL_INIT_Y } from "../constants/displayConstants";
+
 export const PENCIL_IMAGE = "./resources/codePlay/pencil96.png";
 export const PENCIL_IMAGE_MAX_DIMENSION = 96;   // 128;
 export const DEFAULT_PENCIL_PEN_DELTA_X = 47;   // 62;
@@ -16,10 +18,10 @@ export interface KDPencil {
 }
 
 export const DEFAULT_PENCIL: KDPencil = {
-  x: 100,
-  y: 100,
-  penX: 100 + DEFAULT_PENCIL_PEN_DELTA_X,
-  penY: 100 + DEFAULT_PENCIL_PEN_DELTA_Y,
+  x: DEFAULT_PENCIL_INIT_X,
+  y: DEFAULT_PENCIL_INIT_Y,
+  penX: DEFAULT_PENCIL_INIT_X + DEFAULT_PENCIL_PEN_DELTA_X,
+  penY: DEFAULT_PENCIL_INIT_Y + DEFAULT_PENCIL_PEN_DELTA_Y,
   stroke: "#0000ff",
   strokeWidth: 1,
   angle: 0,
