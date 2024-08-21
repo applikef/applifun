@@ -19,7 +19,9 @@ export const CodePlay = () =>
   } = useContext(KDContext) as KDContextType;
 
   function handleLevelSelected(level: number) {
-    setCode(initCode(level));
+    setCode({
+      code: []
+    });
     setDisplayLevel(level);
     (new CodeInterpreter()).reset();
   }

@@ -17,6 +17,13 @@ export function initCode(displayLevel: number): KDCode {
         numberValues: DefaultNumberValues.get(StatementCode.JUMP)
       }]}]});
     }
+    else if (displayLevel === DISPLAY_LEVEL.RESET) {
+      return ({code: [{statements: [{
+        id: '1',
+        name: StatementCode.JUMP,
+        numberValues: DefaultNumberValues.get(StatementCode.JUMP)
+      }]}]});
+    }
     else if (displayLevel === DISPLAY_LEVEL.DELETE_AND_JUMP_STATEMENT) {
       return ({code: [{statements: [{
         id: '1',
@@ -199,4 +206,12 @@ export function getNumberOfStatements(code: KDCode): number {
         count += code.code[i].statements.length;
     }
     return count;
+}
+
+export function isTurnStatement(statementCode: StatementCode) {
+  return (statementCode === StatementCode.TURN ||
+    statementCode === StatementCode.TURN_DOWN ||
+    statementCode === StatementCode.TURN_LEFT ||
+    statementCode === StatementCode.TURN_RIGHT ||
+    statementCode === StatementCode.TURN_UP)
 }

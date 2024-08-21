@@ -6,6 +6,7 @@ import { StatementCode } from "../../../constants/modelConstants";
 import { TurnStatement } from "./TurnStatement";
 import { SetStrokeWidthStatement } from "./SetStrokeWidthStatement";
 import { SetPencilPositionStatement } from "./SetPencilPositionStatement";
+import { isTurnStatement } from "../../../utils/codeUtil";
 
 export interface StatementLineProps {
   statement: KDCodeStatement;
@@ -27,13 +28,7 @@ export const StatementLine = (props: StatementLineProps) =>
       { props.statement.name === StatementCode.SET_STROKE_WIDTH && 
         <SetStrokeWidthStatement statement={props.statement} /> 
       }
-      { (props.statement.name === StatementCode.TURN_DOWN ||
-          props.statement.name === StatementCode.TURN_UP ||
-          props.statement.name === StatementCode.TURN_RIGHT ||
-          props.statement.name === StatementCode.TURN_LEFT ||
-          props.statement.name === StatementCode.TURN
-        )
-        && 
+      { isTurnStatement(props.statement.name) && 
         <TurnStatement statement={props.statement} /> 
       }
     </div>
