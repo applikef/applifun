@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
 import { DefaultNumberValues, NumberValueTitle, StatementCode, StatementTitle } from "../../../constants/modelConstants";
 import KDContext, { KDContextType } from "../../../model/KDContext";
@@ -30,7 +30,10 @@ export const JumpStatement = (props: JumpStatementProps) =>
       DefaultNumberValues.get(StatementCode.JUMP)![0] 
       : 
       0);
-  const [numberInput, setNumberInput] = useState<number>(lineLength);
+  const [numberInput, setNumberInput] = useState<number>(lineLength);  
+  useEffect(()=>{
+    setNumberInput(lineLength);
+  },[lineLength, displayLevel]);
 
   const [statementBorder, setStatementBorder] = useState<string>("kd-statement-line-correct");
 
