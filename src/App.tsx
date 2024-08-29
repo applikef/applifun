@@ -7,7 +7,7 @@ import { GamesProvider } from "./context/GamesContext";
 import { KidDevProvider } from "./CodePlay/model/KDContext";
 
 function App() {
-  return (
+  return (    
     <GamesProvider>
       <KidDevProvider>
         <BrowserRouter basename={process.env.PUBLIC_URL}>

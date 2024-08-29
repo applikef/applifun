@@ -21,12 +21,12 @@ export type HomePageSectionType = {
 
 export const homePageDescriptor: HomePageSectionType[] = [
   {
-    title: "הָעַכְבָּר שֶׁלִּי",
+    title: "MyMouseTitle",
     media: "resources/images/mouse.png",
     items: [
       {
         id: "mouseJumpingShapeClick",
-        label: "מִרְדָּף עַכְבָּר",
+        label: "MyMouseLabel",
         path: "/launch?gameId=mouseJumpingShapeClick",
         media: "resources/images/mouse-frog-chase.png",
         height: 100
@@ -34,26 +34,26 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
-    title: "חֶשְׁבּוֹן",
+    title: "MathTitle",
     media: "resources/images/numbers-splash.png",
     items: [
       {
         id: "numberLanguagesShow",
-        label: "מָה אוֹמֵר הַמִּסְפָּר?",
+        label: "MathNumberLanguages",
         path: "/launch?gameId=numberLanguagesShow",
         media: "resources/images/number-languages-show-game.png",
         height: 100
       },
       {
         id: "numberMatch",
-        label: "סוֹפְרִים",
+        label: "MathCounting",
         path: "/launch?gameId=numberMatch",
         media: "resources/images/find-number-game.png",
         height: 100
       },
       {
         id: "iCount",
-        label: "מִסְפָּרִים בְּתוֹר",
+        label: "MathNumbersInLine",
         path: "/launch?gameId=iCount",
         media: "resources/images/order-numbers-game.png",
         height: 100

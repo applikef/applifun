@@ -13,9 +13,12 @@ import { ConstantsUtil, FONT_SIZE } from "../utils/ConstantsUtil";
 import GamesContext, { GamesContextType } from "../context/GamesContext";
 import { DeviceUtil } from "../utils/DeviceUtil";
 import { ModalNotification } from "../components/shared/Notification/ModalNotification";
+import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 
 export const HomePage = () => {
   const baseUrl = "/applifun/";
+  const { t } = useTranslation();
 
   const {
     setIsTablet,
@@ -39,7 +42,7 @@ export const HomePage = () => {
   const [dismissPortrait, setDismissPortrait] = useState<boolean>(false);
   
   const navigate = useNavigate();
-  
+
   function updateShowSection(index: number) {
     if (homePageDescriptor[index].items.length > 1) {
       let arr = new Array<boolean>(homePageDescriptor.length);
@@ -67,89 +70,69 @@ export const HomePage = () => {
             onClick={() => {
               setShowMailHelp(() => showMailHelp === "home-page-show-mail-help" ? "home-page-hide-mail-help" : "home-page-show-mail-help");
             }}>
-            הערות? חוויות? הצעות? נשמח לשמוע. 
-            <span className="app-bold"> כתבו לנו ל-goofarimhaifa@gmail.com</span>
+            <Trans i18nKey="HomePageMailTitle">
+              Comments? Insights? Proposals? We'd be glad to hear. 
+              <span className='app-bold'>Write to us to goofarimhaifa@gmail.com</span>
+            </Trans>
           </div>
           <img src={baseUrl + "resources/icons/help.png"} 
             className="banner-icon app-clickable"
-            title="עזרה: קליק לפתיחה ולסגירה"  
+            title={t("HomePageHelpTitle")}  
             onClick={() => {               
               setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")}
             }
-            alt="עזרה" />
+            alt={t("HelpStr")} />
         </div>
         {isTablet && <br/>}
 
-        <ModalNotification text="הַחְזֵק אֶת הַמַּכְשִׁיר שֶׁלְּךָ לָרוֹחַב" 
+        <ModalNotification text={ t("HomePageHoldInLandscape") } 
           show={(isTablet && isPortrait) && !dismissPortrait}
           onDismiss={() => setDismissPortrait(true)}/>
 
         <div className={`home-page-title ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XXL)}`}>
-          מְשַׂחֲקִים וְלוֹמְדִים
+          { t("HomePagePlayAndLearn") }
         </div>
-        { true ? 
-          <div>
-            <div className="home-page-sub-title app-indent-top-16">בְּחַר סוּג מִשְׂחָק לִרְאוֹת אֶת הַמִּשְׂחָקִים הַקַּיָּמִים</div>
-            <div className='home-page-section-list' data-walkthrough="app-games-list">
-              {homePageDescriptor.map((section: HomePageSectionType,i) =>
-                (section.hide !== true && (!isTablet ||
-                  (isTablet && (section.mobile ? section.mobile : true)))) &&
-                  <div className="home-page-games-list" key={i}>
-                    <div className="app-clickable" onClick={() => updateShowSection(i)}>
-                      {section.title &&
-                        <div className="app-sub-title">{section.title}</div>
-                      } 
-                      <LineBreak />
-                      {section.media &&
-                        <img src={baseUrl + section.media} 
-                          height={DeviceUtil.imageHeightMedium(isTablet)} 
-                          alt={section.title} onClick={(evt) => showDownArrow(evt)}/>
-                      } 
-                    </div>
+        <div>
+          <div className="home-page-sub-title app-indent-top-16">{t("HomePageChooseGroup")}</div>
+          <div className='home-page-section-list' data-walkthrough="app-games-list">
+            {homePageDescriptor.map((section: HomePageSectionType,i) =>
+              (section.hide !== true && (!isTablet ||
+                (isTablet && (section.mobile ? section.mobile : true)))) &&
+                <div className="home-page-games-list" key={i}>
+                  <div className="app-clickable" onClick={() => updateShowSection(i)}>
+                    {section.title &&
+                      <div className="app-sub-title">{t(section.title)}</div>
+                    } 
+                    <LineBreak />
+                    {section.media &&
+                      <img src={baseUrl + section.media} 
+                        height={DeviceUtil.imageHeightMedium(isTablet)} 
+                        alt={t(section.title ? section.title : "")} onClick={(evt) => showDownArrow(evt)}/>
+                    } 
                   </div>
-              )}
-            </div>
-            <hr className="home-page-hr"/>
-            <div>
-              {homePageDescriptor.map((section: HomePageSectionType,i) =>
-                <div key={i} 
-                  className={`home-page-games-list-items ${showSection[i] ? "app-show-flex" : "app-hide"}`} >
-                  <div className="app-sub-title home-page-games-list-title">{section.title}</div>
-                  {section.items.map((game: HomePageItemType,i) => 
-                    <Card key={game.id}
-                        content={<Link to={game.path} className="app-link app-default-text">{game.label}</Link>}
-                        media={game.media ? baseUrl + game.media : undefined}
-                        linkMedia={game.path}
-                        height={ DeviceUtil.getImageSize(isTablet, (game.height ? game.height : ConstantsUtil.defaultImageHeight))}
-                    />
-                  )}
                 </div>
-              )}
-            </div>
-          </div> 
-        :
-          <div className="home-page-games-list-large-device-list">
+            )}
+          </div>
+          <hr className="home-page-hr"/>
+          <div>
             {homePageDescriptor.map((section: HomePageSectionType,i) =>
               <div key={i} 
-                className="home-page-games-list-items home-page-games-list-large-device app-show-flex">
-                <div className="app-sub-title home-page-games-list-title">
-                  {section.title}
-                </div>
+                className={`home-page-games-list-items ${showSection[i] ? "app-show-flex" : "app-hide"}`} >
+                <div className="app-sub-title home-page-games-list-title">{t(section.title ? section.title : "")}</div>
                 {section.items.map((game: HomePageItemType,i) => 
                   <Card key={game.id}
-                      content={<Link to={game.path} 
-                      className="app-link app-default-text">{game.label}</Link>}
+                      content={<Link to={game.path} className="app-link app-default-text">{t(game.label)}</Link>}
                       media={game.media ? baseUrl + game.media : undefined}
                       linkMedia={game.path}
-                      height={game.height ? game.height : undefined}
+                      height={ DeviceUtil.getImageSize(isTablet, (game.height ? game.height : ConstantsUtil.defaultImageHeight))}
                   />
                 )}
               </div>
             )}
           </div>
-        }  
+        </div> 
         <Link to="/launch?gameId=changeRecords" className="app-link-sm">
-          לרשימת כל עדכוני המשחקים
+          {t("HomePageChangeRecord")}
         </Link> 
         <br/>
         <div className="app-link-sm">
@@ -166,7 +149,7 @@ export const HomePage = () => {
           setShowMailHelp("home-page-hide-mail-help")}
         }
       >
-        העתק את כתובת המייל לאפליקצית המייל שלך ושלח אלינו מייל. תודה!
+        {t("HomePageMailHelp")}
       </div>
 
       { isTablet && 
