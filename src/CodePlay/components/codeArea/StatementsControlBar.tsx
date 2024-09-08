@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { StrokeColors, StrokeColorsHex } from "../../constants/displayConstants";
+import { StrokeColorsArr, StrokeColorsHex } from "../../constants/displayConstants";
 import { KDCodeStatement } from "../../model/kidDevModel";
 import { StatementCode } from "../../constants/modelConstants";
 import { getTimestamp } from "../../utils/generalUtils";
@@ -216,7 +216,7 @@ export const StatementsControlBar = (props: StatementsControlBarProps) =>
               />
             </span>
         }
-        { StrokeColors.map((color, i) => 
+        { StrokeColorsArr.map((color, i) => 
             <div className="kd-statement-control-bar-color-icon" 
               key={color}
               style={{ "background": StrokeColorsHex.get(color) }}

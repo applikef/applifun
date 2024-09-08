@@ -1,4 +1,5 @@
 import { KD_APP_STRINGS } from "./appStrings";
+import { StrokeColors, StrokeColorsHex } from "./displayConstants";
 
 export enum StatementCode {
   JUMP,
@@ -36,7 +37,7 @@ export const DefaultNumberValues = new Map<StatementCode, Array<number>>([
 ]);
 
 export const DefaultStringValue = new Map<StatementCode, string>([
-  [StatementCode.SET_STROKE,"#00ff00"]
+  [StatementCode.SET_STROKE,StrokeColorsHex.get(StrokeColors.GREEN)!]
 ]);
 
 
