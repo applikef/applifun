@@ -1,4 +1,4 @@
-import { DEFAULT_PENCIL_INIT_X, DEFAULT_PENCIL_INIT_Y } from "../constants/displayConstants";
+import { DEFAULT_PENCIL_INIT_X, DEFAULT_PENCIL_INIT_Y, StrokeColors, StrokeColorsHex } from "../constants/displayConstants";
 
 export const PENCIL_IMAGE = "./resources/codePlay/pencil96.png";
 export const PENCIL_IMAGE_MAX_DIMENSION = 96;   // 128;
@@ -22,7 +22,7 @@ export const DEFAULT_PENCIL: KDPencil = {
   y: DEFAULT_PENCIL_INIT_Y,
   penX: DEFAULT_PENCIL_INIT_X + DEFAULT_PENCIL_PEN_DELTA_X,
   penY: DEFAULT_PENCIL_INIT_Y + DEFAULT_PENCIL_PEN_DELTA_Y,
-  stroke: "#0000ff",
+  stroke: StrokeColorsHex.get(StrokeColors.GREEN)!,
   strokeWidth: 1,
   angle: 0,
   rotate: 0
