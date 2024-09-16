@@ -12,7 +12,7 @@ export interface MatchGroup {
   id: string;
   title?: string;
   name: string;
-  file?: string;
+  image?: string;
 }
 
 export interface MatchItem {

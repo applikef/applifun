@@ -235,9 +235,10 @@ export const Match = (props: MatchPropsType) => {
 
       <div id="groupSplash" className="groupImage">
         {
-          groups[activeIndex].file !== undefined && 
-            groups[activeIndex].file!.length > 0 ?
-            <img src={groups[activeIndex].file} alt={ activeGroup.current } 
+          groups[activeIndex].image !== undefined && 
+            groups[activeIndex].image!.length > 0 ?
+            <img src={ MediaUtil.getCatalogImage(groups[activeIndex].image!) } 
+              alt={ activeGroup.current } 
               width={DeviceUtil.imageHeight(isTablet)} />
           :
             <span className="groupNameTitle">

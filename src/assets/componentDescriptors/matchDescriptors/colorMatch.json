@@ -8,56 +8,112 @@
     "סָגוֹל",
     "אָדוֹם"
   ],
-  "groupIds": [
-    "yellow",
-    "blue",
-    "green",
-    "purple",
-    "red"
+  "groups": [
+    {
+      "id": "yellow",
+      "name": "צָהוֹב",
+      "image": "yellow-splash"
+    },
+    {
+      "id": "blue",
+      "name": "כָּחוֹל",
+      "image": "blue-splash"
+    },
+    {
+      "id": "green",
+      "name": "יָרוֹק",
+      "image": "green-splash"
+    },
+    {
+      "id": "purple",
+      "name": "סָגוֹל",
+      "image": "purple-splash"
+    },
+    {
+      "id": "red",
+      "name": "אָדוֹם",
+      "image": "red-splash"
+    }
   ],
-  "groupFiles": [
-    "yellow-splash",
-    "blue-splash",
-    "green-splash",
-    "purple-splash",
-    "red-splash"
-  ],
-  "groupNames": [
-    "צָהוֹב",
-    "כָּחוֹל",
-    "יָרוֹק",
-    "סָגוֹל",
-    "אָדוֹם"
-  ],
-  "images": [
-    "balloon-yellow-transparent",
-    "purple-flower",
-    "blue-butterfly",
-    "red-flower",
-    "purple-grapes",
-    "green-grapes",
-    "red-strawberry",
-    "blue-halcyon",
-    "green-tree",
-    "yellow-flower",
-    "purple-butterfly",
-    "red-puff",
-    "yellow-lemon"
-  ],
-  "imageGroupIds": [
-    "yellow",
-    "purple",
-    "blue",
-    "red",
-    "purple",
-    "green",
-    "red",
-    "blue",
-    "green",
-    "yellow",
-    "purple",
-    "red",
-    "yellow"
+  "items": [
+    {
+      "id": "balloon",
+      "title": "בלון צהוב",
+      "image": "balloon-yellow-transparent",
+      "groupId": "yellow"
+    },
+    {
+      "id": "purple-flower",
+      "title": "פרח סגול",
+      "image": "purple-flower",
+      "groupId": "purple"
+    },
+    {
+      "id": "butterfly",
+      "title": "פרפר כחול",
+      "image": "blue-butterfly",
+      "groupId": "blue"
+    },
+    {
+      "id": "red-flower",
+      "title": "פרח אדום",
+      "image": "red-flower",
+      "groupId": "red"
+    },
+    {
+      "id": "purple-grapes",
+      "title": "",
+      "image": "purple-grapes",
+      "groupId": "purple"
+    },
+    {
+      "id": "green-grapes",
+      "title": "ענבים ירוקים",
+      "image": "green-grapes",
+      "groupId": "green"
+    },
+    {
+      "id": "red-strawberry",
+      "title": "תות",
+      "image": "red-strawberry",
+      "groupId": "red"
+    },
+    {
+      "id": "blue-halcyon",
+      "title": "ציפור כחולה",
+      "image": "blue-halcyon",
+      "groupId": "blue"
+    },
+    {
+      "id": "green-tree",
+      "title": "עץ",
+      "image": "green-tree",
+      "groupId": "green"
+    },
+    {
+      "id": "yellow-flower",
+      "title": "פרח צהוב",
+      "image": "yellow-flower",
+      "groupId": "yellow"
+    },
+    {
+      "id": "purple-butterfly",
+      "title": "פרפר סגול",
+      "image": "purple-butterfly",
+      "groupId": "purple"
+    },
+    {
+      "id": "red-puff",
+      "title": "בובה אדומה",
+      "image": "red-puff",
+      "groupId": "red"
+    },
+    {
+      "id": "yellow-lemon",
+      "title": "לימון",
+      "image": "yellow-lemon",
+      "groupId": "yellow"
+    }
   ],
   "settingsTitle": "סמן את הצבעים שייראו במשחק"
 }
