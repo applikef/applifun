@@ -4,7 +4,7 @@ import "./../../../assets/styles/global.css";
 import "./Match.css";
 
 import { Banner } from "../../global/Banner/Banner";
-import { MatchDescriptorType } from "../../componentDescriptors.types";
+import { MatchDescriptorType, MatchItem } from "../../componentDescriptors.types";
 import { Notification, NotificationType } from "../../shared/Notification/Notification";
 
 import { DeviceUtil } from "../../../utils/DeviceUtil";
@@ -19,7 +19,7 @@ import { PlayListNames } from "../../../assets/playLists";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
 
-type ImageTitleNotificationType = {
+type ItemTitleNotificationType = {
   top: number,
   left: number,
   content: string
@@ -56,24 +56,17 @@ export const Match = (props: MatchPropsType) => {
   const titleAudioHover = props.gameDescriptor.titleAudioHover ? props.gameDescriptor.titleAudioHover : undefined;
   const titleTemplate = props.gameDescriptor.titleTemplate;
   const titleVariableValues = props.gameDescriptor.titleVariableValues;
-  const groupIds = props.gameDescriptor.groupIds;
-  const groupIdTitles = props.gameDescriptor.groupIdTitles ?
-    props.gameDescriptor.groupIdTitles :
-    props.gameDescriptor.groupIds;
-  const groupFiles = MediaUtil.getCatalogImages(props.gameDescriptor.groupFiles);
-  const groupNames = props.gameDescriptor.groupNames;
-  const imageGroupIds = props.gameDescriptor.imageGroupIds;
-  const images = MediaUtil.getCatalogImages(props.gameDescriptor.images);
-  const imageTitles = props.gameDescriptor.imageTitles;
+  const groups = props.gameDescriptor.groups;
+  const items = props.gameDescriptor.items;
 
-  const numberOfGroups = groupIds.length;
+  const numberOfGroups = groups.length;
   const maxNumberOfValidGroups = Math.min(10,numberOfGroups);
 
   const [activeIndex, setActiveIndex] = 
     useState<number>(Math.floor(Math.random() * maxNumberOfValidGroups));
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
-  const [imageTitleNotification, setImageTitleNotification] = 
-    useState<ImageTitleNotificationType>({
+  const [itemTitleNotification, setItemTitleNotification] = 
+    useState<ItemTitleNotificationType>({
       top: 0,
       left: 0,
       content: ""
@@ -82,24 +75,33 @@ export const Match = (props: MatchPropsType) => {
 
   let validGroupValueIndices = 
     useRef<boolean[]>((new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false));
-  let validImages = useRef<string[]>(getvalidImages());
+  let validItems = useRef<Array<MatchItem | undefined>>(getvalidItems());
 
-  let activeGroupId = useRef(groupIds[activeIndex]);
-  let activeGroupIdTitle = useRef(groupIdTitles[activeIndex]);
-  let activeGroup = useRef(groupNames[activeIndex]);
-  let activeGroupName = useRef(groupNames[activeIndex]);
+  let activeGroupId = useRef(groups[activeIndex].id);
+  let activeGroupIdTitle = useRef(groups[activeIndex].title);
+  let activeGroup = useRef(groups[activeIndex].name);
 
-  let showImageTitleNotification = useRef<boolean>(false);
+  let showItemTitleNotification = useRef<boolean>(false);
 
-  function getvalidImages() {
-    return imageGroupIds.map((groupId, i) => {
-      let groupIndex = groupIds.indexOf(groupId);
-      return (groupIndex !== -1 && validGroupValueIndices.current[groupIndex] ? images[i] : "");
+  function getGroupIndex(groupId: string) {
+    for (let i=0; i < groups.length; i++) {
+      if (groups[i].id === groupId) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  function getvalidItems() {
+    return items.map((item, i) => {
+      let groupIndex = getGroupIndex(item.groupId);
+      return (groupIndex !== -1 && validGroupValueIndices.current[groupIndex] ? 
+        item : undefined);
     })
   }
 
   function setTitle() : string {
-    if (validImages.current.filter(x => x.length > 0).length === 0) {
+    if (validItems.current.filter(x => x).length === 0) {
       return "כל הכבוד!";
     }
 
@@ -132,10 +134,13 @@ export const Match = (props: MatchPropsType) => {
     } while (relevantIndices[newIndex] === lastIndex && multipleGroupsProvided());
     newIndex = relevantIndices[newIndex];
 
-    activeGroupId.current = groupIds[newIndex];
-    activeGroupIdTitle.current = groupIdTitles[newIndex];
-    activeGroup.current = groupNames[newIndex];
-    activeGroupName.current = groupNames[newIndex];
+    if (newIndex === undefined) {
+      return;
+    }
+
+    activeGroupId.current = groups[newIndex].id;
+    activeGroupIdTitle.current = groups[newIndex].title;
+    activeGroup.current = groups[newIndex].name;
 
     setActiveIndex(() => newIndex);
   }
@@ -145,13 +150,14 @@ export const Match = (props: MatchPropsType) => {
     setFeedbackFace(() => FACES.NONE);
   }
 
-  function verifyImage(imageIndex: number) {
-    const imageGroupId: string = imageGroupIds[imageIndex];
+  function verifyItem(item: MatchItem) {
+    const itemGroupId: string = item.groupId;
 
-    if (imageGroupId === activeGroupId.current) {
-      validImages.current[imageIndex] = "";
-      showImageTitleNotification.current = false;
-      if (validImages.current.every(ObjectsUtil.emptyString)) {
+    if (itemGroupId === activeGroupId.current) {
+      const itemIndex = validItems.current.indexOf(item);
+      validItems.current[itemIndex] = undefined;
+      showItemTitleNotification.current = false;
+      if (validItems.current.every((val)=> val === undefined)) {
         showWellDone(audioOn);
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
@@ -163,7 +169,7 @@ export const Match = (props: MatchPropsType) => {
         setFeedbackFace(() => FACES.HAPPY);
       }
       setTimeout(() => {
-        updateValidGroupsOnItemMatch(imageIndex);
+        updateValidGroupsOnItemMatch(item);
         // NETTA REQUIRED? setSelectedGroupValueIndices(validGroupValueIndices.current);
         setFeedbackFace(() => FACES.NONE);
         updateActiveGroup();
@@ -178,14 +184,23 @@ export const Match = (props: MatchPropsType) => {
     }
   }
 
-  /** Returns groups that are relevant for at least one image */
-  function updateValidGroupsOnItemMatch(imageIndex: number) {
-    const imageGroupId: string = imageGroupIds[imageIndex];
-    const groupIndex = groupIds.indexOf(imageGroupId);
-    if (validGroupValueIndices.current[groupIndex]) {   // Valid group
+  function isGroupInValidItems(itemGroupId: string): boolean {
+    for (let i=0; i < validItems.current.length; i++) {
+      if (validItems.current[i]?.groupId === itemGroupId) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /** Returns groups that are relevant for at least one item */
+  function updateValidGroupsOnItemMatch(item: MatchItem) {
+    const itemGroupId: string = item.groupId;
+    const groupIndex = getGroupIndex(itemGroupId);
+    if (groupIndex !== -1) {   // Valid group
       let clearGroup = true;
-      for (let i=0; i < validImages.current.length; i++) {
-        if (validImages.current[i].length > 0 && imageGroupIds[i] === imageGroupId) {    // Valid image
+      for (let i=0; i < validItems.current.length; i++) {
+        if (validItems.current[i] !== undefined && isGroupInValidItems(itemGroupId)) {    // Valid item
           clearGroup = false;
         }
       }
@@ -196,14 +211,14 @@ export const Match = (props: MatchPropsType) => {
   }
 
   function handleSettingsCancel() {
-    validImages.current = getvalidImages();
+    validItems.current = getvalidItems();
     setGameSettingsDisplay(()=>"game-settings-global-hide"); 
   }
 
   function handleSettingsDone(groupValueIndices: boolean[]) {
     validGroupValueIndices.current = groupValueIndices;
-    showImageTitleNotification.current = false;
-    validImages.current = getvalidImages();
+    showItemTitleNotification.current = false;
+    validItems.current = getvalidItems();
     setActiveGroup();
     setGameSettingsDisplay(()=>"game-settings-global-hide")
   }
@@ -220,47 +235,48 @@ export const Match = (props: MatchPropsType) => {
 
       <div id="groupSplash" className="groupImage">
         {
-          groupFiles && groupFiles.length > 0 ?
-            <img src={groupFiles[activeIndex]} alt={ activeGroupName.current } 
+          groups[activeIndex].file !== undefined && 
+            groups[activeIndex].file!.length > 0 ?
+            <img src={groups[activeIndex].file} alt={ activeGroup.current } 
               width={DeviceUtil.imageHeight(isTablet)} />
           :
             <span className="groupNameTitle">
-              { groupIdTitles[activeIndex] }
+              { groups[activeIndex].title }
             </span> 
         }
         <div className="groupName">          
-          { groupIdTitles[activeIndex] !== activeGroupName.current && 
-              <span>{ activeGroupName.current }</span> 
+          { groups[activeIndex].name === activeGroup.current && 
+              <span>{ activeGroup.current }</span> 
           } 
         </div>
       </div>
       <div className="imagesArea">
         {
-          validImages.current.map((img,i) =>
-            img.length > 0 &&
-              <img src={ img } alt="" key={i} height={DeviceUtil.imageHeight(isTablet)}  
+          validItems.current.map((item,i) =>
+            item && item.image.length > 0 &&
+              <img src={ MediaUtil.getCatalogImage(item.image) } alt={item.title} key={item.id} height={DeviceUtil.imageHeight(isTablet)}  
               onClick={(event:React.MouseEvent<HTMLElement>) => {
-                showImageTitleNotification.current = true;
-                setImageTitleNotification({
+                showItemTitleNotification.current = true;
+                setItemTitleNotification({
                   top: event.clientY,
                   left: event.clientX,
-                  content: imageTitles ? imageTitles[i] : ""
+                  content: items[i].title ? items[i].title : ""
                 })
-                verifyImage(i)}} 
+                verifyItem(item)}} 
               className="imageStyle" />
           )
         }
       </div>
       
-      { showImageTitleNotification.current &&
+      { showItemTitleNotification.current &&
         <Notification 
           type={NotificationType.PLAIN}
-          content={[imageTitleNotification.content]} 
+          content={[itemTitleNotification.content]} 
           style={{
             position: "absolute",
-            top: imageTitleNotification.top,
-            left: imageTitleNotification.left,
-            display: imageTitleNotification.content.length > 0 ? "inline" : "none"
+            top: itemTitleNotification.top,
+            left: itemTitleNotification.left,
+            display: itemTitleNotification.content.length > 0 ? "inline" : "none"
           }} 
         />
       }
@@ -269,7 +285,7 @@ export const Match = (props: MatchPropsType) => {
           className={ gameSettingsDisplay }
           title={props.gameDescriptor.settingsTitle}
           maxNumberOfValidGroups={maxNumberOfValidGroups}
-          options={props.gameDescriptor.groupNames}
+          options={groups.map((group)=> group.name)}
           handleSettingsDone={handleSettingsDone}
           handleSettingsCancel={handleSettingsCancel}
         />

@@ -25,89 +25,269 @@
     "שִׁין",
     "תָּו"
   ],
-  "groupIds": ["א","ב","ג","ד","ה","ו","ז","ח","ט","י",
-    "כ","ל","מ","נ","ס","ע","פ","צ","ק","ר","ש","ת"],
-  "groupTitles": ["א","ב","ג","ד","ה","ו","ז","ח","ט","י",
-    "כ","ל","מ","נ","ס","ע","פ","צ","ק","ר","ש","ת"],
-  "groupNames": [
-    "אָלֶף",
-    "בֵּית",
-    "גִּימֶל",
-    "דָּלֶת",
-    "הֵא",
-    "וָו",
-    "זַיִן",
-    "חֵית",
-    "טֵית",
-    "יוֹד",
-    "כַּף",
-    "לָמֵד",
-    "מֵם",
-    "נוּן",
-    "סַמֵּךְ",
-    "עַיִן",
-    "פֵּא",
-    "צַדִּיק",
-    "קוֹף",
-    "רֵישׁ",
-    "שִׁין",
-    "תָּו"
-],
-  "images": [
-    "lion",
-    "monkey",
-    "lamp",
-    "green-grapes",
-    "balloon-yellow-transparent",
-    "bird",
-    "phone",
-    "mountain",
-    "pizza",
-    "candle",
-    "curtain",
-    "boy",
-    "house",
-    "tree",
-    "oranges",
-    "fish",
-    "hearts",
-    "cat",
-    "fence",
-    "purple-flower",
-    "table",
-    "zebra",
-    "boat",
-    "pommegranate",
-    "chair"
+  "groups": [
+    {
+      "id": "א",
+      "title": "א",
+      "name": "אָלֶף"
+    },
+    {
+      "id": "ב",
+      "title": "ב",
+      "name": "בֵּית"
+    },
+    {
+      "id": "ג",
+      "title": "ג",
+      "name": "גִּימֶל"
+    },
+    {
+      "id": "ד",
+      "title": "ד",
+      "name": "דָּלֶת"
+    },
+    {
+      "id": "ה",
+      "title": "ה",
+      "name": "הֵא"
+    },
+    {
+      "id": "ו",
+      "title": "ו",
+      "name": "וָו"
+    },
+    {
+      "id": "ז",
+      "title": "ז",
+      "name": "זַיִן"
+    },
+    {
+      "id": "ח",
+      "title": "ח",
+      "name": "חֵית"
+    },
+    {
+      "id": "ט",
+      "title": "ט",
+      "name": "טֵית"
+    },
+    {
+      "id": "י",
+      "title": "י",
+      "name": "יוֹד"
+    },
+    {
+      "id": "כ",
+      "title": "כ",
+      "name": "כַּף"
+    },
+    {
+      "id": "ל",
+      "title": "ל",
+      "name": "לָמֵד"
+    },
+    {
+      "id": "מ",
+      "title": "מ",
+      "name": "מֵם"
+    },
+    {
+      "id": "נ",
+      "title": "נ",
+      "name": "נוּן"
+    },
+    {
+      "id": "ס",
+      "title": "ס",
+      "name": "סַמֵּךְ"
+    },
+    {
+      "id": "ע",
+      "title": "ע",
+      "name": "עַיִן"
+    },
+    {
+      "id": "פ",
+      "title": "פ",
+      "name": "פֵּא"
+    },
+    {
+      "id": "צ",
+      "title": "צ",
+      "name": "צַדִּיק"
+    },
+    {
+      "id": "ק",
+      "title": "ק",
+      "name": "קוֹף"
+    },
+    {
+      "id": "ר",
+      "title": "ר",
+      "name": "רֵישׁ"
+    },
+    {
+      "id": "ש",
+      "title": "ש",
+      "name": "שִׁין"
+    },
+    {
+      "id": "ת",
+      "title": "ת",
+      "name": "תָּו"
+    }
   ],
-  "imageTitles": [
-    "אַרְיֵה",
-    "קוֹף",
-    "מְנוֹרָה",
-    "עֲנָבִים",
-    "בָּלוֹן",
-    "צִיפּוֹר",
-    "טֵלֵפוֹן",
-    "הַר",
-    "פִּיצָה",
-    "נֵר",
-    "וִילוֹן",
-    "יֶלֶד",
-    "בַּיִת",
-    "עֵץ",
-    "תַּפּוּזִים",
-    "דָּג",
-    "לְבָבוֹת",
-    "חָתוּל",
-    "גָּדֵר",
-    "פְּרָחִים",
-    "שֻׁולְחָן",
-    "זֶבְּרָה",
-    "סִירָה",
-    "רִימּוֹן",
-    "כִּיסֵּא"
+  "items": [
+    {
+      "id": "lion",
+      "title": "אַרְיֵה",
+      "image": "lion",
+      "groupId": "א"
+    },
+    {
+      "id": "monkey",
+      "title": "קוֹף",
+      "image": "monkey",
+      "groupId": "ק"
+    },
+    {
+      "id": "lamp",
+      "title": "מְנוֹרָה",
+      "image": "lamp",
+      "groupId": "מ"
+    },
+    {
+      "id": "grapes",
+      "title": "עֲנָבִים",
+      "image": "green-grapes",
+      "groupId": "ע"
+    },
+    {
+      "id": "balloon",
+      "title": "בָּלוֹן",
+      "image": "balloon-yellow-transparent",
+      "groupId": "ב"
+    },
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "image": "bird",
+      "groupId": "צ"
+    },
+    {
+      "id": "phone",
+      "title": "טֶלֶפוֹן",
+      "image": "phone",
+      "groupId": "ט"
+    },
+    {
+      "id": "mountain",
+      "title": "הַר",
+      "image": "mountain",
+      "groupId": "ה"
+    },
+    {
+      "id": "pizza",
+      "title": "פִּיצָה",
+      "image": "pizza",
+      "groupId": "פ"
+    },
+    {
+      "id": "candle",
+      "title": "נֵר",
+      "image": "candle",
+      "groupId": "נ"
+    },
+    {
+      "id": "curtain",
+      "title": "וִילוֹן",
+      "image": "curtain",
+      "groupId": "ו"
+    },
+    {
+      "id": "boy",
+      "title": "יֶלֶד",
+      "image": "boy",
+      "groupId": "י"
+    },
+    {
+      "id": "house",
+      "title": "בַּיִת",
+      "image": "house",
+      "groupId": "ב"
+    },
+    {
+      "id": "tree",
+      "title": "עֵץ",
+      "image": "tree",
+      "groupId": "ע"
+    },
+    {
+      "id": "oranges",
+      "title": "תַּפּוּזִים",
+      "image": "oranges",
+      "groupId": "ת"
+    },
+    {
+      "id": "fish",
+      "title": "דָּג",
+      "image": "fish",
+      "groupId": "ד"
+    },
+    {
+      "id": "hearts",
+      "title": "לְבָבוֹת",
+      "image": "hearts",
+      "groupId": "ל"
+    },
+    {
+      "id": "cat",
+      "title": "חָתוּל",
+      "image": "cat-transparent",
+      "groupId": "ח"
+    },
+    {
+      "id": "fence",
+      "title": "גָּדֵר",
+      "image": "fence",
+      "groupId": "ג"
+    },
+    {
+      "id": "flowers",
+      "title": "פְּרָחִים",
+      "image": "purple-flower",
+      "groupId": "פ"
+    },
+    {
+      "id": "table",
+      "title": "שֻׁולְחָן",
+      "image": "table",
+      "groupId": "ש"
+    },
+    {
+      "id": "zebra",
+      "title": "זֶבְּרָה",
+      "image": "zebra",
+      "groupId": "ז"
+    },
+    {
+      "id": "boat",
+      "title": "סִירָה",
+      "image": "boat",
+      "groupId": "ס"
+    },
+    {
+      "id": "pommegranate",
+      "title": "רִימּוֹן",
+      "image": "pommegranate",
+      "groupId": "ר"
+    },
+    {
+      "id": "chair",
+      "title": "כִּיסֵּא",
+      "image": "chair",
+      "groupId": "כ"
+    }
   ],  
-  "imageGroupIds": ["א","ק","מ","ע","ב","צ","ט","ה","פ","נ","ו","י","ב","ע","ת","ד",
-    "ל","ח","ג","פ","ש","ז","ס","ר","כ"],
   "settingsTitle": "סמן את האותיות שיופיעו במשחק"
 }

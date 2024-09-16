@@ -25,33 +25,119 @@
     "selectImageWithTen"
   ],
   "titleAudioHover": "הַקְלֵק כְּדֵי לִשְׁמֹעַ אֶת הַהוֹרָאוֹת",
-  "groupIds": [1,2,3,4,5,6,7,8,9,10],
-  "groupNames": [
-    "אַחַת",
-    "שְׁתַּיִם",
-    "שָׁלוֹשׁ",
-    "אַרְבַּע",
-    "חָמֵשׁ",
-    "שֵׁשׁ",
-    "שֶׁבַע",
-    "שְׁמוֹנֶה",
-    "תֵּשַׁע",
-    "עֶשֶׂר"
-],
-  "images": [
-    "clouds-clipart-7",
-    "cubes-clipart-2",
-    "cylinders-clipart-10",
-    "face-clipart-1",
-    "cylinders-flat-clipart-5",
-    "hearts-clipart-8",
-    "elefants-3",
-    "hourses-clipart-9",
-    "smiley-clipart-4",
-    "splash-clipart-3",
-    "sun-clipart-6",
-    "balloon"
+  "groups": [
+    {
+      "id": "1",
+      "title": "1",
+      "name": "אַחַת"
+    },
+    {
+      "id": "2",
+      "title": "2",
+      "name": "שְׁתַּיִם"
+    },
+    {
+      "id": "3",
+      "title": "3",
+      "name": "שָׁלוֹשׁ"
+    },
+    {
+      "id": "4",
+      "title": "4",
+      "name": "אַרְבַּע"
+    },
+    {
+      "id": "5",
+      "title": "5",
+      "name": "חָמֵשׁ"
+    },
+    {
+      "id": "6",
+      "title": "6",
+      "name": "שֵׁשׁ"
+    },
+    {
+      "id": "7",
+      "title": "7",
+      "name": "שֶׁבַע"
+    },
+    {
+      "id": "8",
+      "title": "8",
+      "name": "שְׁמוֹנֶה"
+    },
+    {
+      "id": "9",
+      "title": "9",
+      "name": "תֵּשַׁע"
+    },
+    {
+      "id": "10",
+      "title": "10",
+      "name": "עֶשֶׂר"
+    }
   ],
-  "imageGroupIds": [7,2,10,1,5,8,3,9,4,3,6,1],
+  "items": [
+    {
+      "id": "clouds",
+      "image": "clouds-clipart-7",
+      "groupId": "7"
+    },
+    {
+      "id": "cubes",
+      "image": "cubes-clipart-2",
+      "groupId": "2"
+    },
+    {
+      "id": "cylinders",
+      "image": "cylinders-clipart-10",
+      "groupId": "10"
+    },
+    {
+      "id": "face",
+      "image": "face-clipart-1",
+      "groupId": "1"
+    },
+    {
+      "id": "cylinders-flat",
+      "image": "cylinders-flat-clipart-5",
+      "groupId": "5"
+    },
+    {
+      "id": "hearts",
+      "image": "hearts-clipart-8",
+      "groupId": "8"
+    },
+    {
+      "id": "elefants",
+      "image": "elefants-3",
+      "groupId": "3"
+    },
+    {
+      "id": "hourses",
+      "image": "hourses-clipart-9",
+      "groupId": "9"
+    },
+    {
+      "id": "smiley",
+      "image": "smiley-clipart-4",
+      "groupId": "4"
+    },
+    {
+      "id": "splash",
+      "image": "splash-clipart-3",
+      "groupId": "3"
+    },
+    {
+      "id": "sun",
+      "image": "sun-clipart-6",
+      "groupId": "6"
+    },
+    {
+      "id": "balloon",
+      "image": "balloon",
+      "groupId": "1"
+    }
+  ],
   "settingsTitle": "סמני את המספרים שיופיעו במשחק"
 }

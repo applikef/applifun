@@ -11,7 +11,7 @@
     "וִילוֹן",
     "זֶבְּרָה",
     "חָתוּל",
-    "טֵלֵפוֹן",
+    "טֶלֶפוֹן",
     "יֶלֶד",
     "כִּיסֵּא",
     "לְבָבוֹת",
@@ -25,147 +25,287 @@
     "צִיפּוֹר",
     "קוֹף",
     "רִימּוֹן",
-    "שֻׁולְחָן",
+    "שׁוּלְחָן",
     "תַּפּוּזִים"
   ],
-  "groupIds": [
-    "lion",
-    "house",
-    "balloon",
-    "fence",
-    "fish",
-    "mountain",
-    "curtain",
-    "zebra",
-    "cat",
-    "phone",
-    "boy",
-    "chair",
-    "hearts",
-    "lamp",
-    "candle",
-    "boat",
-    "grapes",
-    "tree",
-    "pizza",
-    "flowers",
-    "bird",
-    "monkey",
-    "pommegranate",
-    "table",
-    "oranges"
+  "groups": [
+    {
+      "id": "lion",
+      "title": "אַרְיֵה",
+      "name": "אַרְיֵה"
+    },
+    {
+      "id": "house",
+      "title": "בַּיִת",
+      "name": "בַּיִת"
+    },
+    {
+      "id": "balloon",
+      "title": "בָּלוֹן",
+      "name": "בָּלוֹן"
+    },
+    {
+      "id": "fence",
+      "title": "גָּדֵר",
+      "name": "גָּדֵר"
+    },
+    {
+      "id": "fish",
+      "title": "דָּג",
+      "name": "דָּג"
+    },
+    {
+      "id": "mountain",
+      "title": "הַר",
+      "name": "הַר"
+    },
+    {
+      "id": "curtain",
+      "title": "וִילוֹן",
+      "name": "וִילוֹן"
+    },
+    {
+      "id": "zebra",
+      "title": "זֶבְּרָה",
+      "name": "זֶבְּרָה"
+    },
+    {
+      "id": "cat",
+      "title": "חָתוּל",
+      "name": "חָתוּל"
+    },
+    {
+      "id": "phone",
+      "title": "טֶלֶפוֹן",
+      "name": "טֶלֶפוֹן"
+    },
+    {
+      "id": "boy",
+      "title": "יֶלֶד",
+      "name": "יֶלֶד"
+    },
+    {
+      "id": "chair",
+      "title": "כִּיסֵּא",
+      "name": "כִּיסֵּא"
+    },
+    {
+      "id": "hearts",
+      "title": "לְבָבוֹת",
+      "name": "לְבָבוֹת"
+    },
+    {
+      "id": "lamp",
+      "title": "מְנוֹרָה",
+      "name": "מְנוֹרָה"
+    },
+    {
+      "id": "candle",
+      "title": "נֵר",
+      "name": "נֵר"
+    },
+    {
+      "id": "boat",
+      "title": "סִירָה",
+      "name": "סִירָה"
+    },
+    {
+      "id": "grapes",
+      "title": "עֲנָבִים",
+      "name": "עֲנָבִים"
+    },
+    {
+      "id": "tree",
+      "title": "עֵץ",
+      "name": "עֵץ"
+    },
+    {
+      "id": "pizza",
+      "title": "פִּיצָה",
+      "name": "פִּיצָה"
+    },
+    {
+      "id": "flowers",
+      "title": "פְּרָחִים",
+      "name": "פְּרָחִים"
+    },
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "name": "צִיפּוֹר"
+    },
+    {
+      "id": "monkey",
+      "title": "קוֹף",
+      "name": "קוֹף"
+    },
+    {
+      "id": "pommegranate",
+      "title": "רִימּוֹן",
+      "name": "רִימּוֹן"
+    },
+    {
+      "id": "table",
+      "title": "שׁוּלְחָן",
+      "name": "שׁוּלְחָן"
+    },
+    {
+      "id": "oranges",
+      "title": "תַּפּוּזִים",
+      "name": "תַּפּוּזִים"
+    }
   ],
-  "groupIdTitles": [
-    "אַרְיֵה",
-    "בַּיִת",
-    "בָּלוֹן",
-    "גָּדֵר",
-    "דָּג",
-    "הַר",
-    "וִילוֹן",
-    "זֶבְּרָה",
-    "חָתוּל",
-    "טֵלֵפוֹן",
-    "יֶלֶד",
-    "כִּיסֵּא",
-    "לְבָבוֹת",
-    "מְנוֹרָה",
-    "נֵר",
-    "סִירָה",
-    "עֲנָבִים",
-    "עֵץ",
-    "פִּיצָה",
-    "פְּרָחִים",
-    "צִיפּוֹר",
-    "קוֹף",
-    "רִימּוֹן",
-    "שֻׁולְחָן",
-    "תַּפּוּזִים"
+  "items": [
+    {
+      "id": "lion",
+      "title": "אַרְיֵה",
+      "image": "lion",
+      "groupId": "lion"
+    },
+    {
+      "id": "monkey",
+      "title": "קוֹף",
+      "image": "monkey",
+      "groupId": "monkey"
+    },
+    {
+      "id": "lamp",
+      "title": "מְנוֹרָה",
+      "image": "lamp",
+      "groupId": "lamp"
+    },
+    {
+      "id": "green-grapes",
+      "title": "עֲנָבִים",
+      "image": "green-grapes",
+      "groupId": "grapes"
+    },
+    {
+      "id": "balloon",
+      "title": "בָּלוֹן",
+      "image": "balloon-yellow-transparent",
+      "groupId": "balloon"
+    },
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "image": "bird",
+      "groupId": "bird"
+    },
+    {
+      "id": "phone",
+      "title": "טֶלֶפוֹן",
+      "image": "phone",
+      "groupId": "phone"
+    },
+    {
+      "id": "mountain",
+      "title": "הַר",
+      "image": "mountain",
+      "groupId": "mountain"
+    },
+    {
+      "id": "pizza",
+      "title": "פִּיצָה",
+      "image": "pizza",
+      "groupId": "pizza"
+    },
+    {
+      "id": "candle",
+      "title": "נֵר",
+      "image": "candle",
+      "groupId": "candle"
+    },
+    {
+      "id": "curtain",
+      "title": "וִילוֹן",
+      "image": "curtain",
+      "groupId": "curtain"
+    },
+    {
+      "id": "boy",
+      "title": "יֶלֶד",
+      "image": "boy",
+      "groupId": "boy"
+    },
+    {
+      "id": "house",
+      "title": "בַּיִת",
+      "image": "house",
+      "groupId": "house"
+    },
+    {
+      "id": "tree",
+      "title": "עֵץ",
+      "image": "tree",
+      "groupId": "tree"
+    },
+    {
+      "id": "oranges",
+      "title": "תַּפּוּזִים",
+      "image": "oranges",
+      "groupId": "oranges"
+    },
+    {
+      "id": "fish",
+      "title": "דָּג",
+      "image": "fish",
+      "groupId": "fish"
+    },
+    {
+      "id": "hearts",
+      "title": "לְבָבוֹת",
+      "image": "hearts",
+      "groupId": "hearts"
+    },
+    {
+      "id": "cat",
+      "title": "חָתוּל",
+      "image": "cat",
+      "groupId": "cat"
+    },
+    {
+      "id": "fence",
+      "title": "גָּדֵר",
+      "image": "fence",
+      "groupId": "fence"
+    },
+    {
+      "id": "flowers",
+      "title": "פְּרָחִים",
+      "image": "purple-flower",
+      "groupId": "flowers"
+    },
+    {
+      "id": "table",
+      "title": "שׁוּלְחָן",
+      "image": "table",
+      "groupId": "table"
+    },
+    {
+      "id": "zebra",
+      "title": "זֶבְּרָה",
+      "image": "zebra",
+      "groupId": "zebra"
+    },
+    {
+      "id": "boat",
+      "title": "סִירָה",
+      "image": "boat",
+      "groupId": "boat"
+    },
+    {
+      "id": "pommegranate",
+      "title": "רִימּוֹן",
+      "image": "pommegranate",
+      "groupId": "pommegranate"
+    },
+    {
+      "id": "chair",
+      "title": "כִּיסֵּא",
+      "image": "chair",
+      "groupId": "chair"
+    }
   ],
-  "groupNames": [
-    "אַרְיֵה",
-    "בַּיִת",
-    "בָּלוֹן",
-    "גָּדֵר",
-    "דָּג",
-    "הַר",
-    "וִילוֹן",
-    "זֶבְּרָה",
-    "חָתוּל",
-    "טֵלֵפוֹן",
-    "יֶלֶד",
-    "כִּיסֵּא",
-    "לְבָבוֹת",
-    "מְנוֹרָה",
-    "נֵר",
-    "סִירָה",
-    "עֲנָבִים",
-    "עֵץ",
-    "פִּיצָה",
-    "פְּרָחִים",
-    "צִיפּוֹר",
-    "קוֹף",
-    "רִימּוֹן",
-    "שֻׁולְחָן",
-    "תַּפּוּזִים"
-],
-  "images": [
-    "lion",
-    "monkey",
-    "lamp",
-    "green-grapes",
-    "balloon-yellow-transparent",
-    "bird",
-    "phone",
-    "mountain",
-    "pizza",
-    "candle",
-    "curtain",
-    "boy",
-    "house",
-    "tree",
-    "oranges",
-    "fish",
-    "hearts",
-    "cat",
-    "fence",
-    "purple-flower",
-    "table",
-    "zebra",
-    "boat",
-    "pommegranate",
-    "chair"
-  ],
-  "imageTitles": [
-    "אַרְיֵה",
-    "קוֹף",
-    "מְנוֹרָה",
-    "עֲנָבִים",
-    "בָּלוֹן",
-    "צִיפּוֹר",
-    "טֵלֵפוֹן",
-    "הַר",
-    "פִּיצָה",
-    "נֵר",
-    "וִילוֹן",
-    "יֶלֶד",
-    "בַּיִת",
-    "עֵץ",
-    "תַּפּוּזִים",
-    "דָּג",
-    "לְבָבוֹת",
-    "חָתוּל",
-    "גָּדֵר",
-    "פְּרָחִים",
-    "שֻׁולְחָן",
-    "זֶבְּרָה",
-    "סִירָה",
-    "רִימּוֹן",
-    "כִּיסֵּא"
-  ],  
-  "imageGroupIds": ["lion","monkey","lamp","grapes","balloon","bird","phone","mountain","pizza","candle",
-    "curtain","boy","house","tree","oranges","fish",
-    "hearts","cat","fence","flowers","table","zebra","boat",
-    "pommegranate","chair"],
   "settingsTitle": "סמן את התמונה"
 }

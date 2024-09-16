@@ -79,7 +79,7 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
         }}>שמור</button>
         <button className="app-button-ghost-sm" onClick={() => {
           handleSettingsCancel();
-        }}>בטל</button>
+        }}>בטל וסגור</button>
       </div>
   )
 }

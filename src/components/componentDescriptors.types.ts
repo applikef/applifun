@@ -7,21 +7,32 @@ export interface LinkListDescriptorType extends GameDescriptorType {
   href: string;
   hrefTitle: string;
 }
+
+export interface MatchGroup {
+  id: string;
+  title?: string;
+  name: string;
+  file?: string;
+}
+
+export interface MatchItem {
+  id: string;
+  title: string;
+  image: string;
+  groupId: string;
+}
+
 export interface MatchDescriptorType extends GameDescriptorType {
   titles?: string[];
   titleAudioKeys?: string[];
   titleAudioHover?: string;
   titleTemplate?: string;
   titleVariableValues?: string[];
-  groupIds: string[];
-  groupIdTitles?: string[];
-  groupFiles?: string[];
-  groupNames: string[];
-  images: string[];
-  imageTitles?: string[];
-  imageGroupIds: string[];
+  groups: MatchGroup[];
+  items: MatchItem[];
   settingsTitle: string;
 }
+
 export interface TileDescriptorType extends GameDescriptorType {
   title: string;
   href: string;
