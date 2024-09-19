@@ -1,24 +1,69 @@
-export function getGameDescriptor(gameId: string | null): any {
+import { DefaultProfileDescriptor, ProfileDescriptor } from "../model/profileDescriptor.type";
+
+export function getGameDescriptor(gameId: string | null, profile: string | null): any {
   if (gameId === null) {
     return undefined;
   }
 
-  return(
-    gameId === "bathroomRoutine" ? require("./../assets/componentDescriptors/sequenceDescriptors/bathroomRoutine.json")
-    : gameId === "behaviorSelect" ? require("./../assets/componentDescriptors/selectDescriptors/behaviorSelect.json")
-    : gameId === "colorMatch" ? require("./../assets/componentDescriptors/matchDescriptors/colorMatch.json")
-    : gameId === "colorSort" ? require("./../assets/componentDescriptors/sortDescriptors/colorSort.json")
-    : gameId === "iCount" ? require("./../assets/componentDescriptors/sequenceDescriptors/numbersSequence.json")
-    : gameId === "iWriteWords" ? require("./../assets/componentDescriptors/sequenceDescriptors/iWriteDescriptor.json")
-    : gameId === "letterMatch" ? require("./../assets/componentDescriptors/matchDescriptors/letterMatch.json")
-    : gameId === "numberMatch" ? require("./../assets/componentDescriptors/matchDescriptors/numberMatch.json")
-    : gameId === "numberSort" ? require("./../assets/componentDescriptors/sortDescriptors/numberSort.json")
-    : gameId === "moodSelect" ? require("./../assets/componentDescriptors/selectDescriptors/moodSelect.json")
-    : gameId === "moodSort" ? require("./../assets/componentDescriptors/sortDescriptors/moodSort.json")
-    : gameId === "morningRoutine" ? require("./../assets/componentDescriptors/sequenceDescriptors/morningRoutine.json")
-    : gameId === "shapeSort" ? require("./../assets/componentDescriptors/sortDescriptors/shapeSort.json")
-    : gameId === "washHands" ? require("./../assets/componentDescriptors/sequenceDescriptors/washHands.json")
-    : gameId === "wordMatch" ? require("./../assets/componentDescriptors/matchDescriptors/wordMatch.json")
-    : undefined
-  )
+  if (gameId === "bathroomRoutine") {
+    return require("./../assets/componentDescriptors/sequenceDescriptors/bathroomRoutine.json");
+  } 
+  else if (gameId === "behaviorSelect") {
+    return require("./../assets/componentDescriptors/selectDescriptors/behaviorSelect.json");
+  } 
+  else if (gameId === "colorMatch") {
+    return require("./../assets/componentDescriptors/matchDescriptors/colorMatch.json");
+  }
+  else if (gameId === "colorSort") {
+    return require("./../assets/componentDescriptors/sortDescriptors/colorSort.json");
+  }
+  else if (gameId === "iCount") {
+    return require("./../assets/componentDescriptors/sequenceDescriptors/numbersSequence.json");
+  }
+  else if (gameId === "iWriteWords") {
+    return require("./../assets/componentDescriptors/sequenceDescriptors/iWriteDescriptor.json")
+  }
+  else if (gameId === "letterMatch") {
+    if (profile === "cards") {
+      return require("./../assets/componentDescriptors/matchDescriptors/letterMatch-cards.json");
+    }
+    return require("./../assets/componentDescriptors/matchDescriptors/letterMatch.json");
+  }
+  else if (gameId === "numberMatch") {
+    return require("./../assets/componentDescriptors/matchDescriptors/numberMatch.json")
+  }
+  else if (gameId === "numberSort") {
+    return require("./../assets/componentDescriptors/sortDescriptors/numberSort.json");
+  }
+  else if (gameId === "moodSelect") {
+    return require("./../assets/componentDescriptors/selectDescriptors/moodSelect.json");
+  }
+  else if (gameId === "moodSort") {
+    return require("./../assets/componentDescriptors/sortDescriptors/moodSort.json");
+  }
+  else if (gameId === "morningRoutine") {
+    return require("./../assets/componentDescriptors/sequenceDescriptors/morningRoutine.json");
+  }
+  else if (gameId === "shapeSort") {
+    return require("./../assets/componentDescriptors/sortDescriptors/shapeSort.json");
+  }
+  else if (gameId === "washHands") {
+    return require("./../assets/componentDescriptors/sequenceDescriptors/washHands.json");
+  }
+  else if (gameId === "wordMatch") {
+    require("./../assets/componentDescriptors/matchDescriptors/wordMatch.json");
+  }
+  else {
+    return undefined;
+  }
+}
+
+export function getProfileList(gameId: string) : Array<ProfileDescriptor> {
+  const profiles = require("./../assets/componentDescriptors/profilesDescriptor.json");
+  let profileList: Array<ProfileDescriptor> = [];
+  if (profiles[gameId] !== undefined) {
+    profileList = [DefaultProfileDescriptor];
+    profileList.push(...profiles[gameId]);
+  }
+  return profileList;
 }

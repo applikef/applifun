@@ -60,3 +60,19 @@
   left: 20px;
   border: 1px solid blue;
 }
+
+.banner-profile-selection {
+  display: flex;
+  align-items: center;
+}
+
+.banner-profile-selection-title {
+  padding-left: 5px;
+  color: var(--blue-03);
+}
+
+.banner-profile-selection-select {
+  color: var(--blue-03);
+  padding: 3px;
+  border-color: var(--blue-03);
+}

@@ -44,8 +44,17 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
   }
   
   function handleSettingsDone() {
+    if (selectedGroupIndices.indexOf(true) === -1) {
+      alert(`אליך לבחור לפחות כניסה אחת`);
+      return;
+    }
     validGroupIndices.current = selectedGroupIndices;
     props.handleSettingsDone([...selectedGroupIndices]);
+  }
+
+  function handleClearAll() {
+    const empty: boolean[] = (new Array(numberOfGroups)).fill(false);  
+    setSelectedGroupIndices(empty);
   }
 
   function handleSettingsCancel() {
@@ -77,6 +86,9 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
         <button className="app-button-primary-sm" onClick={() => {
           handleSettingsDone(); 
         }}>שמור</button>
+        <button className="app-button-ghost-sm" onClick={() => {
+          handleClearAll(); 
+        }}>נקה הכל</button>
         <button className="app-button-ghost-sm" onClick={() => {
           handleSettingsCancel();
         }}>בטל וסגור</button>

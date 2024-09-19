@@ -48,16 +48,19 @@ export const Match = (props: MatchPropsType) => {
 
   const navigate = useNavigate();
 
+  const [descriptor, setDescriptor] = 
+    useState<MatchDescriptorType>(props.gameDescriptor);
+
   /***
    * Retrieve game descriptor values to local variables
    */
-  const titles = props.gameDescriptor.titles;
-  const titleAudioKeys = props.gameDescriptor.titleAudioKeys;
-  const titleAudioHover = props.gameDescriptor.titleAudioHover ? props.gameDescriptor.titleAudioHover : undefined;
-  const titleTemplate = props.gameDescriptor.titleTemplate;
-  const titleVariableValues = props.gameDescriptor.titleVariableValues;
-  const groups = props.gameDescriptor.groups;
-  const items = props.gameDescriptor.items;
+  const titles = descriptor.titles;
+  const titleAudioKeys = descriptor.titleAudioKeys;
+  const titleAudioHover = descriptor.titleAudioHover ? descriptor.titleAudioHover : undefined;
+  const titleTemplate = descriptor.titleTemplate;
+  const titleVariableValues = descriptor.titleVariableValues;
+  const groups = descriptor.groups;
+  const items = descriptor.items;
 
   const numberOfGroups = groups.length;
   const maxNumberOfValidGroups = Math.min(10,numberOfGroups);
@@ -83,6 +86,23 @@ export const Match = (props: MatchPropsType) => {
 
   let showItemTitleNotification = useRef<boolean>(false);
 
+  /* Gor useRef current should be updated. If value is taken from the
+   descriptor, it should use the parameter due to the delay of useState
+   execution
+  */
+  function handleProfileChange(d: MatchDescriptorType) {
+    setDescriptor(d);
+    validGroupValueIndices.current = 
+      (new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false);
+    validItems.current = initValidItems(d);
+
+    activeGroupId.current = d.groups[activeIndex].id;
+    activeGroupIdTitle.current = d.groups[activeIndex].title;
+    activeGroup.current = d.groups[activeIndex].name;
+
+    showItemTitleNotification.current = false;
+  }
+
   function getGroupIndex(groupId: string) {
     for (let i=0; i < groups.length; i++) {
       if (groups[i].id === groupId) {
@@ -93,6 +113,15 @@ export const Match = (props: MatchPropsType) => {
   }
 
   function getvalidItems() {
+    return items.map((item, i) => {
+      let groupIndex = getGroupIndex(item.groupId);
+      return (groupIndex !== -1 && validGroupValueIndices.current[groupIndex] ? 
+        item : undefined);
+    })
+  }
+
+  function initValidItems(d: MatchDescriptorType) {
+    const items = d.items;
     return items.map((item, i) => {
       let groupIndex = getGroupIndex(item.groupId);
       return (groupIndex !== -1 && validGroupValueIndices.current[groupIndex] ? 
@@ -115,7 +144,7 @@ export const Match = (props: MatchPropsType) => {
         return titleAsArray[0] + titleVariableValue + titleAsArray[2];
       }
     }
-    else if (titles && !ObjectsUtil.emptyString(titles[activeIndex])) {
+    else if (titles !== undefined && !ObjectsUtil.emptyString(titles[activeIndex])) {
       return titles[activeIndex];
     }
     return "";
@@ -225,7 +254,8 @@ export const Match = (props: MatchPropsType) => {
 
   return(
     <div className="app-page">
-      <Banner gameId={props.gameDescriptor.gameId} 
+      <Banner gameId={descriptor.gameId} 
+        profileHandler={ (d: MatchDescriptorType) => handleProfileChange(d) }
         settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
 
       <PageHeader title={setTitle()} 
@@ -282,14 +312,14 @@ export const Match = (props: MatchPropsType) => {
         />
       }
       
-        <MultiSelectionSettings
-          className={ gameSettingsDisplay }
-          title={props.gameDescriptor.settingsTitle}
-          maxNumberOfValidGroups={maxNumberOfValidGroups}
-          options={groups.map((group)=> group.name)}
-          handleSettingsDone={handleSettingsDone}
-          handleSettingsCancel={handleSettingsCancel}
-        />
+      <MultiSelectionSettings
+        className={ gameSettingsDisplay }
+        title={descriptor.settingsTitle}
+        maxNumberOfValidGroups={maxNumberOfValidGroups}
+        options={groups.map((group)=> group.name)}
+        handleSettingsDone={handleSettingsDone}
+        handleSettingsCancel={handleSettingsCancel}
+      />
     </div>
   )
 }

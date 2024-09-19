@@ -19,7 +19,8 @@ import { CodePlay } from "../CodePlay/CodePlay";
 export const LaunchPage = () => {
   const queryParameters = new URLSearchParams(window.location.search)
   const gameId = queryParameters.get("gameId");
-  const descriptor = getGameDescriptor(gameId);
+  const profile = queryParameters.get("profile");
+  const descriptor = getGameDescriptor(gameId, profile);
 
   return (
     <div className="app-page">

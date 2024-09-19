@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 
 import './Banner.css'
-import { useContext, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { Help } from "../help/Help";
+import { getGameDescriptor, getProfileList } from "../../../pages/pages.util";
+import { ProfileDescriptor } from "../../../model/profileDescriptor.type";
 
 export interface BannerPropsType {
   gameId: string;
   settings?: Function;
   hideAudio?: boolean;
   helpFile?: string;
+  profileHandler?: Function;
 }
 
 export const Banner = (props: BannerPropsType) => {
@@ -22,6 +25,15 @@ export const Banner = (props: BannerPropsType) => {
     setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")
   }  
   
+  const profileList: Array<ProfileDescriptor> = getProfileList(props.gameId);
+  function loadProfile(e: ChangeEvent<HTMLSelectElement>) {
+    let profileId: string = e.target.value;
+    if (props.profileHandler !== undefined) {
+      const descriptor = getGameDescriptor(props.gameId, profileId)
+      props.profileHandler(descriptor);
+    }
+  }
+
   return (
     <>
       {showBanner &&
@@ -35,6 +47,18 @@ export const Banner = (props: BannerPropsType) => {
               <img src="resources/icons/settings.png" className="banner-icon" 
                 title="הגדרות משחק"  alt="הגדרות משחק" 
                 onClick={() => props.settings ? props.settings() : undefined}/>
+            }
+            { profileList.length > 0 &&
+              <span className="banner-profile-selection">
+              <span className="banner-profile-selection-title">גרסאות:</span>
+              <select className="banner-profile-selection-select" 
+                onChange={(e) => loadProfile(e)}>
+                { 
+                  profileList.map((item) => 
+                    <option key={item.id} value={item.id}>{ item.title }</option>)
+                }
+              </select>
+              </span>
             }
           </div>
           <div className="banner-left-icon-bar">
