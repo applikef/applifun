@@ -1,4 +1,4 @@
-import { DefaultProfileDescriptor, ProfileDescriptor } from "../model/profileDescriptor.type";
+import { ProfileDescriptor } from "../model/profileDescriptor.type";
 
 export function getGameDescriptor(gameId: string | null, profile: string | null): any {
   if (gameId === null) {
@@ -60,10 +60,8 @@ export function getGameDescriptor(gameId: string | null, profile: string | null)
 
 export function getProfileList(gameId: string) : Array<ProfileDescriptor> {
   const profiles = require("./../assets/componentDescriptors/profilesDescriptor.json");
-  let profileList: Array<ProfileDescriptor> = [];
   if (profiles[gameId] !== undefined) {
-    profileList = [DefaultProfileDescriptor];
-    profileList.push(...profiles[gameId]);
+    return profiles[gameId];
   }
-  return profileList;
+  return [];
 }
