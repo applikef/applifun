@@ -5,6 +5,15 @@ export function getGameDescriptor(gameId: string | null, profile: string | null)
     return undefined;
   }
 
+  let localProfile: string = "";
+  const profileList: Array<ProfileDescriptor> = getProfileList(gameId);
+  if (profile !== null && profile.length > 0) {
+    localProfile = profile;
+  }
+  else if (profileList !== undefined && profileList.length) {
+    localProfile = profileList[0].id;
+  }
+
   if (gameId === "bathroomRoutine") {
     return require("./../assets/componentDescriptors/sequenceDescriptors/bathroomRoutine.json");
   } 
@@ -24,7 +33,7 @@ export function getGameDescriptor(gameId: string | null, profile: string | null)
     return require("./../assets/componentDescriptors/sequenceDescriptors/iWriteDescriptor.json")
   }
   else if (gameId === "letterMatch") {
-    if (profile === "cards") {
+    if (localProfile === "cards") {
       return require("./../assets/componentDescriptors/matchDescriptors/letterMatch-cards.json");
     }
     return require("./../assets/componentDescriptors/matchDescriptors/letterMatch.json");
