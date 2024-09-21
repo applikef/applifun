@@ -1,5 +1,5 @@
 {
-  "gameId": "letterMatch",
+  "gameId": "wordMatch",
   "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
   "titleVariableValues": [
     "אַרְיֵה",

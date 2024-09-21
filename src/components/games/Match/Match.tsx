@@ -191,7 +191,7 @@ export const Match = (props: MatchPropsType) => {
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
           navigate("/");
-        }, ConstantsUtil.pauseTimeout);
+        }, ConstantsUtil.shortPauseTimeout);
       }
       else {
         MediaUtil.player(playerHooray, audioOn);

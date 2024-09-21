@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import './Banner.css'
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { Help } from "../help/Help";
 import { getGameDescriptor, getProfileList } from "../../../pages/pages.util";
@@ -25,7 +25,6 @@ export const Banner = (props: BannerPropsType) => {
     setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")
   }  
   
-  const profileList: Array<ProfileDescriptor> = getProfileList(props.gameId);
   function loadProfile(e: ChangeEvent<HTMLSelectElement>) {
     let profileId: string = e.target.value;
     if (props.profileHandler !== undefined) {
@@ -48,13 +47,13 @@ export const Banner = (props: BannerPropsType) => {
                 title="הגדרות משחק"  alt="הגדרות משחק" 
                 onClick={() => props.settings ? props.settings() : undefined}/>
             }
-            { profileList.length > 0 &&
+            { getProfileList(props.gameId).length > 0 &&
               <span className="banner-profile-selection">
               <span className="banner-profile-selection-title">גרסאות:</span>
               <select className="banner-profile-selection-select" 
                 onChange={(e) => loadProfile(e)}>
                 { 
-                  profileList.map((item) => 
+                  getProfileList(props.gameId).map((item) => 
                     <option key={item.id} value={item.id}>{ item.title }</option>)
                 }
               </select>

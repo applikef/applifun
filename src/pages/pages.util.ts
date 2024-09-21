@@ -51,7 +51,7 @@ export function getGameDescriptor(gameId: string | null, profile: string | null)
     return require("./../assets/componentDescriptors/sequenceDescriptors/washHands.json");
   }
   else if (gameId === "wordMatch") {
-    require("./../assets/componentDescriptors/matchDescriptors/wordMatch.json");
+    return require("./../assets/componentDescriptors/matchDescriptors/wordMatch.json");
   }
   else {
     return undefined;

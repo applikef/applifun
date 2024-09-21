@@ -163,16 +163,34 @@
       "groupId": "מ"
     },
     {
+      "id": "carriage",
+      "title": "עֲגָלָה",
+      "image": "carriage",
+      "groupId": "ע"
+    },
+    {
       "id": "strawberry",
       "title": "תּוּת",
       "image": "strawberry",
       "groupId": "ת"
     },
     {
+      "id": "hook",
+      "title": "וָו",
+      "image": "hook",
+      "groupId": "ו"
+    },
+    {
       "id": "letuce",
       "title": "חַסָּה",
       "image": "letuce",
       "groupId": "ח"
+    },
+    {
+      "id": "flashlight",
+      "title": "פָּנָס",
+      "image": "flashlight",
+      "groupId": "פ"
     },
     {
       "id": "ducky-duck",
@@ -187,10 +205,28 @@
       "groupId": "צ"
     },
     {
+      "id": "olive",
+      "title": "זַיִת",
+      "image": "olive",
+      "groupId": "ז"
+    },
+    {
+      "id": "hat-casket",
+      "title": "כּוֹבַע",
+      "image": "hat-casket",
+      "groupId": "כ"
+    },
+    {
       "id": "phone",
       "title": "טֶלֶפוֹן",
       "image": "phone-transparent",
       "groupId": "ט"
+    },
+    {
+      "id": "train",
+      "title": "רַכֶּבֶת",
+      "image": "train",
+      "groupId": "ר"
     },
     {
       "id": "hypo",
@@ -223,6 +259,12 @@
       "groupId": "נ"
     },
     {
+      "id": "neckless",
+      "title": "שַׁרְשֶׁרֶת",
+      "image": "neckless",
+      "groupId": "ש"
+    },
+    {
       "id": "rose",
       "title": "וֶרֶד",
       "image": "rose",
@@ -247,6 +289,12 @@
       "groupId": "ב"
     },
     {
+      "id": "truck",
+      "title": "מַשָּׂאִית",
+      "image": "truck",
+      "groupId": "מ"
+    },
+    {
       "id": "birthday-cake",
       "title": "עוּגָה",
       "image": "birthday-cake",
@@ -257,6 +305,12 @@
       "title": "תַּפּוּז",
       "image": "orange",
       "groupId": "ת"
+    },
+    {
+      "id": "sabra",
+      "title": "צַבָּר",
+      "image": "sabra",
+      "groupId": "צ"
     },
     {
       "id": "fish-gold",
@@ -295,6 +349,12 @@
       "groupId": "פ"
     },
     {
+      "id": "bird-pigeon",
+      "title": "יוֹנָה",
+      "image": "bird-pigeon",
+      "groupId": "י"
+    },
+    {
       "id": "door",
       "title": "דֶּלֶת",
       "image": "door",
@@ -311,6 +371,12 @@
       "title": "זֶבְּרָה",
       "image": "zebra",
       "groupId": "ז"
+    },
+    {
+      "id": "wheel",
+      "title": "הֶגֶה",
+      "image": "wheel",
+      "groupId": "ה"
     },
     {
       "id": "basket",
