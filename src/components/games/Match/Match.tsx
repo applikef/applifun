@@ -267,19 +267,29 @@ export const Match = (props: MatchPropsType) => {
         {
           groups[activeIndex].image !== undefined && 
             groups[activeIndex].image!.length > 0 ?
-            <img src={ MediaUtil.getCatalogImage(groups[activeIndex].image!) } 
-              alt={ activeGroup.current } 
-              width={DeviceUtil.imageHeight(isTablet)} />
+            <div>
+              <img src={ MediaUtil.getCatalogImage(groups[activeIndex].image!) } 
+                alt={ activeGroup.current } 
+                width={DeviceUtil.imageHeight(isTablet)} />
+              <div className="groupName">          
+                { groups[activeIndex].name === activeGroup.current && 
+                    <span>{ activeGroup.current }</span> 
+                } 
+              </div>
+            </div>
           :
-            <span className="groupNameTitle">
-              { groups[activeIndex].title }
-            </span> 
+            <div>
+              <span className="groupNameTitle">
+                { groups[activeIndex].title }
+              </span>
+              <div className="groupName">          
+                { groups[activeIndex].name !== groups[activeIndex].title &&
+                    groups[activeIndex].name === activeGroup.current && 
+                    <span>{ activeGroup.current }</span> 
+                } 
+              </div>
+            </div> 
         }
-        <div className="groupName">          
-          { groups[activeIndex].name === activeGroup.current && 
-              <span>{ activeGroup.current }</span> 
-          } 
-        </div>
       </div>
       <div className="imagesArea">
         {
