@@ -16,7 +16,7 @@ import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
-import { FONT_SIZE } from "../../../utils/ConstantsUtil";
+import { DIRECTION, FONT_SIZE } from "../../../utils/ConstantsUtil";
 
 export interface ImagesSequenceProps {
   gameDescriptor: ImageSequenceDescriptorType;
@@ -105,7 +105,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
       <div className="sequence-feedback">
         {
           <h3>
-            <TalkToMe audioList={["correct-image-order"!]} direction={MediaUtil.RTL}/>
+            <TalkToMe audioList={["correct-image-order"!]} direction={DIRECTION.RTL}/>
 
             פֹּה לְמַטָּה נִרְאֶה אֶת הַתְּמוּנוֹת מְסֻדָּרוֹת
           </h3>

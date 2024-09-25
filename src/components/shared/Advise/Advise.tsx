@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Advise.css";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
+import { DIRECTION } from "../../../utils/ConstantsUtil";
 
 interface AdvisePropsType {
   text?: string;
@@ -43,7 +44,7 @@ export const Advise = (props: AdvisePropsType) => {
 
       { props.text && adviseToggleClass === "advise-show" && 
         <div className="advise-show-global">
-          { (props.direction === undefined || props.direction === MediaUtil.RTL) &&
+          { (props.direction === undefined || props.direction === DIRECTION.RTL) &&
             <img src="resources/icons/hand-point-left128.png" alt="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה" 
               title="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה"
               className="advise-icon" onClick={() => 
@@ -55,7 +56,7 @@ export const Advise = (props: AdvisePropsType) => {
             { props.text }  
           </div>
 
-          { props.direction === MediaUtil.LTR &&
+          { props.direction === DIRECTION.LTR &&
             <img src="resources/icons/hand-point-right128.png" alt="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה" 
               title="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה"
               className="advise-icon" onClick={() => 

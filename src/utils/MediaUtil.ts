@@ -1,9 +1,6 @@
 import { PlayListNames, PlayLists } from "../assets/playLists";
 
 export class MediaUtil {
-  public static LTR = "LTR";
-  public static RTL = "RTL";
-
   public static getDefaultHoorayPlayer() {
     return new Audio("resources/audio/hooray-short-1.mp3");
   }

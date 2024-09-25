@@ -12,7 +12,7 @@ import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { LetterSequenceDescriptorType, WordDescriptorType } from "./Sequence.types";
-import { ConstantsUtil } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, DIRECTION } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { Advise } from "../../shared/Advise/Advise";
@@ -222,7 +222,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
           <h3>
             <TalkToMe audioList={["correct-word"!]} 
-              direction={MediaUtil.RTL}/>
+              direction={DIRECTION.RTL}/>
 
             פֹּה לְמַטָּה נִרְאֶה אֶת הַמִּילָּה כְּתוּבָה נָכוֹן
           </h3>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./TalkToMe.css";
 import { MediaUtil } from "../../../utils/MediaUtil";
+import { DIRECTION } from "../../../utils/ConstantsUtil";
 
 interface TalkToMeProps {
   audioList: Array<string>;
@@ -17,9 +18,9 @@ export const TalkToMe = (props: TalkToMeProps) => {
       MediaUtil.getTextToSpeechAudio(audioItem);
     return url ? url : "";
   });
-  const direction = props.direction ? props.direction : MediaUtil.LTR;
+  const direction = props.direction ? props.direction : DIRECTION.LTR;
   const audioHover = props.audioHover ? props.audioHover : "הַקְלֵק כְּדֵי לִשְׁמֹעַ";
-  const icon = direction === MediaUtil.LTR ?
+  const icon = direction === DIRECTION.LTR ?
     "resources/icons/talk-to-me-ltr.png"
   :
     "resources/icons/talk-to-me-rtl.png";

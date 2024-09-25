@@ -8,7 +8,7 @@ import { MatchDescriptorType, MatchItem } from "../../componentDescriptors.types
 import { Notification, NotificationType } from "../../shared/Notification/Notification";
 
 import { DeviceUtil } from "../../../utils/DeviceUtil";
-import { ConstantsUtil } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, DIRECTION } from "../../../utils/ConstantsUtil";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
@@ -90,7 +90,7 @@ export const Match = (props: MatchPropsType) => {
   let showItemTitleNotification = useRef<boolean>(false);
 
   useEffect(() => setForceReset(false), [forceReset]);
-  
+
   /* Gor useRef current should be updated. If value is taken from the
    descriptor, it should use the parameter due to the delay of useState
    execution
@@ -273,7 +273,7 @@ export const Match = (props: MatchPropsType) => {
         { descriptor.showAdvise === true &&
           <div onClick={() => setshowAdviseDetails(!showAdviseDetails)} style={{ position: "relative" }}>
             <Advise text={descriptor.adviseText ? descriptor.adviseText : "הסתכל על הרמז"} 
-              direction={MediaUtil.LTR} forceReset={ forceReset }/>
+              direction={DIRECTION.LTR} forceReset={ forceReset }/>
             {
               showAdviseDetails && validItems.current.map((item,i) =>
                 item && item.image.length > 0 &&

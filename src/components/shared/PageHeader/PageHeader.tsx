@@ -7,7 +7,7 @@ import { MediaUtil } from "../../../utils/MediaUtil";
 import { TalkToMe } from "../TalkToMe/TalkToMe";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
-import { FONT_SIZE } from "../../../utils/ConstantsUtil";
+import { DIRECTION, FONT_SIZE } from "../../../utils/ConstantsUtil";
 
 interface PageHeaderPropsType {
   feedbackFace: FACES;
@@ -38,7 +38,7 @@ return(
           { props.audio &&
             <TalkToMe audioList={props.audio!}
               audioHover={props.audioHover}
-              direction={MediaUtil.RTL}/>
+              direction={DIRECTION.RTL}/>
           }
           {props.title}
         </span>
