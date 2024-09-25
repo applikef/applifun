@@ -8,6 +8,8 @@ interface AdvisePropsType {
   text?: string;
   audio?: string;
   default?: boolean;
+  direction?: string; 
+  forceReset?: boolean;
 }
 
 export const Advise = (props: AdvisePropsType) => {
@@ -24,8 +26,14 @@ export const Advise = (props: AdvisePropsType) => {
     }
   }, [adviseToggleClass, audioOn, props.audio]);
 
+  useEffect(()=>{
+    if (props.forceReset !== undefined && props.forceReset) {
+      setAdviseToggleClass("advise-hide")
+    }
+  }, [props.forceReset]);
+
   return (
-    <span>
+    <div>
       { props.text && adviseToggleClass === "advise-hide" && 
         <img src="resources/icons/advise128.png" alt="הַקְלֵק לְקַבָּלַת עֶזְרָה" title="הַקְלֵק לְקַבָּלַת עֶזְרָה"
           className="advise-icon" onClick={() => 
@@ -34,18 +42,29 @@ export const Advise = (props: AdvisePropsType) => {
       }
 
       { props.text && adviseToggleClass === "advise-show" && 
-        <span>
-          <img src="resources/icons/hand-point-left128.png" alt="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה" 
-            title="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה"
-            className="advise-icon" onClick={() => 
-              setAdviseToggleClass("advise-hide") }>
-          </img>
+        <div className="advise-show-global">
+          { (props.direction === undefined || props.direction === MediaUtil.RTL) &&
+            <img src="resources/icons/hand-point-left128.png" alt="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה" 
+              title="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה"
+              className="advise-icon" onClick={() => 
+                setAdviseToggleClass("advise-hide") }>
+            </img>
+          }
 
-          <span className={`advise-text ${adviseToggleClass}`}>
+          <div className={`advise-text ${adviseToggleClass}`}>
             { props.text }  
-          </span>
-        </span>
+          </div>
+
+          { props.direction === MediaUtil.LTR &&
+            <img src="resources/icons/hand-point-right128.png" alt="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה" 
+              title="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה"
+              className="advise-icon" onClick={() => 
+                setAdviseToggleClass("advise-hide") }>
+            </img>
+          }
+
+        </div>
       }
-    </span>
+    </div>
   )
 }

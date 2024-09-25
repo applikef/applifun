@@ -197,10 +197,12 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
         <div className="sequence-container">
           <div className="sequence-letters-advise">  
-            <Advise text={ word.title } 
+            <Advise text={ word.title }
               default={ false } />
             { word.audio &&
-                <TalkToMe audioList={[word.audio!]} isAudioCatalog={true}/>
+                <span className="sequence-letters-talk-to-me">
+                  <TalkToMe audioList={[word.audio!]} isAudioCatalog={true}/>
+                </span>
             }
           </div>
 

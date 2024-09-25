@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import "./../../../assets/styles/global.css";
 import "./Match.css";
@@ -18,6 +18,7 @@ import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PlayListNames } from "../../../assets/playLists";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
+import { Advise } from "../../shared/Advise/Advise";
 
 type ItemTitleNotificationType = {
   top: number,
@@ -75,6 +76,8 @@ export const Match = (props: MatchPropsType) => {
       content: ""
     });
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
+  const [showAdviseDetails, setshowAdviseDetails] = useState<boolean>(false);
+  const [forceReset, setForceReset] = useState<boolean>(false);
 
   let validGroupValueIndices = 
     useRef<boolean[]>((new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false));
@@ -86,6 +89,8 @@ export const Match = (props: MatchPropsType) => {
 
   let showItemTitleNotification = useRef<boolean>(false);
 
+  useEffect(() => setForceReset(false), [forceReset]);
+  
   /* Gor useRef current should be updated. If value is taken from the
    descriptor, it should use the parameter due to the delay of useState
    execution
@@ -101,6 +106,8 @@ export const Match = (props: MatchPropsType) => {
     activeGroup.current = d.groups[activeIndex].name;
 
     showItemTitleNotification.current = false;
+    setshowAdviseDetails(false);
+    setForceReset(true);
   }
 
   function getGroupIndex(groupId: string) {
@@ -257,12 +264,33 @@ export const Match = (props: MatchPropsType) => {
       <Banner gameId={descriptor.gameId} 
         profileHandler={ (d: MatchDescriptorType) => handleProfileChange(d) }
         settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
+      <div style={{display:"flex", flexDirection:"row", justifyContent: "space-between"}}>
+        <PageHeader title={setTitle()} 
+          audio={titleAudioKeys ? [titleAudioKeys[activeIndex]] : undefined} 
+          audioHover={titleAudioHover}
+          feedbackFace={feedbackFace}/>      
 
-      <PageHeader title={setTitle()} 
-        audio={titleAudioKeys ? [titleAudioKeys[activeIndex]] : undefined} 
-        audioHover={titleAudioHover}
-        feedbackFace={feedbackFace}/>      
-
+        { descriptor.showAdvise === true &&
+          <div onClick={() => setshowAdviseDetails(!showAdviseDetails)} style={{ position: "relative" }}>
+            <Advise text={descriptor.adviseText ? descriptor.adviseText : "הסתכל על הרמז"} 
+              direction={MediaUtil.LTR} forceReset={ forceReset }/>
+            {
+              showAdviseDetails && validItems.current.map((item,i) =>
+                item && item.image.length > 0 &&
+                <div 
+                  key={ i }
+                  className="match-item-titles"
+                  style={{
+                    position: "absolute", 
+                    top: document.getElementById(item.id)?.getBoundingClientRect().top,
+                    left: document.getElementById(item.id)?.getBoundingClientRect().left
+                  }}>
+                    { item.title }
+                </div>
+            )}
+          </div>
+        }
+      </div>
       <div id="groupSplash" className="groupImage">
         {
           groups[activeIndex].image !== undefined && 
@@ -295,16 +323,17 @@ export const Match = (props: MatchPropsType) => {
         {
           validItems.current.map((item,i) =>
             item && item.image.length > 0 &&
-              <img src={ MediaUtil.getCatalogImage(item.image) } alt={item.title} key={item.id} height={DeviceUtil.imageHeight(isTablet)}  
-              onClick={(event:React.MouseEvent<HTMLElement>) => {
-                showItemTitleNotification.current = true;
-                setItemTitleNotification({
-                  top: event.clientY,
-                  left: event.clientX,
-                  content: items[i].title ? items[i].title : ""
-                })
-                verifyItem(item)}} 
-              className="imageStyle" />
+              <img src={ MediaUtil.getCatalogImage(item.image) } alt={item.title} 
+              key={item.id} id={item.id} height={DeviceUtil.imageHeight(isTablet)}  
+                onClick={(event:React.MouseEvent<HTMLElement>) => {
+                  showItemTitleNotification.current = true;
+                  setItemTitleNotification({
+                    top: event.clientY,
+                    left: event.clientX,
+                    content: items[i].title ? items[i].title : ""
+                  })
+                  verifyItem(item)}} 
+                className="imageStyle" />
           )
         }
       </div>

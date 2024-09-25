@@ -28,6 +28,8 @@ export interface MatchDescriptorType extends GameDescriptorType {
   titleAudioHover?: string;
   titleTemplate?: string;
   titleVariableValues?: string[];
+  showAdvise?: boolean;
+  adviseText?: string;
   groups: MatchGroup[];
   items: MatchItem[];
   settingsTitle: string;

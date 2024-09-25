@@ -4,9 +4,16 @@
   cursor: pointer;
 }
 
+.advise-show-global {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .advise-text {
   margin-right: 8px;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  padding-top: 10px;
 }
 
 .advise-hide {

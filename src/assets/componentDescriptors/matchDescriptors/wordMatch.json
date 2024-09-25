@@ -28,6 +28,8 @@
     "שׁוּלְחָן",
     "תַּפּוּזִים"
   ],
+  "showAdvise": true,
+  "adviseText": "קרא כל אחת מהמילים",
   "groups": [
     {
       "id": "lion",

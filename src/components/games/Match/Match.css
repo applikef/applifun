@@ -18,3 +18,10 @@
   margin-left: 12px;
   cursor: pointer;
 }
+
+.match-item-titles {
+  background-color: white;
+  padding: 8px;
+  border: solid 1px var(--gray-02);
+  color: var(--text);
+}
