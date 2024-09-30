@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
  interface MultiSelectionSettingsProps {
   className: string;
   title: string;
@@ -20,10 +20,16 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
   const [selectedGroupIndices, setSelectedGroupIndices] = 
     useState<boolean[]>((new Array(numberOfGroups)).fill(false).map(
       (v,i) => (i < maxNumberOfValidGroups ? true : false)
-    ));
-    let validGroupIndices = 
-      useRef<boolean[]>((new Array(numberOfGroups)).fill(false).map(
-        (v,i) => i < maxNumberOfValidGroups ? true : false));
+  ));
+
+  useEffect(()=>{
+    setSelectedGroupIndices((new Array(numberOfGroups)).fill(false).map(
+      (v,i) => (i < maxNumberOfValidGroups ? true : false)
+  ))},[maxNumberOfValidGroups, numberOfGroups]);
+
+  let validGroupIndices = 
+    useRef<boolean[]>((new Array(numberOfGroups)).fill(false).map(
+      (v,i) => i < maxNumberOfValidGroups ? true : false));
 
   function handleSettingsSelectGroup(e:ChangeEvent<HTMLInputElement>, index: number) : boolean[] {
     const isChecked = e.target.checked;

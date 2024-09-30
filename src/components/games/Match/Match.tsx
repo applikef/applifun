@@ -64,7 +64,12 @@ export const Match = (props: MatchPropsType) => {
   const items = descriptor.items;
 
   const numberOfGroups = groups.length;
-  const maxNumberOfValidGroups = Math.min(10,numberOfGroups);
+
+  const [maxNumberOfValidGroups, setMaxNumberOfValidGroups] = 
+    useState<number>(Math.min(
+      descriptor.maxSelectedGroups ? Math.min(descriptor.maxSelectedGroups,10) : 10,
+      numberOfGroups
+    ));
 
   const [activeIndex, setActiveIndex] = 
     useState<number>(Math.floor(Math.random() * maxNumberOfValidGroups));
@@ -97,8 +102,15 @@ export const Match = (props: MatchPropsType) => {
   */
   function handleProfileChange(d: MatchDescriptorType) {
     setDescriptor(d);
+
+    const maxNumberOfSelected: number = Math.min(
+      d.maxSelectedGroups ? Math.min(d.maxSelectedGroups,10) : 10,
+      numberOfGroups
+    )
+    setMaxNumberOfValidGroups(maxNumberOfSelected);
+
     validGroupValueIndices.current = 
-      (new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false);
+      (new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfSelected ? true : false);
     validItems.current = initValidItems(d);
 
     activeGroupId.current = d.groups[activeIndex].id;
@@ -279,6 +291,7 @@ export const Match = (props: MatchPropsType) => {
                 item && item.image.length > 0 &&
                 <div 
                   key={ i }
+                  onClick={(event) => {event.stopPropagation();}}
                   className="match-item-titles"
                   style={{
                     position: "absolute", 
@@ -351,7 +364,8 @@ export const Match = (props: MatchPropsType) => {
         />
       }
       
-      <MultiSelectionSettings
+      { maxNumberOfValidGroups > 0 &&
+        <MultiSelectionSettings
         className={ gameSettingsDisplay }
         title={descriptor.settingsTitle}
         maxNumberOfValidGroups={maxNumberOfValidGroups}
@@ -359,6 +373,7 @@ export const Match = (props: MatchPropsType) => {
         handleSettingsDone={handleSettingsDone}
         handleSettingsCancel={handleSettingsCancel}
       />
+      }
     </div>
   )
 }

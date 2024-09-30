@@ -30,6 +30,7 @@ export interface MatchDescriptorType extends GameDescriptorType {
   titleVariableValues?: string[];
   showAdvise?: boolean;
   adviseText?: string;
+  maxSelectedGroups?: number;
   groups: MatchGroup[];
   items: MatchItem[];
   settingsTitle: string;
