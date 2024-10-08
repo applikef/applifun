@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 
 import './Banner.css'
-import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { Help } from "../help/Help";
 import { getGameDescriptor, getProfileList } from "../../../pages/pages.util";
-import { ProfileDescriptor } from "../../../model/profileDescriptor.type";
 
 export interface BannerPropsType {
   gameId: string;
@@ -39,7 +38,8 @@ export const Banner = (props: BannerPropsType) => {
         <div className="banner-icon-bar">
           <div className="banner-right-icon-bar">
             <Link to="/">
-              <img src="resources/icons/home128.png" className="banner-icon" 
+              <img src="resources/icons/home128.png" 
+                className="banner-icon" 
                 title="עמוד הבית"  alt="עמוד הבית" />
             </Link>
             { props.settings &&

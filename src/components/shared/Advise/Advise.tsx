@@ -52,12 +52,15 @@ export const Advise = (props: AdvisePropsType) => {
             </img>
           }
 
-          <div className={`advise-text ${adviseToggleClass}`}>
+          <div className={`advise-text app-clickable ${adviseToggleClass}`}
+            onClick={() => 
+              setAdviseToggleClass("advise-hide") }>
             { props.text }  
           </div>
 
           { props.direction === DIRECTION.LTR &&
-            <img src="resources/icons/hand-point-right128.png" alt="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה" 
+            <img src="resources/icons/hand-point-right128.png" 
+              alt="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה" 
               title="הַקְלֵק לְהַסְתָּרַת הָעֶזְרָה"
               className="advise-icon" onClick={() => 
                 setAdviseToggleClass("advise-hide") }>

@@ -1,0 +1,123 @@
+{
+  "gameId": "letterMatchDayQuiz",
+  "showBanner": false,
+  "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
+  "titleVariableValues": [
+    "אָלֶף",
+    "בֵּית",
+    "גִּימֶל",
+    "דָּלֶת",
+    "הֵא",
+    "וָו"
+  ],
+  "maxSelectedGroups": 6,
+  "showAdvise": true,
+  "adviseText": "הסתכל מה האות הראשונה בכל אחת מהמילים",
+  "groups": [
+    {
+      "id": "א",
+      "title": "א",
+      "name": "אָלֶף"
+    },
+    {
+      "id": "ב",
+      "title": "ב",
+      "name": "בֵּית"
+    },
+    {
+      "id": "ג",
+      "title": "ג",
+      "name": "גִּימֶל"
+    },
+    {
+      "id": "ד",
+      "title": "ד",
+      "name": "דָּלֶת"
+    },
+    {
+      "id": "ה",
+      "title": "ה",
+      "name": "הֵא"
+    },
+    {
+      "id": "ו",
+      "title": "ו",
+      "name": "וָו"
+    }
+  ],
+  "items": [
+    {
+      "id": "airplane",
+      "title": "אֲוִירוֹן",
+      "image": "airplane",
+      "groupId": "א"
+    },
+    {
+      "id": "hook",
+      "title": "וָו",
+      "image": "hook",
+      "groupId": "ו"
+    },
+    {
+      "id": "ducky-duck",
+      "title": "בַּרְוָז",
+      "image": "ducky-duck",
+      "groupId": "ב"
+    },
+    {
+      "id": "hypo",
+      "title": "הִיפּוֹפּוֹטָם",
+      "image": "hypo",
+      "groupId": "ה"
+    },
+    {
+      "id": "rose",
+      "title": "וֶרֶד",
+      "image": "rose",
+      "groupId": "ו"
+    },
+    {
+      "id": "watermelon",
+      "title": "אֲבַטִּיחַ",
+      "image": "watermelon",
+      "groupId": "א"
+    },
+    {
+      "id": "doll",
+      "title": "בֻּבָּה",
+      "image": "doll-transparent",
+      "groupId": "ב"
+    },
+    {
+      "id": "fish-gold",
+      "title": "דָּג",
+      "image": "fish-gold",
+      "groupId": "ד"
+    },
+    {
+      "id": "camel",
+      "title": "גָּמָל",
+      "image": "camel",
+      "groupId": "ג"
+    },
+    {
+      "id": "door",
+      "title": "דֶּלֶת",
+      "image": "door",
+      "groupId": "ד"
+    },
+    {
+      "id": "wheel",
+      "title": "הֶגֶה",
+      "image": "wheel",
+      "groupId": "ה"
+    },
+    {
+      "id": "icecream",
+      "title": "גְּלִידָה",
+      "image": "icecream",
+      "groupId": "ג"
+    }
+  ],  
+  "settingsTitle": "סמן את האותיות שיופיעו במשחק"
+}

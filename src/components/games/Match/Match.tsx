@@ -39,6 +39,11 @@ export interface MatchPropsType {
 }
 
 export const Match = (props: MatchPropsType) => {
+  let activeShowBanner = true;
+  if (props.gameDescriptor.showBanner !== undefined) {
+    activeShowBanner = props.gameDescriptor.showBanner;
+  }
+
   const { 
     audioOn, 
     isTablet
@@ -273,9 +278,14 @@ export const Match = (props: MatchPropsType) => {
 
   return(
     <div className="app-page">
-      <Banner gameId={descriptor.gameId} 
-        profileHandler={ (d: MatchDescriptorType) => handleProfileChange(d) }
-        settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
+      { activeShowBanner &&
+        <Banner gameId={descriptor.gameId} 
+          profileHandler={ (d: MatchDescriptorType) => handleProfileChange(d) }
+          settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
+      }
+      { !activeShowBanner &&
+        <div className="app-vertiacl-space-l"></div>
+      }
       <div style={{display:"flex", flexDirection:"row", justifyContent: "space-between"}}>
         <PageHeader title={setTitle()} 
           audio={titleAudioKeys ? [titleAudioKeys[activeIndex]] : undefined} 

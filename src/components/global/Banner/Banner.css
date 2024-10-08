@@ -29,6 +29,7 @@
   height: 32px;
   width: 32px;
   margin-left: 16px;
+  cursor: pointer;
 }
 
 .banner-show-help {

@@ -1,5 +1,6 @@
 export interface GameDescriptorType {
   gameId: string;
+  showBanner?: boolean;
 }
 
 export interface LinkListDescriptorType extends GameDescriptorType {

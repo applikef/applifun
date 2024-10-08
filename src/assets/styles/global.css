@@ -10,6 +10,15 @@
   display: inline;
 }
 
+.app-vertiacl-space-l {
+  height: var(--size-l);
+}
+
+
+.app-vertiacl-space-xxxl {
+  height: var(--size-xxxl);
+}
+
 .app-show-flex {
   display: flex;
 }
