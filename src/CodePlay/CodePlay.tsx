@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import KDContext, { KDContextType } from "./model/KDContext";
-import { initCode } from "./utils/codeUtil";
 import "./../assets/styles/codePlay.css";
 import { Banner } from "../components/global/Banner/Banner";
 import { getHelpFileName } from "./utils/helpUtil";

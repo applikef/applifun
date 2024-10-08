@@ -1,8 +1,7 @@
 import { ChangeEvent, useContext, useState } from "react";
 import { KDCodeStatement } from "../../../model/kidDevModel";
-import { DefaultNumberValues, NumberValueTitle, StatementCode, StatementTitle } from "../../../constants/modelConstants";
+import { NumberValueTitle, StatementTitle } from "../../../constants/modelConstants";
 import KDContext, { KDContextType } from "../../../model/KDContext";
-import { DISPLAY_LEVEL } from "../../../constants/displayLevelConstants";
 import './statementLine.css';
 import { KD_APP_ERROR_MESSAGES } from "../../../constants/appErrorMessages";
 import { clearErrors, showError } from "../../../utils/errorsUtil";

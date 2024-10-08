@@ -132,7 +132,6 @@ export class CodeInterpreter {
   } 
 
   public execSetPencilPosition(position: Array<number>) {
-    const svg: SVGElement = document.querySelector("svg")!;
     const pencil = document.getElementById("pencil")!;
 
     const newPenX = position[0] ? 
@@ -146,21 +145,6 @@ export class CodeInterpreter {
     this.pencil.penY = newPenY;
     this.pencil.x = 0;
     this.pencil.y = 0;
-
-    // const newPenX: number = (this.pencil.penX+(delta*Math.cos(toRadians(this.pencil.angle))));
-    // const newPenY: number = (this.pencil.penY-(delta*Math.sin(toRadians(this.pencil.angle))));
-
-    // var newLine = document.createElementNS(SVG_NS,'line');
-    // newLine.setAttribute('id', 'line2');
-    // newLine.setAttribute('x1', this.pencil.penX.toString());
-    // newLine.setAttribute('y1', this.pencil.penY.toString());
-    // newLine.setAttribute('x2', newPenX.toString());
-    // newLine.setAttribute('y2', newPenY.toString());
-    // newLine.setAttribute("stroke", this.pencil.stroke)
-    // newLine.setAttribute("stroke-width", this.pencil.strokeWidth.toString())
-    // pencil.setAttribute('transform', `rotate(${-this.pencil.angle},${this.pencil.penX},${this.pencil.penY})`);
-    // svg.append(newLine);
-
 
     this.setPencilPosition(newPenX, newPenY);
     pencil.setAttribute('x', this.pencil.x.toString());
