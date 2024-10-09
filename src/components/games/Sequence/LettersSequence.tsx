@@ -12,7 +12,7 @@ import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { LetterSequenceDescriptorType, WordDescriptorType } from "./Sequence.types";
-import { ConstantsUtil, DIRECTION } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, DIRECTION, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { Advise } from "../../shared/Advise/Advise";
@@ -153,7 +153,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
       }
       else {  
         setTimeout(() => {
-          navigate("/");
+          navigate(HOME_PAGE_PATH);
         }, ConstantsUtil.hoorayTimeout);        
       }
     }, ConstantsUtil.hoorayTimeout)

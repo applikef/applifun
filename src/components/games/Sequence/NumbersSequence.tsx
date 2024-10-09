@@ -11,7 +11,7 @@ import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { NumberSequenceDescriptorType, NumberListDescriptorType } from "./Sequence.types";
-import { ConstantsUtil } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 
@@ -193,7 +193,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
       }
       else {
         setTimeout(() => {
-          navigate("/");
+          navigate(HOME_PAGE_PATH);
         }, ConstantsUtil.hoorayTimeout);        
       }
     }, ConstantsUtil.hoorayTimeout)

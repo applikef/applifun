@@ -8,7 +8,7 @@ import { MatchDescriptorType, MatchItem } from "../../componentDescriptors.types
 import { Notification, NotificationType } from "../../shared/Notification/Notification";
 
 import { DeviceUtil } from "../../../utils/DeviceUtil";
-import { ConstantsUtil, DIRECTION } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, DIRECTION, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
@@ -39,11 +39,6 @@ export interface MatchPropsType {
 }
 
 export const Match = (props: MatchPropsType) => {
-  let activeShowBanner = true;
-  if (props.gameDescriptor.showBanner !== undefined) {
-    activeShowBanner = props.gameDescriptor.showBanner;
-  }
-
   const { 
     audioOn, 
     isTablet
@@ -214,7 +209,7 @@ export const Match = (props: MatchPropsType) => {
         showWellDone(audioOn);
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
-          navigate("/");
+          navigate(HOME_PAGE_PATH);
         }, ConstantsUtil.shortPauseTimeout);
       }
       else {
@@ -278,14 +273,10 @@ export const Match = (props: MatchPropsType) => {
 
   return(
     <div className="app-page">
-      { activeShowBanner &&
-        <Banner gameId={descriptor.gameId} 
-          profileHandler={ (d: MatchDescriptorType) => handleProfileChange(d) }
-          settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
-      }
-      { !activeShowBanner &&
-        <div className="app-vertiacl-space-l"></div>
-      }
+      <Banner gameId={descriptor.gameId} 
+        profileHandler={ (d: MatchDescriptorType) => handleProfileChange(d) }
+        showBanner={props.gameDescriptor.showBanner}
+        settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
       <div style={{display:"flex", flexDirection:"row", justifyContent: "space-between"}}>
         <PageHeader title={setTitle()} 
           audio={titleAudioKeys ? [titleAudioKeys[activeIndex]] : undefined} 

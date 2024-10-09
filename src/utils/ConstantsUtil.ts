@@ -1,3 +1,6 @@
+export const HOME_PAGE_PATH = "/home";
+export const URL_PARAM_TO_SECONDARY_ENTRY = "home";
+
 export class ConstantsUtil {
   public static hoorayTimeout: number = 1000;
   public static pauseTimeout: number = 2000;

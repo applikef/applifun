@@ -13,7 +13,7 @@ import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { TitledImage } from "../../shared/TitledImage/TitledImage";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
-import { ConstantsUtil, FONT_SIZE } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, FONT_SIZE, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 
 export interface SelectGameProps {
@@ -130,7 +130,7 @@ export const SelectGame = (props: SelectGameProps) => {
           const nextIndex = 
             ObjectsUtil.getNextIndexInBooleanArray(validGroupIndices.current, activeGroupIndex.current);
           if (nextIndex === undefined) {
-            navigate("/");
+            navigate(HOME_PAGE_PATH);
           }
           else {
             activeGroupIndex.current = nextIndex;
@@ -159,7 +159,7 @@ export const SelectGame = (props: SelectGameProps) => {
     validGroupIndices.current = groupIndices;
     activeGroupIndex.current = groupIndices.indexOf(true);
     if (activeGroupIndex.current === -1) {
-      navigate("/");
+      navigate(HOME_PAGE_PATH);
     }
     activeGroup.current = groups[activeGroupIndex.current];
     initGame();
