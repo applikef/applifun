@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LinkListDescriptorType } from "../../componentDescriptors.types";
+import { LinkListDescriptorType } from "../../../model/componentDescriptors.types";
 
 export interface LinkListPropsType {
   gameDescriptor: LinkListDescriptorType;

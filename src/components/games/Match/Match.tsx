@@ -4,7 +4,7 @@ import "./../../../assets/styles/global.css";
 import "./Match.css";
 
 import { Banner } from "../../global/Banner/Banner";
-import { MatchDescriptorType, MatchItem } from "../../componentDescriptors.types";
+import { MatchDescriptorType, MatchItem } from "../../../model/componentDescriptors.types";
 import { Notification, NotificationType } from "../../shared/Notification/Notification";
 
 import { DeviceUtil } from "../../../utils/DeviceUtil";

@@ -11,7 +11,7 @@ import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
-import { LetterSequenceDescriptorType, WordDescriptorType } from "./Sequence.types";
+import { LetterSequenceDescriptorType, WordDescriptorType } from "../../../model/Sequence.types";
 import { ConstantsUtil, DIRECTION, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";

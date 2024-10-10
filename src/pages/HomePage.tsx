@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
 
 import { Card } from "../components/shared/Card/Card";
-import { HomePageItemType, HomePageSectionType, homePageDescriptor } from  "../assets/homePageDescriptor";
+import { HomePageItemType, HomePageSectionType, homePageDescriptor } from  "../assets/descriptors/homePageDescriptor";
 
 import './pages.css';
 import { useContext, useLayoutEffect, useState } from "react";

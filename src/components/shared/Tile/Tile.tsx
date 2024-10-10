@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TileDescriptorType } from "../../componentDescriptors.types";
+import { TileDescriptorType } from "../../../model/componentDescriptors.types";
 
 export interface TilePropsType {
   gameDescriptor: TileDescriptorType;

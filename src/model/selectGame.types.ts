@@ -1,4 +1,4 @@
-import { GameDescriptorType } from "../../componentDescriptors.types";
+import { GameDescriptorType } from "./componentDescriptors.types";
 
 export type SelectGameGroupType = {
   id: string;

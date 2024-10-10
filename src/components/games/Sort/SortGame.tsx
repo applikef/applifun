@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { SortGameDescriptorType, SortGameGroupType, SortGameImageType } from "./sortGame.types";
+import { SortGameDescriptorType, SortGameGroupType, SortGameImageType } from "../../../model/sortGame.types";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 
 import "./SortGame.css";

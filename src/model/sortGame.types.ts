@@ -1,4 +1,4 @@
-import { GameDescriptorType } from "../../componentDescriptors.types";
+import { GameDescriptorType } from "./componentDescriptors.types";
 
 export interface SortGameDescriptorType extends GameDescriptorType {
   titleTemplate: string;

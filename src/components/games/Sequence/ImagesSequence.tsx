@@ -6,7 +6,7 @@ import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { TitledImage } from "../../shared/TitledImage/TitledImage";
 import { showWellDone } from "../../shared/WellDone/WellDone";
 
-import { ImageDescriptorType, ImageSequenceDescriptorType } from "./Sequence.types";
+import { ImageDescriptorType, ImageSequenceDescriptorType } from "../../../model/Sequence.types";
 
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";

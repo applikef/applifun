@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useContext, useRef, useState } from "react";
-import { SelectGameDescriptorType, SelectGameGroupType, SelectGameImageType } from "./selectGame.types";
+import { SelectGameDescriptorType, SelectGameGroupType, SelectGameImageType } from "../../../model/selectGame.types";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 
 import "./SelectGame.css";
