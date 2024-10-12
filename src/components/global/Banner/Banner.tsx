@@ -113,16 +113,41 @@ export const Banner = (props: BannerPropsType) => {
       </div>
     }
     { !activeShowBanner &&
-      <div className="app-vertiacl-space-xxxl">
-          <div style={{ paddingTop: "16px", paddingBottom: "16px" }}>
-            <span className="app-sub-title">משחק היום</span>
-            <span style={{float: "left", paddingLeft: "16px"}}>
-          <Link to={ HOME_PAGE_PATH }>
-            למשחקים נוספים
-        </Link>
-        </span>
+      <div className="banner-icon-bar">
+        <div className="banner-right-icon-bar">
+          <span className="app-sub-title banner-title">משחק היום</span>
         </div>
+        <div  className="banner-left-icon-bar">
+            <div style={{float: "left", paddingLeft: "16px", paddingTop: "4px"}}>
+              <Link to={ HOME_PAGE_PATH }>
+                למשחקים נוספים
+              </Link>
+            </div>
+          { props.gameId.length > 0 &&
+            <div onClick={() => setHelpState()}>
+              <img src="resources/icons/help.png" className="banner-icon" 
+                title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
+            </div>
+          }
+          {
+            !props.hideAudio && audioOn && <img src="resources/icons/speaker.png" className="banner-icon"
+              onClick={() => turnAudioOff()} 
+                title="קול" alt="קול" />
+          }
+          {
+            !props.hideAudio && !audioOn && <img src="resources/icons/speaker-off.png" className="banner-icon" 
+              onClick={() => turnAudioOn()}
+                title="קול" alt="קול" />
+          }
         </div>
+        <div className={`banner-help-content ${showHelp}`}>
+          { props.helpFile ?
+              <Help fileName={props.helpFile} onClose={setHelpState}/>
+            :
+              <Help gameId={props.gameId} onClose={setHelpState}/>
+          }
+        </div>
+      </div>
     }
   </>
 );
