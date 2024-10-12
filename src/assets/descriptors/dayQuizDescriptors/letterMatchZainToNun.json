@@ -1,0 +1,158 @@
+{
+  "gameId": "letterMatchDayQuiz",
+  "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
+  "titleVariableValues": [
+    "זַיִן",
+    "חֵית",
+    "טֵית",
+    "יוֹד",
+    "כַּף",
+    "לָמֵד",
+    "מֵם",
+    "נוּן"
+  ],
+  "maxSelectedGroups": 5,
+  "showAdvise": true,
+  "adviseText": "הסתכל מה האות הראשונה בכל אחת מהמילים",
+  "groups": [
+    {
+      "id": "ז",
+      "title": "ז",
+      "name": "זַיִן"
+    },
+    {
+      "id": "ח",
+      "title": "ח",
+      "name": "חֵית"
+    },
+    {
+      "id": "ט",
+      "title": "ט",
+      "name": "טֵית"
+    },
+    {
+      "id": "י",
+      "title": "י",
+      "name": "יוֹד"
+    },
+    {
+      "id": "כ",
+      "title": "כ",
+      "name": "כַּף"
+    },
+    {
+      "id": "ל",
+      "title": "ל",
+      "name": "לָמֵד"
+    },
+    {
+      "id": "מ",
+      "title": "מ",
+      "name": "מֵם"
+    },
+    {
+      "id": "נ",
+      "title": "נ",
+      "name": "נוּן"
+    }
+  ],
+  "items": [
+    {
+      "id": "gift",
+      "title": "מַתָּנָה",
+      "image": "gift",
+      "groupId": "מ"
+    },
+    {
+      "id": "letuce",
+      "title": "חַסָּה",
+      "image": "letuce",
+      "groupId": "ח"
+    },
+    {
+      "id": "olive",
+      "title": "זַיִת",
+      "image": "olive",
+      "groupId": "ז"
+    },
+    {
+      "id": "hat-casket",
+      "title": "כּוֹבַע",
+      "image": "hat-casket",
+      "groupId": "כ"
+    },
+    {
+      "id": "phone",
+      "title": "טֶלֶפוֹן",
+      "image": "phone-transparent",
+      "groupId": "ט"
+    },
+    {
+      "id": "lemon",
+      "title": "לִימוֹן",
+      "image": "lemon",
+      "groupId": "ל"
+    },
+    {
+      "id": "palm",
+      "title": "יָד",
+      "image": "palm",
+      "groupId": "י"
+    },
+    {
+      "id": "ring-gold",
+      "title": "טַבַּעַת",
+      "image": "ring-gold",
+      "groupId": "ט"
+    },
+    {
+      "id": "bird-white-wagtail",
+      "title": "נַחְלִיאֵלִי",
+      "image": "bird-white-wagtail",
+      "groupId": "נ"
+    },
+    {
+      "id": "truck",
+      "title": "מַשָּׂאִית",
+      "image": "truck",
+      "groupId": "מ"
+    },
+    {
+      "id": "shoe",
+      "title": "נַעַל",
+      "image": "shoe",
+      "groupId": "נ"
+    },
+    {
+      "id": "roll",
+      "title": "לַחְמָנִיָּה",
+      "image": "roll",
+      "groupId": "ל"
+    },
+    {
+      "id": "cat-sitting",
+      "title": "חָתוּל",
+      "image": "cat-sitting",
+      "groupId": "ח"
+    },
+    {
+      "id": "bird-pigeon",
+      "title": "יוֹנָה",
+      "image": "bird-pigeon",
+      "groupId": "י"
+    },
+    {
+      "id": "zebra",
+      "title": "זֶבְּרָה",
+      "image": "zebra",
+      "groupId": "ז"
+    },
+    {
+      "id": "basketball",
+      "title": "כַּדּוּר-סַל",
+      "image": "basketball",
+      "groupId": "כ"
+    }
+  ],  
+  "settingsTitle": "סמן את האותיות שיופיעו במשחק"
+}

@@ -1,0 +1,158 @@
+{
+  "gameId": "letterMatchDayQuiz",
+  "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
+  "titleVariableValues": [
+    "סַמֵּךְ",
+    "עַיִן",
+    "פֵּא",
+    "צַדִּיק",
+    "קוֹף",
+    "רֵישׁ",
+    "שִׁין",
+    "תָּו"
+  ],
+  "maxSelectedGroups": 5,
+  "showAdvise": true,
+  "adviseText": "הסתכל מה האות הראשונה בכל אחת מהמילים",
+  "groups": [
+    {
+      "id": "ס",
+      "title": "ס",
+      "name": "סַמֵּךְ"
+    },
+    {
+      "id": "ע",
+      "title": "ע",
+      "name": "עַיִן"
+    },
+    {
+      "id": "פ",
+      "title": "פ",
+      "name": "פֵּא"
+    },
+    {
+      "id": "צ",
+      "title": "צ",
+      "name": "צַדִּי"
+    },
+    {
+      "id": "ק",
+      "title": "ק",
+      "name": "קוֹף"
+    },
+    {
+      "id": "ר",
+      "title": "ר",
+      "name": "רֵישׁ"
+    },
+    {
+      "id": "ש",
+      "title": "ש",
+      "name": "שִׁין"
+    },
+    {
+      "id": "ת",
+      "title": "ת",
+      "name": "תָּו"
+    }
+  ],
+  "items": [
+    {
+      "id": "helmet",
+      "title": "קַסְדָּה",
+      "image": "helmet",
+      "groupId": "ק"
+    },
+    {
+      "id": "horse",
+      "title": "סוּס",
+      "image": "horse",
+      "groupId": "ס"
+    },
+    {
+      "id": "carriage",
+      "title": "עֲגָלָה",
+      "image": "carriage",
+      "groupId": "ע"
+    },
+    {
+      "id": "strawberry",
+      "title": "תּוּת",
+      "image": "strawberry",
+      "groupId": "ת"
+    },
+    {
+      "id": "flashlight",
+      "title": "פָּנָס",
+      "image": "flashlight",
+      "groupId": "פ"
+    },
+    {
+      "id": "turtle",
+      "title": "צָב",
+      "image": "turtle",
+      "groupId": "צ"
+    },
+    {
+      "id": "train",
+      "title": "רַכֶּבֶת",
+      "image": "train",
+      "groupId": "ר"
+    },
+    {
+      "id": "neckless",
+      "title": "שַׁרְשֶׁרֶת",
+      "image": "neckless",
+      "groupId": "ש"
+    },
+    {
+      "id": "dice",
+      "title": "קֻבִּיָּה",
+      "image": "dice",
+      "groupId": "ק"
+    },
+    {
+      "id": "birthday-cake",
+      "title": "עוּגָה",
+      "image": "birthday-cake",
+      "groupId": "ע"
+    },
+    {
+      "id": "orange",
+      "title": "תַּפּוּז",
+      "image": "orange",
+      "groupId": "ת"
+    },
+    {
+      "id": "sabra",
+      "title": "צַבָּר",
+      "image": "sabra",
+      "groupId": "צ"
+    },
+    {
+      "id": "pepper-red",
+      "title": "פִּלְפֵּל",
+      "image": "pepper-red",
+      "groupId": "פ"
+    },
+    {
+      "id": "clock-alarm",
+      "title": "שָׁעוֹן",
+      "image": "clock-alarm",
+      "groupId": "ש"
+    },
+    {
+      "id": "basket",
+      "title": "סַל",
+      "image": "basket",
+      "groupId": "ס"
+    },
+    {
+      "id": "traffic-light",
+      "title": "רַמְזוֹר",
+      "image": "traffic-light",
+      "groupId": "ר"
+    }
+  ],  
+  "settingsTitle": "סמן את האותיות שיופיעו במשחק"
+}

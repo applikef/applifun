@@ -1,0 +1,16 @@
+[
+  {
+    "gameTypeId": "Match",
+    "descriptors": [
+      {
+        "file": "letterMatchAlefToVav.json"
+      },
+      {
+        "file": "letterMatchZainToNun.json"
+      },
+      {
+        "file": "letterMatchSamehToTav.json"
+      }
+    ]
+  }
+]

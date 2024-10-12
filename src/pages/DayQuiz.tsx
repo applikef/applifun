@@ -1,14 +1,16 @@
 import React, { useContext, useLayoutEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Match } from "../components/games/Match/Match";
 import { useMediaQuery } from "react-responsive";
 import { ConstantsUtil } from "../utils/ConstantsUtil";
 import GamesContext, { GamesContextType } from "../context/GamesContext";
 import { ModalNotification } from "../components/shared/Notification/ModalNotification";
-import { useTranslation } from "react-i18next";
+import { QuizUtil } from "../utils/QuizUtil";
 
 export const DayQuiz = () => {
-  const fileName = "20141008_letterMatchAlefToVav.json";
-  const descriptor = require(`./../assets/descriptors/dayQuizDescriptors/${fileName}`);
+  // const fileName = "letterMatchAlefToVav.json";
+  // const descriptor = require(`./../assets/descriptors/dayQuizDescriptors/${fileName}`);
+  const descriptor = QuizUtil.getMatchQuizDescriptor();
 
   const { t } = useTranslation();
 
