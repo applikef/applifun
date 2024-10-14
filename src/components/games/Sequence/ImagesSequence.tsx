@@ -16,7 +16,8 @@ import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
-import { DIRECTION, FONT_SIZE } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, DIRECTION, FONT_SIZE, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
+import { useNavigate } from "react-router-dom";
 
 export interface ImagesSequenceProps {
   gameDescriptor: ImageSequenceDescriptorType;
@@ -25,6 +26,8 @@ export interface ImagesSequenceProps {
 let imageDescriptors: ImageDescriptorType[] = [];
 
 export const ImagesSequence = (props: ImagesSequenceProps) => {
+  const navigate = useNavigate();
+
   const { 
     audioOn,
     isTablet 
@@ -61,6 +64,9 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
     setPageTitle("כל הכבוד!");
     setFeedbackFace(() => FACES.NONE);
     showWellDone(audioOn);
+    setTimeout(() => {
+      navigate(HOME_PAGE_PATH);
+    }, ConstantsUtil.hoorayTimeout);
   }
 
   function verifyImage(image: ImageDescriptorType) {
