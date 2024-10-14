@@ -1,16 +1,36 @@
-[
-  {
-    "gameTypeId": "Match",
-    "descriptors": [
-      {
-        "file": "letterMatchAlefToVav.json"
-      },
-      {
-        "file": "letterMatchZainToNun.json"
-      },
-      {
-        "file": "letterMatchSamehToTav.json"
-      }
-    ]
-  }
-]
+{
+  "descriptors": [
+    {
+      "gameTypeId": "Match",
+      "gameDescriptorFile": "letterMatchAlefToVav.json"
+    },
+    {
+      "gameTypeId": "Match",
+      "gameDescriptorFile": "numberMatch1To5.json"
+    },
+    {
+      "gameTypeId": "Match",
+      "gameDescriptorFile": "letterMatchZainToNun.json"
+    },
+    {
+      "gameTypeId": "Match",
+      "gameDescriptorFile": "numberMatch6To10.json"
+    },
+    {
+      "gameTypeId": "Match",
+      "gameDescriptorFile": "letterMatchSamehToTav.json"
+    },
+    {
+      "gameTypeId": "NumbersSequence",
+      "gameDescriptorFile": "numbersSequence1To10Up.json"
+    },
+    {
+      "gameTypeId": "ImagesSequence",
+      "gameDescriptorFile": "washHands.json"
+    },
+    {
+      "gameTypeId": "Sort",
+      "gameDescriptorFile": "shapeSort.json"
+    }
+  ]
+}

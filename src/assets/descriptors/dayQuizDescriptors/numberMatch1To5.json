@@ -1,0 +1,84 @@
+{
+  "gameId": "numberMatchQuiz",
+  "showBanner": false,
+  "titles": [
+    "בְּחַר תְּמוּנָה עִם דָּבָר אֶחָד",
+    "בְּחַר תְּמוּנָה עִם שְׁנֵי דְּבָרִים",
+    "בְּחַר תְּמוּנָה עִם שְׁלוֹשָׁה דְּבָרִים",
+    "בְּחַר תְּמוּנָה עִם אַרְבָּעָה דְּבָרִים",
+    "בְּחַר תְּמוּנָה עִם חֲמִשָּׁה דְּבָרִים"
+  ],
+  "titleAudioKeys": [
+    "selectImageWithOne",
+    "selectImageWithTwo",
+    "selectImageWithThree",
+    "selectImageWithFour",
+    "selectImageWithFive"
+  ],
+  "titleAudioHover": "הַקְלֵק כְּדֵי לִשְׁמֹעַ אֶת הַהוֹרָאוֹת",
+  "groups": [
+    {
+      "id": "1",
+      "title": "1",
+      "name": "אַחַת"
+    },
+    {
+      "id": "2",
+      "title": "2",
+      "name": "שְׁתַּיִם"
+    },
+    {
+      "id": "3",
+      "title": "3",
+      "name": "שָׁלוֹשׁ"
+    },
+    {
+      "id": "4",
+      "title": "4",
+      "name": "אַרְבַּע"
+    },
+    {
+      "id": "5",
+      "title": "5",
+      "name": "חָמֵשׁ"
+    }
+  ],
+  "items": [
+    {
+      "id": "cubes",
+      "image": "cubes-clipart-2",
+      "groupId": "2"
+    },
+    {
+      "id": "face",
+      "image": "face-clipart-1",
+      "groupId": "1"
+    },
+    {
+      "id": "cylinders-flat",
+      "image": "cylinders-flat-clipart-5",
+      "groupId": "5"
+    },
+    {
+      "id": "elefants",
+      "image": "elefants-3",
+      "groupId": "3"
+    },
+    {
+      "id": "smiley",
+      "image": "smiley-clipart-4",
+      "groupId": "4"
+    },
+    {
+      "id": "splash",
+      "image": "splash-clipart-3",
+      "groupId": "3"
+    },
+    {
+      "id": "balloon",
+      "image": "balloon",
+      "groupId": "1"
+    }
+  ],
+  "settingsTitle": "סמני את המספרים שיופיעו במשחק"
+}

@@ -5,13 +5,18 @@ import { useMediaQuery } from "react-responsive";
 import { ConstantsUtil } from "../utils/ConstantsUtil";
 import GamesContext, { GamesContextType } from "../context/GamesContext";
 import { ModalNotification } from "../components/shared/Notification/ModalNotification";
+import { NumbersSequence } from "../components/games/Sequence/NumbersSequence";
+import { SortGame } from "../components/games/Sort/SortGame";
+import { SelectGame } from "../components/games/Select/SelectGame";
+import { LettersSequence } from "../components/games/Sequence/LettersSequence";
+import { ImagesSequence } from "../components/games/Sequence/ImagesSequence";
 import { QuizUtil } from "../utils/QuizUtil";
+import { QuizDescriptor } from "../model/quiz.type";
 
 export const DayQuiz = () => {
-  // const fileName = "letterMatchAlefToVav.json";
-  // const descriptor = require(`./../assets/descriptors/dayQuizDescriptors/${fileName}`);
-  const descriptor = QuizUtil.getMatchQuizDescriptor();
-
+  const quizDescriptor: QuizDescriptor = QuizUtil.getQuizDescriptor();
+  const gameTypeId = quizDescriptor.gameTypeId;
+  const descriptorFileName: string = quizDescriptor.gameDescriptorFile;
   const { t } = useTranslation();
 
   const {
@@ -38,8 +43,22 @@ export const DayQuiz = () => {
       <ModalNotification text={ t("HomePageHoldInLandscape") } 
         show={(isTablet && isPortrait) && !dismissPortrait}
         onDismiss={() => setDismissPortrait(true)}/>
-        
-      <Match gameDescriptor={descriptor}/>
+
+      { 
+        gameTypeId === "Match" ?  
+          <Match gameDescriptor={require(`./../assets/descriptors/dayQuizDescriptors/${descriptorFileName}`)}/>
+        : gameTypeId === "Select" ?
+          <SelectGame gameDescriptor={require(`./../assets/descriptors/dayQuizDescriptors/${descriptorFileName}`)}/>
+        : gameTypeId === "NumbersSequence" ?
+          <NumbersSequence gameDescriptor={require(`./../assets/descriptors/dayQuizDescriptors/${descriptorFileName}`)}/>
+        : gameTypeId === "LettersSequence" ?
+          <LettersSequence gameDescriptor={require(`./../assets/descriptors/dayQuizDescriptors/${descriptorFileName}`)}/>
+        : gameTypeId === "ImagesSequence" ?
+          <ImagesSequence gameDescriptor={require(`./../assets/descriptors/dayQuizDescriptors/${descriptorFileName}`)}/>
+        : gameTypeId === "Sort" ?
+          <SortGame gameDescriptor={require(`./../assets/descriptors/dayQuizDescriptors/${descriptorFileName}`)}/>
+        : <></>
+      }
     </div>
   )
 } 

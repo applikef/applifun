@@ -1,25 +1,21 @@
-import { MatchDescriptorType } from "../model/componentDescriptors.types";
+import { QuizDescriptor } from "../model/quiz.type";
 
 export class QuizUtil {
-
-  private static getQuizDescriptorFileName(): string {
-    const quizCatalog: Array<any> = require("./../assets/quizCatalog.json");
+  /* Reteived to a separate function to allow testing with various and 
+    consistent numbers accross all class methods */
+  private static getBaseValue(): number {
     const date = new Date().getDate();
-
-    const gameTypeIndex: number = date % quizCatalog.length;
-
-    const gameDescriptors: Array<any> = quizCatalog[gameTypeIndex].descriptors;
-    const quizIndex = date % gameDescriptors.length;
-
-    const fileName = gameDescriptors[quizIndex].file;
-
-    return fileName;
+    return date;
   }
 
-  public static getMatchQuizDescriptor(): MatchDescriptorType {
-    const fileName: string = QuizUtil.getQuizDescriptorFileName();
-    const descriptor = require(`./../assets/descriptors/dayQuizDescriptors/${fileName}`);
+  public static getQuizDescriptor(): QuizDescriptor {
+    const quizCatalog = require("./../assets/quizCatalog.json");
+    const descriptors: Array<QuizDescriptor> = quizCatalog.descriptors;
 
-    return descriptor;
+    const date = QuizUtil.getBaseValue();
+    const gameTypeIndex: number = date % descriptors.length;
+    const quizDescriptor: QuizDescriptor = descriptors[gameTypeIndex];
+
+    return quizDescriptor;
   }
 }

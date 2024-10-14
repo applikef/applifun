@@ -182,9 +182,11 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
   return (
     <div className="app-page">
-      <Banner gameId={props.gameDescriptor.gameId} settings={() => {
-        setPendingSelectedWordIndices(() => selectedWordIndices);
-        setgameSettingsDisplay("game-settings-global-show")
+      <Banner gameId={props.gameDescriptor.gameId} 
+        showBanner={props.gameDescriptor.showBanner}
+        settings={() => {
+          setPendingSelectedWordIndices(() => selectedWordIndices);
+          setgameSettingsDisplay("game-settings-global-show")
       }}/>
 
       <PageHeader title={ pageTitle } audio={["order-letters"]} feedbackFace={ feedbackFace } />

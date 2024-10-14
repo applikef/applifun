@@ -1,0 +1,13 @@
+{
+  "gameId": "iCountDayQuiz",
+  "showBanner": false,
+  "title": "סדר את המספרים בסדר $value$",
+  "numberLists": [
+    {
+      "id": "numbers1to10",
+      "name": "מספרים 1 עד 10",
+      "range": [1,10]
+    }
+  ]
+}
+

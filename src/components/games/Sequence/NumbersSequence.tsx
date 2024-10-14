@@ -25,7 +25,7 @@ interface ViewEntry {
   show: boolean;
 }
 
-export interface NumberSequenceSettings {
+export interface NumbersSequenceSettings {
   selectedNumberListIndices: boolean[],
   direction: NumbersOrder
 }
@@ -79,13 +79,13 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   const [orderedNumbers, setOrderedNumbers] = useState<ViewEntry[]>([]);
   const [shuffledNumbers, setShuffledNumbers] = useState<ViewEntry[]>([]);
   const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
-  const [numberSequenceSettings, setNumberSequenceSettings] =
-    useState<NumberSequenceSettings>({
+  const [numberSequenceSettings, setNumbersSequenceSettings] =
+    useState<NumbersSequenceSettings>({
       selectedNumberListIndices: Array(numberListsCatalogSize).fill(true),
       direction: NumbersOrder.UP
     });
-  const [pendingNumberSequenceSettings, setPendingNumberSequenceSettings] =
-    useState<NumberSequenceSettings>({
+  const [pendingNumbersSequenceSettings, setPendingNumbersSequenceSettings] =
+    useState<NumbersSequenceSettings>({
       selectedNumberListIndices: Array(numberListsCatalogSize).fill(true),
       direction: NumbersOrder.UP
     });
@@ -201,7 +201,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
 
   function handleSettingsSelectNumberList(e:ChangeEvent<HTMLInputElement>, index: number) : boolean[] {
     const isChecked = e.target.checked;
-    let settingArr = new Array(...pendingNumberSequenceSettings.selectedNumberListIndices)
+    let settingArr = new Array(...pendingNumbersSequenceSettings.selectedNumberListIndices)
     if (isChecked) {
         settingArr[index] = true;
     }
@@ -218,7 +218,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   function handleSettingsDone() {
     let newNumberLists:NumberListDescriptorType[] = [];
     for (let i=0; i < numberListsCatalogSize; i++) {
-      if (pendingNumberSequenceSettings.selectedNumberListIndices[i]) {
+      if (pendingNumbersSequenceSettings.selectedNumberListIndices[i]) {
         newNumberLists.push(numberListsCatalog[i]);
       }
     }
@@ -228,22 +228,24 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
     hideWellDone();
 
     setNumberLists(()=>newNumberLists);
-    setNumberSequenceSettings({
-      selectedNumberListIndices: pendingNumberSequenceSettings.selectedNumberListIndices,
-      direction: pendingNumberSequenceSettings.direction
+    setNumbersSequenceSettings({
+      selectedNumberListIndices: pendingNumbersSequenceSettings.selectedNumberListIndices,
+      direction: pendingNumbersSequenceSettings.direction
     })
-    pageTitle.current = pendingNumberSequenceSettings.direction === NumbersOrder.UP ? titleUp : titleDown;
+    pageTitle.current = pendingNumbersSequenceSettings.direction === NumbersOrder.UP ? titleUp : titleDown;
     setGameSettinsDisplay(()=>"game-settings-global-hide")
   }
 
   return (
     <div className="app-page">
-      <Banner gameId={props.gameDescriptor.gameId} settings={() => {
-        setPendingNumberSequenceSettings({
-          selectedNumberListIndices: numberSequenceSettings.selectedNumberListIndices,
-          direction: numberSequenceSettings.direction
-        });
-        setGameSettinsDisplay("game-settings-global-show")
+      <Banner gameId={props.gameDescriptor.gameId} 
+        showBanner={props.gameDescriptor.showBanner}      
+        settings={() => {
+          setPendingNumbersSequenceSettings({
+            selectedNumberListIndices: numberSequenceSettings.selectedNumberListIndices,
+            direction: numberSequenceSettings.direction
+          });
+          setGameSettinsDisplay("game-settings-global-show")
       }}/>
 
       <div className="letters-sequence-global">
@@ -291,12 +293,12 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
             (numberList, i) => 
               <div className="game-settings-entry" key={i}>
                 <input type="checkbox"
-                  checked={pendingNumberSequenceSettings.selectedNumberListIndices[i]} 
+                  checked={pendingNumbersSequenceSettings.selectedNumberListIndices[i]} 
                   onChange={(e:ChangeEvent<HTMLInputElement>) => {
                     const settingArr: boolean[] = handleSettingsSelectNumberList(e, i);
-                    setPendingNumberSequenceSettings({
+                    setPendingNumbersSequenceSettings({
                       selectedNumberListIndices: settingArr,
-                      direction: pendingNumberSequenceSettings.direction
+                      direction: pendingNumbersSequenceSettings.direction
                     })
                   }}></input>
                 <span key={i}>{numberList.name}</span>
@@ -308,10 +310,10 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
             (d, i) => 
               <div className="game-settings-entry" key={i}>
                 <input type="radio" name="direction"
-                  checked={pendingNumberSequenceSettings.direction === d.id} 
+                  checked={pendingNumbersSequenceSettings.direction === d.id} 
                   onChange={(e:ChangeEvent<HTMLInputElement>) => {
-                    setPendingNumberSequenceSettings({
-                      selectedNumberListIndices: pendingNumberSequenceSettings.selectedNumberListIndices,
+                    setPendingNumbersSequenceSettings({
+                      selectedNumberListIndices: pendingNumbersSequenceSettings.selectedNumberListIndices,
                       direction: d.id
                     });
                   }}></input>

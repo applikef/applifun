@@ -1,0 +1,42 @@
+{
+    "gameId": "washHandsQuiz",
+    "showBanner": false,
+    "title": "הַקְלֵק עַל הַתְּמוּנוֹת מֵהַפְּעֻלָּה הָרִאשׁוֹנָה לַפְּעֻלָּה הָאַחֲרוֹנָה",
+    "images": [
+      {
+        "id": "open-faucet",
+        "file": "open-faucet",
+        "title": "פּוֹתֵחַ אֶת הַבֶּרֶז"
+      },
+      {
+        "id": "wet-hands",
+        "file": "wet-hands",
+        "title": "מַרְטִיב יָדַיִים"
+      },
+      {
+        "id": "put-soap",
+        "file": "put-soap-on-hands",
+        "title": "לוֹקֵחַ סַבּוֹן"
+      },
+      {
+        "id": "clean-with-soap",
+        "file": "clean-hands-with-soap",
+        "title": "מְשַׁפְשֵׁף עִם הַסַּבּוֹן"
+      },
+      {
+        "id": "wash-hands",
+        "file": "wash-hands",
+        "title": "שׁוֹטֵף אֶת הַסַּבּוֹן"
+      },
+      {
+        "id": "close-faucet",
+        "file": "close-faucet",
+        "title": "סוֹגֵר אֶת הַבֶּרֶז"
+      },
+      {
+        "id": "dry-handsl",
+        "file": "dry-hands",
+        "title": "מְנַגֵּב יָדַיִם"
+      }
+    ]
+  }
