@@ -11,7 +11,7 @@ import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
-import { ConstantsUtil, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, FONT_SIZE, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 
 export interface SortGameProps {
@@ -149,8 +149,10 @@ export const SortGame = (props: SortGameProps) => {
                     }
                   </div>
                   <div 
-                    className={group.image ? "sort-game-group-label" : "sort-game-group-label-no-image"}  
-                    style={{cursor: cursorStyle, backgroundColor: groupBackgroundColors[i]}}
+                    className={`${group.image ? "sort-game-group-label" : "sort-game-group-label-no-image"} ${DeviceUtil.getFontSize(isTablet, group.image ? FONT_SIZE.XL : FONT_SIZE.XXXXL)}`}  
+                    style={{cursor: cursorStyle, 
+                      backgroundColor: groupBackgroundColors[i]
+                    }}
                     onClick={() => updateGroup(group, i)}> 
                       { group.title }
                   </div>

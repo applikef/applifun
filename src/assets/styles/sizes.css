@@ -17,6 +17,30 @@
   --font-size-xs: 0.5rem;
 }
 
+.font-size-xxxxl {
+  font-size: var(--font-size-xxxxl);
+}
+.font-size-xxxl {
+  font-size: var(--font-size-xxxl);
+}
+.font-size-xxl {
+  font-size: var(--font-size-xxl);
+}
+.font-size-xl {
+  font-size: var(--font-size-xl);
+}
+.font-size-l {
+  font-size: var(--font-size-l);
+}
+.font-size-normal {
+  font-size: var(--font-size-normal);
+}
+.font-size-s {
+  font-size: var(--font-size-s);
+}
+.font-size-xs {
+  font-size: var(--font-size-xs);
+}
 
 .font-size-xxxxl-tablet {
   font-size: var(--font-size-xl);
@@ -30,15 +54,7 @@
   font-size: var(--font-size-xl);
 }
 
-.font-size-xl {
-  font-size: var(--font-size-xl);
-}
-
 .font-size-xl-tablet {
-  font-size: var(--font-size-l);
-}
-
-.font-size-l {
   font-size: var(--font-size-l);
 }
 
@@ -46,24 +62,12 @@
   font-size: var(--font-size-normal);
 }
 
-.font-size-normal {
-  font-size: var(--font-size-normal);
-}
-
 .font-size-normal-tablet {
-  font-size: var(--font-size-s);
-}
-
-.font-size-s {
   font-size: var(--font-size-s);
 }
 
 .font-size-s-tablet {
   font-size: var(--font-size-s);
-}
-
-.font-size-xs {
-  font-size: var(--font-size-xs);
 }
 
 .font-size-xs-tablet {
