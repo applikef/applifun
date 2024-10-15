@@ -37,6 +37,7 @@ export const SortGame = (props: SortGameProps) => {
   const selectGroupMessage = props.gameDescriptor.selectGroupMessage ? 
     props.gameDescriptor.selectGroupMessage 
   : "צריך לבחור קבוצה";
+  const helpFileName: string | undefined = props.gameDescriptor.helpFile ? props.gameDescriptor.helpFile : undefined;
 
   const backgroundColor: string = "#f0f0f0";  // var(--background);
   const selectedBackgroundColor: string = "#f0f8ff";   // var(--light-blue-00);
@@ -126,6 +127,7 @@ export const SortGame = (props: SortGameProps) => {
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId} 
         showBanner={props.gameDescriptor.showBanner}
+        helpFile={helpFileName}
       />
       <ModalNotification text={selectGroupMessage} show={colorSelectError ? true : false}
         onDismiss={() => closeModal()}/>

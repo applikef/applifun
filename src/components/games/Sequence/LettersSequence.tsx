@@ -42,6 +42,8 @@ export const LettersSequence = (props: LettersSequenceProps) => {
     isTablet 
   } = useContext(GamesContext) as GamesContextType;
 
+  const helpFileName: string | undefined = props.gameDescriptor.helpFile ? props.gameDescriptor.helpFile : undefined;
+
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
@@ -184,6 +186,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId} 
         showBanner={props.gameDescriptor.showBanner}
+        helpFile={helpFileName} 
         settings={() => {
           setPendingSelectedWordIndices(() => selectedWordIndices);
           setgameSettingsDisplay("game-settings-global-show")

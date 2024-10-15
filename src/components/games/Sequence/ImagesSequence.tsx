@@ -33,6 +33,8 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
     isTablet 
   } = useContext(GamesContext) as GamesContextType;
 
+  const helpFileName: string | undefined = props.gameDescriptor.helpFile ? props.gameDescriptor.helpFile : undefined;
+
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
@@ -91,6 +93,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
   return (
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId}
+        helpFile={helpFileName} 
         showBanner={props.gameDescriptor.showBanner} />
       <div className="sequence-container">
 

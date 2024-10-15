@@ -1,5 +1,6 @@
 {
   "gameId": "letterMatchDayQuiz",
+  "helpFile": "letterMatch.html",
   "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
   "titleVariableValues": [
     "זַיִן",

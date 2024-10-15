@@ -1,5 +1,6 @@
 {
   "gameType": "sortQuiz",
+  "helpFile": "shapeSort.html",
   "gameId": "shapeSortQuiz",
   "showBanner": false,
   "titleTemplate": "בְּחַר צוּרָה, וְאָז בְּחַר תְּמוּנוֹת עִם דָּבָר בְּאוֹתָהּ צוּרָה",

@@ -33,6 +33,7 @@ export const SelectGame = (props: SelectGameProps) => {
   const numberOfGroups = groups.length;
   const groupNames = groups.map((g) => g.title);
   const entities = props.gameDescriptor.entities;
+  const helpFileName: string | undefined = props.gameDescriptor.helpFile ? props.gameDescriptor.helpFile : undefined;
 
   const playListYes: string = props.gameDescriptor.playLists && props.gameDescriptor.playLists.yes ?
     props.gameDescriptor.playLists.yes
@@ -168,7 +169,8 @@ export const SelectGame = (props: SelectGameProps) => {
   return (
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId} 
-         settings={() => {
+        helpFile={helpFileName} 
+        settings={() => {
           setGameSettingsDisplay("game-settings-global-show")
          }}
       />

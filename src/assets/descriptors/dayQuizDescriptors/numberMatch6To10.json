@@ -1,5 +1,6 @@
 {
   "gameId": "numberMatchQuiz",
+  "helpFile": "numberMatch.html",
   "showBanner": false,
   "titles": [
     "בְּחַר תְּמוּנָה עִם שִׁשָּׁה דְּבָרִים",

@@ -1,5 +1,6 @@
 export interface GameDescriptorType {
   gameId: string;
+  helpFile?: string;
   showBanner?: boolean;
 }
 

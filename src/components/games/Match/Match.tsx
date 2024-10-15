@@ -62,6 +62,7 @@ export const Match = (props: MatchPropsType) => {
   const titleVariableValues = descriptor.titleVariableValues;
   const groups = descriptor.groups;
   const items = descriptor.items;
+  const helpFileName: string | undefined = props.gameDescriptor.helpFile ? props.gameDescriptor.helpFile : undefined;
 
   const numberOfGroups = groups.length;
 
@@ -275,7 +276,7 @@ export const Match = (props: MatchPropsType) => {
     <div className="app-page">
       <Banner gameId={descriptor.gameId} 
         profileHandler={ (d: MatchDescriptorType) => handleProfileChange(d) }
-        helpFile="letterMatch.html"
+        helpFile={helpFileName} 
         showBanner={props.gameDescriptor.showBanner}
         settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
       <div style={{display:"flex", flexDirection:"row", justifyContent: "space-between"}}>

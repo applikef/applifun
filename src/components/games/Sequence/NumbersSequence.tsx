@@ -61,6 +61,8 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   const titleDown = gamePageTitle.replace("$value$", Directions.DOWN.title);
 
   const navigate = useNavigate();
+  
+  const helpFileName: string | undefined = props.gameDescriptor.helpFile ? props.gameDescriptor.helpFile : undefined;
 
   let selectedSequenceSteps = useRef<number[]>([]);
   function addSequenceStep(id: number) {
@@ -238,7 +240,8 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
 
   return (
     <div className="app-page">
-      <Banner gameId={props.gameDescriptor.gameId} 
+      <Banner gameId={props.gameDescriptor.gameId}
+        helpFile={helpFileName} 
         showBanner={props.gameDescriptor.showBanner}      
         settings={() => {
           setPendingNumbersSequenceSettings({
