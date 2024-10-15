@@ -1,4 +1,5 @@
 :root {
+  --light-blue-00: #f0f8ff;
   --blue-00: #d0d1e6;
   --blue-01: #6bafd6;
   --blue-02: #3182bd;
@@ -26,6 +27,8 @@
   --clickable: var(--blue-01);
   --highlight: var(--red-02);
 
+  --item-background-color: var(--light-blue-00);
+  
   --notification-info: var(--blue-00);
   --notification-warning: var(--yellow-01);
   --notification-error: var(--red-01);

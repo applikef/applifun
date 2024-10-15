@@ -12,12 +12,14 @@ export class ConstantsUtil {
 export const enum FEEDBACK_FACE_SIZE {S, M, L};
 
 export const enum FONT_SIZE {
+  XXXXL = "xxxxl",
+  XXXL = "xxxl",
   XXL = "xxl",
   XL = "xl",
   L = "l",
   NORNAL = "normal",
   S = "s",
-  XS = "xs"
+  XS = "xs",
 }
 
 export const enum DIRECTION {

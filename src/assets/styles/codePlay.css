@@ -16,7 +16,7 @@
 }
 
 .kd-user-card-image-selected {
-  background-color: #f0f8ff;
+  background-color: var(--light-blue-00);
   border: solid 1px #6495ed;
 }
 
@@ -80,7 +80,7 @@
   position: absolute;
   top: 54px;
   right: 74px;
-  background-color: #f0f8ff;
+  background-color: var(--light-blue-00);
   padding: 8px;
   border: solid 1px #87ceeb;
 }

@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   
-  background-color: #f0f8ff;
+  background-color: var(--light-blue-00);
 }
 
 .kd-statement-line-correct {

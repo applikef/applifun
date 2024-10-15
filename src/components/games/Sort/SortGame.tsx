@@ -11,6 +11,8 @@ import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
+import { ConstantsUtil, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
+import { useNavigate } from "react-router-dom";
 
 export interface SortGameProps {
   gameDescriptor: SortGameDescriptorType;
@@ -18,6 +20,8 @@ export interface SortGameProps {
 };
 
 export const SortGame = (props: SortGameProps) => {
+  const navigate = useNavigate();
+
   const { 
     audioOn,
     isTablet 
@@ -34,8 +38,13 @@ export const SortGame = (props: SortGameProps) => {
     props.gameDescriptor.selectGroupMessage 
   : "צריך לבחור קבוצה";
 
+  const backgroundColor: string = "#f0f0f0";  // var(--background);
+  const selectedBackgroundColor: string = "#f0f8ff";   // var(--light-blue-00);
+
   const [cursorStyle, setCursorStyle] = useState("pointer");
   const [currentGroup, setCurrentGroup] = useState<SortGameGroupType | undefined>(undefined);
+  const [groupBackgroundColors, setGroupBackgroundColors] = 
+    useState<Array<string>>(new Array(numberOfgroups).fill(backgroundColor));
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [selectedImages, setSelectedImages] = useState<Map<string,string[]>>(() => {
     let s = new Map();
@@ -81,6 +90,9 @@ export const SortGame = (props: SortGameProps) => {
       if (entityIndex === numberOfEntities-1) {
         setFeedbackFace(FACES.NONE);
         showWellDone(audioOn);
+        setTimeout(() => {
+          navigate(HOME_PAGE_PATH);
+        }, ConstantsUtil.hoorayTimeout);
       }
       else {
         MediaUtil.play(MediaUtil.pickAudio(PlayListNames.SHORT_HOORAY), audioOn);
@@ -97,9 +109,14 @@ export const SortGame = (props: SortGameProps) => {
     setColorSelectError(() => false);
   }
 
-  const updateGroup = (group: SortGameGroupType) => {
+  const updateGroup = (group: SortGameGroupType, index: number) => {
     setCursorStyle(() => group.cursor ? `url("${group.cursor}"), pointer` : 'pointer');
     showStartArrow.current = false;
+
+    let newColors = (new Array(numberOfgroups).fill(backgroundColor));
+    newColors[index] = selectedBackgroundColor;
+    setGroupBackgroundColors(newColors);
+    
     setCurrentGroup(group);
   }
 
@@ -119,28 +136,31 @@ export const SortGame = (props: SortGameProps) => {
         <table width="100%">
           <tbody>
           <tr>
-              {groups.map((group) =>
+              {groups.map((group, i) =>
                 <td key={group.id} className="sort-game-group-row">
-                  <div className="sort-game-group-cell" style={{cursor: cursorStyle}}
-                    onClick={() => updateGroup(group)}>
+                  <div className="sort-game-group-cell" 
+                    style={{cursor: cursorStyle, backgroundColor: groupBackgroundColors[i]}}
+                    onClick={() => updateGroup(group, i)}>
                     { group.image ?
-                        <img src={MediaUtil.getCatalogImage(group.image)} height={groupImgSize} 
+                        <img src={MediaUtil.getCatalogImage(group.image)} 
+                          height={groupImgSize} 
                           alt={group.title} /> 
                       : <></>
                     }
                   </div>
-                  <div className={group.image ? "sort-game-group-label" : "sort-game-group-label-no-image"}  
-                    style={{cursor: cursorStyle}}
-                    onClick={() => updateGroup(group)}> 
+                  <div 
+                    className={group.image ? "sort-game-group-label" : "sort-game-group-label-no-image"}  
+                    style={{cursor: cursorStyle, backgroundColor: groupBackgroundColors[i]}}
+                    onClick={() => updateGroup(group, i)}> 
                       { group.title }
                   </div>
                 </td>
               )}
             </tr>
             <tr>
-              {groups.map((group) => 
+              {groups.map((group, i) => 
                 <td className="sort-game-group-entities" id={`entities-${group.id}`} key={group.id}
-                  width={ groupColumnWidth } onClick={() => updateGroup(group)}
+                  width={ groupColumnWidth } onClick={() => updateGroup(group, i)}
                   style={{cursor: cursorStyle}}>
                     {selectedImages.get(group.id)!.map((imageFile,i) => 
                       <span key={i}>
