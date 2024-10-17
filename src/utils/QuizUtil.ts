@@ -9,7 +9,7 @@ export class QuizUtil {
   }
 
   public static getQuizDescriptor(): QuizDescriptor {
-    const quizCatalog = require("./../assets/quizCatalog.json");
+    const quizCatalog = require("./../assets/catalogs/quizCatalog.json");
     const descriptors: Array<QuizDescriptor> = quizCatalog.descriptors;
 
     const date = QuizUtil.getBaseValue();

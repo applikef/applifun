@@ -47,13 +47,13 @@ export class MediaUtil {
       return [];
     }
 
-    const imageFiles = require("./../assets/imageCatalog.json");
+    const imageFiles = require("./../assets/catalogs/imageCatalog.json");
     let images: string[] = imageIds.map((id) => imageFiles[id]);
     return images;
   }
 
   public static getCatalogImage(imageId: string): string {
-    const imageFiles = require("./../assets/imageCatalog.json");
+    const imageFiles = require("./../assets/catalogs/imageCatalog.json");
     return imageFiles[imageId];
   }
 
@@ -62,7 +62,7 @@ export class MediaUtil {
       return [];
     }
 
-    const audioFiles = require("./../assets/audioCatalog.json");
+    const audioFiles = require("./../assets/catalogs/audioCatalog.json");
     let audios: string[] = audioIds.map((id) => audioFiles["resources"][id]);
     return audios;
   }
@@ -72,7 +72,7 @@ export class MediaUtil {
       return undefined;
     }
 
-    const audioFiles = require("./../assets/audioCatalog.json");
+    const audioFiles = require("./../assets/catalogs/audioCatalog.json");
     return audioFiles["resources"][audioId];
   }
 
@@ -81,7 +81,7 @@ export class MediaUtil {
       return [];
     }
 
-    const audioFiles = require("./../assets/audioCatalog.json");
+    const audioFiles = require("./../assets/catalogs/audioCatalog.json");
     let audios: string[] = audioIds.map((id) => audioFiles["text-to-speech"][id]);
     return audios;
   }
@@ -91,7 +91,7 @@ export class MediaUtil {
       return undefined;
     }
 
-    const audioFiles = require("./../assets/audioCatalog.json");
+    const audioFiles = require("./../assets/catalogs/audioCatalog.json");
     return audioFiles["text-to-speech"][audioId];
   }
 }
