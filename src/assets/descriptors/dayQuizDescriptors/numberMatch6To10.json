@@ -47,12 +47,12 @@
   "items": [
     {
       "id": "clouds",
-      "image": "clouds-clipart-7",
+      "image": "giraf-7",
       "groupId": "7"
     },
     {
       "id": "cylinders",
-      "image": "cylinders-clipart-10",
+      "image": "house-10",
       "groupId": "10"
     },
     {
@@ -67,7 +67,7 @@
     },
     {
       "id": "sun",
-      "image": "sun-clipart-6",
+      "image": "flower-6",
       "groupId": "6"
     }
   ],

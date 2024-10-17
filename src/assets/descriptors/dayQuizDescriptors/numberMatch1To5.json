@@ -47,17 +47,17 @@
   "items": [
     {
       "id": "cubes",
-      "image": "cubes-clipart-2",
+      "image": "buterfly-2",
       "groupId": "2"
     },
     {
       "id": "face",
-      "image": "face-clipart-1",
+      "image": "smiley-1",
       "groupId": "1"
     },
     {
       "id": "cylinders-flat",
-      "image": "cylinders-flat-clipart-5",
+      "image": "tree-5",
       "groupId": "5"
     },
     {
@@ -67,12 +67,12 @@
     },
     {
       "id": "smiley",
-      "image": "smiley-clipart-4",
+      "image": "bird-4",
       "groupId": "4"
     },
     {
       "id": "splash",
-      "image": "splash-clipart-3",
+      "image": "apple-3",
       "groupId": "3"
     },
     {
