@@ -185,7 +185,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
   return (
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId} 
-        showBanner={props.gameDescriptor.showBanner}
+        isQuiz={props.gameDescriptor.isQuiz}
         helpFile={helpFileName} 
         settings={() => {
           setPendingSelectedWordIndices(() => selectedWordIndices);

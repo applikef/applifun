@@ -242,7 +242,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId}
         helpFile={helpFileName} 
-        showBanner={props.gameDescriptor.showBanner}      
+        isQuiz={props.gameDescriptor.isQuiz}      
         settings={() => {
           setPendingNumbersSequenceSettings({
             selectedNumberListIndices: numberSequenceSettings.selectedNumberListIndices,

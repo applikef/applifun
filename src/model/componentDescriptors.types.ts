@@ -1,7 +1,7 @@
 export interface GameDescriptorType {
   gameId: string;
   helpFile?: string;
-  showBanner?: boolean;
+  isQuiz?: boolean;
 }
 
 export interface LinkListDescriptorType extends GameDescriptorType {

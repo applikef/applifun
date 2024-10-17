@@ -94,7 +94,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId}
         helpFile={helpFileName} 
-        showBanner={props.gameDescriptor.showBanner} />
+        isQuiz={props.gameDescriptor.isQuiz} />
       <div className="sequence-container">
 
         <PageHeader title={ pageTitle } audio={["order-actions"]} feedbackFace={ feedbackFace } />

@@ -13,13 +13,13 @@ export interface BannerPropsType {
   hideAudio?: boolean;
   helpFile?: string;
   profileHandler?: Function;
-  showBanner?: boolean;
+  isQuiz?: boolean;
 }
 
 export const Banner = (props: BannerPropsType) => {
-  let activeShowBanner = true;
-  if (props.showBanner !== undefined) {
-    activeShowBanner = props.showBanner;
+  let activeIsQuiz = false;
+  if (props.isQuiz !== undefined) {
+    activeIsQuiz = props.isQuiz;
   }
 
   const { turnAudioOn, turnAudioOff, audioOn } = useContext(GamesContext) as GamesContextType;
@@ -41,7 +41,7 @@ export const Banner = (props: BannerPropsType) => {
 
   return (
     <>
-      { activeShowBanner &&
+      { !activeIsQuiz &&
         <div>
         { showBannerBar &&
           <div className="banner-icon-bar">
@@ -112,7 +112,7 @@ export const Banner = (props: BannerPropsType) => {
         </div>
       </div>
     }
-    { !activeShowBanner &&
+    { activeIsQuiz &&
       <div className="banner-icon-bar">
         <div className="banner-right-icon-bar">
           <span className="app-sub-title banner-title">משחק היום</span>

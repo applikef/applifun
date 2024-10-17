@@ -277,7 +277,7 @@ export const Match = (props: MatchPropsType) => {
       <Banner gameId={descriptor.gameId} 
         profileHandler={ (d: MatchDescriptorType) => handleProfileChange(d) }
         helpFile={helpFileName} 
-        showBanner={props.gameDescriptor.showBanner}
+        isQuiz={props.gameDescriptor.isQuiz}
         settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
       <div style={{display:"flex", flexDirection:"row", justifyContent: "space-between"}}>
         <PageHeader title={setTitle()} 

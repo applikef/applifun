@@ -126,7 +126,7 @@ export const SortGame = (props: SortGameProps) => {
   return (
     <div className="app-page">
       <Banner gameId={props.gameDescriptor.gameId} 
-        showBanner={props.gameDescriptor.showBanner}
+        isQuiz={props.gameDescriptor.isQuiz}
         helpFile={helpFileName}
       />
       <ModalNotification text={selectGroupMessage} show={colorSelectError ? true : false}

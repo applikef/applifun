@@ -2,7 +2,7 @@
   "gameType": "sortQuiz",
   "helpFile": "shapeSort.html",
   "gameId": "shapeSortQuiz",
-  "showBanner": false,
+  "isQuiz": true,
   "titleTemplate": "בְּחַר צוּרָה, וְאָז בְּחַר תְּמוּנוֹת עִם דָּבָר בְּאוֹתָהּ צוּרָה",
   "selectGroupMessage": "צָרִיךְ לִבְחֹר צוּרָה",
   "groups": [

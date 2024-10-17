@@ -1,7 +1,7 @@
 {
   "gameId": "iCountDayQuiz",
   "helpFile": "iCount.html",
-  "showBanner": false,
+  "isQuiz": true,
   "title": "סדר את המספרים בסדר $value$",
   "numberLists": [
     {

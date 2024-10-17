@@ -1,7 +1,7 @@
 {
   "gameId": "numberMatchQuiz",
   "helpFile": "numberMatch.html",
-  "showBanner": false,
+  "isQuiz": true,
   "titles": [
     "בְּחַר תְּמוּנָה עִם שִׁשָּׁה דְּבָרִים",
     "בְּחַר תְּמוּנָה עִם שִׁבְעָה דְּבָרִים",
