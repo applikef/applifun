@@ -21,6 +21,10 @@
       "gameDescriptorFile": "letterMatchSamehToTav.json"
     },
     {
+      "gameTypeId": "Match",
+      "gameDescriptorFile": "wordMatch-2.json"
+    },
+    {
       "gameTypeId": "NumbersSequence",
       "gameDescriptorFile": "numbersSequence1To10Up.json"
     },
@@ -31,6 +35,10 @@
     {
       "gameTypeId": "Sort",
       "gameDescriptorFile": "shapeSort.json"
+    },
+    {
+      "gameTypeId": "Match",
+      "gameDescriptorFile": "wordMatch-1.json"
     }
   ]
 }

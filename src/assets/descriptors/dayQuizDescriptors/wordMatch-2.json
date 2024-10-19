@@ -1,0 +1,134 @@
+{
+  "gameId": "wordMatch",
+  "isQuiz": true,
+  "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
+  "titleVariableValues": [
+    "כִּיסֵּא",
+    "נֵר",
+    "עֲנָבִים",
+    "עֵץ",
+    "פִּיצָה",
+    "פְּרָחִים",
+    "צִיפּוֹר",
+    "רִימּוֹן",
+    "שׁוּלְחָן",
+    "תַּפּוּזִים"
+  ],
+  "showAdvise": true,
+  "adviseText": "קרא כל אחת מהמילים",
+  "groups": [
+    {
+      "id": "chair",
+      "title": "כִּיסֵּא",
+      "name": "כִּיסֵּא"
+    },
+    {
+      "id": "candle",
+      "title": "נֵר",
+      "name": "נֵר"
+    },
+    {
+      "id": "grapes",
+      "title": "עֲנָבִים",
+      "name": "עֲנָבִים"
+    },
+    {
+      "id": "tree",
+      "title": "עֵץ",
+      "name": "עֵץ"
+    },
+    {
+      "id": "pizza",
+      "title": "פִּיצָה",
+      "name": "פִּיצָה"
+    },
+    {
+      "id": "flowers",
+      "title": "פְּרָחִים",
+      "name": "פְּרָחִים"
+    },
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "name": "צִיפּוֹר"
+    },
+    {
+      "id": "pommegranate",
+      "title": "רִימּוֹן",
+      "name": "רִימּוֹן"
+    },
+    {
+      "id": "table",
+      "title": "שׁוּלְחָן",
+      "name": "שׁוּלְחָן"
+    },
+    {
+      "id": "oranges",
+      "title": "תַּפּוּזִים",
+      "name": "תַּפּוּזִים"
+    }
+  ],
+  "items": [
+    {
+      "id": "green-grapes",
+      "title": "עֲנָבִים",
+      "image": "green-grapes",
+      "groupId": "grapes"
+    },
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "image": "bird",
+      "groupId": "bird"
+    },
+    {
+      "id": "pizza",
+      "title": "פִּיצָה",
+      "image": "pizza",
+      "groupId": "pizza"
+    },
+    {
+      "id": "candle",
+      "title": "נֵר",
+      "image": "candle",
+      "groupId": "candle"
+    },
+    {
+      "id": "tree",
+      "title": "עֵץ",
+      "image": "tree",
+      "groupId": "tree"
+    },
+    {
+      "id": "oranges",
+      "title": "תַּפּוּזִים",
+      "image": "oranges",
+      "groupId": "oranges"
+    },
+    {
+      "id": "flowers",
+      "title": "פְּרָחִים",
+      "image": "purple-flower",
+      "groupId": "flowers"
+    },
+    {
+      "id": "table",
+      "title": "שׁוּלְחָן",
+      "image": "table",
+      "groupId": "table"
+    },
+    {
+      "id": "pommegranate",
+      "title": "רִימּוֹן",
+      "image": "pommegranate",
+      "groupId": "pommegranate"
+    },
+    {
+      "id": "chair",
+      "title": "כִּיסֵּא",
+      "image": "chair",
+      "groupId": "chair"
+    }
+  ],
+  "settingsTitle": "סמן את התמונה"
+}

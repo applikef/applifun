@@ -1,0 +1,134 @@
+{
+  "gameId": "wordMatch",
+  "isQuiz": true,
+  "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
+  "titleVariableValues": [
+    "אַרְיֵה",
+    "בַּיִת",
+    "בָּלוֹן",
+    "דָּג",
+    "זֶבְּרָה",
+    "חָתוּל",
+    "יֶלֶד",
+    "לְבָבוֹת",
+    "מְנוֹרָה",
+    "סִירָה"
+  ],
+  "showAdvise": true,
+  "adviseText": "קרא כל אחת מהמילים",
+  "groups": [
+    {
+      "id": "lion",
+      "title": "אַרְיֵה",
+      "name": "אַרְיֵה"
+    },
+    {
+      "id": "house",
+      "title": "בַּיִת",
+      "name": "בַּיִת"
+    },
+    {
+      "id": "balloon",
+      "title": "בָּלוֹן",
+      "name": "בָּלוֹן"
+    },
+    {
+      "id": "fish",
+      "title": "דָּג",
+      "name": "דָּג"
+    },
+    {
+      "id": "zebra",
+      "title": "זֶבְּרָה",
+      "name": "זֶבְּרָה"
+    },
+    {
+      "id": "cat",
+      "title": "חָתוּל",
+      "name": "חָתוּל"
+    },
+    {
+      "id": "boy",
+      "title": "יֶלֶד",
+      "name": "יֶלֶד"
+    },
+    {
+      "id": "hearts",
+      "title": "לְבָבוֹת",
+      "name": "לְבָבוֹת"
+    },
+    {
+      "id": "lamp",
+      "title": "מְנוֹרָה",
+      "name": "מְנוֹרָה"
+    },
+    {
+      "id": "boat",
+      "title": "סִירָה",
+      "name": "סִירָה"
+    }
+  ],
+  "items": [
+    {
+      "id": "lion",
+      "title": "אַרְיֵה",
+      "image": "lion",
+      "groupId": "lion"
+    },
+    {
+      "id": "lamp",
+      "title": "מְנוֹרָה",
+      "image": "lamp",
+      "groupId": "lamp"
+    },
+    {
+      "id": "balloon",
+      "title": "בָּלוֹן",
+      "image": "balloon-yellow-transparent",
+      "groupId": "balloon"
+    },
+    {
+      "id": "boy",
+      "title": "יֶלֶד",
+      "image": "boy",
+      "groupId": "boy"
+    },
+    {
+      "id": "house",
+      "title": "בַּיִת",
+      "image": "house",
+      "groupId": "house"
+    },
+    {
+      "id": "fish",
+      "title": "דָּג",
+      "image": "fish",
+      "groupId": "fish"
+    },
+    {
+      "id": "hearts",
+      "title": "לְבָבוֹת",
+      "image": "hearts",
+      "groupId": "hearts"
+    },
+    {
+      "id": "cat",
+      "title": "חָתוּל",
+      "image": "cat",
+      "groupId": "cat"
+    },
+    {
+      "id": "zebra",
+      "title": "זֶבְּרָה",
+      "image": "zebra",
+      "groupId": "zebra"
+    },
+    {
+      "id": "boat",
+      "title": "סִירָה",
+      "image": "boat",
+      "groupId": "boat"
+    }
+  ],
+  "settingsTitle": "סמן את התמונה"
+}
