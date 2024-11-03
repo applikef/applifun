@@ -12,12 +12,13 @@ import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { LetterSequenceDescriptorType, WordDescriptorType } from "../../../model/Sequence.types";
-import { ConstantsUtil, DIRECTION, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, DIRECTION } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { Advise } from "../../shared/Advise/Advise";
 import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
+import { GeneralUtil } from "../../../utils/GeneralUtil";
 
 interface ViewEntry {
   value: string;
@@ -155,7 +156,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
       }
       else {  
         setTimeout(() => {
-          navigate(HOME_PAGE_PATH);
+          navigate(GeneralUtil.targetNavigationOnGameOver(props.gameDescriptor.isQuiz));
         }, ConstantsUtil.hoorayTimeout);        
       }
     }, ConstantsUtil.hoorayTimeout)

@@ -16,8 +16,9 @@ import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
-import { ConstantsUtil, DIRECTION, FONT_SIZE, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, DIRECTION, FONT_SIZE } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
+import { GeneralUtil } from "../../../utils/GeneralUtil";
 
 export interface ImagesSequenceProps {
   gameDescriptor: ImageSequenceDescriptorType;
@@ -67,7 +68,7 @@ export const ImagesSequence = (props: ImagesSequenceProps) => {
     setFeedbackFace(() => FACES.NONE);
     showWellDone(audioOn);
     setTimeout(() => {
-      navigate(HOME_PAGE_PATH);
+      navigate(GeneralUtil.targetNavigationOnGameOver(props.gameDescriptor.isQuiz));
     }, ConstantsUtil.hoorayTimeout);
   }
 

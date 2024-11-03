@@ -8,7 +8,7 @@ import { MatchDescriptorType, MatchItem } from "../../../model/componentDescript
 import { Notification, NotificationType } from "../../shared/Notification/Notification";
 
 import { DeviceUtil } from "../../../utils/DeviceUtil";
-import { ConstantsUtil, DIRECTION, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, DIRECTION } from "../../../utils/ConstantsUtil";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
@@ -19,6 +19,7 @@ import { PlayListNames } from "../../../assets/playLists";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
 import { Advise } from "../../shared/Advise/Advise";
+import { GeneralUtil } from "../../../utils/GeneralUtil";
 
 type ItemTitleNotificationType = {
   top: number,
@@ -210,7 +211,7 @@ export const Match = (props: MatchPropsType) => {
         showWellDone(audioOn);
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
-          navigate(HOME_PAGE_PATH);
+          navigate(GeneralUtil.targetNavigationOnGameOver(props.gameDescriptor.isQuiz));
         }, ConstantsUtil.shortPauseTimeout);
       }
       else {

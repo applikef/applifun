@@ -102,10 +102,6 @@
   margin-bottom: 20px;
 }
 
-.headless-page-global {
-  padding-top: 100px;
-}
-
 .home-page-title {
   font-weight: bold;
 }
@@ -114,4 +110,11 @@
   position: absolute;
   top: 24px;
   left: 16px;
+}
+
+.quiz-done-page {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }

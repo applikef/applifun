@@ -7,6 +7,7 @@ import { GamesProvider } from "./context/GamesContext";
 import { KidDevProvider } from "./CodePlay/model/KDContext";
 import { DayQuiz } from "./pages/DayQuiz";
 import { ApplifunRoot } from "./pages/ApplifunRoot";
+import { DayQuizDone } from "./pages/DayQuizDone";
 
 function App() {
   return (    
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<ApplifunRoot />} />
             <Route path="/dayQuiz" element={<DayQuiz />} />
+            <Route path="/dayQuizDone" element={<DayQuizDone />} />
             <Route path="launch" element={<LaunchPage />} />
             <Route path="/home" element={<HomePage />} />
           </Routes>

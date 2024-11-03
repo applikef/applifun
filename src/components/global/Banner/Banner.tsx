@@ -118,11 +118,6 @@ export const Banner = (props: BannerPropsType) => {
           <span className="app-sub-title banner-title">משחק היום</span>
         </div>
         <div  className="banner-left-icon-bar">
-            <div style={{float: "left", paddingLeft: "16px", paddingTop: "4px"}}>
-              <Link to={ HOME_PAGE_PATH }>
-                למשחקים נוספים
-              </Link>
-            </div>
           { props.gameId.length > 0 &&
             <div onClick={() => setHelpState()}>
               <img src="resources/icons/help.png" className="banner-icon" 

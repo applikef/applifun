@@ -15,6 +15,7 @@ import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
 import { ConstantsUtil, FONT_SIZE, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
+import { GeneralUtil } from "../../../utils/GeneralUtil";
 
 export interface SelectGameProps {
   gameDescriptor: SelectGameDescriptorType;
@@ -131,7 +132,7 @@ export const SelectGame = (props: SelectGameProps) => {
           const nextIndex = 
             ObjectsUtil.getNextIndexInBooleanArray(validGroupIndices.current, activeGroupIndex.current);
           if (nextIndex === undefined) {
-            navigate(HOME_PAGE_PATH);
+            navigate(GeneralUtil.targetNavigationOnGameOver(props.gameDescriptor.isQuiz));
           }
           else {
             activeGroupIndex.current = nextIndex;

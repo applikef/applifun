@@ -11,8 +11,9 @@ import { PlayListNames } from "../../../assets/playLists";
 import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
-import { ConstantsUtil, FONT_SIZE, HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, FONT_SIZE } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
+import { GeneralUtil } from "../../../utils/GeneralUtil";
 
 export interface SortGameProps {
   gameDescriptor: SortGameDescriptorType;
@@ -40,7 +41,7 @@ export const SortGame = (props: SortGameProps) => {
   const helpFileName: string | undefined = props.gameDescriptor.helpFile ? props.gameDescriptor.helpFile : undefined;
 
   const backgroundColor: string = "#f0f0f0";  // var(--background);
-  const selectedBackgroundColor: string = "#f0f8ff";   // var(--light-blue-00);
+  const selectedBackgroundColor: string = "#deebf7";   // var(--light-blue-00);
 
   const [cursorStyle, setCursorStyle] = useState("pointer");
   const [currentGroup, setCurrentGroup] = useState<SortGameGroupType | undefined>(undefined);
@@ -92,7 +93,7 @@ export const SortGame = (props: SortGameProps) => {
         setFeedbackFace(FACES.NONE);
         showWellDone(audioOn);
         setTimeout(() => {
-          navigate(HOME_PAGE_PATH);
+          navigate(GeneralUtil.targetNavigationOnGameOver(props.gameDescriptor.isQuiz));
         }, ConstantsUtil.hoorayTimeout);
       }
       else {
