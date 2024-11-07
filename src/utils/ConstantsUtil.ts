@@ -3,6 +3,7 @@ export const URL_PARAM_TO_SECONDARY_ENTRY = "home";
 
 export class ConstantsUtil {
   public static hoorayTimeout: number = 1000;
+  public static hoorayShortTimeout: number = 500;
   public static pauseTimeout: number = 2000;
   public static shortPauseTimeout: number = 1500;
   public static smallScreenWidth: number = 1224;

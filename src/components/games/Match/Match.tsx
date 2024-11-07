@@ -220,10 +220,9 @@ export const Match = (props: MatchPropsType) => {
       }
       setTimeout(() => {
         updateValidGroupsOnItemMatch(item);
-        // NETTA REQUIRED? setSelectedGroupValueIndices(validGroupValueIndices.current);
         setFeedbackFace(() => FACES.NONE);
         updateActiveGroup();
-      }, ConstantsUtil.hoorayTimeout)
+      }, ConstantsUtil.hoorayShortTimeout)
     }
     else {
       setFeedbackFace(() => FACES.WORRY);
