@@ -66,9 +66,17 @@
   line-height: 1.5rem;
 }
 
+.sequence-source-numbers {
+  margin-bottom: 50px;
+  max-width: 100%; 
+  overflow-x: hidden;
+  text-wrap-mode: wrap;
+}
+
 .sequence-feedback-numbers {
   direction: ltr;
   text-align: left;
+  overflow-wrap: anywhere;
 }
 
 .sequence-letter-last-letter {

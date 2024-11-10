@@ -257,10 +257,10 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
 
           <PageHeader title={ pageTitle.current } feedbackFace={ feedbackFace } />
 
-          <div id="bank-area" className="sequence-source-images" >
+          <div id="bank-area" className="sequence-source-numbers" >
             { shuffledNumbers.map((e:ViewEntry) =>
                 e.show && <span className="sequence-letter" id={getBankId(e.value)} key={e.value} 
-                  onClick={() => verifyNumber(e)}>{e.value}</span>
+                  onClick={() => verifyNumber(e)}>{` ${e.value}`}</span>
               )
             }
           </div>
