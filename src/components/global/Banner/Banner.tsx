@@ -22,7 +22,12 @@ export const Banner = (props: BannerPropsType) => {
     activeIsQuiz = props.isQuiz;
   }
 
-  const { turnAudioOn, turnAudioOff, audioOn } = useContext(GamesContext) as GamesContextType;
+  const { 
+    turnAudioOn, 
+    turnAudioOff, 
+    audioOn, 
+    user 
+  } = useContext(GamesContext) as GamesContextType;
 
   const [showBannerBar, setShowBannerBar] = useState<boolean>(true);
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
@@ -34,7 +39,7 @@ export const Banner = (props: BannerPropsType) => {
   function loadProfile(e: ChangeEvent<HTMLSelectElement>) {
     let profileId: string = e.target.value;
     if (props.profileHandler !== undefined) {
-      const descriptor = getGameDescriptor(props.gameId, profileId)
+      const descriptor = getGameDescriptor(props.gameId, user, profileId)
       props.profileHandler(descriptor);
     }
   }

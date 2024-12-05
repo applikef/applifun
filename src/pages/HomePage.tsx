@@ -10,11 +10,12 @@ import { LineBreak } from "../components/shared/LineBreak";
 import { Help } from "../components/global/help/Help";
 import { AttentionArrow } from "../components/shared/AttentionArrow/AttentionArrow";
 import { ConstantsUtil, FONT_SIZE } from "../utils/ConstantsUtil";
-import GamesContext, { GamesContextType } from "../context/GamesContext";
+import GamesContext, { GamesContextType} from "../context/GamesContext";
 import { DeviceUtil } from "../utils/DeviceUtil";
 import { ModalNotification } from "../components/shared/Notification/ModalNotification";
 import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
+import { User } from "../model/users.types";
 
 export const HomePage = () => {
   const baseUrl = "/applifun/";
@@ -22,12 +23,15 @@ export const HomePage = () => {
 
   const {
     setIsTablet,
-    setIsPortrait
+    setIsPortrait,
+    user,
+    setUser
   } = useContext(GamesContext) as GamesContextType;
 
   /* Local isTablet for the value to be used in this component before 
      context is updated
   */
+  const users: Array<User> = require("./../assets/userList.json");
   const isTablet = useMediaQuery({ query: `(max-width: ${ConstantsUtil.smallScreenWidth}px)` });
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
   useLayoutEffect(() => {
@@ -73,7 +77,7 @@ export const HomePage = () => {
             <Trans i18nKey="HomePageMailTitle">
               Comments? Insights? Proposals? We'd be glad to hear. 
               <span className='app-bold'>Write to us to goofarimhaifa@gmail.com</span>
-            </Trans>
+            </Trans>            
           </div>
           <img src={baseUrl + "resources/icons/help.png"} 
             className="banner-icon app-clickable"
@@ -91,6 +95,24 @@ export const HomePage = () => {
 
         <div className={`home-page-title ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XXL)}`}>
           { t("HomePagePlayAndLearn") }
+          <span className={`home-page-user-area ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.L)}`}>
+            <span className="home-page-user-area-title">משתמש</span>
+            <select id="userList" className="home-page-user-area-selection" onChange={()=>{
+              const selectObject: HTMLSelectElement | null = 
+                document.getElementById("userList") as HTMLSelectElement;
+              let i: number = -1; 
+              if (selectObject !== null) {
+                i = selectObject.selectedIndex - 1; // -1 to compensate for the first general entry
+              }
+              setUser(i > -1 ? users[i] : {"id": ""});
+            }}>
+              <option value="" selected={user.id === ""}>כל משתמש</option>
+              {users.map((currentUser) =>
+                <option value={currentUser.id} key={currentUser.id} 
+                  selected={user.id === currentUser.id}>{currentUser.name}</option>
+              )}
+            </select>
+          </span>
         </div>
         <div>
           <div className="home-page-sub-title app-indent-top-16">{t("HomePageChooseGroup")}</div>

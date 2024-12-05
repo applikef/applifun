@@ -1,0 +1,50 @@
+{
+  "gameId": "wordMatch",
+  "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
+  "titleVariableValues": [
+    "צִיפּוֹר",
+    "קוֹף",
+    "שׁוּלְחָן",
+    "תַּפּוּזִים"
+  ],
+  "showAdvise": true,
+  "adviseText": "קרא כל אחת מהמילים",
+  "groups": [
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "name": "צִיפּוֹר"
+    },
+    {
+      "id": "table",
+      "title": "שׁוּלְחָן",
+      "name": "שׁוּלְחָן"
+    },
+    {
+      "id": "oranges",
+      "title": "תַּפּוּזִים",
+      "name": "תַּפּוּזִים"
+    }
+  ],
+  "items": [
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "image": "bird",
+      "groupId": "bird"
+    },
+    {
+      "id": "oranges",
+      "title": "תַּפּוּזִים",
+      "image": "oranges",
+      "groupId": "oranges"
+    },
+    {
+      "id": "table",
+      "title": "שׁוּלְחָן",
+      "image": "table",
+      "groupId": "table"
+    }
+  ],
+  "settingsTitle": "סמן את התמונה"
+}

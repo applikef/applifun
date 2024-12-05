@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./pages.css";
 
@@ -15,12 +15,19 @@ import { MOUSE_SKILL_TYPE } from "../components/games/MouseSkills/MouseSkills.ty
 import { SelectGame } from "../components/games/Select/SelectGame";
 import { NumberLanguages } from "../components/games/NumberLanguages/NumberLanguages";
 import { CodePlay } from "../CodePlay/CodePlay";
+import GamesContext, { GamesContextType } from "../context/GamesContext";
+
 
 export const LaunchPage = () => {
   const queryParameters = new URLSearchParams(window.location.search)
   const gameId = queryParameters.get("gameId");
   const profile = queryParameters.get("profile");
-  const descriptor = getGameDescriptor(gameId, profile);
+
+  const {
+    user
+  } = useContext(GamesContext) as GamesContextType;
+
+  const descriptor = getGameDescriptor(gameId, user, profile);
 
   return (
     <div className="app-page">

@@ -6,7 +6,6 @@ import { LaunchPage } from "./pages/LaunchPage";
 import { GamesProvider } from "./context/GamesContext";
 import { KidDevProvider } from "./CodePlay/model/KDContext";
 import { DayQuiz } from "./pages/DayQuiz";
-import { ApplifunRoot } from "./pages/ApplifunRoot";
 import { DayQuizDone } from "./pages/DayQuizDone";
 
 function App() {
@@ -15,11 +14,10 @@ function App() {
       <KidDevProvider>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
-            <Route path="/" element={<ApplifunRoot />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/dayQuiz" element={<DayQuiz />} />
             <Route path="/dayQuizDone" element={<DayQuizDone />} />
             <Route path="launch" element={<LaunchPage />} />
-            <Route path="/home" element={<HomePage />} />
           </Routes>
         </BrowserRouter>
       </KidDevProvider>
