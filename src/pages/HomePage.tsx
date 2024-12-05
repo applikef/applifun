@@ -156,10 +156,10 @@ export const HomePage = () => {
         <Link to="/launch?gameId=changeRecords" className="app-link-sm">
           {t("HomePageChangeRecord")}
         </Link> 
-        <br/>
         <div className="app-link-sm">
           Many images of this site were downloaded from https://www.pexels.com/, https://pixabay.com/ or freepik.com
         </div> 
+        
       </div>
 
       <div className={`banner-help-content ${showHelp}`}>

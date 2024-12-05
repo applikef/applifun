@@ -130,6 +130,10 @@
   left: 16px;
 }
 
+.home-page-bottom-line {
+  position: fixed;
+  bottom: 0%;
+}
 .quiz-done-page {
   padding-top: 3rem;
   display: flex;

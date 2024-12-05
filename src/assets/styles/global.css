@@ -1,6 +1,11 @@
 @import './colors.css';
 @import './sizes.css';
 
+body {
+  background-color: var(--background);
+  direction: rtl;
+}
+
 .app-line-break {
   flex-basis: 100%;
   height: 0;
