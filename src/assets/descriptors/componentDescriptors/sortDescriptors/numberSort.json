@@ -36,8 +36,8 @@
       "groupId": "1"
     },
     {
-      "id": "3Trees",
-      "file": "trees-3",
+      "id": "tree-3",
+      "file": "tree-3",
       "groupId": "3"
     },
     {
@@ -51,8 +51,8 @@
       "groupId": "2"
     },
     {
-      "id": "5Birds",
-      "file": "birds-5",
+      "id": "bird-5",
+      "file": "bird-5",
       "groupId": "5"
     },
     {
@@ -71,7 +71,7 @@
       "groupId": "1"
     },
     {
-      "id": "3Children",
+      "id": "children",
       "file": "children-3",
       "groupId": "3"
     }

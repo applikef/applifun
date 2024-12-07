@@ -78,7 +78,7 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
 
         { props.options.map(
           (group, i) => 
-            <div className="game-settings-entry" key={i}>
+            <span className="game-settings-entry" key={i}>
               <input type="checkbox"
                 checked={selectedGroupIndices[i]} 
                 onChange={(e:ChangeEvent<HTMLInputElement>) => {
@@ -86,18 +86,19 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
                   setSelectedGroupIndices(settingArr);
                 }}></input>
               <span key={i}>{group}</span>
-            </div>
+            </span>
         )}
-        <br/>
-        <button className="app-button-primary-sm" onClick={() => {
-          handleSettingsDone(); 
-        }}>שמור</button>
-        <button className="app-button-ghost-sm" onClick={() => {
-          handleClearAll(); 
-        }}>נקה הכל</button>
-        <button className="app-button-ghost-sm" onClick={() => {
-          handleSettingsCancel();
-        }}>בטל וסגור</button>
+        <div className="app-indent-top-20">
+          <button className="app-button-primary-sm" onClick={() => {
+            handleSettingsDone(); 
+          }}>שמור</button>
+          <button className="app-button-ghost-sm" onClick={() => {
+            handleClearAll(); 
+          }}>נקה הכל</button>
+          <button className="app-button-ghost-sm" onClick={() => {
+            handleSettingsCancel();
+          }}>בטל וסגור</button>
+        </div>
       </div>
   )
 }

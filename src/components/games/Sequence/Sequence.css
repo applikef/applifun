@@ -54,7 +54,8 @@
   right: 32px;
   background-color: white;
   padding: 16px;
-  border: solid 1px var(--gray-02) 
+  border: solid 1px var(--gray-05);
+  margin-left: 32px; 
 }
 
 .game-settings-title {

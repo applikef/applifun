@@ -2,48 +2,59 @@
   "gameId": "wordMatch",
   "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
   "titleVariableValues": [
-    "צִיפּוֹר",
-    "קוֹף",
-    "שׁוּלְחָן",
-    "תַּפּוּזִים"
+    "מַתָּנָה",
+    "סוּס",
+    "עֲגָלָה",
+    "תּוּת"
   ],
   "showAdvise": true,
   "adviseText": "קרא כל אחת מהמילים",
   "groups": [
     {
-      "id": "bird",
-      "title": "צִיפּוֹר",
-      "name": "צִיפּוֹר"
+      "id": "gift",
+      "title": "מַתָּנָה",
+      "name": "מַתָּנָה"
     },
     {
-      "id": "table",
-      "title": "שׁוּלְחָן",
-      "name": "שׁוּלְחָן"
+      "id": "horse",
+      "title": "סוּס",
+      "name": "סוּס"
     },
     {
-      "id": "oranges",
-      "title": "תַּפּוּזִים",
-      "name": "תַּפּוּזִים"
+      "id": "carriage",
+      "title": "עֲגָלָה",
+      "name": "עֲגָלָה"
+    },
+    {
+      "id": "strawberry",
+      "title": "תּוּת",
+      "name": "תּוּת"
     }
   ],
   "items": [
     {
-      "id": "bird",
-      "title": "צִיפּוֹר",
-      "image": "bird",
-      "groupId": "bird"
+      "id": "horse",
+      "title": "סוּס",
+      "image": "horse",
+      "groupId": "horse"
     },
     {
-      "id": "oranges",
-      "title": "תַּפּוּזִים",
-      "image": "oranges",
-      "groupId": "oranges"
+      "id": "gift",
+      "title": "מַתָּנָה",
+      "image": "gift",
+      "groupId": "gift"
     },
     {
-      "id": "table",
-      "title": "שׁוּלְחָן",
-      "image": "table",
-      "groupId": "table"
+      "id": "carriage",
+      "title": "עֲגָלָה",
+      "image": "carriage",
+      "groupId": "carriage"
+    },
+    {
+      "id": "strawberry",
+      "title": "תּוּת",
+      "image": "strawberry",
+      "groupId": "strawberry"
     }
   ],
   "settingsTitle": "סמן את התמונה"
