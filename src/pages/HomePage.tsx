@@ -97,7 +97,7 @@ export const HomePage = () => {
           { t("HomePagePlayAndLearn") }
           <span className={`home-page-user-area ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.L)}`}>
             <span className="home-page-user-area-title">משתמש</span>
-            <select id="userList" className="home-page-user-area-selection" onChange={()=>{
+            <select id="userList" defaultValue={user.id} className="home-page-user-area-selection" onChange={()=>{
               const selectObject: HTMLSelectElement | null = 
                 document.getElementById("userList") as HTMLSelectElement;
               let i: number = -1; 
@@ -106,10 +106,9 @@ export const HomePage = () => {
               }
               setUser(i > -1 ? users[i] : {"id": ""});
             }}>
-              <option value="" selected={user.id === ""}>כל משתמש</option>
+              <option value="">כל משתמש</option>
               {users.map((currentUser) =>
-                <option value={currentUser.id} key={currentUser.id} 
-                  selected={user.id === currentUser.id}>{currentUser.name}</option>
+                <option value={currentUser.id} key={currentUser.id}>{currentUser.name}</option>
               )}
             </select>
           </span>
