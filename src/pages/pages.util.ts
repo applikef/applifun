@@ -6,7 +6,8 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
     return undefined;
   }
 
-  let userId: string = user.id;
+  const userDescriptorName = user.descriptor ? require(`./../assets/descriptors/users/${user.descriptor}`) : undefined;
+  const gameDescriptorName = userDescriptorName ? userDescriptorName["games"][gameId] : undefined;
 
   let localProfile: string = "";
   const profileList: Array<ProfileDescriptor> = getProfileList(gameId);
@@ -63,13 +64,11 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
     return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/washHands.json");
   }
   else if (gameId === "wordMatch") {
-    switch (userId) {
-      case "carol":
-        return require("./../assets/descriptors/componentDescriptors/private/carol/matchDescriptors_wordMatch.json");
-      case "netta":
-        return require("./../assets/descriptors/componentDescriptors/private/netta/wordMatch.json");
-      default:
-        return require("./../assets/descriptors/componentDescriptors/matchDescriptors/wordMatch.json");
+    if (gameDescriptorName) {
+      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
+    }
+    else {    // Default descriptor
+      return require("./../assets/descriptors/componentDescriptors/matchDescriptors/wordMatch.json");
     }
   }
   else {

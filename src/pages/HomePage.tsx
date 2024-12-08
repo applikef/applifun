@@ -31,7 +31,7 @@ export const HomePage = () => {
   /* Local isTablet for the value to be used in this component before 
      context is updated
   */
-  const users: Array<User> = require("./../assets/userList.json");
+  const users: Array<User> = require("./../assets/descriptors/users/usersDescriptor.json");
   const isTablet = useMediaQuery({ query: `(max-width: ${ConstantsUtil.smallScreenWidth}px)` });
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
   useLayoutEffect(() => {

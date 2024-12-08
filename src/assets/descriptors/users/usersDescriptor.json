@@ -1,0 +1,12 @@
+[
+  {
+    "id": "carol",
+    "name": "קרול",
+    "descriptor": "carol.json"
+  },
+  {
+    "id": "netta",
+    "name": "נטע",
+    "descriptor": "netta.json"
+  }
+]
