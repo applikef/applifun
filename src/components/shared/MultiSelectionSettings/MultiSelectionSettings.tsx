@@ -1,4 +1,6 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import "./../../../assets/styles/global.css";
+
  interface MultiSelectionSettingsProps {
   className: string;
   title: string;
