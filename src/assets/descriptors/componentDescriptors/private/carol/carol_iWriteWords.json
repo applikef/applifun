@@ -138,8 +138,8 @@
     },
     {
       "id": "flamingos-flying",
-      "title": "צִפּוֹרִים נוֹדְדוֹת",
-      "name": "צפורים נודדות",
+      "title": "צִפּוֹרִים-נוֹדְדוֹת",
+      "name": "צפורים-נודדות",
       "file": "flamingos-flying",
       "audio": "birds-wandering"
     },
@@ -222,8 +222,8 @@
     },
     {
       "id": "leaf-many-autumn",
-      "title": "עֲלֵי שַׁלֶּכֶת",
-      "name": "עלי שלכת",
+      "title": "עֲלֵי-שַׁלֶּכֶת",
+      "name": "עלי-שלכת",
       "file": "leaf-many-autumn",
       "audio": "leaf-many-autumn"
     }

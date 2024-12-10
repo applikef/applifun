@@ -1,6 +1,9 @@
 import { PlayListNames, PlayLists } from "../assets/playLists";
 
 export class MediaUtil {
+  private static imageCatalog = require("./../assets/catalogs/imageCatalog.json");
+  private static audioCatalog = require("./../assets/catalogs/audioCatalog.json");
+
   public static getDefaultHoorayPlayer() {
     return new Audio("resources/audio/hooray-short-1.mp3");
   }
@@ -47,14 +50,12 @@ export class MediaUtil {
       return [];
     }
 
-    const imageFiles = require("./../assets/catalogs/imageCatalog.json");
-    let images: string[] = imageIds.map((id) => imageFiles[id]);
+    let images: string[] = imageIds.map((id) => MediaUtil.imageCatalog[id]);
     return images;
   }
 
   public static getCatalogImage(imageId: string): string {
-    const imageFiles = require("./../assets/catalogs/imageCatalog.json");
-    return imageFiles[imageId];
+    return MediaUtil.imageCatalog[imageId];
   }
 
   public static getCatalogAudios(audioIds: string[] | undefined): string[] {
@@ -62,8 +63,7 @@ export class MediaUtil {
       return [];
     }
 
-    const audioFiles = require("./../assets/catalogs/audioCatalog.json");
-    let audios: string[] = audioIds.map((id) => audioFiles["resources"][id]);
+    let audios: string[] = audioIds.map((id) => MediaUtil.audioCatalog["resources"][id]);
     return audios;
   }
 
@@ -72,8 +72,7 @@ export class MediaUtil {
       return undefined;
     }
 
-    const audioFiles = require("./../assets/catalogs/audioCatalog.json");
-    return audioFiles["resources"][audioId];
+    return MediaUtil.audioCatalog["resources"][audioId];
   }
 
   public static getTextToSpeechAudios(audioIds: string[] | undefined): string[] {
@@ -91,7 +90,6 @@ export class MediaUtil {
       return undefined;
     }
 
-    const audioFiles = require("./../assets/catalogs/audioCatalog.json");
-    return audioFiles["text-to-speech"][audioId];
+    return MediaUtil.audioCatalog["text-to-speech"][audioId];
   }
 }
