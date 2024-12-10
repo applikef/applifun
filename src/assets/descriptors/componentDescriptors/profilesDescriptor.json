@@ -1,12 +1,2 @@
 {
-  "letterMatch": [
-    {
-      "id": "cards",
-      "title": "כרטיסים"
-    },
-    {
-      "id": "default",
-      "title": "גרסה בסיסית"
-    }
-  ]
 }

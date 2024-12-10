@@ -1,0 +1,259 @@
+{
+  "gameId": "letterMatch",
+  "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
+  "settingsTitle": "סמן את האותיות שיופיעו במשחק",
+  "titleVariableValues": [
+    "אָלֶף",
+    "חֵית",
+    "יוֹד",
+    "לָמֵד",
+    "מֵם",
+    "נוּן",
+    "סַמֵּךְ",
+    "עַיִן",
+    "צַדִּיק"
+  ],
+  "showAdvise": true,
+  "adviseText": "הסתכל מה האות הראשונה בכל אחת מהמילים",
+  "groups": [
+    {
+      "id": "א",
+      "title": "א",
+      "name": "אָלֶף"
+    },
+    {
+      "id": "ח",
+      "title": "ח",
+      "name": "חֵית"
+    },
+    {
+      "id": "י",
+      "title": "י",
+      "name": "יוֹד"
+    },
+    {
+      "id": "ל",
+      "title": "ל",
+      "name": "לָמֵד"
+    },
+    {
+      "id": "מ",
+      "title": "מ",
+      "name": "מֵם"
+    },
+    {
+      "id": "נ",
+      "title": "נ",
+      "name": "נוּן"
+    },
+    {
+      "id": "ס",
+      "title": "ס",
+      "name": "סַמֵּךְ"
+    },
+    {
+      "id": "ע",
+      "title": "ע",
+      "name": "עַיִן"
+    },
+    {
+      "id": "צ",
+      "title": "צ",
+      "name": "צַדִּי"
+    }
+  ],
+  "items": [
+    {
+      "id": "birds",
+      "title": "צִפּוֹרִים",
+      "image": "bird-5",
+      "groupId": "צ"
+    },
+    {
+      "id": "tree-3",
+      "title": "עֵצִים",
+      "image": "tree-3",
+      "groupId": "ע"
+    },
+    {
+      "id": "clouds",
+      "title": "עֲנָנִים",
+      "image": "clouds",
+      "groupId": "ע"
+    },
+    {
+      "id": "leaf",
+      "title": "עָלֶה",
+      "image": "leaf",
+      "groupId": "ע"
+    },
+    {
+      "id": "doughnuts",
+      "title": "סוּפְגָּנִיּוֹת",
+      "image": "doughnuts",
+      "groupId": "ס"
+    },
+    {
+      "id": "bird-white-wagtail",
+      "title": "נַחְלִיאֵלִי",
+      "image": "bird-white-wagtail",
+      "groupId": "נ"
+    },
+    {
+      "id": "candles",
+      "title": "נֵרוֹת",
+      "image": "candles",
+      "groupId": "נ"
+    },
+    {
+      "id": "dradle",
+      "title": "סְבִיבוֹן",
+      "image": "dradle",
+      "groupId": "ס"
+    },
+    {
+      "id": "candle-light",
+      "title": "מַדְלִיק",
+      "image": "candle-light",
+      "groupId": "מ"
+    },
+    {
+      "id": "latke",
+      "title": "לְבִיבָה",
+      "image": "latke",
+      "groupId": "ל"
+    },
+    {
+      "id": "girl",
+      "title": "יַלְדָּה",
+      "image": "girl",
+      "groupId": "י"
+    },
+    {
+      "id": "have-breakfast",
+      "title": "אוֹכֵל",
+      "image": "have-breakfast",
+      "groupId": "א"
+    },
+    {
+      "id": "snales",
+      "title": "חֶלְזוֹנוֹת",
+      "image": "snales",
+      "groupId": "ח"
+    },
+    {
+      "id": "flower-hatsav-many",
+      "title": "חֲצָבִים",
+      "image": "flower-hatsav-many",
+      "groupId": "ח"
+    },
+    {
+      "id": "menorah",
+      "title": "חֲנוּכִּיָּה",
+      "image": "menorah",
+      "groupId": "ח"
+    },
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "image": "bird",
+      "groupId": "צ"
+    },
+    {
+      "id": "girls",
+      "title": "יְלָדוֹת",
+      "image": "girls",
+      "groupId": "י"
+    },
+    {
+      "id": "boy",
+      "title": "יֶלֶד",
+      "image": "boy",
+      "groupId": "י"
+    },
+    {
+      "id": "tree",
+      "title": "עֵץ",
+      "image": "tree",
+      "groupId": "ע"
+    },
+    {
+      "id": "flamingos-flying",
+      "title": "צִפּוֹרִים נוֹדְדוֹת",
+      "image": "flamingos-flying",
+      "groupId": "צ"
+    },
+    {
+      "id": "greek-soldiers",
+      "title": "יְוָנִים",
+      "image": "greek-soldiers",
+      "groupId": "י"
+    },
+    {
+      "id": "dradles",
+      "title": "סְבִיבוֹנִים",
+      "image": "dradles",
+      "groupId": "ס"
+    },
+    {
+      "id": "candle",
+      "title": "נֵר",
+      "image": "candle",
+      "groupId": "נ"
+    },
+    {
+      "id": "latkes",
+      "title": "לְבִיבוֹת",
+      "image": "latkes",
+      "groupId": "ל"
+    },
+    {
+      "id": "children",
+      "title": "יְלָדִים",
+      "image": "children-3",
+      "groupId": "י"
+    },
+    {
+      "id": "flower-hatsav",
+      "title": "חָצָב",
+      "image": "flower-hatsav",
+      "groupId": "ח"
+    },
+    {
+      "id": "hannukah",
+      "title": "חֲנוּכָּה",
+      "image": "hannukah",
+      "groupId": "ח"
+    },
+    {
+      "id": "eat",
+      "title": "אוֹכֶלֶת",
+      "image": "eat",
+      "groupId": "א"
+    },
+    {
+      "id": "snale",
+      "title": "חִלָּזוֹן",
+      "image": "snale",
+      "groupId": "ח"
+    },
+    {
+      "id": "doughnut",
+      "title": "סוּפְגָּנִיָּה",
+      "image": "doughnut",
+      "groupId": "ס"
+    },
+    {
+    "id": "cloud",
+    "title": "עָנָן",
+      "image": "cloud",
+      "groupId": "ע"
+    },
+    {
+      "id": "leaf-many-autumn",
+      "title": "עֲלֵי שַׁלֶּכֶת",
+      "image": "leaf-many-autumn",
+      "groupId": "ע"
+    }
+  ]
+}

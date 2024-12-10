@@ -1,5 +1,6 @@
 {
   "games": {
-    "wordMatch": "netta/wordMatch.json"
+    "wordMatch": "netta/wordMatch.json",
+    "letterMatch": "carol/letterMatch-cards.json"
   }
 }

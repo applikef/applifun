@@ -42,10 +42,12 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
     }
   }
   else if (gameId === "letterMatch") {
-    if (localProfile === "cards") {
-      return require("./../assets/descriptors/componentDescriptors/matchDescriptors/letterMatch-cards.json");
+    if (gameDescriptorName) {
+      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
     }
-    return require("./../assets/descriptors/componentDescriptors/matchDescriptors/letterMatch.json");
+    else {    // Default descriptor
+      return require("./../assets/descriptors/componentDescriptors/matchDescriptors/letterMatch.json");
+    }
   }
   else if (gameId === "numberMatch") {
     return require("./../assets/descriptors/componentDescriptors/matchDescriptors/numberMatch.json")

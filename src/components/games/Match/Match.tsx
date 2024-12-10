@@ -96,34 +96,6 @@ export const Match = (props: MatchPropsType) => {
 
   let showItemTitleNotification = useRef<boolean>(false);
 
-  useEffect(() => setForceReset(false), [forceReset]);
-
-  /* Gor useRef current should be updated. If value is taken from the
-   descriptor, it should use the parameter due to the delay of useState
-   execution
-  */
-  function handleProfileChange(d: MatchDescriptorType) {
-    setDescriptor(d);
-
-    const maxNumberOfSelected: number = Math.min(
-      d.maxSelectedGroups ? Math.min(d.maxSelectedGroups,10) : 10,
-      numberOfGroups
-    )
-    setMaxNumberOfValidGroups(maxNumberOfSelected);
-
-    validGroupValueIndices.current = 
-      (new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfSelected ? true : false);
-    validItems.current = initValidItems(d);
-
-    activeGroupId.current = d.groups[activeIndex].id;
-    activeGroupIdTitle.current = d.groups[activeIndex].title;
-    activeGroup.current = d.groups[activeIndex].name;
-
-    showItemTitleNotification.current = false;
-    setshowAdviseDetails(false);
-    setForceReset(true);
-  }
-
   function getGroupIndex(groupId: string) {
     for (let i=0; i < groups.length; i++) {
       if (groups[i].id === groupId) {
@@ -134,15 +106,6 @@ export const Match = (props: MatchPropsType) => {
   }
 
   function getvalidItems() {
-    return items.map((item, i) => {
-      let groupIndex = getGroupIndex(item.groupId);
-      return (groupIndex !== -1 && validGroupValueIndices.current[groupIndex] ? 
-        item : undefined);
-    })
-  }
-
-  function initValidItems(d: MatchDescriptorType) {
-    const items = d.items;
     return items.map((item, i) => {
       let groupIndex = getGroupIndex(item.groupId);
       return (groupIndex !== -1 && validGroupValueIndices.current[groupIndex] ? 
@@ -275,7 +238,6 @@ export const Match = (props: MatchPropsType) => {
   return(
     <div className="app-page">
       <Banner gameId={descriptor.gameId} 
-        profileHandler={ (d: MatchDescriptorType) => handleProfileChange(d) }
         helpFile={helpFileName} 
         isQuiz={props.gameDescriptor.isQuiz}
         settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
