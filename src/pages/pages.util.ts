@@ -34,7 +34,12 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
     return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/numbersSequence.json");
   }
   else if (gameId === "iWriteWords") {
-    return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/iWriteDescriptor.json")
+    if (gameDescriptorName) {
+      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
+    }
+    else {    // Default descriptor
+      return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/iWriteDescriptor.json")
+    }
   }
   else if (gameId === "letterMatch") {
     if (localProfile === "cards") {

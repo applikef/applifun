@@ -102,10 +102,10 @@ export const LettersSequence = (props: LettersSequenceProps) => {
     return `bank-${word.id}-${letter}`;
   }
 
-  function getLetterIndex(lettersArr: ViewEntry[], letter: string) {
+  function getLetterIndex(lettersArr: ViewEntry[], letter: string, isShuffled: boolean) {
     for (let i=0; i < lettersArr.length; i++) {
       const letterItem: ViewEntry = lettersArr[i];
-      if (letterItem.value === letter) {
+      if (letterItem.value === letter && letterItem.show === isShuffled) {
         return i;
       }
     }
@@ -114,8 +114,8 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
   function verifyLetter(letter: ViewEntry) {
     const letterValue: string = letter.value;
-    const letterOrderedIndex = getLetterIndex(orderedLetters, letterValue);
-    const letterShuffledIndex = getLetterIndex(shuffledLetters, letterValue);
+    const letterOrderedIndex = getLetterIndex(orderedLetters, letterValue, false);
+    const letterShuffledIndex = getLetterIndex(shuffledLetters, letterValue, true);
     if (letterOrderedIndex === selectedSequenceSteps.current.length) {
       addSequenceStep(letterValue);
       orderedLetters[letterOrderedIndex].show = true;
@@ -203,7 +203,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
         <div className="sequence-container">
           <div className="sequence-letters-advise">  
-            <Advise text={ word.title }
+            <Advise text={ word.name }
               default={ false } />
             { word.audio &&
                 <span className="sequence-letters-talk-to-me">
@@ -234,10 +234,10 @@ export const LettersSequence = (props: LettersSequenceProps) => {
           </h3>
 
           <div id="feedback-area">
-            { orderedLetters.map((e:ViewEntry) =>
+            { orderedLetters.map((e:ViewEntry, i:number) =>
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
                     id={getFeedbackId(e.value)} 
-                    key={e.value}>
+                    key={`e.value_${i}`}>
                       {e.value}
                   </span>
                 )

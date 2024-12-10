@@ -1,0 +1,231 @@
+{
+  "gameId": "iWriteWords",
+  "title": "הַקְלֵק עַל הָאוֹתִיּוֹת מֵהָרִאשׁוֹנָה לָאַחֲרוֹנָה",
+  "settingsTitle": "בחר את המילים שתופענה במשחק",
+  "words": [
+    {
+      "id": "birds",
+      "title": "צִפּוֹרִים",
+      "name": "צפורים",
+      "file": "bird-5",
+      "audio": "birds"
+    },
+    {
+      "id": "tree-3",
+      "title": "עֵצִים",
+      "name": "עצים",
+      "file": "tree-3",
+      "audio": "trees"
+    },
+    {
+      "id": "clouds",
+      "title": "עֲנָנִים",
+      "name": "עננים",
+      "file": "clouds",
+      "audio": "clouds"
+    },
+    {
+      "id": "leaf",
+      "title": "עָלֶה",
+      "name": "עלה",
+      "file": "leaf",
+      "audio": "leaf"
+    },
+    {
+      "id": "doughnuts",
+      "title": "סוּפְגָּנִיּוֹת",
+      "name": "סופגניות",
+      "file": "doughnuts",
+      "audio": "doughnuts"
+    },
+    {
+      "id": "bird-white-wagtail",
+      "title": "נַחְלִיאֵלִי",
+      "name": "נחליאלי",
+      "file": "bird-white-wagtail",
+      "audio": "bird-white-wagtail"
+    },
+    {
+      "id": "candles",
+      "title": "נֵרוֹת",
+      "name": "נרות",
+      "file": "candles",
+      "audio": "candles"
+    },
+    {
+      "id": "dradle",
+      "title": "סְבִיבוֹן",
+      "name": "סביבון",
+      "file": "dradle",
+      "audio": "dradle"
+    },
+    {
+      "id": "candle-light",
+      "title": "מַדְלִיק",
+      "name": "מדליק",
+      "file": "candle-light",
+      "audio": "candle-light"
+    },
+    {
+      "id": "latke",
+      "title": "לְבִיבָה",
+      "name": "לביבה",
+      "file": "latke",
+      "audio": "latke"
+    },
+    {
+      "id": "girl",
+      "title": "יַלְדָּה",
+      "name": "ילדה",
+      "file": "girl",
+      "audio": "girl"
+    },
+    {
+      "id": "have-breakfast",
+      "title": "אוֹכֵל",
+      "name": "אוכל",
+      "file": "have-breakfast",
+      "audio": "eat-boy"
+    },
+    {
+      "id": "snales",
+      "title": "חֶלְזוֹנוֹת",
+      "name": "חלזונות",
+      "file": "snales",
+      "audio": "snales"
+    },
+    {
+      "id": "flower-hatsav-many",
+      "title": "חֲצָבִים",
+      "name": "חצבים",
+      "file": "flower-hatsav-many",
+      "audio": "flower-hatsav-many"
+    },
+    {
+      "id": "menorah",
+      "title": "חֲנוּכִּיָּה",
+      "name": "חנוכיה",
+      "file": "menorah",
+      "audio": "menorah"
+    },
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "name": "ציפור",
+      "file": "bird",
+      "audio": "bird"
+    },
+    {
+      "id": "girls",
+      "title": "יְלָדוֹת",
+      "name": "ילדות",
+      "file": "girls",
+      "audio": "girls"
+    },
+    {
+      "id": "boy",
+      "title": "יֶלֶד",
+      "name": "ילד",
+      "file": "boy",
+      "audio": "boy"
+    },
+    {
+      "id": "tree",
+      "title": "עֵץ",
+      "name": "עץ",
+      "file": "tree",
+      "audio": "tree"
+    },
+    {
+      "id": "flamingos-flying",
+      "title": "צִפּוֹרִים נוֹדְדוֹת",
+      "name": "צפורים נודדות",
+      "file": "flamingos-flying",
+      "audio": "birds-wandering"
+    },
+    {
+      "id": "greek-soldiers",
+      "title": "יְוָנִים",
+      "name": "יוונים",
+      "file": "greek-soldiers",
+      "audio": "greeks"
+    },
+    {
+      "id": "dradles",
+      "title": "סְבִיבוֹנִים",
+      "name": "סביבונים",
+      "file": "dradles",
+      "audio": "dradles"
+    },
+    {
+      "id": "candle",
+      "title": "נֵר",
+      "name": "נר",
+      "file": "candle",
+      "audio": "candle"
+    },
+    {
+      "id": "latkes",
+      "title": "לְבִיבוֹת",
+      "name": "לביבות",
+      "file": "latkes",
+      "audio": "latkes"
+    },
+    {
+      "id": "children",
+      "title": "יְלָדִים",
+      "name": "ילדים",
+      "file": "children-3",
+      "audio": "children"
+    },
+    {
+      "id": "flower-hatsav",
+      "title": "חָצָב",
+      "name": "חצב",
+      "file": "flower-hatsav",
+      "audio": "flower-hatsav"
+    },
+    {
+      "id": "hannukah",
+      "title": "חֲנוּכָּה",
+      "name": "חנוכה",
+      "file": "hannukah",
+      "audio": "hannukah"
+    },
+    {
+      "id": "eat",
+      "title": "אוֹכֶלֶת",
+      "name": "אוכלת",
+      "file": "eat",
+      "audio": "eat-girl"
+    },
+    {
+      "id": "snale",
+      "title": "חִלָּזוֹן",
+      "name": "חלזון",
+      "file": "snale",
+      "audio": "snale"
+    },
+    {
+      "id": "doughnut",
+      "title": "סוּפְגָּנִיָּה",
+      "name": "סופגניה",
+      "file": "doughnut",
+      "audio": "doughnut"
+    },
+    {
+      "id": "cloud",
+      "title": "עָנָן",
+      "name": "ענן",
+      "file": "cloud",
+      "audio": "cloud"
+    },
+    {
+      "id": "leaf-many-autumn",
+      "title": "עֲלֵי שַׁלֶּכֶת",
+      "name": "עלי שלכת",
+      "file": "leaf-many-autumn",
+      "audio": "leaf-many-autumn"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "games": {
-    "wordMatch": "carol/matchDescriptors_wordMatch.json"
+    "wordMatch": "carol/carol_wordMatch.json",
+    "iWriteWords": "carol/carol_iWriteWords.json"
   }
 }

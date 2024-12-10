@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TalkToMe.css";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { DIRECTION } from "../../../utils/ConstantsUtil";
+import { ModalNotification } from "../Notification/ModalNotification";
 
 interface TalkToMeProps {
   audioList: Array<string>;
@@ -11,6 +12,8 @@ interface TalkToMeProps {
 }
 
 export const TalkToMe = (props: TalkToMeProps) => {
+  const [showNoAudio, setShowNoAudio] = useState<boolean>(false);
+
   const audioList: string[] = props.audioList.map((audioItem) => {
     const url: string | undefined = props.isAudioCatalog ?
       MediaUtil.getCatalogAudio(audioItem)
@@ -25,10 +28,11 @@ export const TalkToMe = (props: TalkToMeProps) => {
   :
     "resources/icons/talk-to-me-rtl.png";
 
-  const players = audioList.map((url) => MediaUtil.getPlayer(url));
+  const players = audioList.map((url) => 
+    (url && url.length > 0) ? MediaUtil.getPlayer(url) : undefined);
 
   function play() {
-    players.map((player) => player.play());
+    players.map((player) => player ? player.play() : setShowNoAudio(true));
   }
   
   return(
@@ -39,6 +43,10 @@ export const TalkToMe = (props: TalkToMeProps) => {
               title={audioHover}
               onClick={() => play()}/>
       }
+      <ModalNotification text={ "איני יודע מה לומר" } 
+      show={showNoAudio}
+      onDismiss={() => setShowNoAudio(false)}/>
+
     </span>
   )
 }
