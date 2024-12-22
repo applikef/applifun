@@ -5,6 +5,12 @@
   --blue-02: #3182bd;
   --blue-03: #08519c;
 
+  --green-00: #edf8e9;
+  --green-01: #bae4b3;
+  --green-02: #74c476;
+  --green-03: #31a354;
+  --green-04: #006d2c;
+
   --gray-01: #f0f0f0;
   --gray-02: #DEDEDE;
   --gray-05: #9B9B9B;
@@ -14,7 +20,9 @@
 
   --red-00: #fee5d9;
   --red-01: #fcbba1;
-  --red-02: #fc9272;
+  --red-02: #fc9272;  
+  --red-03: #e6550d;  
+  --red-04: #a63603;
 
   --white-01: #fff;
   --white-02: #faf5f0;

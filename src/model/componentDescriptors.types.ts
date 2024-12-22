@@ -1,3 +1,9 @@
+export interface BaseItem {
+  id: string;
+  title?: string;
+  name: string;
+}
+
 export interface GameDescriptorType {
   gameId: string;
   helpFile?: string;
@@ -44,3 +50,14 @@ export interface TileDescriptorType extends GameDescriptorType {
   hrefTitle: string;
   media: string;
 }
+
+export interface WhatIsTheTimeAnalogDescriptorType extends GameDescriptorType {
+  title: string;
+  settingsTitle: string;
+  hourTypes: Array<BaseItem>;
+}
+
+export interface SelectClockAnalogDescriptorType extends GameDescriptorType {
+
+}
+

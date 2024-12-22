@@ -16,6 +16,8 @@ import { SelectGame } from "../components/games/Select/SelectGame";
 import { NumberLanguages } from "../components/games/NumberLanguages/NumberLanguages";
 import { CodePlay } from "../CodePlay/CodePlay";
 import GamesContext, { GamesContextType } from "../context/GamesContext";
+import { WhatIsTheTimeAnalog } from "../components/games/Clock/WhatIsTheTimeAnalog";
+import { SelectClockAnalog } from "../components/games/Clock/SelectClockAnalog";
 
 
 export const LaunchPage = () => {
@@ -56,6 +58,9 @@ export const LaunchPage = () => {
       { gameId === "behaviorSelect" && <SelectGame gameDescriptor={descriptor}/> }
       { gameId === "moodSelect" && <SelectGame gameDescriptor={descriptor}/> }
 
+      { gameId === "whatIsTheTimeAnalog" && <WhatIsTheTimeAnalog gameDescriptor={descriptor}/> }
+      { gameId === "selectClockAnalog" && <SelectClockAnalog gameDescriptor={descriptor}/> }
+      
       { gameId === "changeRecords" && <ChangeRecords/> }
     </div>
   )

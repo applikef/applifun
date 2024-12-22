@@ -70,6 +70,9 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   else if (gameId === "washHands") {
     return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/washHands.json");
   }
+  else if (gameId === "whatIsTheTimeAnalog") {
+    return require("./../assets/descriptors/componentDescriptors/clockDescriptors/whatIsTheTimeAnalog.json");
+  }
   else if (gameId === "wordMatch") {
     if (gameDescriptorName) {
       return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);

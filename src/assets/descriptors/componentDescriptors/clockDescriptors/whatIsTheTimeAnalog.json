@@ -1,0 +1,19 @@
+{
+  "gameId": "whatIsTheTimeAnalog",
+  "title":"הַקְלֵק עַל הַכַּפְתּוֹר שֶׁמַּרְאֶה אֶת הַשָּׁעָה שֶׁמַּרְאֶה הַשָּׁעוֹן",
+  "settingsTitle": "בחר סוג שעות למשחק",
+  "hourTypes": [
+    {
+      "id": "hours",
+      "name": "שעות שלמות"
+    },
+    {
+      "id": "quaters",
+      "name": "רבעי שעה"
+    },
+    {
+      "id": "minutes",
+      "name": "דקות"
+    }
+  ]
+}
