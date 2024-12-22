@@ -10,3 +10,8 @@
   border-radius: 2px;
   margin-right: var(--size-l);
 }
+
+.clock-time-label {
+  font-size: var(--font-size-xxl);
+  text-align: center;
+}

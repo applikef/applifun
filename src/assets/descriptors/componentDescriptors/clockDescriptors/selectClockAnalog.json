@@ -1,0 +1,19 @@
+{
+  "gameId": "selectClockAnalog",
+  "title":"הַקְלֵק עַל הַשָּׁעוֹן שֶׁמַּרְאֶה אֶת הַשָּׁעָה ",
+  "settingsTitle": "בחר סוג שעות למשחק",
+  "hourTypes": [
+    {
+      "id": "hours",
+      "name": "שעות שלמות"
+    },
+    {
+      "id": "quaters",
+      "name": "רבעי שעה"
+    },
+    {
+      "id": "minutes",
+      "name": "דקות"
+    }
+  ]
+}

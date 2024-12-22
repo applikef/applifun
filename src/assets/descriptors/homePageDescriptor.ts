@@ -124,14 +124,14 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=whatIsTheTimeAnalog",
         media: "resources/images/timeAnalog.png",
         height: 100
-      }/*,
+      },
       {
         id: "selectClockAnalog",
         label: "איזה שעון?",
         path: "/launch?gameId=selectClockAnalog",
         media: "resources/images/clocksAnalog.png",
         height: 100
-      }*/
+      }
     ]
   },
   {
