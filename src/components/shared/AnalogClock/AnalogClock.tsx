@@ -100,9 +100,7 @@ export const AnalogClock = (props: AnalogClockType) => {
           </g>
         }
 
-        < circle cx={cx} cy={cy} r={r} fill={fill} stroke={stroke} 
-           className="app-clickable"
-        />
+        < circle cx={cx} cy={cy} r={r} fill={fill} stroke={stroke} />
         < circle cx={cx} cy={cy} r={3} fill={stroke} stroke={stroke} />
         {hours.map((hour:number, i) => {
           return <text key={hour} 
