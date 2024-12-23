@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler, useState } from "react";
 import "./AnalogClock.css";
 
 interface AnalogClockType {
@@ -46,11 +46,13 @@ export const AnalogClock = (props: AnalogClockType) => {
 
   const rHelp = r + defaultHelpWidth;
 
-  const hoursHandColor: string = props.hoursHandColor ? props.hoursHandColor : defaultHoursHandColor; 
   const minutesHandColor: string = props.minutesHandColor ? props.minutesHandColor : defaultMinutesHandColor; 
 
   const hoursHandLength = r * 0.5;
   const minutesHandLength = r * 0.65;
+
+  const [hoursHandColor, setHoursHandColor] = 
+    useState<string>(props.hoursHandColor ? props.hoursHandColor : defaultHoursHandColor);
 
   function calcXHourPosition(hour: number, minutes: number, r: number) {
     return (cx + r * Math.cos((hour-3) * hourAngle + minutes * hourShiftAngle))
@@ -66,6 +68,15 @@ export const AnalogClock = (props: AnalogClockType) => {
   
   function calcYMinutePosition(minutes: number, r: number) {
     return (cy + r * Math.sin((minutes - 15) * minuteAngle))
+  }
+
+  function showHelp() {
+    const helpColor = "#31a354"; // --green-03 
+    let color: string = props.hoursHandColor ? props.hoursHandColor : defaultHoursHandColor; 
+    if (hoursHandColor !== helpColor) {
+      color = helpColor;
+    }
+    setHoursHandColor(color);
   }
 
   const hours = new Array(12).fill(null).map((_, i) => i + 1);
@@ -89,7 +100,9 @@ export const AnalogClock = (props: AnalogClockType) => {
           </g>
         }
 
-        < circle cx={cx} cy={cy} r={r} fill={fill} stroke={stroke} />
+        < circle cx={cx} cy={cy} r={r} fill={fill} stroke={stroke} 
+           className="app-clickable"
+        />
         < circle cx={cx} cy={cy} r={3} fill={stroke} stroke={stroke} />
         {hours.map((hour:number, i) => {
           return <text key={hour} 
@@ -130,6 +143,15 @@ export const AnalogClock = (props: AnalogClockType) => {
             </text>
           </g>
         }
+
+        <image x="0" y={(r*2).toString()} height="24" width="24" 
+          href="resources/icons/help.png" 
+          className="app-clickable"
+          onClick={(event: React.MouseEvent<SVGImageElement>) => {
+            showHelp(); 
+            event.stopPropagation(); 
+          }} 
+        />
       </g>
     </svg>
   );
