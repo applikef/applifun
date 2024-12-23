@@ -22,6 +22,8 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
+  const numberOfOptions: number = 5;
+
   const clockTimeAsText: Array<string> = [
     "אַחַת",
     "שְׁתַּיִם",
@@ -43,14 +45,13 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [clockOptions, setClockOptions] = 
     useState<Array<ClockTime>>(() => getOptionTimes());
-  let clockTime = useRef(clockOptions[Math.floor(Math.random() * 4)]);
+  let clockTime = useRef(clockOptions[Math.floor(Math.random() * (numberOfOptions-1))]);
   
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
 
   const hours = new Array(12).fill(null).map((_, i) => i + 1);
 
   function getOptionTimes(): Array<ClockTime> {
-    const numberOfOptions = 5;
     let options: Array<ClockTime> = new Array(numberOfOptions);
     // Enforce unqiness
     options[0] = getTime();
@@ -96,9 +97,12 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
         setFeedbackFace(() => FACES.NONE);
         const options = getOptionTimes();
         setClockOptions(options);
-        const newTime = options[Math.floor(Math.random() * 4)];
-        clockTime.current = newTime; 
-        }, ConstantsUtil.hoorayShortTimeout)
+        let newTime = options[Math.floor(Math.random() * (numberOfOptions-1))];
+        while (newTime.hour === clockTime.current.hour) {
+          newTime = options[Math.floor(Math.random() * (numberOfOptions-1))];
+        }
+      clockTime.current = newTime; 
+      }, ConstantsUtil.hoorayShortTimeout)
     }
     else {
       setFeedbackFace(() => FACES.WORRY);

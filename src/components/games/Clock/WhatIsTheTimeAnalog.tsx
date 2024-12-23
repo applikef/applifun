@@ -19,7 +19,7 @@ export interface WhatIsTheTimeAnalogType {
 
 export const WhatIsTheTimeAnalog  = (props: WhatIsTheTimeAnalogType) => {
   const { 
-    audioOn, 
+    audioOn
   } = useContext(GamesContext) as GamesContextType;
 
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
