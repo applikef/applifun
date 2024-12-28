@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import { AnalogClock } from "../../shared/AnalogClock/AnalogClock";
+import { AnalogClock } from "../../shared/Clock/AnalogClock/AnalogClock";
 import { WhatIsTheTimeAnalogDescriptorType } from "../../../model/componentDescriptors.types";
-import { ClockTime } from "../../../model/clock.types";
+import { ClockTime, TIME_SCOPE } from "../../../model/clock.types";
 import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
@@ -12,6 +12,7 @@ import { MediaUtil } from "../../../utils/MediaUtil";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PlayListNames } from "../../../assets/playLists";
+import { ClockUtil } from "./ClockUtil";
 
 export interface WhatIsTheTimeAnalogType {
   gameDescriptor: WhatIsTheTimeAnalogDescriptorType;
@@ -29,33 +30,22 @@ export const WhatIsTheTimeAnalog  = (props: WhatIsTheTimeAnalogType) => {
   const helpFileName: string | undefined = descriptor.helpFile ? descriptor.helpFile : undefined;
 
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
-  const [clockTime, setClockTime] = useState<ClockTime>(getTime());
+  const [timeScope, setTimeScope] = useState<TIME_SCOPE>(TIME_SCOPE.HOURS_ONLY);
+  const [clockTime, setClockTime] = useState<ClockTime>(ClockUtil.getTime(TIME_SCOPE.HOURS_ONLY));
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
 
   const hours = new Array(12).fill(null).map((_, i) => i + 1);
 
-  function getHour(): number {
-    return Math.max(Math.floor(Math.random() * 12), 1);
-  }
-
-  function getTime(): ClockTime {
-    const time = {
-      "hour": getHour(),
-      minutes: 0
-    } 
-    return time;
-  }
-
   function verifyHour(selectedHour: number) {
-    if (selectedHour === clockTime.hour) {
+    if (selectedHour === clockTime.getHour()) {
       MediaUtil.player(playerHooray, audioOn);
       setFeedbackFace(() => FACES.HAPPY);
 
       setTimeout(() => {
         setFeedbackFace(() => FACES.NONE);
-        let newTime = getTime();
-        while (newTime.hour === clockTime.hour) {
-          newTime = getTime();
+        let newTime = ClockUtil.getTime(timeScope);
+        while (newTime.getHour() === clockTime.getHour()) {
+          newTime = ClockUtil.getTime(timeScope);
         }
         setClockTime(newTime); 
         }, ConstantsUtil.hoorayShortTimeout)
@@ -91,7 +81,7 @@ export const WhatIsTheTimeAnalog  = (props: WhatIsTheTimeAnalogType) => {
       </div>
 
       <div style={{textAlign: "center"}}>
-        <AnalogClock id="main" r={80} time={clockTime.hour.toString()} />
+        <AnalogClock id="main" r={80} time={clockTime} />
 
         <div>
           <span className="page-header-title font-size-xl">שָׁעָה</span>

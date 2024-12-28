@@ -59,6 +59,7 @@ export interface WhatIsTheTimeAnalogDescriptorType extends GameDescriptorType {
 
 export interface SelectClockAnalogDescriptorType extends GameDescriptorType {
   title: string;
-
+  settingsTitle: string;
+  hourTypes: Array<BaseItem>;
 }
 

@@ -9,6 +9,7 @@
   padding: 12px 12px 12px 12px;
   border-radius: 2px;
   margin-right: var(--size-l);
+  margin-bottom: 4px;
 }
 
 .clock-time-label {

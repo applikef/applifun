@@ -1,12 +1,12 @@
-import React, { MouseEventHandler, useState } from "react";
-import "./AnalogClock.css";
+import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
+import "./../../Clock/AnalogClock/AnalogClock.css";
+import { ClockTime, TIME_SCOPE } from "../../../../model/clock.types";
 
 interface AnalogClockType {
   id: string;
-  time: string;
+  time: ClockTime;
   r: number;
-  showMinutes?: boolean;
-  showQuaters?: boolean;
+  timeScope?: TIME_SCOPE;
   backgroundColor?: string;
   outlineColor?: string;
   hoursHandColor?: string;
@@ -28,12 +28,12 @@ export const AnalogClock = (props: AnalogClockType) => {
   const defaultOutlineColor: string = "#e6550d";      // --red-04
   const defaultHoursHandColor: string = "#e6550d";    
   const defaultMinutesHandColor: string = "#e6550d";  
-  const defaultHelpBackgroundColor: string = "#fee5d9";    // --red-00
-  const defaultHelpOutlineColor: string = "#fc9272";      // --red-02
+  const helpColor = "#31a354"; // --green-03 
+  const backgroundHelpColor = "#edf8e9";  // --green-00
 
-  const timeAsArray: Array<string> = props.time.split(":");
-  const hour: number = Number(timeAsArray[0]);
-  const minutes: number = timeAsArray.length > 1 ? Number(timeAsArray[1]) : 0;
+  const hour: number = props.time.getHour();
+  const minutes: number = props.time.getMinutes();
+  const timeScope: TIME_SCOPE = props.timeScope ? props.timeScope : TIME_SCOPE.HOURS_ONLY;
 
   const r:number = props.r;
   const cx:number = r + 10; 
@@ -41,18 +41,25 @@ export const AnalogClock = (props: AnalogClockType) => {
   const fill: string = props.backgroundColor ? props.backgroundColor : defaultBackgroundColor; 
   const stroke: string = props.outlineColor ? props.outlineColor : defaultOutlineColor; 
 
-  const showMinutes:boolean = props.showMinutes ? props.showMinutes : false;
-  const showQuaters:boolean = props.showQuaters ? props.showQuaters : false;
-
   const rHelp = r + defaultHelpWidth;
 
+  const hoursHandColor = props.hoursHandColor ? props.hoursHandColor : defaultHoursHandColor;
   const minutesHandColor: string = props.minutesHandColor ? props.minutesHandColor : defaultMinutesHandColor; 
 
   const hoursHandLength = r * 0.5;
   const minutesHandLength = r * 0.65;
 
-  const [hoursHandColor, setHoursHandColor] = 
-    useState<string>(props.hoursHandColor ? props.hoursHandColor : defaultHoursHandColor);
+  const [highlightHoursHand, setHighlightHoursHand] = useState<boolean>(false);
+  const [showQuarters, setShowQuarters] = useState<boolean>(false);
+  const [showMinutes, setShowMinutes] = useState<boolean>(false);
+
+  const [forceRefresh, setForceRefresh] = useState<number>(0);
+
+  useEffect(() => {
+    setHighlightHoursHand(false);
+    setShowMinutes(false);
+    setShowQuarters(false);
+  }, [timeScope]);
 
   function calcXHourPosition(hour: number, minutes: number, r: number) {
     return (cx + r * Math.cos((hour-3) * hourAngle + minutes * hourShiftAngle))
@@ -70,13 +77,20 @@ export const AnalogClock = (props: AnalogClockType) => {
     return (cy + r * Math.sin((minutes - 15) * minuteAngle))
   }
 
-  function showHelp() {
-    const helpColor = "#31a354"; // --green-03 
-    let color: string = props.hoursHandColor ? props.hoursHandColor : defaultHoursHandColor; 
-    if (hoursHandColor !== helpColor) {
-      color = helpColor;
+  function showHelpHandler() {
+    if (timeScope === TIME_SCOPE.HOURS_ONLY) {
+      setHighlightHoursHand(!highlightHoursHand);
     }
-    setHoursHandColor(color);
+
+    if (timeScope === TIME_SCOPE.MINUTES) {
+      setShowMinutes(!showMinutes);
+    }
+
+    if (timeScope === TIME_SCOPE.QUARTERS) {
+      setShowQuarters(!showQuarters);
+    }
+
+    setForceRefresh(forceRefresh+1);
   }
 
   const hours = new Array(12).fill(null).map((_, i) => i + 1);
@@ -84,16 +98,17 @@ export const AnalogClock = (props: AnalogClockType) => {
 
   return (
     <svg id={props.id} width={svgDim}  height={svgDim}>
+      { forceRefresh >= 0 &&
       <g transform="translate(30,30)">
-        { showMinutes &&
+        { showMinutes && timeScope === TIME_SCOPE.MINUTES &&
           <g>
-            <circle cx={cx} cy={cy} r={rHelp} fill={defaultHelpBackgroundColor} 
-              stroke={defaultHelpOutlineColor} />
+            <circle cx={cx} cy={cy} r={rHelp} fill={backgroundHelpColor} 
+              stroke={helpColor} />
             {minutesLabels.map((min:number, i) => {
               return <text key={min} 
                 x={calcXHourPosition(i+1, 0, (r+defaultHelpWidth)*0.9)} 
                 y={calcYHourPosition(i+1,0, (r+defaultHelpWidth)*0.9)} 
-                fill={defaultHelpOutlineColor}
+                fill={helpColor}
                 textAnchor="middle" dominantBaseline="central">{min}
               </text>
             })}
@@ -110,32 +125,40 @@ export const AnalogClock = (props: AnalogClockType) => {
           </text>
         })}
 
+        { highlightHoursHand && timeScope === TIME_SCOPE.HOURS_ONLY &&
+        <line id={`hoursHand_${props.id}`} x1={cx} y1={cy} 
+          x2={calcXHourPosition(hour, minutes, hoursHandLength)} y2={calcYHourPosition(hour, minutes, hoursHandLength)} 
+          stroke={helpColor} strokeWidth={hoursHandWidth} className="clock-hand" />
+        }
+
+        { !highlightHoursHand &&
         <line id={`hoursHand_${props.id}`} x1={cx} y1={cy} 
           x2={calcXHourPosition(hour, minutes, hoursHandLength)} y2={calcYHourPosition(hour, minutes, hoursHandLength)} 
           stroke={hoursHandColor} strokeWidth={hoursHandWidth} className="clock-hand" />
+        }
 
         <line id={`minutesHand_${props.id}`} x1={cx} y1={cy} 
           x2={calcXMinutePosition(minutes, minutesHandLength)} 
           y2={calcYMinutePosition(minutes, minutesHandLength)} 
           stroke={minutesHandColor} strokeWidth={minutesHandWidth} className="clock-hand" />
 
-        {showQuaters &&
+        {showQuarters && timeScope === TIME_SCOPE.QUARTERS &&
           <g>
-            <text key="quaterText" 
+            <text key="quarterText" 
               x={cx + r + 4} y={cy} 
-              stroke={defaultHelpOutlineColor}
+              stroke={helpColor}
               fontSize={14}
               textAnchor="end" dominantBaseline="central">ורבע
             </text>
             <text key="halfText" 
               x={cx} y={cy + r + 8} 
-              stroke={defaultHelpOutlineColor}
+              stroke={helpColor}
               fontSize={14}
               textAnchor="middle" dominantBaseline="central">וחצי
             </text>
-            <text key="quaterToText" 
+            <text key="quarterToText" 
               x={cx - r - 4} y={cy} 
-              stroke={defaultHelpOutlineColor}
+              stroke={helpColor}
               fontSize={14}
               textAnchor="start" dominantBaseline="central">רבע ל
             </text>
@@ -146,11 +169,12 @@ export const AnalogClock = (props: AnalogClockType) => {
           href="resources/icons/help.png" 
           className="app-clickable"
           onClick={(event: React.MouseEvent<SVGImageElement>) => {
-            showHelp(); 
+            showHelpHandler(); 
             event.stopPropagation(); 
           }} 
         />
       </g>
+}
     </svg>
   );
 }

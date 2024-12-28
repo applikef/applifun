@@ -1,14 +1,16 @@
 import React, { useContext, useRef, useState } from "react";
-import { AnalogClock } from "../../shared/AnalogClock/AnalogClock";
+import { AnalogClock } from "../../shared/Clock/AnalogClock/AnalogClock";
 import { SelectClockAnalogDescriptorType } from "../../../model/componentDescriptors.types";
 import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
-import { ClockTime } from "../../../model/clock.types";
+import { ClockTime, TIME_SCOPE } from "../../../model/clock.types";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { PlayListNames } from "../../../assets/playLists";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
+import { ClockUtil } from "./ClockUtil";
+import { SingleSelectionDialog } from "../../shared/SingleSelectionDialog/SingleSelectionDialog";
 
 export interface SelectClockAnalogType {
   gameDescriptor: SelectClockAnalogDescriptorType;
@@ -23,45 +25,31 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
   const numberOfOptions: number = 5;
-
-  const clockTimeAsText: Array<string> = [
-    "אַחַת",
-    "שְׁתַּיִם",
-    "שָׁלוֹשׁ",
-    "אַרְבַּע",
-    "חָמֵשׁ",
-    "שֵׁשׁ",
-    "שֶׁבַע",
-    "שְׁמוֹנֶה",
-    "תֵּשַׁע",
-    "עֶשֶׂר",
-    "אַחַת עֶשְׂרֵה",
-    "שְׁתֵּים עֶשְׂרֵה"
-  ];
-
+  const defaultTimeScope: TIME_SCOPE = TIME_SCOPE.HOURS_ONLY;
+  
   const descriptor = props.gameDescriptor;
   const helpFileName: string | undefined = descriptor.helpFile ? descriptor.helpFile : undefined;
 
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
+  const [timeScope, setTimeScope] = useState<TIME_SCOPE>(defaultTimeScope);
   const [clockOptions, setClockOptions] = 
-    useState<Array<ClockTime>>(() => getOptionTimes());
+    useState<Array<ClockTime>>(() => getOptionTimes(defaultTimeScope));
+
   let clockTime = useRef(clockOptions[Math.floor(Math.random() * (numberOfOptions-1))]);
   
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
 
-  const hours = new Array(12).fill(null).map((_, i) => i + 1);
-
-  function getOptionTimes(): Array<ClockTime> {
+  function getOptionTimes(scope: TIME_SCOPE): Array<ClockTime> {
     let options: Array<ClockTime> = new Array(numberOfOptions);
     // Enforce unqiness
-    options[0] = getTime();
+    options[0] = ClockUtil.getTime(scope);
     for (let i=1; i < numberOfOptions; i++) {
-      let newOption = getTime();
+      let newOption = ClockUtil.getTime(scope);
       let unique = false;
       while (!unique) {
-        newOption = getTime();
+        newOption = ClockUtil.getTime(scope);
         for (let j=0; j < Math.max(0,i); j++) {
-          if (options[j].hour === newOption.hour) {   
+          if (options[j].isEqual(newOption)) {   
             unique = false;         
             break;
           }
@@ -75,33 +63,25 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
     return options;
   }
 
-  function getHour(): number {
-    return Math.max(Math.floor(Math.random() * 12), 1);
-  }
-
-  function getTime(): ClockTime {
-    const time = {
-      "hour": getHour(),
-      minutes: 0
-    } 
-    return time;
+  function updateTimes(scope: TIME_SCOPE) {
+    const options = getOptionTimes(scope);
+    setClockOptions(options);
+    let newTime = options[Math.floor(Math.random() * (numberOfOptions-1))];
+    while (newTime.isEqual(clockTime.current)) {
+      newTime = options[Math.floor(Math.random() * (numberOfOptions-1))];
+    }
+    clockTime.current = newTime; 
   }
 
   function verifyClock(selectedHourIndex: number) {
-    const selectedHour = clockOptions[selectedHourIndex].hour;
-    if (selectedHour === clockTime.current.hour) {
+    const selectedHour = clockOptions[selectedHourIndex].getHour();
+    if (selectedHour === clockTime.current.getHour()) {
       MediaUtil.player(playerHooray, audioOn);
       setFeedbackFace(() => FACES.HAPPY);
 
       setTimeout(() => {
         setFeedbackFace(() => FACES.NONE);
-        const options = getOptionTimes();
-        setClockOptions(options);
-        let newTime = options[Math.floor(Math.random() * (numberOfOptions-1))];
-        while (newTime.hour === clockTime.current.hour) {
-          newTime = options[Math.floor(Math.random() * (numberOfOptions-1))];
-        }
-      clockTime.current = newTime; 
+        updateTimes(timeScope);
       }, ConstantsUtil.hoorayShortTimeout)
     }
     else {
@@ -117,16 +97,19 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
     setGameSettingsDisplay(()=>"game-settings-global-hide"); 
   }
 
-  function handleSettingsDone(groupValueIndices: boolean[]) {
-    setGameSettingsDisplay(()=>"game-settings-global-hide")
+  function handleSettingsDone(scopeOptionIndex: number) {
+    setGameSettingsDisplay(()=>"game-settings-global-hide");
+    let scopeAsString: string = descriptor.hourTypes[scopeOptionIndex].id;
+    let scope: TIME_SCOPE = ClockUtil.getTimeScope(scopeAsString);
+    setTimeScope(scope);
+    updateTimes(scope);
   }
 
-  // From Banner
-  // settings={() => setGameSettingsDisplay("game-settings-global-show")}
   return (
     <div className="app-page">
       <Banner gameId={descriptor.gameId} 
         helpFile={helpFileName} 
+        settings={() => setGameSettingsDisplay("game-settings-global-show")}
         isQuiz={descriptor.isQuiz}
       />
       <div style={{display:"flex", flexDirection:"row", justifyContent: "space-between"}}>
@@ -134,17 +117,27 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
           feedbackFace={ feedbackFace } />
       </div>
 
-      <div className="clock-time-label">{`${clockTimeAsText[clockTime.current.hour-1]}`}</div>
-      <div style={{textAlign: "center"}}>
-        {
-          clockOptions.map((optionTime: ClockTime, i: number) => {
-            return <span key={`clock-${i}`} 
-              onClick={()=>verifyClock(i)}>
-              <AnalogClock id={`option-${i+1}`} r={80}  
-                time={optionTime.hour.toString()} />
-            </span>
-          })
-        }
-      </div>
+    <div className="clock-time-label">
+      {ClockUtil.getTimeAsText(timeScope, clockTime.current)}
+    </div>
+    <div style={{textAlign: "center"}}>
+      {
+        clockOptions.map((optionTime: ClockTime, i: number) => {
+          return <span key={`clock-${i}`} 
+            onClick={()=>verifyClock(i)}>
+            <AnalogClock id={`option-${i+1}`} r={80}  
+              time={optionTime} timeScope={timeScope} />
+          </span>
+        })
+      }
+    </div>
+
+    <SingleSelectionDialog
+        className={ gameSettingsDisplay }
+        title={descriptor.settingsTitle}
+        options={descriptor.hourTypes.map((type)=> type.name)}
+        handleDialogDone={handleSettingsDone}
+        handleDialogCancel={handleSettingsCancel}
+      />
     </div>
 )}
