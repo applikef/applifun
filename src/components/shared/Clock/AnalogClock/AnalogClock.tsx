@@ -1,6 +1,7 @@
-import React, { MouseEventHandler, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./../../Clock/AnalogClock/AnalogClock.css";
 import { ClockTime, TIME_SCOPE } from "../../../../model/clock.types";
+import { COLORS } from "../../../../utils/ConstantsUtil";
 
 interface AnalogClockType {
   id: string;
@@ -24,12 +25,12 @@ export const AnalogClock = (props: AnalogClockType) => {
   const hourShiftAngle = Math.PI * 2 / 12 / 60;
   const minuteAngle = Math.PI * 2 / 60;
 
-  const defaultBackgroundColor: string = "#faebd7"    // --white-03
-  const defaultOutlineColor: string = "#e6550d";      // --red-04
-  const defaultHoursHandColor: string = "#e6550d";    
-  const defaultMinutesHandColor: string = "#e6550d";  
-  const helpColor = "#31a354"; // --green-03 
-  const backgroundHelpColor = "#edf8e9";  // --green-00
+  const defaultBackgroundColor: string = COLORS.WHITE_03;
+  const defaultOutlineColor: string = COLORS.RED_04;
+  const defaultHoursHandColor: string = COLORS.RED_04;    
+  const defaultMinutesHandColor: string = COLORS.RED_04;  
+  const helpColor = COLORS.GREEN_03;
+  const backgroundHelpColor = COLORS.GREEN_00;
 
   const hour: number = props.time.getHour();
   const minutes: number = props.time.getMinutes();

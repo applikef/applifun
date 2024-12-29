@@ -33,38 +33,14 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [timeScope, setTimeScope] = useState<TIME_SCOPE>(defaultTimeScope);
   const [clockOptions, setClockOptions] = 
-    useState<Array<ClockTime>>(() => getOptionTimes(defaultTimeScope));
+    useState<Array<ClockTime>>(() => ClockUtil.getOptionTimes(defaultTimeScope, numberOfOptions));
 
   let clockTime = useRef(clockOptions[Math.floor(Math.random() * (numberOfOptions-1))]);
   
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
 
-  function getOptionTimes(scope: TIME_SCOPE): Array<ClockTime> {
-    let options: Array<ClockTime> = new Array(numberOfOptions);
-    // Enforce unqiness
-    options[0] = ClockUtil.getTime(scope);
-    for (let i=1; i < numberOfOptions; i++) {
-      let newOption = ClockUtil.getTime(scope);
-      let unique = false;
-      while (!unique) {
-        newOption = ClockUtil.getTime(scope);
-        for (let j=0; j < Math.max(0,i); j++) {
-          if (options[j].isEqual(newOption)) {   
-            unique = false;         
-            break;
-          }
-          else {
-            unique = true;
-          }
-        }
-      }
-      options[i] = newOption;
-    }
-    return options;
-  }
-
   function updateTimes(scope: TIME_SCOPE) {
-    const options = getOptionTimes(scope);
+    const options = ClockUtil.getOptionTimes(scope, numberOfOptions);
     setClockOptions(options);
     let newTime = options[Math.floor(Math.random() * (numberOfOptions-1))];
     while (newTime.isEqual(clockTime.current)) {
@@ -74,10 +50,7 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
   }
 
   function verifyClock(selectedHourIndex: number) {
-    const selectedHour = clockOptions[selectedHourIndex].getHour();
-    const selectedMinutes = clockOptions[selectedHourIndex].getMinutes();
-    if (selectedHour === clockTime.current.getHour() && 
-      selectedMinutes === clockTime.current.getMinutes()) {
+    if (clockOptions[selectedHourIndex].isEqual(clockTime.current)) {
       MediaUtil.player(playerHooray, audioOn);
       setFeedbackFace(() => FACES.HAPPY);
 

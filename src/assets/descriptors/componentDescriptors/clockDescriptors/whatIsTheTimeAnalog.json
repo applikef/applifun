@@ -4,15 +4,15 @@
   "settingsTitle": "בחר סוג שעות למשחק",
   "hourTypes": [
     {
-      "id": "hours",
+      "id": "HOURS_ONLY",
       "name": "שעות שלמות"
     },
     {
-      "id": "quarters",
+      "id": "QUARTERS",
       "name": "רבעי שעה"
     },
     {
-      "id": "minutes",
+      "id": "MINUTES",
       "name": "דקות"
     }
   ]

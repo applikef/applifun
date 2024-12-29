@@ -106,4 +106,36 @@ export class ClockUtil {
     }
     return timeAsString;
   }
+
+  public static getOptionTimes(scope: TIME_SCOPE, numberOfOptions: number): Array<ClockTime> {
+    let options: Array<ClockTime> = new Array(numberOfOptions);
+    // Enforce unqiness
+    options[0] = ClockUtil.getTime(scope);
+    for (let i=1; i < numberOfOptions; i++) {
+      let newOption = ClockUtil.getTime(scope);
+      let unique = false;
+      while (!unique) {
+        newOption = ClockUtil.getTime(scope);
+        for (let j=0; j < Math.max(0,i); j++) {
+          if (options[j].isEqual(newOption)) {   
+            unique = false;         
+            break;
+          }
+          else {
+            unique = true;
+          }
+        }
+      }
+      options[i] = newOption;
+    }
+    return options;
+  }
+
+  public static minutesToString(minutes: number): string {
+    let minutesAsString = minutes.toString();
+    if (minutesAsString.length === 2) {
+      return minutesAsString;
+    }
+    return `0${minutesAsString}`;
+  }
 }

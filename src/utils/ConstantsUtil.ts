@@ -28,4 +28,11 @@ export const enum DIRECTION {
   RTL = "RTL"
 }
 
+export const enum COLORS {
+  WHITE_03 = "#faebd7",
+  RED_04 = "#e6550d",
+  GREEN_00 = "#edf8e9",
+  GREEN_03 = "#31a354"
+}
+
 

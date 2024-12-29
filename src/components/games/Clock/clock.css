@@ -3,7 +3,6 @@
 .clock-hour-in-list {
   font-size: var(--font-size-l);
   color: var(--blue-01);
-  width: var(--size-xxxl);
   border: 2px solid var(--blue-01);
   background-color: var(--light-blue-00);
   padding: 12px 12px 12px 12px;
