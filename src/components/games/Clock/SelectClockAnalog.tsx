@@ -75,7 +75,9 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
 
   function verifyClock(selectedHourIndex: number) {
     const selectedHour = clockOptions[selectedHourIndex].getHour();
-    if (selectedHour === clockTime.current.getHour()) {
+    const selectedMinutes = clockOptions[selectedHourIndex].getMinutes();
+    if (selectedHour === clockTime.current.getHour() && 
+      selectedMinutes === clockTime.current.getMinutes()) {
       MediaUtil.player(playerHooray, audioOn);
       setFeedbackFace(() => FACES.HAPPY);
 
