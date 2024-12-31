@@ -47,6 +47,12 @@ export const HomePage = () => {
   
   const navigate = useNavigate();
 
+  const userList = new Array<User>();
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].show === undefined || users[i].show === true) {
+      userList.push(users[i]);
+    }
+  }
   function updateShowSection(index: number) {
     if (homePageDescriptor[index].items.length > 1) {
       let arr = new Array<boolean>(homePageDescriptor.length);
@@ -96,8 +102,9 @@ export const HomePage = () => {
         <div className={`home-page-title ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XXL)}`}>
           { t("HomePagePlayAndLearn") }
           <span className={`home-page-user-area ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.L)}`}>
-            <span className="home-page-user-area-title">משתמש</span>
-            <select id="userList" defaultValue={user.id} className="home-page-user-area-selection" onChange={()=>{
+            <span className="home-page-user-area-title">נושא</span>
+            <select id="userList" defaultValue={user.id} 
+              className="home-page-user-area-selection" onChange={()=>{
               const selectObject: HTMLSelectElement | null = 
                 document.getElementById("userList") as HTMLSelectElement;
               let i: number = -1; 
@@ -106,9 +113,9 @@ export const HomePage = () => {
               }
               setUser(i > -1 ? users[i] : {"id": ""});
             }}>
-              <option value="">כל משתמש</option>
-              {users.map((currentUser) =>
-                <option value={currentUser.id} key={currentUser.id}>{currentUser.name}</option>
+              <option value="">כללי</option>
+              {userList.map((currentUser) => 
+                 <option value={currentUser.id} key={currentUser.id}>{currentUser.name}</option>
               )}
             </select>
           </span>

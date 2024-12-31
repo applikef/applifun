@@ -1,12 +1,13 @@
 [
   {
-    "id": "carol",
-    "name": "קרול",
-    "descriptor": "carol.json"
+    "id": "holidays",
+    "name": "חורף וחג החגים",
+    "descriptor": "holidays.json"
   },
   {
     "id": "netta",
     "name": "נטע",
-    "descriptor": "netta.json"
+    "descriptor": "netta.json",
+    "show": false
   }
 ]

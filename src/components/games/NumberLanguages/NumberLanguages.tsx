@@ -46,7 +46,6 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   const [unitTargetCount, setUnitTargerCount] = useState<number>(unitsTarget.current.length);
   const [tenTargetCount, setTenTargerCount] = useState<number>(tensTarget.current.length);
 
-  const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [unitFeedbackFace, setUnitFeedbackFace] = 
     useState<FACES>(numberDigits[0] === 0 ? FACES.HAPPY : FACES.NONE);
   const [tenFeedbackFace, setTenFeedbackFace] = 
@@ -168,7 +167,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
       
       <div className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XL)}`}>
         <PageHeader title={title} 
-          feedbackFace={ feedbackFace } />
+          feedbackFace={ FACES.NONE } />
       </div>
 
       <h1 className="number-title">{ number.current }</h1>
@@ -188,17 +187,21 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
         </div>
 
         <div style={{display: "flex"}}>
-          <table style={{ border:"1px solid #FFFFFF", height: "100px", marginRight: "60px" }}><tbody>
+          <table className="number-languages-table"><tbody>
             <tr>
-              <td className="unit-header">
-                <FaceFeedback face={unitFeedbackFace} size={FEEDBACK_FACE_SIZE.S}></FaceFeedback>
-                <span style={{marginRight: "10px"}}>{unitTargetCount} יְחִידוֹת</span>                 
+              <td className="number-languages-unit-header">
+                <span className="number-languages-unit-title">
+                  {unitTargetCount} יְחִידוֹת
+                </span>                 
+                <FaceFeedback face={unitFeedbackFace} size={FEEDBACK_FACE_SIZE.M}></FaceFeedback>
               </td>
               {
                 props.scope > 10 &&
-                  <td className="unit-header">
-                    <FaceFeedback face={tenFeedbackFace} size={FEEDBACK_FACE_SIZE.S}></FaceFeedback>
-                    <span style={{marginRight: "10px"}}>{tenTargetCount} עֲשָׂרוֹת</span>
+                  <td className="number-languages-unit-header">
+                    <span className="number-languages-unit-title">
+                      {tenTargetCount} עֲשָׂרוֹת
+                    </span>
+                    <FaceFeedback face={tenFeedbackFace} size={FEEDBACK_FACE_SIZE.M}></FaceFeedback>
                   </td>
               }
             </tr>

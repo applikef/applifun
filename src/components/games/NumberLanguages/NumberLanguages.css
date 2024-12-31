@@ -17,8 +17,19 @@
   fill: #61dafb
 }
 
-.unit-header {
-  border:"1px solid #FFFFFF";
+.number-languages-table {
+  border: 1px solid #FFFFFF;
+  height: 100px;
+  margin-right: 60px;
+}
+
+.number-languages-unit-header {
+  border: 1px solid #FFFFFF;
   padding-right: 10px;
   font-size: 2rem;
+}
+
+.number-languages-unit-title {
+  margin-right: 10px;
+  margin-left: 16px;
 }

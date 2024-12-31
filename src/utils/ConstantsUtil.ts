@@ -10,7 +10,11 @@ export class ConstantsUtil {
   public static defaultImageHeight: number = 150;
 }
 
-export const enum FEEDBACK_FACE_SIZE {S, M, L};
+export const enum FEEDBACK_FACE_SIZE {
+  S = "16", 
+  M = "32", 
+  L = "64"
+};
 
 export const enum FONT_SIZE {
   XXXXL = "xxxxl",

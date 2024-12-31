@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import "./../../../assets/styles/global.css";
 import "./Match.css";
@@ -48,14 +48,15 @@ export const Match = (props: MatchPropsType) => {
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
-  const navigate = useNavigate();
+  const defaultMaxNumberOfValidGroups: number = 10;
 
-  const [descriptor, setDescriptor] = 
-    useState<MatchDescriptorType>(props.gameDescriptor);
+  const navigate = useNavigate();
 
   /***
    * Retrieve game descriptor values to local variables
    */
+  const descriptor: MatchDescriptorType = props.gameDescriptor;
+
   const titles = descriptor.titles;
   const titleAudioKeys = descriptor.titleAudioKeys;
   const titleAudioHover = descriptor.titleAudioHover ? descriptor.titleAudioHover : undefined;
@@ -63,15 +64,17 @@ export const Match = (props: MatchPropsType) => {
   const titleVariableValues = descriptor.titleVariableValues;
   const groups = descriptor.groups;
   const items = descriptor.items;
-  const helpFileName: string | undefined = props.gameDescriptor.helpFile ? props.gameDescriptor.helpFile : undefined;
+  const helpFileName: string | undefined = descriptor.helpFile ? descriptor.helpFile : undefined;
 
   const numberOfGroups = groups.length;
 
-  const [maxNumberOfValidGroups, setMaxNumberOfValidGroups] = 
-    useState<number>(Math.min(
-      descriptor.maxSelectedGroups ? Math.min(descriptor.maxSelectedGroups,10) : 10,
+  const maxNumberOfValidGroups: number = 
+    Math.min(
+      descriptor.maxSelectedGroups ? 
+        Math.min(descriptor.maxSelectedGroups,defaultMaxNumberOfValidGroups) : 
+        defaultMaxNumberOfValidGroups,
       numberOfGroups
-    ));
+    );
 
   const [activeIndex, setActiveIndex] = 
     useState<number>(Math.floor(Math.random() * maxNumberOfValidGroups));
@@ -84,7 +87,6 @@ export const Match = (props: MatchPropsType) => {
     });
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [showAdviseDetails, setshowAdviseDetails] = useState<boolean>(false);
-  const [forceReset, setForceReset] = useState<boolean>(false);
 
   let validGroupValueIndices = 
     useRef<boolean[]>((new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false));
@@ -174,7 +176,7 @@ export const Match = (props: MatchPropsType) => {
         showWellDone(audioOn);
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
-          navigate(GeneralUtil.targetNavigationOnGameOver(props.gameDescriptor.isQuiz));
+          navigate(GeneralUtil.targetNavigationOnGameOver(descriptor.isQuiz));
         }, ConstantsUtil.shortPauseTimeout);
       }
       else {
@@ -239,7 +241,7 @@ export const Match = (props: MatchPropsType) => {
     <div className="app-page">
       <Banner gameId={descriptor.gameId} 
         helpFile={helpFileName} 
-        isQuiz={props.gameDescriptor.isQuiz}
+        isQuiz={descriptor.isQuiz}
         settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
       <div style={{display:"flex", flexDirection:"row", justifyContent: "space-between"}}>
         <PageHeader title={setTitle()} 
@@ -250,7 +252,7 @@ export const Match = (props: MatchPropsType) => {
         { descriptor.showAdvise === true &&
           <div onClick={() => setshowAdviseDetails(!showAdviseDetails)} style={{ position: "relative" }}>
             <Advise text={descriptor.adviseText ? descriptor.adviseText : "הסתכל על הרמז"} 
-              direction={DIRECTION.LTR} forceReset={ forceReset }/>
+              direction={DIRECTION.LTR} forceReset={ false }/>
             {
               showAdviseDetails && validItems.current.map((item,i) =>
                 item && item.image.length > 0 &&

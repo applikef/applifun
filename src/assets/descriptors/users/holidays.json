@@ -1,0 +1,7 @@
+{
+  "games": {
+    "wordMatch": "holidays/wordMatch.json",
+    "iWriteWords": "holidays/iWriteWords.json",
+    "letterMatch": "holidays/letterMatch.json"
+  }
+}

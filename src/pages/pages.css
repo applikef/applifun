@@ -114,6 +114,7 @@
 
 .home-page-user-area-title {
   margin-left: 16px;
+  font-size: var(--font-size-normal);
 }
 
 .home-page-user-area-selection {
