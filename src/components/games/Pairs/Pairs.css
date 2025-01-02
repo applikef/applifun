@@ -1,0 +1,17 @@
+@import "./../../../assets/styles/global.css";
+
+.pairs-button-selected {
+  font-size: var(--font-size-l);
+  color: var(--blue-01);
+  border: 2px solid var(--red-02);
+  background-color: var(--red-00);
+  padding: 12px 12px 12px 12px;
+  border-radius: 2px;
+  margin-right: var(--size-l);
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.pairs-hide-item {
+  display: none;
+}

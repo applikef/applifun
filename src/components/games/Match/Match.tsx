@@ -250,7 +250,8 @@ export const Match = (props: MatchPropsType) => {
           feedbackFace={feedbackFace}/>      
 
         { descriptor.showAdvise === true &&
-          <div onClick={() => setshowAdviseDetails(!showAdviseDetails)} style={{ position: "relative" }}>
+          <div onClick={() => setshowAdviseDetails(!showAdviseDetails)} 
+            style={{ position: "relative" }}>
             <Advise text={descriptor.adviseText ? descriptor.adviseText : "הסתכל על הרמז"} 
               direction={DIRECTION.LTR} forceReset={ false }/>
             {

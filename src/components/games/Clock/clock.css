@@ -1,16 +1,5 @@
 @import "./../../../assets/styles/global.css";
 
-.clock-hour-in-list {
-  font-size: var(--font-size-l);
-  color: var(--blue-01);
-  border: 2px solid var(--blue-01);
-  background-color: var(--light-blue-00);
-  padding: 12px 12px 12px 12px;
-  border-radius: 2px;
-  margin-right: var(--size-l);
-  margin-bottom: 4px;
-}
-
 .clock-time-label {
   font-size: var(--font-size-xxl);
   text-align: center;

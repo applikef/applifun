@@ -1,3 +1,5 @@
+import { PAIRS_LAYOUT } from "../utils/ConstantsUtil";
+
 export interface BaseItem {
   id: string;
   title?: string;
@@ -41,6 +43,24 @@ export interface MatchDescriptorType extends GameDescriptorType {
   maxSelectedGroups?: number;
   groups: MatchGroup[];
   items: MatchItem[];
+  settingsTitle: string;
+}
+
+export interface PairsItem {
+  id: string;
+  title: string;
+  image?: string;
+};
+
+export interface PairsTupple extends Array<[PairsItem,PairsItem]> {};
+
+export interface PairsDescriptorType extends GameDescriptorType {
+  title?: string;
+  titleAudioKeys?: string[];
+  titleAudioHover?: string;
+  titleVariableValues?: string[];
+  layout?: PAIRS_LAYOUT;
+  items: PairsTupple;
   settingsTitle: string;
 }
 

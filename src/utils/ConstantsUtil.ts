@@ -1,6 +1,10 @@
 export const HOME_PAGE_PATH = "/";
 export const URL_PARAM_TO_SECONDARY_ENTRY = "home";
 
+export const enum PAIRS_LAYOUT {
+  FLOAT_TEXT
+}
+
 export class ConstantsUtil {
   public static hoorayTimeout: number = 1000;
   public static hoorayShortTimeout: number = 500;

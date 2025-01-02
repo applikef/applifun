@@ -50,6 +50,10 @@ public static sortNumbers = (array: number[]) => {
     return shuffledArray; 
   }; 
 
+  public static getArrayOfNumbers = (length: number) => {
+    return Array.from(Array(length).keys())
+  }
+
   // Used and tested for simple elements as strings
   public static equalByValue = (arr1: any[], arr2: any[]) => {
     if (arr1.length !== arr2.length) {

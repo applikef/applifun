@@ -18,6 +18,7 @@ import { CodePlay } from "../CodePlay/CodePlay";
 import GamesContext, { GamesContextType } from "../context/GamesContext";
 import { WhatIsTheTimeAnalog } from "../components/games/Clock/WhatIsTheTimeAnalog";
 import { SelectClockAnalog } from "../components/games/Clock/SelectClockAnalog";
+import { Pairs } from "../components/games/Pairs/Pairs";
 
 
 export const LaunchPage = () => {
@@ -39,6 +40,8 @@ export const LaunchPage = () => {
       { gameId === "numberMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "letterMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "wordMatch" && <Match gameDescriptor={descriptor}/> }
+      
+      { gameId === "synonymsPairs" && <Pairs gameDescriptor={descriptor}/> }
       
       { gameId === "bathroomRoutine" && <ImagesSequence gameDescriptor={descriptor}/> }
       { gameId === "iCount" && <NumbersSequence gameDescriptor={descriptor}/> }

@@ -70,6 +70,9 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   else if (gameId === "shapeSort") {
     return require("./../assets/descriptors/componentDescriptors/sortDescriptors/shapeSort.json");
   }
+  else if (gameId === "synonymsPairs") {
+    return require("./../assets/descriptors/componentDescriptors/pairsDescriptors/synonymsPairs.json");
+  }
   else if (gameId === "washHands") {
     return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/washHands.json");
   }

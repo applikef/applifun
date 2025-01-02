@@ -84,6 +84,13 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=iWriteWords",
         media: "resources/images/order-letters-game.png",
         height: 100
+      },
+      {
+        id: "synonymsPairs",
+        label: "מִלִּים נִרְדָּפוֹת",
+        path: "/launch?gameId=synonymsPairs",
+        media: "resources/images/synonyms-game.png",
+        height: 100
       }
     ]
   },

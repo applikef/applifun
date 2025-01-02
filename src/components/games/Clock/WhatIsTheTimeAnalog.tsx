@@ -101,7 +101,7 @@ export const WhatIsTheTimeAnalog  = (props: WhatIsTheTimeAnalogType) => {
           <span className="page-header-title font-size-xl">שָׁעָה</span>
           { 
             clockOptions.map((time: ClockTime, i: number) => {
-              return <button key={i} className="app-clickable clock-hour-in-list"
+              return <button key={i} className="app-button-widget"
                 onClick={
                   ()=>verifyTime(new ClockTime(time.getHour(), time.getMinutes()))
                 }>
