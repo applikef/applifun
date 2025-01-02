@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import "./../../../assets/styles/global.css";
+import { ModalNotification } from "../Notification/ModalNotification";
 
  interface MultiSelectionSettingsProps {
   className: string;
@@ -24,6 +25,9 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
       (v,i) => (i < maxNumberOfValidGroups ? true : false)
   ));
 
+  const [notificationContent, setNotificationContent] = useState<string>("");
+  const [showNotification, setShowNotification] = useState<boolean>(false);
+
   useEffect(()=>{
     setSelectedGroupIndices((new Array(numberOfGroups)).fill(false).map(
       (v,i) => (i < maxNumberOfValidGroups ? true : false)
@@ -42,7 +46,8 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
         settingArr[index] = true;
       }
       else {
-        alert(`בחרת כבר ${maxNumberOfValidGroups} כניסות`);
+        setNotificationContent(`בחרת כבר ${maxNumberOfValidGroups} כניסות`);
+        setShowNotification(true);
       }
     }
     else {
@@ -53,7 +58,8 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
   
   function handleSettingsDone() {
     if (selectedGroupIndices.indexOf(true) === -1) {
-      alert(`אליך לבחור לפחות כניסה אחת`);
+      setNotificationContent(`אליך לבחור לפחות כניסה אחת`);
+      setShowNotification(true);
       return;
     }
     validGroupIndices.current = selectedGroupIndices;
@@ -76,6 +82,14 @@ export const MultiSelectionSettings = (props: MultiSelectionSettingsProps) => {
         {
           maxNumberOfValidGroups < props.options.length &&
             <div className="game-settings-title">ניתן לבחור עד {maxNumberOfValidGroups} כניסות</div>
+        }
+
+        { showNotification && notificationContent.length > 0 &&
+          <ModalNotification
+            text={notificationContent} 
+            show={showNotification}
+            onDismiss={() => setShowNotification(false)} 
+          />
         }
 
         { props.options.map(
