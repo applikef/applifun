@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./../../Clock/AnalogClock/AnalogClock.css";
-import { ClockTime, TIME_SCOPE } from "../../../../model/clock.types";
-import { COLORS } from "../../../../utils/ConstantsUtil";
+import "./Clock.css";
+import { ClockTime, TIME_SCOPE } from "../../../model/clock.types";
+import { COLORS } from "../../../utils/ConstantsUtil";
 
 interface AnalogClockType {
   id: string;
@@ -16,7 +16,10 @@ interface AnalogClockType {
 
 export const AnalogClock = (props: AnalogClockType) => {
   const defaultHelpWidth = 30;
-  const svgDim = (props.r + defaultHelpWidth) * 2 + 20;
+  const fullSizeR = 80;
+  const sizeRatio = props.r / fullSizeR;
+
+  const svgDim = (fullSizeR + defaultHelpWidth) * sizeRatio * 2 + 20;
 
   const hoursHandWidth = 4;
   const minutesHandWidth = 4;
@@ -36,13 +39,13 @@ export const AnalogClock = (props: AnalogClockType) => {
   const minutes: number = props.time.getMinutes();
   const timeScope: TIME_SCOPE = props.timeScope ? props.timeScope : TIME_SCOPE.HOURS_ONLY;
 
-  const r:number = props.r;
+  const r:number = fullSizeR;
   const cx:number = r + 10; 
   const cy:number = r + 10;
   const fill: string = props.backgroundColor ? props.backgroundColor : defaultBackgroundColor; 
   const stroke: string = props.outlineColor ? props.outlineColor : defaultOutlineColor; 
 
-  const rHelp = r + defaultHelpWidth;
+  const rHelp = r + defaultHelpWidth ;
 
   const hoursHandColor = props.hoursHandColor ? props.hoursHandColor : defaultHoursHandColor;
   const minutesHandColor: string = props.minutesHandColor ? props.minutesHandColor : defaultMinutesHandColor; 
@@ -100,7 +103,7 @@ export const AnalogClock = (props: AnalogClockType) => {
   return (
     <svg id={props.id} width={svgDim}  height={svgDim}>
       { forceRefresh >= 0 &&
-      <g transform="translate(30,30)">
+      <g transform={`translate(30,30) scale(${sizeRatio})`}>
         { showMinutes && timeScope === TIME_SCOPE.MINUTES &&
           <g>
             <circle cx={cx} cy={cy} r={rHelp} fill={backgroundHelpColor} 

@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { AnalogClock } from "../../shared/Clock/AnalogClock/AnalogClock";
+import { AnalogClock } from "../../shared/Clock/AnalogClock";
 import { SelectClockAnalogDescriptorType } from "../../../model/componentDescriptors.types";
 import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
@@ -9,8 +9,10 @@ import { PlayListNames } from "../../../assets/playLists";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
-import { ClockUtil } from "./ClockUtil";
+import { ClockUtil } from "../../../utils/ClockUtil";
 import { SingleSelectionDialog } from "../../shared/SingleSelectionDialog/SingleSelectionDialog";
+
+import "./clockGames.css";
 
 export interface SelectClockAnalogType {
   gameDescriptor: SelectClockAnalogDescriptorType;

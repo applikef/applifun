@@ -148,12 +148,14 @@ export const HomePage = () => {
                 className={`home-page-games-list-items ${showSection[i] ? "app-show-flex" : "app-hide"}`} >
                 <div className="app-sub-title home-page-games-list-title">{t(section.title ? section.title : "")}</div>
                 {section.items.map((game: HomePageItemType,i) => 
-                  <Card key={game.id}
-                      content={<Link to={game.path} className="app-link app-default-text">{t(game.label)}</Link>}
-                      media={game.media ? baseUrl + game.media : undefined}
-                      linkMedia={game.path}
-                      height={ DeviceUtil.getImageSize(isTablet, (game.height ? game.height : ConstantsUtil.defaultImageHeight))}
-                  />
+                  { return (game.hide === undefined || game.hide === false) && 
+                    <Card key={game.id}
+                        content={<Link to={game.path} className="app-link app-default-text">{t(game.label)}</Link>}
+                        media={game.media ? baseUrl + game.media : undefined}
+                        linkMedia={game.path}
+                        height={ DeviceUtil.getImageSize(isTablet, (game.height ? game.height : ConstantsUtil.defaultImageHeight))}
+                    />
+                  }
                 )}
               </div>
             )}

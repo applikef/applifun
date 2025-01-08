@@ -29,11 +29,17 @@
   --white-03: #faebd7;
   --white-04: #ffe7cf;
 
+  --pink-01: #fbb4b9;
+  --pink-02: #f768a1;
+  --pink-03: #dd1c77;
+  --pink-04: #980043;
+
   --background: var(--gray-01);
   --text: var(--blue-03);
   --link: var(--blue-03);
   --clickable: var(--blue-01);
   --highlight: var(--red-02);
+  --highlight-background: var(--red-00);
 
   --item-background-color: var(--light-blue-00);
   

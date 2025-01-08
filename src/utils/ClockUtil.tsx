@@ -1,4 +1,4 @@
-import { ClockTime, TIME_QUARTERS, TIME_SCOPE } from "../../../model/clock.types";
+import { ClockTime, TIME_QUARTERS, TIME_SCOPE } from "../model/clock.types";
 
 export class ClockUtil {
   private static clockTimeAsText: Array<string> = [
@@ -77,8 +77,29 @@ export class ClockUtil {
     return TIME_SCOPE.HOURS_ONLY;
   }
   
+  public static getHourAsText(hour: number): string {
+    let time = (hour < 12 ? hour : hour - 12);
+    time = time === 0 ? 12 : time;
+
+    let hourText = `${ClockUtil.clockTimeAsText[time-1]}`;
+
+    /* if (hour >= 12 && hour < 15) {
+      return `${hourText} בַּצָּהֳרַיִים`;    
+    }
+    else if (hour >= 15 && hour < 17) {
+      return `${hourText} אַחַר הַצָּהֳרַיִים`;    
+    }
+    else if (hour >= 18 && hour < 19) {
+      return `${hourText} בָּעֶרֶב`;    
+    }
+    else if (hour >= 20 && hour <= 24) {
+      return `${hourText} בַּלַּיְלָה`;
+    } */
+    return hourText;
+  }
+
   public static getTimeAsText(scope: TIME_SCOPE, time: ClockTime): string {
-    const timeAsString: string = `${ClockUtil.clockTimeAsText[time.getHour()-1]}`;
+    const timeAsString: string = ClockUtil.getHourAsText(time.getHour());
     switch (scope) {
       case TIME_SCOPE.HOURS_ONLY: {
         return timeAsString;
@@ -89,7 +110,7 @@ export class ClockUtil {
           return `${timeAsString} ${ClockUtil.quartersAsText[quarterIndex -1]}`;
         }
         else if (quarterIndex === 3) {
-          return `${ClockUtil.quartersAsText[2]}${ClockUtil.clockTimeAsText[time.getHour()]}`
+          return `${ClockUtil.quartersAsText[2]}${ClockUtil.getHourAsText(time.getHour()+1)}`
         }
         else {
           return timeAsString;
@@ -107,10 +128,11 @@ export class ClockUtil {
     return timeAsString;
   }
 
-  public static getOptionTimes(scope: TIME_SCOPE, numberOfOptions: number): Array<ClockTime> {
+  public static getOptionTimes(scope: TIME_SCOPE, numberOfOptions: number, 
+    mandatoryEntry?: ClockTime): Array<ClockTime> {
     let options: Array<ClockTime> = new Array(numberOfOptions);
     // Enforce unqiness
-    options[0] = ClockUtil.getTime(scope);
+    options[0] = mandatoryEntry ? mandatoryEntry : ClockUtil.getTime(scope);
     for (let i=1; i < numberOfOptions; i++) {
       let newOption = ClockUtil.getTime(scope);
       let unique = false;
@@ -131,11 +153,22 @@ export class ClockUtil {
     return options;
   }
 
-  public static minutesToString(minutes: number): string {
+  public static timeNumberToString(minutes: number): string {
     let minutesAsString = minutes.toString();
     if (minutesAsString.length === 2) {
       return minutesAsString;
     }
     return `0${minutesAsString}`;
+  }
+
+  public static timeToDigitalClockString(time: ClockTime): string {
+    return `${ClockUtil.timeNumberToString(time.getHour())}:${ClockUtil.timeNumberToString(time.getMinutes())}`;
+  }
+
+  public static digitalToClockTime(digital:string): ClockTime {
+    const timeArray: Array<string> = digital.split(":");
+    const hour = Number(timeArray[0]);
+    const minutes = timeArray.length > 1 ? Number(timeArray[1]) : 0;
+    return new ClockTime(hour, minutes);
   }
 }

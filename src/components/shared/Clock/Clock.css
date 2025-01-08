@@ -1,0 +1,7 @@
+.clock-hand {
+  stroke-linecap: round;
+}
+
+.clock-digital-time-text {
+  font-weight: 400;
+}

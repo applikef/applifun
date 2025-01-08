@@ -7,6 +7,7 @@ export type HomePageItemType = {
   id: string;
   label: string;
   path: string;
+  hide?: boolean;
   media?: string;
   height?: number;
 }
@@ -138,6 +139,22 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=selectClockAnalog",
         media: "resources/images/clocksAnalog.png",
         height: 100
+      },
+      {
+        id: "myScheduleAnalog",
+        label: "סדר היום שלי - שעון מחוגים",
+        path: "/launch?gameId=myScheduleAnalog",
+        media: "resources/images/scheduleAnalog.png",
+        height: 100,
+        hide: true
+      },
+      {
+        id: "myScheduleDigital",
+        label: "סדר היום שלי - שעון דיגיטלי",
+        path: "/launch?gameId=myScheduleDigital",
+        media: "resources/images/scheduleDigital.png",
+        height: 100,
+        hide: true
       }
     ]
   },

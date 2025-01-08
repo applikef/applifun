@@ -64,6 +64,12 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   else if (gameId === "morningRoutine") {
     return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/morningRoutine.json");
   }
+  else if (gameId === "myScheduleAnalog") {
+    return require("./../assets/descriptors/componentDescriptors/clockDescriptors/myScheduleAnalog.json");
+  }
+  else if (gameId === "myScheduleDigital") {
+    return require("./../assets/descriptors/componentDescriptors/clockDescriptors/myScheduleDigital.json");
+  }
   else if (gameId === "selectClockAnalog") {
     return require("./../assets/descriptors/componentDescriptors/clockDescriptors/selectClockAnalog.json");
   }

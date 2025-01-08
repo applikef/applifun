@@ -1,18 +1,19 @@
 import React, { useContext, useRef, useState } from "react";
-import { AnalogClock } from "../../shared/Clock/AnalogClock/AnalogClock";
+import { AnalogClock } from "../../shared/Clock/AnalogClock";
 import { WhatIsTheTimeAnalogDescriptorType } from "../../../model/componentDescriptors.types";
 import { ClockTime, TIME_SCOPE } from "../../../model/clock.types";
 import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 
-import "./clock.css";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PlayListNames } from "../../../assets/playLists";
-import { ClockUtil } from "./ClockUtil";
+import { ClockUtil } from "../../../utils/ClockUtil";
 import { SingleSelectionDialog } from "../../shared/SingleSelectionDialog/SingleSelectionDialog";
+
+import "./clockGames.css";
 
 export interface WhatIsTheTimeAnalogType {
   gameDescriptor: WhatIsTheTimeAnalogDescriptorType;
@@ -110,7 +111,7 @@ export const WhatIsTheTimeAnalog  = (props: WhatIsTheTimeAnalogType) => {
                     {time.getHour()} 
                     {
                       timeScope === TIME_SCOPE.MINUTES && 
-                        <span>:{ClockUtil.minutesToString(time.getMinutes())}</span>
+                        <span>:{ClockUtil.timeNumberToString(time.getMinutes())}</span>
                     }
                   </span>
                 }

@@ -1,0 +1,57 @@
+@import "./../../../assets/styles/global.css";
+
+.clock-time-label {
+  display: flex;
+  flex-direction: row;
+  font-size: var(--font-size-xxl);
+  text-align: center;
+}
+
+.my-schedule-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.my-schedule-activity-list {
+  align-items: flex-start;
+}
+
+.my-schedule-activity-table {
+  border-collapse: collapse;
+}
+
+.my-schedule-selected-row {
+  border: 2px solid var(--highlight);
+  background-color: var(--highlight-background);
+  border-radius: 2px;
+}
+
+.my-schedule-plain-row {
+  border: none;
+  background-color: var(--background);
+}
+
+.my-schedule-activity-cell {
+  white-space: nowrap;
+  padding-right: var(--size-normal);
+}
+
+.my-schedule-blue-text {
+  color: var(--pink-03);
+}
+
+.my-schedule-activity-clocks {
+  display: flex;
+  flex-wrap: wrap;  
+  flex-direction: row;
+  align-content: flex-start;
+}
+
+.my-schedule-digital-clocks {
+  margin-right: var(--size-xxl);
+  margin-bottom: var(--size-xxl);
+}
+
+.my-schedule-digital-clock-icon {
+  padding-left: 16px;
+}

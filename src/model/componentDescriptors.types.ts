@@ -64,6 +64,17 @@ export interface PairsDescriptorType extends GameDescriptorType {
   settingsTitle: string;
 }
 
+export interface ScheduleEntry {
+  time: string;
+  activity: String;
+}
+
+export interface ScheduleDescriptorType extends GameDescriptorType {
+  title: string;
+  settingsTitle: string;
+  schedule: Array<ScheduleEntry>;
+}
+
 export interface TileDescriptorType extends GameDescriptorType {
   title: string;
   href: string;
