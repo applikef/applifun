@@ -62,7 +62,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
-    title: "קוֹרְאִים",
+    title: "שָׂפָה",
     media: "resources/images/letters-splash.png",
     items: [
       {
@@ -96,7 +96,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
-    title: "עוֹשִׂים",
+    title: "כִּישּׁוּרֵי חַיִּים",
     media: "resources/images/more-games.png",
     items: [
       {
@@ -119,30 +119,44 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=morningRoutine",
         media: "resources/images/wake-up.jpg",
         height: 100
+      },
+      {
+        id: "moodSelect",
+        label: "אֵיךְ הֵם מַרְגִּישִׁים?",
+        path: "/launch?gameId=moodSelect",
+        media: "resources/images/feelings.jpg",
+        height: 100
+      },
+      {
+        id: "behaviorSelect",
+        label: "כְּשֶׁאֲנִי מַרְגִּישׁ",
+        path: "/launch?gameId=behaviorSelect",
+        media: "resources/images/mood.png",
+        height: 100
       }
     ]
   },
   {
-    title: "שעון",
+    title: "שָׁעוֹן",
     media: "resources/images/clock.png",
     items: [
       {
         id: "whatIsTheTimeAnalog",
-        label: "מה השעה?",
+        label: "מָה הַשָּׁעָה?",
         path: "/launch?gameId=whatIsTheTimeAnalog",
         media: "resources/images/timeAnalog.png",
         height: 100
       },
       {
         id: "selectClockAnalog",
-        label: "איזה שעון?",
+        label: "אֵיזֶה שָׁעוֹן?",
         path: "/launch?gameId=selectClockAnalog",
         media: "resources/images/clocksAnalog.png",
         height: 100
       },
       {
         id: "myScheduleAnalog",
-        label: "סדר היום שלי - שעון מחוגים",
+        label: "סֵדֶר הַיּוֹם שֶׁלִּי - שְׁעוֹן מְחוֹגִים",
         path: "/launch?gameId=myScheduleAnalog",
         media: "resources/images/scheduleAnalog.png",
         height: 100,
@@ -150,7 +164,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
       },
       {
         id: "myScheduleDigital",
-        label: "סדר היום שלי - שעון דיגיטלי",
+        label: "סֵדֶר הַיּוֹם שֶׁלִּי - שָׁעוֹן דִּיגִיטָלִי",
         path: "/launch?gameId=myScheduleDigital",
         media: "resources/images/scheduleDigital.png",
         height: 100,
@@ -161,6 +175,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
   {
     title: "מַרְגִּישִׁים",
     media: "resources/images/feeling-transparent.png",
+    hide: true,
     items: [
       {
         id: "moodSelect",
