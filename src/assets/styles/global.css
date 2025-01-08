@@ -84,7 +84,7 @@ body {
 }
 
 .app-indent-right-08 {
-  margin-right: var(--size-s);
+  margin-right: var(--size-xs);
 }
 
 .app-indent-right-16 {
@@ -96,6 +96,10 @@ body {
 }
 
 .app-indent-top-08 {
+  margin-top: var(--size-xs);
+}
+
+.app-indent-top-12 {
   margin-top: var(--size-s);
 }
 

@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
 
 import { Card } from "../components/shared/Card/Card";
-import { HomePageItemType, HomePageSectionType, homePageDescriptor } from  "../assets/descriptors/homePageDescriptor";
+import { homePageDescriptor } from  "../assets/descriptors/homePageDescriptor";
 
 import './pages.css';
 import { useContext, useLayoutEffect, useState } from "react";
@@ -16,6 +16,7 @@ import { ModalNotification } from "../components/shared/Notification/ModalNotifi
 import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
 import { User } from "../model/users.types";
+import { HomePageItemType, HomePageSectionType } from "../model/componentDescriptors.types";
 
 export const HomePage = () => {
   const baseUrl = "/applifun/";
@@ -121,7 +122,14 @@ export const HomePage = () => {
           </span>
         </div>
         <div>
-          <div className="home-page-sub-title app-indent-top-16">{t("HomePageChooseGroup")}</div>
+          <div className="home-page-sub-title app-indent-top-16 home-page-sub-title">
+            {t("HomePageChooseGroup")}
+            <div className="home-page-sub-sub-title">
+            <Link to="/launch?gameId=gameList" className="app-link-sm">
+              {t("HomePageGamesList")}
+            </Link> 
+            </div>
+          </div>
           <div className='home-page-section-list' data-walkthrough="app-games-list">
             {homePageDescriptor.map((section: HomePageSectionType,i) =>
               (section.hide !== true && (!isTablet ||

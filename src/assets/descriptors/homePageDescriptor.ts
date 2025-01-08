@@ -1,24 +1,4 @@
-export type PointType = {
-  x: string;
-  y: string;
-}
-
-export type HomePageItemType = {
-  id: string;
-  label: string;
-  path: string;
-  hide?: boolean;
-  media?: string;
-  height?: number;
-}
-
-export type HomePageSectionType = {
-  title?: string;
-  media?: string;
-  mobile?: boolean;
-  hide?: boolean;
-  items: HomePageItemType[];
-}
+import { HomePageSectionType } from "../../model/componentDescriptors.types";
 
 export const homePageDescriptor: HomePageSectionType[] = [
   {
@@ -156,7 +136,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
       },
       {
         id: "myScheduleAnalog",
-        label: "סֵדֶר הַיּוֹם שֶׁלִּי - שְׁעוֹן מְחוֹגִים",
+        label: "myScheduleAnalog",
         path: "/launch?gameId=myScheduleAnalog",
         media: "resources/images/scheduleAnalog.png",
         height: 100,
@@ -164,7 +144,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
       },
       {
         id: "myScheduleDigital",
-        label: "סֵדֶר הַיּוֹם שֶׁלִּי - שָׁעוֹן דִּיגִיטָלִי",
+        label: "myScheduleDigital",
         path: "/launch?gameId=myScheduleDigital",
         media: "resources/images/scheduleDigital.png",
         height: 100,

@@ -21,6 +21,7 @@ import { SelectClockAnalog } from "../components/games/Clock/SelectClockAnalog";
 import { Pairs } from "../components/games/Pairs/Pairs";
 import { MyScheduleAnalog } from "../components/games/Clock/myScheduleAnalog";
 import { MyScheduleDigital } from "../components/games/Clock/myScheduleDigital";
+import { GameList } from "./GameList";
 
 
 export const LaunchPage = () => {
@@ -69,6 +70,7 @@ export const LaunchPage = () => {
       { gameId === "myScheduleDigital" && <MyScheduleDigital gameDescriptor={descriptor}/> }
       
       { gameId === "changeRecords" && <ChangeRecords/> }
+      { gameId === "gameList" && <GameList/> }
     </div>
   )
 }

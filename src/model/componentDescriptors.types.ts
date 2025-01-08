@@ -1,5 +1,22 @@
 import { PAIRS_LAYOUT } from "../utils/ConstantsUtil";
 
+export type HomePageItemType = {
+  id: string;
+  label: string;
+  path: string;
+  hide?: boolean;
+  media?: string;
+  height?: number;
+}
+
+export type HomePageSectionType = {
+  title?: string;
+  media?: string;
+  mobile?: boolean;
+  hide?: boolean;
+  items: HomePageItemType[];
+}
+
 export interface BaseItem {
   id: string;
   title?: string;

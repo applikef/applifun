@@ -4,8 +4,8 @@
   padding: 10px 10px 5px 10px;
   border: solid 1px var(--gray-02);
   background-color: var(--white-02);
-  margin-bottom: var(--size-s);
-  margin-left: var(--size-s);
+  margin-bottom: var(--size-xs);
+  margin-left: var(--size-xs);
 }
 
 .card-media {

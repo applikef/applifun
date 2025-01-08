@@ -6,9 +6,14 @@
   "HomePagePlayAndLearn": "Play and Learn",
   "HomePageChooseGroup": "Select a game group to see its available games",
   "HomePageChangeRecord": "List of all application updates",
-
+  "HomePageGamesList": "List of all available games",
+  
   "MyMouseTitle": "My Mouse",
   "MyMouseLabel": "Mouse Chase",
+
+  "myScheduleAnalog": "My schedule - analog clock",
+  "myScheduleDigital":  "My schedule - digital clock",
+  
   "MathTitle": "Math",
   "MathNumberLanguages": "What does the number mean?",
   "MathCounting": "Counting",
