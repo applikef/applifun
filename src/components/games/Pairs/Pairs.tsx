@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import "./../../../assets/styles/global.css";
 import "./Pairs.css";
 
 import { Banner } from "../../global/Banner/Banner";
-import { MatchDescriptorType, MatchItem, PairsDescriptorType, PairsItem, PairsTupple } from "../../../model/componentDescriptors.types";
-import { Notification, NotificationType } from "../../shared/Notification/Notification";
+import { PairsDescriptorType, PairsItem, PairsTupple } from "../../../model/componentDescriptors.types";
 
-import { DeviceUtil } from "../../../utils/DeviceUtil";
-import { ConstantsUtil, DIRECTION, PAIRS_LAYOUT } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, PAIRS_LAYOUT } from "../../../utils/ConstantsUtil";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
@@ -18,26 +16,15 @@ import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { PlayListNames } from "../../../assets/playLists";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
-import { Advise } from "../../shared/Advise/Advise";
 import { GeneralUtil } from "../../../utils/GeneralUtil";
 
 interface ActiveItemsType extends PairsItem {
   matchItem: string;
 }
 
-type ItemTitleNotificationType = {
-  top: number,
-  left: number,
-  content: string
-}
-
 /********************************************
- * Match game 
- * An item out of a set of items is shown at the top (number, color, letter, etc.).
- * A set of images that correspond to the various items is shown at the bottom.
- * An image that corresponds to the shown item should be clicked. If an appropriate image
- * is clicked, hooray feedback is provided and another item is shown. If the image that is
- * clicked is wrond, an ouch feedback is provided and another image-click can be attempted 
+ * Pairs game 
+ * List of words that is composed of pairs. the User clicks a word and then its pair.
  */
 export interface PairsPropsType {
   gameDescriptor: PairsDescriptorType;
@@ -46,7 +33,6 @@ export interface PairsPropsType {
 export const Pairs = (props: PairsPropsType) => {
   const { 
     audioOn, 
-    isTablet
   } = useContext(GamesContext) as GamesContextType;
 
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
@@ -62,9 +48,7 @@ export const Pairs = (props: PairsPropsType) => {
   const descriptor: PairsDescriptorType = props.gameDescriptor;
 
   const title = descriptor.title ? descriptor.title : "";
-  const titleAudioKeys = descriptor.titleAudioKeys;
   const titleAudioHover = descriptor.titleAudioHover ? descriptor.titleAudioHover : undefined;
-  const titleVariableValues = descriptor.titleVariableValues;
   const items: PairsTupple = descriptor.items;
   const layout = descriptor.layout ? descriptor.layout : PAIRS_LAYOUT.FLOAT_TEXT;
 

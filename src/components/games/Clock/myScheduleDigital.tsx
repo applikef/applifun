@@ -1,5 +1,4 @@
 import React, { useContext, useRef, useState } from "react";
-import { AnalogClock } from "../../shared/Clock/AnalogClock";
 import { ScheduleDescriptorType, ScheduleEntry } from "../../../model/componentDescriptors.types";
 import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";

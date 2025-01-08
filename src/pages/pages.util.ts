@@ -9,6 +9,8 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   const userDescriptorName = user.descriptor ? require(`./../assets/descriptors/users/${user.descriptor}`) : undefined;
   const gameDescriptorName = userDescriptorName ? userDescriptorName["games"][gameId] : undefined;
 
+  /*
+  Kept in case local profile will be reused
   let localProfile: string = "";
   const profileList: Array<ProfileDescriptor> = getProfileList(gameId);
   if (profile !== null && profile.length > 0) {
@@ -17,6 +19,7 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   else if (profileList !== undefined && profileList.length) {
     localProfile = profileList[0].id;
   }
+  */
 
   if (gameId === "bathroomRoutine") {
     return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/bathroomRoutine.json");
