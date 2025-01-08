@@ -135,7 +135,7 @@ export const Pairs = (props: PairsPropsType) => {
         else {
           setFeedbackFace(FACES.NONE);
         }
-      }, ConstantsUtil.shortPauseTimeout);
+      }, ConstantsUtil.hoorayShortTimeout);
     }
     else {
       clickCount.current = (clickCount.current-1) % 2;  // Reset second click
