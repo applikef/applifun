@@ -10,6 +10,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         label: "MyMouseLabel",
         path: "/launch?gameId=mouseJumpingShapeClick",
         media: "resources/images/mouse-frog-chase.png",
+        description: "MyMouseDescription",
         height: 100
       }
     ]
@@ -21,6 +22,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
       {
         id: "numberLanguagesShow",
         label: "MathNumberLanguages",
+        description: "MathNumberLanguagesDescription",
         path: "/launch?gameId=numberLanguagesShow",
         media: "resources/images/number-languages-show-game.png",
         height: 100
@@ -29,6 +31,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "numberMatch",
         label: "MathCounting",
         path: "/launch?gameId=numberMatch",
+        description: "MathCountingDescription",
         media: "resources/images/find-number-game.png",
         height: 100
       },
@@ -36,6 +39,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "iCount",
         label: "MathNumbersInLine",
         path: "/launch?gameId=iCount",
+        description: "MathNumbersInLineDescription",
         media: "resources/images/order-numbers-game.png",
         height: 100
       }
@@ -49,6 +53,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "letterMatch",
         label: "מִי מַתְחִיל בְּאוֹת?",
         path: "/launch?gameId=letterMatch",
+        description: "letterMatchDescription",
         media: "resources/images/find-letter-game.png",
         height: 100
       },
@@ -56,6 +61,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "wordMatch",
         label: "קוֹרְאִים מִלִּים",
         path: "/launch?gameId=wordMatch",
+        description: "wordMatchDescription",
         media: "resources/images/words-game.png",
         height: 100
       },
@@ -63,6 +69,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "iWriteWords",
         label: "מִלִּים מְבֻלְבָּלוֹת",
         path: "/launch?gameId=iWriteWords",
+        description: "iWriteWordsDescription",
         media: "resources/images/order-letters-game.png",
         height: 100
       },
@@ -70,6 +77,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "synonymsPairs",
         label: "מִלִּים נִרְדָּפוֹת",
         path: "/launch?gameId=synonymsPairs",
+        description: "synonymsPairsDescription",
         media: "resources/images/synonyms-game.png",
         height: 100
       }
@@ -83,6 +91,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "washHands",
         label: "שׁוֹטְפִים יָדַיִם",
         path: "/launch?gameId=washHands",
+        description: "washHandsDescription",
         media: "resources/images/wash-hands.jpg",
         height: 100
       },
@@ -90,6 +99,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "bathroomRoutine",
         label: "הוֹלְכִים לַשֵּׁרוּתִים",
         path: "/launch?gameId=bathroomRoutine",
+        description: "bathroomRoutineDescription",
         media: "resources/images/toilet.jpg",
         height: 100
       },
@@ -97,6 +107,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "morningRoutine",
         label: "מִסְתַּדְּרִים בַּבֹּקֶר",
         path: "/launch?gameId=morningRoutine",
+        description: "morningRoutineDescription",
         media: "resources/images/wake-up.jpg",
         height: 100
       },
@@ -104,6 +115,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "moodSelect",
         label: "אֵיךְ הֵם מַרְגִּישִׁים?",
         path: "/launch?gameId=moodSelect",
+        description: "moodSelectDescription",
         media: "resources/images/feelings.jpg",
         height: 100
       },
@@ -111,6 +123,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "behaviorSelect",
         label: "כְּשֶׁאֲנִי מַרְגִּישׁ",
         path: "/launch?gameId=behaviorSelect",
+        description: "behaviorSelectDescription",
         media: "resources/images/mood.png",
         height: 100
       }
@@ -124,6 +137,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "whatIsTheTimeAnalog",
         label: "מָה הַשָּׁעָה?",
         path: "/launch?gameId=whatIsTheTimeAnalog",
+        description: "whatIsTheTimeAnalogDescription",
         media: "resources/images/timeAnalog.png",
         height: 100
       },
@@ -131,6 +145,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "selectClockAnalog",
         label: "אֵיזֶה שָׁעוֹן?",
         path: "/launch?gameId=selectClockAnalog",
+        description: "selectClockAnalogDescription",
         media: "resources/images/clocksAnalog.png",
         height: 100
       },
@@ -138,6 +153,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "myScheduleAnalog",
         label: "myScheduleAnalog",
         path: "/launch?gameId=myScheduleAnalog",
+        description: "myScheduleAnalogDescription",
         media: "resources/images/scheduleAnalog.png",
         hide: true,
         height: 100
@@ -146,6 +162,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "myScheduleDigital",
         label: "myScheduleDigital",
         path: "/launch?gameId=myScheduleDigital",
+        description: "myScheduleDigitalDescription",
         media: "resources/images/scheduleDigital.png",
         hide: true,
         height: 100
@@ -161,6 +178,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "moodSelect",
         label: "אֵיךְ הֵם מַרְגִּישִׁים?",
         path: "/launch?gameId=moodSelect",
+        description: "",
         media: "resources/images/feelings.jpg",
         height: 100
       },
@@ -168,6 +186,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "behaviorSelect",
         label: "כְּשֶׁאֲנִי מַרְגִּישׁ",
         path: "/launch?gameId=behaviorSelect",
+        description: "",
         media: "resources/images/mood.png",
         height: 100
       }
@@ -181,6 +200,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "colorMatch",
         label: "מוֹצְאִים תְּמוּנוֹת בְּצֶבַע",
         path: "/launch?gameId=colorMatch",
+        description: "colorMatchDescription",
         media: "resources/images/find-color-game.png",
         height: 100
       },
@@ -188,6 +208,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "colorSort",
         label: "בָּתֵּי הַצְּבָעִים",
         path: "/launch?gameId=colorSort",
+        description: "colorSortDescription",
         media: "resources/images/sort-by-color-game.png",
         height: 100
       },
@@ -195,6 +216,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "numberSort",
         label: "בָּתֵּי הַמִּסְפָּרִים",
         path: "/launch?gameId=numberSort",
+        description: "numberSortDescription",
         media: "resources/images/sort-by-number-game.png",
         height: 100
       },
@@ -202,6 +224,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "shapeSort",
         label: "בָּתֵּי הַצּוּרוֹת",
         path: "/launch?gameId=shapeSort",
+        description: "shapeSortDescription",
         media: "resources/images/shape-sort-game.png",
         height: 100
       },
@@ -209,6 +232,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "moodSort",
         label: "מַּרְגִּישִׁים",
         path: "/launch?gameId=moodSort",
+        description: "moodSortDescription",
         media: "resources/images/feelings-sort.png",
         height: 100
       },
@@ -223,6 +247,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         id: "codePlay",
         label: "מְצַיְּרִים",
         path: "/launch?gameId=codePlay",
+        description: "codePlayDescription",
         media: "resources/images/pencil128.png",
       }
     ]

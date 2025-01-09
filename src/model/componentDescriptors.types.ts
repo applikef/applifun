@@ -5,6 +5,7 @@ export type HomePageItemType = {
   label: string;
   path: string;
   hide?: boolean;
+  description?: string;
   media?: string;
   height?: number;
 }

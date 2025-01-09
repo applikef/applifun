@@ -31,7 +31,8 @@ export const GameList = () => {
                     <div key={`section ${i} item ${j}`}> {
                       item.hide !== true && 
                       <div className="game-list-section-item">
-                        {t(item.label)}
+                        <span className="app-light-bold">{t(item.label)}</span>
+                        {item.description !== undefined && <span>: {t(item.description)}</span>}
                       </div> }
                     </div> 
                   )

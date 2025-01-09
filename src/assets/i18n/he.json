@@ -1,4 +1,11 @@
 {
+  "bathroomRoutineDescription": "לימוד סדר הפעולות כשהולכים לשרותים",
+  "behaviorSelectDescription": "התאמת התנהגיויות למצבי רוח",
+  "codePlayDescription": "ציור תוך כדי רכישת מיומנויות תכנות בסיסיות",
+  "colorMatchDescription": "התאמת עצמים בצבעים שונים לצבע המתאים להם",
+  "colorSortDescription": "מיון תמונות לפי צבע העצמים המופיעים בהן",
+  "HelpStr": "עזרה",
+  "letterMatchDescription": "התאמת תמונות לאות הראשונה של מה שהן מציגות",
   "HomePageMailTitle": 
     "הערות? חוויות? הצעות? נשמח לשמוע. <1>כתבו לנו ל-goofarimhaifa@gmail.com</1>",
   "HomePageMailHelp": "העתק את כתובת המייל לאפליקצית המייל שלך ושלח אלינו מייל. תודה!",
@@ -8,17 +15,34 @@
   "HomePageChooseGroup": "בְּחַר סוּג מִשְׂחָק לִרְאוֹת אֶת הַמִּשְׂחָקִים הַקַּיָּמִים",
   "HomePageChangeRecord": "לרשימת כל עדכוני המשחקים",
   "HomePageGamesList": "לרשימת כל המשחקים",
+  "iWriteWordsDescription": "סידור אותיות לבניית מילה נתונה",
+  "moodSelectDescription": "התאמת תמונות למצבי רוח שונים",
+  "moodSortDescription": "מיון תמונות לפי מצבי רוח",
 
+  "morningRoutineDescription": "לימוד סדר הפעולות בבוקר",
+  
   "MyMouseTitle": "הָעַכְבָּר שֶׁלִּי",
   "MyMouseLabel": "מִרְדָּף עַכְבָּר",
+  "MyMouseDescription": "תרגול מיומנויות עכבר בסיסיות",
 
   "myScheduleAnalog": "סֵדֶר הַיּוֹם שֶׁלִּי - שְׁעוֹן מְחוֹגִים",
+  "myScheduleAnalogDescription": "התאמת שעה על שעון מחוגים לפעליות היום בבית הספר",
   "myScheduleDigital":  "סֵדֶר הַיּוֹם שֶׁלִּי - שָׁעוֹן דִּיגִיטָלִי",
-  
+  "myScheduleDigitalDescription": "התאמת שעה על שעון דיגיטלי לפעליות היום בבית הספר",
   "MathTitle": "חֶשְׁבּוֹן",
   "MathNumberLanguages": "מָה אוֹמֵר הַמִּסְפָּר?",
+  "MathNumberLanguagesDescription": "בנית מספר ממספר העשרות והיחידות שמרכיבות אותו",
   "MathCounting": "סוֹפְרִים",
-  "MathNumbersInLine": "מִסְפָּרִים בְּתוֹר",  
+  "MathCountingDescription": "התאמת כרטיס עם מספר עצמים למספר נתון",
+  "MathNumbersInLine": "מִסְפָּרִים בְּתוֹר", 
+  "MathNumbersInLineDescription": "סידור מספרים בסדר עולה ויורד",
 
-  "HelpStr": "עזרה"
+  "numberSortDescription": "מיון תמונות לפי מספר העצמים המופיעים בהן",
+
+  "shapeSortDescription": "מיון תמונות לפי צורתן ההנדסית",
+  "selectClockAnalogDescription": "התאמת שעון מחוגים לשעה נתונה",
+  "synonymsPairsDescription": "לימוד מילים נרדפות",
+  "whatIsTheTimeAnalogDescription": "התאמת שעה לשעה המוצגת בשעון מחוגים",
+  "washHandsDescription": "לימוד סדר הפעולות כששוטפים ידיים",
+  "wordMatchDescription": "התאמת תמונות למילים שמתארות אותן"
 }
