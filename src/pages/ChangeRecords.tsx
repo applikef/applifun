@@ -1,16 +1,16 @@
 import React from "react";
 
-import "./../../assets/styles/global.css";
+import "./pages.css";
 
-import { ChangeRecordItemType, getAllChangeRecords } from "../../assets/changeRecord";
-import { Banner } from "./Banner/Banner";
+import { ChangeRecordItemType, getAllChangeRecords } from "../assets/changeRecord";
+import { Banner } from "./../components/global/Banner/Banner";
 
 export const ChangeRecords = () => {
   const entries: ChangeRecordItemType[] = getAllChangeRecords();
   
   return (
     <div className="app-page">
-      <Banner gameId=""/>
+      <Banner gameId="" showLeftIconBar={false} />
       <div className="app-indent-top-32">
         <div className="app-title">רשימת עדכוני משחקים</div>
         

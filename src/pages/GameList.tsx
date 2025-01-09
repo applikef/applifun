@@ -12,7 +12,7 @@ export const GameList = () => {
   
   return (
     <div className="app-page">
-      <Banner gameId=""/>
+      <Banner gameId="" showLeftIconBar={false} />
       <div className="app-indent-top-32 game-list-page">
         <div className="app-title">רשימת המשחקים</div>
 

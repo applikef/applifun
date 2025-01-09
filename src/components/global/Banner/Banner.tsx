@@ -11,6 +11,7 @@ export interface BannerPropsType {
   gameId: string;
   settings?: Function;
   hideAudio?: boolean;
+  showLeftIconBar?: boolean;
   helpFile?: string;
   profileHandler?: Function;
   isQuiz?: boolean;
@@ -28,6 +29,8 @@ export const Banner = (props: BannerPropsType) => {
     audioOn, 
     user 
   } = useContext(GamesContext) as GamesContextType;
+
+  const showLeftIconBar = props.showLeftIconBar !== undefined ? props.showLeftIconBar : true;
 
   const [showBannerBar, setShowBannerBar] = useState<boolean>(true);
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
@@ -74,29 +77,31 @@ export const Banner = (props: BannerPropsType) => {
                 </span>
               }
             </div>
-            <div className="banner-left-icon-bar">
-              <div>
-                <img src="resources/icons/hide.png" className="banner-icon" 
-                    title="החבא תפריט שליטה"  alt="החבא תפריט שליטה"
-                    onClick={() => setShowBannerBar(false)} />
-              </div>
-              { props.gameId.length > 0 &&
-                <div onClick={() => setHelpState()}>
-                  <img src="resources/icons/help.png" className="banner-icon" 
-                    title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
+            { showLeftIconBar &&
+              <div className="banner-left-icon-bar">
+                <div>
+                  <img src="resources/icons/hide.png" className="banner-icon" 
+                      title="החבא תפריט שליטה"  alt="החבא תפריט שליטה"
+                      onClick={() => setShowBannerBar(false)} />
                 </div>
-              }
-              {
-                !props.hideAudio && audioOn && <img src="resources/icons/speaker.png" className="banner-icon"
-                  onClick={() => turnAudioOff()} 
-                    title="קול" alt="קול" />
-              }
-              {
-                !props.hideAudio && !audioOn && <img src="resources/icons/speaker-off.png" className="banner-icon" 
-                  onClick={() => turnAudioOn()}
-                    title="קול" alt="קול" />
-              }
-            </div>
+                { props.gameId.length > 0 &&
+                  <div onClick={() => setHelpState()}>
+                    <img src="resources/icons/help.png" className="banner-icon" 
+                      title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
+                  </div>
+                }
+                {
+                  !props.hideAudio && audioOn && <img src="resources/icons/speaker.png" className="banner-icon"
+                    onClick={() => turnAudioOff()} 
+                      title="קול" alt="קול" />
+                }
+                {
+                  !props.hideAudio && !audioOn && <img src="resources/icons/speaker-off.png" className="banner-icon" 
+                    onClick={() => turnAudioOn()}
+                      title="קול" alt="קול" />
+                }
+              </div>
+            }
           </div>
         }
         {showBannerBar && <hr className="banner-hr"/>}

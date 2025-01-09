@@ -6,7 +6,7 @@ import { getGameDescriptor } from "./pages.util";
 
 import { Match } from "../components/games/Match/Match";
 import { ImagesSequence } from "../components/games/Sequence/ImagesSequence";
-import { ChangeRecords } from "./../components/global/ChangeRecords";
+import { ChangeRecords } from "./ChangeRecords";
 import { SortGame } from "../components/games/Sort/SortGame";
 import { LettersSequence } from "../components/games/Sequence/LettersSequence";
 import { NumbersSequence } from "../components/games/Sequence/NumbersSequence";
