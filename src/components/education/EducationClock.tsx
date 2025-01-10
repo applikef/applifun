@@ -35,6 +35,7 @@ export const EducationClock = () => {
     <div className="app-page">
       <Banner gameId="" showLeftIconBar={false} />
       <div className="app-title">שָׁעוֹת בְּשָׁעוֹן דִּיגִיטָלִי</div>
+      <div>הַקְלֵק עַל שָׁעוֹן דִּיגִיטָלִי כְּדֵי לִרְאוֹת אֶת הַשָּׁעָה הַמַּתְאִימָה בִּשְׁעוֹן הַמְּחוֹגִים</div>
       <div  className="app-show-flex-row">
         <div className="app-show-flex-column">
           <div className="app-sub-title education-clock-sub-title">לִפְנֵי הַצָּהֳרַיִים</div>
