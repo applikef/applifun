@@ -9,7 +9,7 @@ import { useContext, useLayoutEffect, useState } from "react";
 import { LineBreak } from "../components/shared/LineBreak";
 import { Help } from "../components/global/help/Help";
 import { AttentionArrow } from "../components/shared/AttentionArrow/AttentionArrow";
-import { ConstantsUtil, FONT_SIZE } from "../utils/ConstantsUtil";
+import { BASE_URL, ConstantsUtil, FONT_SIZE } from "../utils/ConstantsUtil";
 import GamesContext, { GamesContextType} from "../context/GamesContext";
 import { DeviceUtil } from "../utils/DeviceUtil";
 import { ModalNotification } from "../components/shared/Notification/ModalNotification";
@@ -17,9 +17,9 @@ import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
 import { User } from "../model/users.types";
 import { HomePageItemType, HomePageSectionType } from "../model/componentDescriptors.types";
+import { Education } from "../components/shared/Education/Education";
 
 export const HomePage = () => {
-  const baseUrl = "/applifun/";
   const { t } = useTranslation();
 
   const {
@@ -86,7 +86,7 @@ export const HomePage = () => {
               <span className='app-bold'>Write to us to goofarimhaifa@gmail.com</span>
             </Trans>            
           </div>
-          <img src={baseUrl + "resources/icons/help.png"} 
+          <img src={BASE_URL + "resources/icons/help.png"} 
             className="banner-icon app-clickable"
             title={t("HomePageHelpTitle")}  
             onClick={() => {               
@@ -141,7 +141,7 @@ export const HomePage = () => {
                     } 
                     <LineBreak />
                     {section.media &&
-                      <img src={baseUrl + section.media} 
+                      <img src={BASE_URL + section.media} 
                         height={DeviceUtil.imageHeightMedium(isTablet)} 
                         alt={t(section.title ? section.title : "")} onClick={(evt) => showDownArrow(evt)}/>
                     } 
@@ -154,12 +154,17 @@ export const HomePage = () => {
             {homePageDescriptor.map((section: HomePageSectionType,i) =>
               <div key={i} 
                 className={`home-page-games-list-items ${showSection[i] ? "app-show-flex" : "app-hide"}`} >
-                <div className="app-sub-title home-page-games-list-title">{t(section.title ? section.title : "")}</div>
+                <div className="app-sub-title home-page-games-list-title">
+                  {t(section.title ? section.title : "")}
+                  {section.education !== undefined &&
+                    <Education id={section.education}/>
+                  }
+                </div>
                 {section.items.map((game: HomePageItemType,i) => 
                   { return (game.hide === undefined || game.hide === false) && 
                     <Card key={game.id}
                         content={<Link to={game.path} className="app-link app-default-text">{t(game.label)}</Link>}
-                        media={game.media ? baseUrl + game.media : undefined}
+                        media={game.media ? BASE_URL + game.media : undefined}
                         linkMedia={game.path}
                         height={ DeviceUtil.getImageSize(isTablet, (game.height ? game.height : ConstantsUtil.defaultImageHeight))}
                     />
@@ -179,7 +184,7 @@ export const HomePage = () => {
       </div>
 
       <div className={`banner-help-content ${showHelp}`}>
-        <Help gameId={"generalHelp"} baseUrl={baseUrl} onClose={setHelpState}/>
+        <Help gameId={"generalHelp"} baseUrl={BASE_URL} onClose={setHelpState}/>
       </div>
       <div 
         className={`home-page-mail-help app-clickable ${showMailHelp}`}

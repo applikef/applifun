@@ -1,0 +1,9 @@
+@import "./../../assets/styles/global.css";
+
+.education-clock-sub-title {
+  margin-top: 32px;
+}
+
+.education-clock-left-column {
+  margin-right: 160px;
+}

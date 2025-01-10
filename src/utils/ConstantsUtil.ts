@@ -1,3 +1,4 @@
+export const BASE_URL = "/applifun/";
 export const HOME_PAGE_PATH = "/";
 export const URL_PARAM_TO_SECONDARY_ENTRY = "home";
 

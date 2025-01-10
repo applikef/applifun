@@ -12,6 +12,7 @@ interface AnalogClockType {
   outlineColor?: string;
   hoursHandColor?: string;
   minutesHandColor?: string;
+  showHelp?: boolean;
 }
 
 export const AnalogClock = (props: AnalogClockType) => {
@@ -38,6 +39,7 @@ export const AnalogClock = (props: AnalogClockType) => {
   const hour: number = props.time.getHour();
   const minutes: number = props.time.getMinutes();
   const timeScope: TIME_SCOPE = props.timeScope ? props.timeScope : TIME_SCOPE.HOURS_ONLY;
+  const showHelp: boolean = props.showHelp !== undefined ? props.showHelp : true;
 
   const r:number = fullSizeR;
   const cx:number = r + 10; 
@@ -104,7 +106,7 @@ export const AnalogClock = (props: AnalogClockType) => {
     <svg id={props.id} width={svgDim}  height={svgDim}>
       { forceRefresh >= 0 &&
       <g transform={`translate(30,30) scale(${sizeRatio})`}>
-        { showMinutes && timeScope === TIME_SCOPE.MINUTES &&
+        { showHelp && showMinutes && timeScope === TIME_SCOPE.MINUTES &&
           <g>
             <circle cx={cx} cy={cy} r={rHelp} fill={backgroundHelpColor} 
               stroke={helpColor} />
@@ -129,7 +131,7 @@ export const AnalogClock = (props: AnalogClockType) => {
           </text>
         })}
 
-        { highlightHoursHand && timeScope === TIME_SCOPE.HOURS_ONLY &&
+        { showHelp && highlightHoursHand && timeScope === TIME_SCOPE.HOURS_ONLY &&
         <line id={`hoursHand_${props.id}`} x1={cx} y1={cy} 
           x2={calcXHourPosition(hour, minutes, hoursHandLength)} y2={calcYHourPosition(hour, minutes, hoursHandLength)} 
           stroke={helpColor} strokeWidth={hoursHandWidth} className="clock-hand" />
@@ -146,7 +148,7 @@ export const AnalogClock = (props: AnalogClockType) => {
           y2={calcYMinutePosition(minutes, minutesHandLength)} 
           stroke={minutesHandColor} strokeWidth={minutesHandWidth} className="clock-hand" />
 
-        {showQuarters && timeScope === TIME_SCOPE.QUARTERS &&
+        {showHelp && showQuarters && timeScope === TIME_SCOPE.QUARTERS &&
           <g>
             <text key="quarterText" 
               x={cx + r + 4} y={cy} 
@@ -169,14 +171,16 @@ export const AnalogClock = (props: AnalogClockType) => {
           </g>
         }
 
-        <image x="0" y={(r*2).toString()} height="24" width="24" 
-          href="resources/icons/help.png" 
-          className="app-clickable"
-          onClick={(event: React.MouseEvent<SVGImageElement>) => {
-            showHelpHandler(); 
-            event.stopPropagation(); 
-          }} 
-        />
+        { showHelp && 
+          <image x="0" y={(r*2).toString()} height="24" width="24" 
+            href="resources/icons/help.png" 
+            className="app-clickable"
+            onClick={(event: React.MouseEvent<SVGImageElement>) => {
+              showHelpHandler(); 
+              event.stopPropagation(); 
+            }} 
+          />
+        }
       </g>
 }
     </svg>

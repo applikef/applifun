@@ -11,7 +11,9 @@ export type HomePageItemType = {
 }
 
 export type HomePageSectionType = {
+  id: string;
   title?: string;
+  education?: string;
   media?: string;
   mobile?: boolean;
   hide?: boolean;

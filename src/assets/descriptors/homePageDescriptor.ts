@@ -2,6 +2,7 @@ import { HomePageSectionType } from "../../model/componentDescriptors.types";
 
 export const homePageDescriptor: HomePageSectionType[] = [
   {
+    id: "myMouse",
     title: "MyMouseTitle",
     media: "resources/images/mouse.png",
     items: [
@@ -16,6 +17,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
+    id: "math",
     title: "MathTitle",
     media: "resources/images/numbers-splash.png",
     items: [
@@ -46,6 +48,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
+    id: "language",
     title: "שָׂפָה",
     media: "resources/images/letters-splash.png",
     items: [
@@ -84,6 +87,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
+    id: "capabilities",
     title: "כִּישּׁוּרֵי חַיִּים",
     media: "resources/images/more-games.png",
     items: [
@@ -130,8 +134,10 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
+    id: "clock",
     title: "שָׁעוֹן",
     media: "resources/images/clock.png",
+    education: "educationClock",
     items: [
       {
         id: "whatIsTheTimeAnalog",
@@ -170,29 +176,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     ]
   },
   {
-    title: "מַרְגִּישִׁים",
-    media: "resources/images/feeling-transparent.png",
-    hide: true,
-    items: [
-      {
-        id: "moodSelect",
-        label: "אֵיךְ הֵם מַרְגִּישִׁים?",
-        path: "/launch?gameId=moodSelect",
-        description: "",
-        media: "resources/images/feelings.jpg",
-        height: 100
-      },
-      {
-        id: "behaviorSelect",
-        label: "כְּשֶׁאֲנִי מַרְגִּישׁ",
-        path: "/launch?gameId=behaviorSelect",
-        description: "",
-        media: "resources/images/mood.png",
-        height: 100
-      }
-    ]
-  },
-  {
+    id: "sort",
     title: "מְמַיְּנִים",
     media: "resources/images/sort-games.png",
     items: [
@@ -240,6 +224,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
   },
   {
     /* hide: true, */
+    id: "drawing",
     title: "מְצַיְּרִים",
     media: "resources/images/pencil128.png",
     items: [
