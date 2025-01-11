@@ -37,13 +37,13 @@ export const WhatIsTheTimeAnalog  = (props: WhatIsTheTimeAnalogType) => {
   const [timeScope, setTimeScope] = useState<TIME_SCOPE>(defaultTimeScope);
 
   const [clockOptions, setClockOptions] = 
-    useState<Array<ClockTime>>(() => ClockUtil.getOptionTimes(defaultTimeScope, numberOfOptions));
+    useState<Array<ClockTime>>(() => ClockUtil.getOptionTimes(defaultTimeScope, numberOfOptions, true));
   let clockTime = useRef(clockOptions[Math.floor(Math.random() * (numberOfOptions-1))]);
 
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
 
   function updateTimes(scope: TIME_SCOPE) {
-    const options = ClockUtil.getOptionTimes(scope, numberOfOptions);
+    const options = ClockUtil.getOptionTimes(scope, numberOfOptions, true);
     setClockOptions(options);
     let newTime = options[Math.floor(Math.random() * (numberOfOptions-1))];
     while (newTime.isEqual(clockTime.current)) {
@@ -106,22 +106,7 @@ export const WhatIsTheTimeAnalog  = (props: WhatIsTheTimeAnalogType) => {
                 onClick={
                   ()=>verifyTime(new ClockTime(time.getHour(), time.getMinutes()))
                 }>
-                { (timeScope === TIME_SCOPE.HOURS_ONLY || timeScope === TIME_SCOPE.MINUTES) &&
-                  <span>
-                    {time.getHour()} 
-                    {
-                      timeScope === TIME_SCOPE.MINUTES && 
-                        <span>:{ClockUtil.timeNumberToString(time.getMinutes())}</span>
-                    }
-                  </span>
-                }
-                { timeScope === TIME_SCOPE.QUARTERS &&
-                  <span>
-                    {
-                      ClockUtil.getTimeAsText(timeScope, time)
-                    }
-                  </span>
-                }
+                { ClockUtil.getTimeAsText(timeScope, time) }
               </button>
             })
           }

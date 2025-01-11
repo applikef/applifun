@@ -22,38 +22,38 @@ export class ClockUtil {
     "רֶבַע לְ"
   ]
 
-  private static getHour(): number {
-    return Math.max(Math.floor(Math.random() * 12), 1);
+  private static getRandomHour(): number {
+    return Math.floor(Math.random() * 24);
   }
   
-  private static getMinutes(): number {
+  private static getRandomMinutes(): number {
     return Math.floor(Math.random() * 59);
   }
   
-  private static getMinutesPast30(): number {
+  private static getRandomMinutesPast30(): number {
     return Math.floor(Math.random() * 28) + 31;
   }
   
-  private static getQuarters(): number {
+  private static getRandomQuarters(): number {
     const quarterIndex = Math.floor(Math.random() * 4);
     return (TIME_QUARTERS[quarterIndex])
   }
   
-  public static getTime(scope: TIME_SCOPE): ClockTime {
-    let time = new ClockTime(ClockUtil.getHour(), 0); 
+  public static getRandomTime(scope: TIME_SCOPE): ClockTime {
+    let time = new ClockTime(ClockUtil.getRandomHour(), 0); 
     if (scope === TIME_SCOPE.HOURS_ONLY) {
       return time;
     }
     else if (scope === TIME_SCOPE.MINUTES) {
-      time.setMinutes(ClockUtil.getMinutes());
+      time.setMinutes(ClockUtil.getRandomMinutes());
       return time;
     }
     else if (scope === TIME_SCOPE.MINUTES_PAST_30) {
-      time.setMinutes(ClockUtil.getMinutesPast30());
+      time.setMinutes(ClockUtil.getRandomMinutesPast30());
       return time;
     }
     else if (scope === TIME_SCOPE.QUARTERS) {
-      time.setMinutes(ClockUtil.getQuarters());
+      time.setMinutes(ClockUtil.getRandomQuarters());
       return time;
     }
     return time;
@@ -78,47 +78,58 @@ export class ClockUtil {
   }
   
   public static getHourAsText(hour: number): string {
-    let time = (hour < 12 ? hour : hour - 12);
-    time = time === 0 ? 12 : time;
+    let time = 0;
+    if (hour % 12 === 0) {
+      time = 12;
+    }
+    else {
+      time = hour % 12;
+    }
 
-    let hourText = `${ClockUtil.clockTimeAsText[time-1]}`;
+    return ClockUtil.clockTimeAsText[time-1];
+  }
 
-    /* if (hour >= 12 && hour < 15) {
-      return `${hourText} בַּצָּהֳרַיִים`;    
+  public static getTimeIntervalText(hour: number): string {
+    if (hour >= 12 && hour < 15) {
+      return `בַּצָּהֳרַיִים`;    
     }
     else if (hour >= 15 && hour < 17) {
-      return `${hourText} אַחַר הַצָּהֳרַיִים`;    
+      return `אַחַר הַצָּהֳרַיִים`;    
     }
     else if (hour >= 18 && hour < 19) {
-      return `${hourText} בָּעֶרֶב`;    
+      return `בָּעֶרֶב`;    
     }
     else if (hour >= 20 && hour <= 24) {
-      return `${hourText} בַּלַּיְלָה`;
-    } */
-    return hourText;
+      return `בַּלַּיְלָה`;
+    }
+    return "";
   }
 
   public static getTimeAsText(scope: TIME_SCOPE, time: ClockTime): string {
-    const timeAsString: string = ClockUtil.getHourAsText(time.getHour());
+    const hour = time.getHour();
+    const timeAsString: string = ClockUtil.getHourAsText(hour);
     switch (scope) {
       case TIME_SCOPE.HOURS_ONLY: {
-        return timeAsString;
+        return `${ClockUtil.getHourAsText(hour)} ${ClockUtil.getTimeIntervalText(hour)}`;
       }
       case TIME_SCOPE.QUARTERS: {
         let quarterIndex = TIME_QUARTERS.indexOf(time.getMinutes());
         if (quarterIndex > 0 && quarterIndex < 3) {
-          return `${timeAsString} ${ClockUtil.quartersAsText[quarterIndex -1]}`;
+          return `${timeAsString} ${ClockUtil.quartersAsText[quarterIndex -1]} ${ClockUtil.getTimeIntervalText(hour)}`;
         }
         else if (quarterIndex === 3) {
-          return `${ClockUtil.quartersAsText[2]}${ClockUtil.getHourAsText(time.getHour()+1)}`
+          return `${ClockUtil.quartersAsText[2]}${ClockUtil.getHourAsText(hour+1)} ${ClockUtil.getTimeIntervalText(hour+1)}`
         }
         else {
-          return timeAsString;
+          return `${timeAsString} ${ClockUtil.getTimeIntervalText(hour)}`;
         }
       }
       case TIME_SCOPE.MINUTES: {
-        if (time.getMinutes() > 0) {
-          return `${timeAsString} ו-${time.getMinutes()} דקות`;
+        if (time.getMinutes() > 1) {
+          return `${timeAsString} ו-${time.getMinutes()} דקות ${ClockUtil.getTimeIntervalText(hour+1)}`;
+        }
+        else if (time.getMinutes() === 1) {
+          return `${timeAsString} ודקה ${ClockUtil.getTimeIntervalText(hour+1)}`
         }
         else {
           return timeAsString;
@@ -129,17 +140,22 @@ export class ClockUtil {
   }
 
   public static getOptionTimes(scope: TIME_SCOPE, numberOfOptions: number, 
+    isAnalog?: boolean,
     mandatoryEntry?: ClockTime): Array<ClockTime> {
+    const localIsAnalog = isAnalog === undefined ? false : isAnalog;
     let options: Array<ClockTime> = new Array(numberOfOptions);
+
     // Enforce unqiness
-    options[0] = mandatoryEntry ? mandatoryEntry : ClockUtil.getTime(scope);
+    options[0] = mandatoryEntry ? mandatoryEntry : ClockUtil.getRandomTime(scope);
+
     for (let i=1; i < numberOfOptions; i++) {
-      let newOption = ClockUtil.getTime(scope);
+      let newOption = ClockUtil.getRandomTime(scope);
       let unique = false;
       while (!unique) {
-        newOption = ClockUtil.getTime(scope);
+        newOption = ClockUtil.getRandomTime(scope);
         for (let j=0; j < Math.max(0,i); j++) {
-          if (options[j].isEqual(newOption)) {   
+          if (options[j].isEqual(newOption) || 
+            (localIsAnalog && options[j].toAnalog().isEqual(newOption.toAnalog()))) {   
             unique = false;         
             break;
           }

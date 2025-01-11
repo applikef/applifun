@@ -20,6 +20,17 @@ export class ClockTime {
     return this.hour;
   }
 
+  public toAnalog(): ClockTime {
+    let newTime = new ClockTime(this.hour, this.minutes);
+    if (this.hour === 12) {
+      newTime.hour = 12;
+    }
+    else {
+      newTime.hour = this.hour % 12;
+    }
+    return newTime;
+  }
+
   public getMinutes() {
     return this.minutes;
   }

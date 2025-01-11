@@ -76,7 +76,8 @@ export const MyScheduleAnalog  = (props: MyScheduleAnalogType) => {
 
   function getClockOptions(scheduleActiveEntry: number): Array<ClockTime> {
     let options = ObjectsUtil.shuffleArrayItems(ClockUtil.getOptionTimes(TIME_SCOPE.MINUTES, 
-      numberOfOptions, 
+      numberOfOptions,
+      true, 
       ClockUtil.digitalToClockTime(schedule[scheduleActiveEntry].time)));
     return options;
   }

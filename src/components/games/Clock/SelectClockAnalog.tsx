@@ -35,14 +35,14 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [timeScope, setTimeScope] = useState<TIME_SCOPE>(defaultTimeScope);
   const [clockOptions, setClockOptions] = 
-    useState<Array<ClockTime>>(() => ClockUtil.getOptionTimes(defaultTimeScope, numberOfOptions));
+    useState<Array<ClockTime>>(() => ClockUtil.getOptionTimes(defaultTimeScope, numberOfOptions, true));
 
   let clockTime = useRef(clockOptions[Math.floor(Math.random() * (numberOfOptions-1))]);
   
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
 
   function updateTimes(scope: TIME_SCOPE) {
-    const options = ClockUtil.getOptionTimes(scope, numberOfOptions);
+    const options = ClockUtil.getOptionTimes(scope, numberOfOptions, true);
     setClockOptions(options);
     let newTime = options[Math.floor(Math.random() * (numberOfOptions-1))];
     while (newTime.isEqual(clockTime.current)) {
@@ -103,7 +103,7 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
           return <span key={`clock-${i}`} 
             onClick={()=>verifyClock(i)}>
             <AnalogClock id={`option-${i+1}`} r={80}  
-              time={optionTime} timeScope={timeScope} />
+              time={optionTime.toAnalog()} timeScope={timeScope} />
           </span>
         })
       }
