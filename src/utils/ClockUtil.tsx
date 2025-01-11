@@ -126,10 +126,10 @@ export class ClockUtil {
       }
       case TIME_SCOPE.MINUTES: {
         if (time.getMinutes() > 1) {
-          return `${timeAsString} ו-${time.getMinutes()} דקות ${ClockUtil.getTimeIntervalText(hour+1)}`;
+          return `${timeAsString} וְ-${time.getMinutes()} דַּקּוֹת ${ClockUtil.getTimeIntervalText(hour+1)}`;
         }
         else if (time.getMinutes() === 1) {
-          return `${timeAsString} ודקה ${ClockUtil.getTimeIntervalText(hour+1)}`
+          return `${timeAsString} וְדַקָּה ${ClockUtil.getTimeIntervalText(hour+1)}`
         }
         else {
           return timeAsString;
