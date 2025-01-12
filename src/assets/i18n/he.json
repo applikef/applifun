@@ -26,9 +26,9 @@
   "MyMouseDescription": "תרגול מיומנויות עכבר בסיסיות",
 
   "myScheduleAnalog": "סֵדֶר הַיּוֹם שֶׁלִּי - שְׁעוֹן מְחוֹגִים",
-  "myScheduleAnalogDescription": "התאמת שעה על שעון מחוגים לפעליות היום בבית הספר",
+  "myScheduleAnalogDescription": "התאמת שעה על שעון מחוגים לפעילויות היום בבית הספר",
   "myScheduleDigital":  "סֵדֶר הַיּוֹם שֶׁלִּי - שָׁעוֹן דִּיגִיטָלִי",
-  "myScheduleDigitalDescription": "התאמת שעה על שעון דיגיטלי לפעליות היום בבית הספר",
+  "myScheduleDigitalDescription": "התאמת שעה על שעון דיגיטלי לפעילויות היום בבית הספר",
   "MathTitle": "חֶשְׁבּוֹן",
   "MathNumberLanguages": "מָה אוֹמֵר הַמִּסְפָּר?",
   "MathNumberLanguagesDescription": "בנית מספר ממספר העשרות והיחידות שמרכיבות אותו",
@@ -41,6 +41,7 @@
 
   "shapeSortDescription": "מיון תמונות לפי צורתן ההנדסית",
   "selectClockAnalogDescription": "התאמת שעון מחוגים לשעה נתונה",
+  "selectClockDigitalDescription": "התאמת שעון דיגיטלי לשעה נתונה",
   "synonymsPairsDescription": "לימוד מילים נרדפות",
   "whatIsTheTimeAnalogDescription": "התאמת שעה לשעה המוצגת בשעון מחוגים",
   "whatIsTheTimeDigitalDescription": "התאמת שעה לשעה המוצגת בשעון דיגיטלי",
