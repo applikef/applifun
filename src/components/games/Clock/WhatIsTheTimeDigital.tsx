@@ -96,7 +96,7 @@ export const WhatIsTheTimeDigital  = (props: WhatIsTheTimeDigitalType) => {
       </div>
 
       <div style={{textAlign: "center"}}>
-        <DigitalClock id="main" time={clockTime.current} height={64}/> 
+        <DigitalClock id="main" time={clockTime.current} height={64} showHelp={true}/> 
 
         <div className="what-is-the-time-digital-clocks">
           <span className="page-header-title font-size-xl">שָׁעָה</span>
