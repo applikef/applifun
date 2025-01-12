@@ -90,12 +90,15 @@ export class ClockUtil {
   }
 
   public static getTimeIntervalText(hour: number): string {
-    if (hour >= 12 && hour < 15) {
-      return `בַּצָּהֳרַיִים`;    
+    if (hour >= 1 && hour <= 5) {
+      return `לִפְנוֹת בּוֹקֶר`;
     }
-    else if (hour >= 15 && hour <= 17) {
-      return `אַחַר הַצָּהֳרַיִים`;    
-    }
+    // else if (hour > 12 && hour < 15) {
+    //   return `בַּצָּהֳרַיִים`;    
+    // }
+    // else if (hour >= 15 && hour <= 17) {
+    //   return `אַחַר הַצָּהֳרַיִים`;    
+    // }
     else if (hour >= 18 && hour <= 19) {
       return `בָּעֶרֶב`;    
     }
@@ -132,11 +135,11 @@ export class ClockUtil {
           return `${timeAsString} וְדַקָּה ${ClockUtil.getTimeIntervalText(hour+1)}`
         }
         else {
-          return timeAsString;
+          return `${timeAsString} ${ClockUtil.getTimeIntervalText(hour)}`;
         }
       }
     }
-    return timeAsString;
+    return `${timeAsString} ${ClockUtil.getTimeIntervalText(hour)}`;
   }
 
   public static getOptionTimes(scope: TIME_SCOPE, numberOfOptions: number, 

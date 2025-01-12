@@ -177,7 +177,6 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=myScheduleAnalog",
         description: "myScheduleAnalogDescription",
         media: "resources/images/scheduleAnalog.png",
-        hide: true,
         height: 100
       },
       {
@@ -186,7 +185,6 @@ export const homePageDescriptor: HomePageSectionType[] = [
         path: "/launch?gameId=myScheduleDigital",
         description: "myScheduleDigitalDescription",
         media: "resources/images/scheduleDigital.png",
-        hide: true,
         height: 100
       }
     ]
