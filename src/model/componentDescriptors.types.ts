@@ -102,13 +102,13 @@ export interface TileDescriptorType extends GameDescriptorType {
   media: string;
 }
 
-export interface WhatIsTheTimeAnalogDescriptorType extends GameDescriptorType {
+export interface WhatIsTheTimeDescriptorType extends GameDescriptorType {
   title: string;
   settingsTitle: string;
   hourTypes: Array<BaseItem>;
 }
 
-export interface SelectClockAnalogDescriptorType extends GameDescriptorType {
+export interface SelectClockDescriptorType extends GameDescriptorType {
   title: string;
   settingsTitle: string;
   hourTypes: Array<BaseItem>;

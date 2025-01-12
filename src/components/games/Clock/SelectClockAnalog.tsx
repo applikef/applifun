@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { AnalogClock } from "../../shared/Clock/AnalogClock";
-import { SelectClockAnalogDescriptorType } from "../../../model/componentDescriptors.types";
+import { SelectClockDescriptorType } from "../../../model/componentDescriptors.types";
 import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { ClockTime, TIME_SCOPE } from "../../../model/clock.types";
@@ -15,7 +15,7 @@ import { SingleSelectionDialog } from "../../shared/SingleSelectionDialog/Single
 import "./clockGames.css";
 
 export interface SelectClockAnalogType {
-  gameDescriptor: SelectClockAnalogDescriptorType;
+  gameDescriptor: SelectClockDescriptorType;
 }
 
 export const SelectClockAnalog  = (props: SelectClockAnalogType) => {

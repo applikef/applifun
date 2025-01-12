@@ -18,6 +18,7 @@ import { CodePlay } from "../CodePlay/CodePlay";
 import GamesContext, { GamesContextType } from "../context/GamesContext";
 import { WhatIsTheTimeAnalog } from "../components/games/Clock/WhatIsTheTimeAnalog";
 import { SelectClockAnalog } from "../components/games/Clock/SelectClockAnalog";
+import { WhatIsTheTimeDigital } from "../components/games/Clock/WhatIsTheTimeDigital";
 import { Pairs } from "../components/games/Pairs/Pairs";
 import { MyScheduleAnalog } from "../components/games/Clock/myScheduleAnalog";
 import { MyScheduleDigital } from "../components/games/Clock/myScheduleDigital";
@@ -67,6 +68,7 @@ export const LaunchPage = () => {
 
       { gameId === "whatIsTheTimeAnalog" && <WhatIsTheTimeAnalog gameDescriptor={descriptor}/> }
       { gameId === "selectClockAnalog" && <SelectClockAnalog gameDescriptor={descriptor}/> }
+      { gameId === "whatIsTheTimeDigial" && <WhatIsTheTimeDigital gameDescriptor={descriptor}/> }
       { gameId === "myScheduleAnalog" && <MyScheduleAnalog gameDescriptor={descriptor}/> }
       { gameId === "myScheduleDigital" && <MyScheduleDigital gameDescriptor={descriptor}/> }
       

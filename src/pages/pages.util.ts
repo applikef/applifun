@@ -88,6 +88,9 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   else if (gameId === "whatIsTheTimeAnalog") {
     return require("./../assets/descriptors/componentDescriptors/clockDescriptors/whatIsTheTimeAnalog.json");
   }
+  else if (gameId === "whatIsTheTimeDigial") {
+    return require("./../assets/descriptors/componentDescriptors/clockDescriptors/whatIsTheTimeDigial.json");
+  }
   else if (gameId === "wordMatch") {
     if (gameDescriptorName) {
       return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);

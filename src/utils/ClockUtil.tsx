@@ -93,13 +93,13 @@ export class ClockUtil {
     if (hour >= 12 && hour < 15) {
       return `בַּצָּהֳרַיִים`;    
     }
-    else if (hour >= 15 && hour < 17) {
+    else if (hour >= 15 && hour <= 17) {
       return `אַחַר הַצָּהֳרַיִים`;    
     }
-    else if (hour >= 18 && hour < 19) {
+    else if (hour >= 18 && hour <= 19) {
       return `בָּעֶרֶב`;    
     }
-    else if (hour >= 20 && hour <= 24) {
+    else if (hour === 0 || (hour >= 20 && hour <= 24)) {
       return `בַּלַּיְלָה`;
     }
     return "";

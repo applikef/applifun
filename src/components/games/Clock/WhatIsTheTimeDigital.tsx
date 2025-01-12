@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import { AnalogClock } from "../../shared/Clock/AnalogClock";
+import { DigitalClock } from "../../shared/Clock/DigitalClock";
 import { WhatIsTheTimeDescriptorType } from "../../../model/componentDescriptors.types";
 import { ClockTime, TIME_SCOPE } from "../../../model/clock.types";
 import { Banner } from "../../global/Banner/Banner";
@@ -15,11 +15,11 @@ import { SingleSelectionDialog } from "../../shared/SingleSelectionDialog/Single
 
 import "./clockGames.css";
 
-export interface WhatIsTheTimeAnalogType {
+export interface WhatIsTheTimeDigitalType {
   gameDescriptor: WhatIsTheTimeDescriptorType;
 }
 
-export const WhatIsTheTimeAnalog  = (props: WhatIsTheTimeAnalogType) => {
+export const WhatIsTheTimeDigital  = (props: WhatIsTheTimeDigitalType) => {
   const { 
     audioOn
   } = useContext(GamesContext) as GamesContextType;
@@ -96,9 +96,9 @@ export const WhatIsTheTimeAnalog  = (props: WhatIsTheTimeAnalogType) => {
       </div>
 
       <div style={{textAlign: "center"}}>
-        <AnalogClock id="main" r={80} time={clockTime.current} timeScope={timeScope}/>
+        <DigitalClock id="main" time={clockTime.current} height={64}/> 
 
-        <div>
+        <div className="what-is-the-time-digital-clocks">
           <span className="page-header-title font-size-xl">שָׁעָה</span>
           { 
             clockOptions.map((time: ClockTime, i: number) => {

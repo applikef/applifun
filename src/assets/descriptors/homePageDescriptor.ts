@@ -172,7 +172,15 @@ export const homePageDescriptor: HomePageSectionType[] = [
         media: "resources/images/scheduleDigital.png",
         hide: true,
         height: 100
-      }
+      },
+      {
+        id: "whatIsTheTimeDigial",
+        label: "מָה הַשָּׁעָה? שָׁעוֹן דִּיגִיטָלִי",
+        path: "/launch?gameId=whatIsTheTimeDigial",
+        description: "whatIsTheTimeDigitalDescription",
+        media: "resources/images/timeDigital.png",
+        height: 100
+      },
     ]
   },
   {
