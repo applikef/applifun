@@ -1,0 +1,15 @@
+{
+  "gameId": "selectClockDigital",
+  "title":"הַקְלֵק עַל הַשָּׁעוֹן שֶׁמַּרְאֶה אֶת הַשָּׁעָה ",
+  "settingsTitle": "בחר סוג שעות למשחק",
+  "hourTypes": [
+    {
+      "id": "HOURS_ONLY",
+      "name": "שעות שלמות"
+    },
+    {
+      "id": "MINUTES",
+      "name": "דקות"
+    }
+  ]
+}

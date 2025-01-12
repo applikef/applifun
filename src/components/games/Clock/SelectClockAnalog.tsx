@@ -100,7 +100,7 @@ export const SelectClockAnalog  = (props: SelectClockAnalogType) => {
     <div style={{textAlign: "center"}}>
       {
         clockOptions.map((optionTime: ClockTime, i: number) => {
-          return <span key={`clock-${i}`} 
+          return <span key={`clock-${i}`} className="app-clickable"
             onClick={()=>verifyClock(i)}>
             <AnalogClock id={`option-${i+1}`} r={80}  
               time={optionTime.toAnalog()} timeScope={timeScope} />

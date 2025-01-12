@@ -156,6 +156,22 @@ export const homePageDescriptor: HomePageSectionType[] = [
         height: 100
       },
       {
+        id: "whatIsTheTimeDigial",
+        label: "מָה הַשָּׁעָה? שָׁעוֹן דִּיגִיטָלִי",
+        path: "/launch?gameId=whatIsTheTimeDigial",
+        description: "whatIsTheTimeDigitalDescription",
+        media: "resources/images/timeDigital.png",
+        height: 100
+      },
+      {
+        id: "selectClockDigital",
+        label: "אֵיזֶה שָׁעוֹן? שָׁעוֹן דִּיגִיטָלִי",
+        path: "/launch?gameId=selectClockDigital",
+        description: "selectClockDigitalDescription",
+        media: "resources/images/clocksDigital.png",
+        height: 100
+      },
+      {
         id: "myScheduleAnalog",
         label: "myScheduleAnalog",
         path: "/launch?gameId=myScheduleAnalog",
@@ -172,15 +188,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
         media: "resources/images/scheduleDigital.png",
         hide: true,
         height: 100
-      },
-      {
-        id: "whatIsTheTimeDigial",
-        label: "מָה הַשָּׁעָה? שָׁעוֹן דִּיגִיטָלִי",
-        path: "/launch?gameId=whatIsTheTimeDigial",
-        description: "whatIsTheTimeDigitalDescription",
-        media: "resources/images/timeDigital.png",
-        height: 100
-      },
+      }
     ]
   },
   {

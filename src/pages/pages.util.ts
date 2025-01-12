@@ -76,6 +76,9 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   else if (gameId === "selectClockAnalog") {
     return require("./../assets/descriptors/componentDescriptors/clockDescriptors/selectClockAnalog.json");
   }
+  else if (gameId === "selectClockDigital") {
+    return require("./../assets/descriptors/componentDescriptors/clockDescriptors/selectClockDigital.json");
+  }
   else if (gameId === "shapeSort") {
     return require("./../assets/descriptors/componentDescriptors/sortDescriptors/shapeSort.json");
   }
