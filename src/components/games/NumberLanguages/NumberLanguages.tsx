@@ -17,15 +17,21 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   const UNITS = 0;
   const TENS = 1;
 
-  const unitSise = 20;
-  const tenSize = unitSise * 10;
-  const spaceSize = 10;
-  const largeSpaceSize = 15;
+  const unitSize = 20;
+  const tenSize = unitSize * 3;
 
-  const seed = Math.random();
-  let number = useRef<number>(seed === 0 ? 1 : seed === 1 ? props.scope-1 : Math.floor(seed * props.scope));
+  const spaceSize = 10;
+  const largeSpaceSize = 32;
+  const numbersBankTop = 60;
+  const numbersBankTitleTop = 48;
+
+  const bankWidth = 64 + unitSize + tenSize + 2 * largeSpaceSize
+  const unitBankX = 64 + tenSize + largeSpaceSize + unitSize / 2;
+  const tensBankX = 64 + tenSize / 2;
+
+  const [number, setNumber] = useState<number>(newNumber());
   const numberDigits = 
-    [number.current - Math.floor(number.current / 10) * 10, Math.floor(number.current / 10)];
+    [number - Math.floor(number / 10) * 10, Math.floor(number / 10)];
 
 //  const number = seed === 0 ? 1 : seed === 1 ? props.scope-1 : Math.floor(seed * props.scope);
 //  const numberDigits = [number - Math.floor(number / 10) * 10, Math.floor(number / 10)];
@@ -55,25 +61,31 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
       isTablet,
     } = useContext(GamesContext) as GamesContextType;
   
-    function add(
-    serialNo: number, 
-    sourceArray: Array<number>, 
-    sourcePrefix: string, 
-    targetArray: Array<number>, 
-    targetPrefix: string, 
-    digit: number, 
-    feedbackIdPrefix: string) {
-    document.getElementById(sourcePrefix + serialNo)!.style.visibility = "hidden";
-    sourceArray[serialNo] = -1;
-    document.getElementById(targetPrefix + targetArray.length)!.style.visibility = "visible";
-    targetArray.push(1);
-    if (feedbackIdPrefix === unitId) {
-      setUnitTargerCount(unitTargetCount + 1);
+    function newNumber(): number {
+      const seed = Math.random();
+      let number = seed === 0 ? 1 : seed === 1 ? props.scope-1 : Math.floor(seed * props.scope);
+      return number;
     }
-    else {
-      setTenTargerCount(tenTargetCount + 1);
-    }
-    ValidateState(targetArray, digit, feedbackIdPrefix)
+  
+      function add(
+      serialNo: number, 
+      sourceArray: Array<number>, 
+      sourcePrefix: string, 
+      targetArray: Array<number>, 
+      targetPrefix: string, 
+      digit: number, 
+      feedbackIdPrefix: string) {
+      document.getElementById(sourcePrefix + serialNo)!.style.visibility = "hidden";
+      sourceArray[serialNo] = -1;
+      document.getElementById(targetPrefix + targetArray.length)!.style.visibility = "visible";
+      targetArray.push(1);
+      if (feedbackIdPrefix === unitId) {
+        setUnitTargerCount(unitTargetCount + 1);
+      }
+      else {
+        setTenTargerCount(tenTargetCount + 1);
+      }
+      ValidateState(targetArray, digit, feedbackIdPrefix)
   }
 
   function remove(
@@ -159,32 +171,56 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   }
 
   const titleTemplate = "הַקְלֵק עַל עֲשָׂרוֹת וְעַל יְחִידוֹת שֶׁמַּתְאִימוֹת לַמִּסְפָּר $number$";
-  const title = ObjectsUtil.getTitle(titleTemplate, number.current.toString());
+  const title = ObjectsUtil.getTitle(titleTemplate, number.toString());
 
   return(
     <div className="app-page">
       <Banner gameId="numberLanguagesShow"/>
       
       <div className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XL)}`}>
-        <PageHeader title={title} 
-          feedbackFace={ FACES.NONE } />
+        { /*
+        <button className="app-button-widget number-languages-newNumber-button"
+          onClick={() => setNumber(newNumber())}>
+            מִסְפָּר חָדָשׁ
+        </button>
+        */ }
+        <PageHeader title={title} feedbackFace={ FACES.NONE } />
       </div>
 
-      <h1 className="number-title">{ number.current }</h1>
+      <h1 className="number-title">{ number }</h1>
       <h2 className="number-sub-title">{numberDigits[1]} עֲשָׂרוֹת, {numberDigits[0]}  יְחִידוֹת  -  { getNumberName(numberDigits) }</h2>
       <div style={{display: "flex", flexDirection: "row"}}>
         <div style={{display: "flex"}}>
-          <svg width={9 * (unitSise+spaceSize)} height={11 * (unitSise+spaceSize) + largeSpaceSize}>
-            <text x="150" y="20" fontSize={20}>בַּנְק יְחִידוֹת</text>
+          <svg width={9 * (unitSize+spaceSize)} height={11 * (unitSize+spaceSize) + largeSpaceSize}>
+            <text x={bankWidth/2} y="20" fontSize={20} text-anchor="middle">בַּנְק מִסְפָּרִים</text>
+            <text x={unitBankX} y={numbersBankTitleTop} text-anchor="middle"
+              fontSize={20}>יְחִידוֹת</text>
             { [...Array(9)].map((val,i) => 
               <rect id={unitIdBankPrefix + i} key={i} 
-                className="number-languages-item-bank" width={unitSise} height={unitSise} 
-                x={i * (unitSise+spaceSize)} y={40} 
+                className="number-languages-item-bank" width={unitSize} height={unitSize} 
+                x={unitBankX - (unitSize/2)} y={numbersBankTop + i * (unitSize+spaceSize)} 
                 onClick={ () => add(i, unitsBank.current, unitIdBankPrefix, unitsTarget.current, unitIdTargetPrefix, UNITS, unitId) } 
                 style={{visibility: "visible" }} />
             )}
+          {
+            props.scope > 10 &&
+            <g>
+              <text x={tensBankX} y={numbersBankTitleTop} fontSize={20}
+                text-anchor="middle">עֲשָׂרוֹת</text>
+              <g>
+                { [...Array(9)].map((val,i) => 
+                <rect id={tenIdBankPrefix + i} key={i} 
+                  className="number-languages-item-bank" width={tenSize} height={unitSize} 
+                  x={tensBankX - (tenSize/2)} y={numbersBankTop + i * (unitSize+spaceSize)}
+                  onClick={ () => add(i, tensBank.current, tenIdBankPrefix, tensTarget.current, tenIdTargetPrefix, TENS, tenId) }
+                  style={{visibility: "visible" }} />
+                )}
+              </g>
+            </g>
+          }
           </svg>
         </div>
+
 
         <div style={{display: "flex"}}>
           <table className="number-languages-table"><tbody>
@@ -207,12 +243,12 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
             </tr>
             <tr>
               <td style={{ border:"1px solid #FFFFFF" }}>
-                <svg height={(unitSise + spaceSize)*9} width={9 * (unitSise+spaceSize) + spaceSize}>
+                <svg height={(unitSize + spaceSize)*9} width={9 * (unitSize+spaceSize) + spaceSize}>
                   <g transform={"translate(" + spaceSize + " " + spaceSize + ")"}>
                     { [...Array(9)].map((val,i) => 
                       <rect id={unitIdTargetPrefix + i} key={i} 
-                        className="number-languages-item" width={unitSise} height={unitSise} 
-                        x={i * (unitSise+spaceSize)} y={0} 
+                        className="number-languages-item" width={unitSize} height={unitSize} 
+                        x={i * (unitSize+spaceSize)} y={0} 
                         onClick={ () => remove(i, unitsBank.current, unitIdBankPrefix, unitsTarget.current, unitIdTargetPrefix, UNITS, unitId) } 
                         style={{visibility: "hidden" }} />
                     )}
@@ -220,11 +256,12 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
                 </svg>
               </td>
               <td style={{ border:"1px solid #FFFFFF" }}>
-                <svg height={(unitSise + spaceSize)*9} width={tenSize + 2*spaceSize}>
+                <svg height={(unitSize + spaceSize)*9} width={tenSize + 2*spaceSize}>
                   <g transform={"translate(" + spaceSize + " " + spaceSize + ")"}>
                     { [...Array(9)].map((val,i) => 
-                      <rect id={tenIdTargetPrefix + i} key={i} className="number-languages-item" width={tenSize} height={unitSise} 
-                        x={0} y={i * (unitSise+spaceSize)}
+                      <rect id={tenIdTargetPrefix + i} key={i} className="number-languages-item" 
+                        width={tenSize} height={unitSize} 
+                        x={0} y={i * (unitSize+spaceSize)}
                         onClick={ () => remove(i, tensBank.current, tenIdBankPrefix, tensTarget.current, tenIdTargetPrefix, TENS, tenId) }
                         style={{visibility: "hidden" }} />
                     )}
@@ -233,23 +270,6 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
               </td>
             </tr>
           </tbody></table>
-        </div>
-        <div style={{display: "flex"}}>
-          {
-            props.scope > 10 &&
-            <svg  width={9 * (unitSise+spaceSize)} height={11 * (unitSise+spaceSize) + largeSpaceSize}>
-              <text x="150" y="20" fontSize={20}>בַּנְק עֲשָׂרוֹת</text>
-              <g>
-                { [...Array(9)].map((val,i) => 
-                <rect id={tenIdBankPrefix + i} key={i} 
-                  className="number-languages-item-bank" width={tenSize} height={unitSise} 
-                  x={0} y={40 + i * (unitSise+spaceSize)}
-                  onClick={ () => add(i, tensBank.current, tenIdBankPrefix, tensTarget.current, tenIdTargetPrefix, TENS, tenId) }
-                  style={{visibility: "visible" }} />
-                )}
-              </g>
-            </svg>
-          }
         </div>
       </div>
     </div>
