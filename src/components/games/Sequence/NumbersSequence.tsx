@@ -47,6 +47,8 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
+  const maxListLength = 10;
+
   const Directions = {
     "UP": {
       id: NumbersOrder.UP,
@@ -73,7 +75,6 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   const [numberLists, setNumberLists] = 
     useState<NumberListDescriptorType[]>(props.gameDescriptor.numberLists ?
       props.gameDescriptor.numberLists
-//    ObjectsUtil.shuffleArrayItems(props.gameDescriptor.numberLists) 
     : []);
   const numberOfNumberLists = useRef<number>(props.gameDescriptor.numberLists!.length);
 
@@ -81,7 +82,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   const [numberList, setNumberList] = useState<NumberListDescriptorType>(numberLists[0]);
   const [orderedNumbers, setOrderedNumbers] = useState<ViewEntry[]>([]);
   const [shuffledNumbers, setShuffledNumbers] = useState<ViewEntry[]>([]);
-  const [gameSettinsDisplay, setGameSettinsDisplay] = useState<string>("game-settings-global-hide");
+  const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
   const [numberSequenceSettings, setNumbersSequenceSettings] =
     useState<NumbersSequenceSettings>({
       selectedNumberListIndices: Array(numberListsCatalogSize).fill(true),
@@ -107,10 +108,21 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   }, [numberLists]);
 
   useEffect(() => {
+    let range = numberList.range;
     let tmpOrderedNumbers: number[] = [];
-    if (numberList.range !== undefined && numberList.range.length === 2) {
-      const length = numberList.range[1] - numberList.range[0] + 1;
-      tmpOrderedNumbers = Array.from({length: length}, (_, i) => i + numberList.range![0])
+    if (range !== undefined && range.length === 2) {
+      const length = range[1] - range[0] + 1;
+      if (length <= maxListLength) {
+        tmpOrderedNumbers = Array.from({length: length}, (_, i) => i + range![0])
+      }
+      else {
+        let indices: Array<number> = ObjectsUtil.generateRandomNumbers(range[0], range[1], maxListLength);
+        indices = indices.sort(function(a, b){return a - b});
+        tmpOrderedNumbers = new Array<number>();
+        for (let i=0; i < maxListLength; i++) {
+          tmpOrderedNumbers.push(range[0] + indices[i]);
+        }
+      }
     }
     else {      // value is defined and numbers are provided in order
       tmpOrderedNumbers = numberList.values!;
@@ -135,10 +147,6 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
         });
     }));
   }, [numberList, numberSequenceSettings.direction]);
-
-  function getFeedbackId(n: number): string {
-    return `feedback-${numberList.id}-${n}`;
-  }
 
   function getBankId(n: number): string {
     return `bank-${numberList.id}-${n}`;
@@ -215,7 +223,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
   }
   
   function handleSettingsCancel() {
-    setGameSettinsDisplay(()=>"game-settings-global-hide"); 
+    setGameSettingsDisplay(()=>"game-settings-global-hide"); 
   }
 
   function handleSettingsDone() {
@@ -236,7 +244,18 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
       direction: pendingNumbersSequenceSettings.direction
     })
     pageTitle.current = pendingNumbersSequenceSettings.direction === NumbersOrder.UP ? titleUp : titleDown;
-    setGameSettinsDisplay(()=>"game-settings-global-hide")
+    setGameSettingsDisplay(()=>"game-settings-global-hide")
+  }
+
+  function orderedNumbersAsString() {
+    let str = "";
+    for (let i=0; i < orderedNumbers.length; i++) {
+      let e = orderedNumbers[i];
+      if (e.show) {
+        str += ` ${i === 0 ? ' ' : (numberSequenceSettings.direction === NumbersOrder.UP ? '<' : '>')} ${e.value}`;
+      }
+    }
+    return str;
   }
 
   return (
@@ -249,7 +268,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
             selectedNumberListIndices: numberSequenceSettings.selectedNumberListIndices,
             direction: numberSequenceSettings.direction
           });
-          setGameSettinsDisplay("game-settings-global-show")
+          setGameSettingsDisplay("game-settings-global-show")
       }}/>
 
       <div className="letters-sequence-global">
@@ -266,25 +285,18 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
           </div>
         </div>
 
-        <div className="sequence-feedback">
+        <div className="sequence-container sequence-feedback">
           <h3>
             פֹּה לְמַטָּה נִרְאֶה אֶת הַמִּסְפָּרִים מְסֻדָּרִים
           </h3>
 
           <div id="feedback-area" className="sequence-feedback-numbers">
-            { orderedNumbers.map((e:ViewEntry) =>
-                  e.show && <span className="sequence-feedback-letter sequence-letter" 
-                    id={getFeedbackId(e.value)} 
-                    key={e.value}>
-                      {e.value}
-                  </span>
-                )
-            }
+            <span className="sequence-letter">{ orderedNumbersAsString()}</span>
           </div>  
         </div>
       </div>
 
-      <div id="gameSettings" className={ gameSettinsDisplay }>
+      <div id="gameSettings" className={ gameSettingsDisplay }>
         <div>
           <div className="game-settings-title">
             { props.gameDescriptor.settingsTitle ?
@@ -309,6 +321,7 @@ export const NumbersSequence = (props: NumbersSequenceProps) => {
               </div>
           )}
           <br/>
+          
           <div>סדר המספרים</div>
           { Object.values(Directions).map(
             (d, i) => 

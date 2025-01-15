@@ -77,7 +77,8 @@
 .sequence-feedback-numbers {
   direction: ltr;
   text-align: left;
-  overflow-wrap: anywhere;
+  margin-left: 32px;
+  text-wrap: wrap;
 }
 
 .sequence-letter-last-letter {

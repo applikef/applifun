@@ -54,6 +54,22 @@ public static sortNumbers = (array: number[]) => {
     return Array.from(Array(length).keys())
   }
 
+  public static generateRandomNumbers(min: number, max: number, numberOfNumbers: number): Array<number> {
+    let arr = new Array<number>();
+    let i = 0;
+    while (i < numberOfNumbers) {
+      let n = Math.floor(Math.random() * (max - min + 1)) + min;
+      if (arr.includes(n)) {
+        continue;
+      }
+      else {
+        arr.push(n);
+        i++;
+      }
+    }
+    return arr;
+  }
+
   // Used and tested for simple elements as strings
   public static equalByValue = (arr1: any[], arr2: any[]) => {
     if (arr1.length !== arr2.length) {
