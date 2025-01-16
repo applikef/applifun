@@ -21,6 +21,11 @@ const changeRecord: ChangeRecordType = {
   "first": 3,
   "entries": [
     {
+      "title": "לימוד שעון",
+      "date": "16-01-2026",
+      "content": "הוספת שעון מחוגים למסך הלימוד של שעון"
+    },
+    {
       "title": "סדר היום שלי",
       "date": "16-01-2026",
       "content": "עדכון הפעילויות והזמנים שלהן"

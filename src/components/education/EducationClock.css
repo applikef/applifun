@@ -1,9 +1,38 @@
 @import "./../../assets/styles/global.css";
 
+.education-clock-title {
+  margin-right: 32px;
+  font-size: var(--font-size-l);
+}
+
+.education-clock-digital-title {
+  margin-top: 16px;
+  font-size: var(--font-size-l);
+}
+
 .education-clock-sub-title {
   margin-top: 32px;
 }
 
 .education-clock-left-column {
   margin-right: 160px;
+}
+
+.education-clock-input {
+  margin-right: 16px;
+  margin-top: 16px;
+  font-size: var(--font-size-l);
+}
+
+.education-clock-input-time {
+  width: 200px;
+  font-size: var(--font-size-xl);
+  margin-top: 16px;
+  text-align: center;
+}
+
+.education-clock-button-selected {
+  border: 2px solid var(--highlight);
+  color: var(--highlight);
+  background-color: var(--highlight-background);
 }

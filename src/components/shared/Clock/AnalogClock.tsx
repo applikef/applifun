@@ -13,6 +13,7 @@ interface AnalogClockType {
   hoursHandColor?: string;
   minutesHandColor?: string;
   showHelp?: boolean;
+  showHelpOnStart?: boolean;
 }
 
 export const AnalogClock = (props: AnalogClockType) => {
@@ -20,7 +21,13 @@ export const AnalogClock = (props: AnalogClockType) => {
   const fullSizeR = 80;
   const sizeRatio = props.r / fullSizeR;
 
-  const svgDim = (fullSizeR + defaultHelpWidth) * sizeRatio * 2 + 20;
+  const r:number = fullSizeR;
+  const rHelp = r + defaultHelpWidth;
+  const svgDim = (rHelp + defaultHelpWidth) * sizeRatio * 2;
+
+  const center = (rHelp + defaultHelpWidth) * 2 / 2;
+  const cx:number = center; 
+  const cy:number = center;
 
   const hoursHandWidth = 4;
   const minutesHandWidth = 4;
@@ -40,14 +47,10 @@ export const AnalogClock = (props: AnalogClockType) => {
   const minutes: number = props.time.getMinutes();
   const timeScope: TIME_SCOPE = props.timeScope ? props.timeScope : TIME_SCOPE.HOURS_ONLY;
   const showHelp: boolean = props.showHelp !== undefined ? props.showHelp : true;
+  const showHelpOnStart: boolean = props.showHelpOnStart !== undefined ? props.showHelpOnStart : false;
 
-  const r:number = fullSizeR;
-  const cx:number = r + 10; 
-  const cy:number = r + 10;
   const fill: string = props.backgroundColor ? props.backgroundColor : defaultBackgroundColor; 
   const stroke: string = props.outlineColor ? props.outlineColor : defaultOutlineColor; 
-
-  const rHelp = r + defaultHelpWidth ;
 
   const hoursHandColor = props.hoursHandColor ? props.hoursHandColor : defaultHoursHandColor;
   const minutesHandColor: string = props.minutesHandColor ? props.minutesHandColor : defaultMinutesHandColor; 
@@ -62,10 +65,29 @@ export const AnalogClock = (props: AnalogClockType) => {
   const [forceRefresh, setForceRefresh] = useState<number>(0);
 
   useEffect(() => {
-    setHighlightHoursHand(false);
-    setShowMinutes(false);
-    setShowQuarters(false);
-  }, [timeScope]);
+    if (showHelpOnStart) {
+      if (timeScope === TIME_SCOPE.HOURS_ONLY) {
+        setHighlightHoursHand(true);
+        setShowMinutes(false);
+        setShowQuarters(false);
+      }
+      else if (timeScope === TIME_SCOPE.QUARTERS) {
+        setHighlightHoursHand(false);
+        setShowMinutes(false);
+        setShowQuarters(true);
+      }
+      else {    // timeScope === TIME_SCOPE.MINUTES
+        setHighlightHoursHand(false);
+        setShowMinutes(true);
+        setShowQuarters(false);
+      }
+    }
+    else {
+      setHighlightHoursHand(false);
+      setShowMinutes(false);
+      setShowQuarters(false);
+    }
+  }, [showHelpOnStart, timeScope]);
 
   function calcXHourPosition(hour: number, minutes: number, r: number) {
     return (cx + r * Math.cos((hour-3) * hourAngle + minutes * hourShiftAngle))
@@ -105,7 +127,7 @@ export const AnalogClock = (props: AnalogClockType) => {
   return (
     <svg id={props.id} width={svgDim}  height={svgDim}>
       { forceRefresh >= 0 &&
-      <g transform={`translate(30,30) scale(${sizeRatio})`}>
+      <g transform={`scale(${sizeRatio})`}>
         { showHelp && showMinutes && timeScope === TIME_SCOPE.MINUTES &&
           <g>
             <circle cx={cx} cy={cy} r={rHelp} fill={backgroundHelpColor} 
@@ -172,7 +194,7 @@ export const AnalogClock = (props: AnalogClockType) => {
         }
 
         { showHelp && 
-          <image x="0" y={(r*2).toString()} height="24" width="24" 
+          <image x="0" y={cy+rHelp-24} height="24" width="24" 
             href="resources/icons/help.png" 
             className="app-clickable"
             onClick={(event: React.MouseEvent<SVGImageElement>) => {

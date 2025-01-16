@@ -46,6 +46,10 @@ body {
   color: var(--highlight);
 }
 
+.app-center {
+  text-align: center;
+}
+
 .app-title-centered {
   text-align: center;
   padding-bottom: 1rem;

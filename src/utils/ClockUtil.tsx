@@ -180,6 +180,26 @@ export class ClockUtil {
     return `0${minutesAsString}`;
   }
 
+  public static isValidTimeString(timestr: string): boolean {
+    const timeArr = timestr.split(":");
+    if (timeArr.length !== 2) {
+      return false;
+    }
+    else {
+      const hours = Number(timeArr[0]);
+      const minutes = Number(timeArr[1]);
+      if (isNaN(hours) || isNaN(minutes)) {
+        return false;
+      }
+
+      if (hours >= 0 && hours <= 24 && minutes >= 0 && minutes < 60) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
   public static timeToDigitalClockString(time: ClockTime): string {
     return `${ClockUtil.timeNumberToString(time.getHour())}:${ClockUtil.timeNumberToString(time.getMinutes())}`;
   }
