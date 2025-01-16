@@ -21,6 +21,11 @@ const changeRecord: ChangeRecordType = {
   "first": 3,
   "entries": [
     {
+      "title": "סדר היום שלי",
+      "date": "16-01-2026",
+      "content": "עדכון הפעילויות והזמנים שלהן"
+    },
+    {
       "title": "הרחבת מספרים בתור",
       "date": "15-01-2026",
       "content": "הרחבת טווח המספרים לסידור עד 10000"
