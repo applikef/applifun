@@ -21,6 +21,11 @@ const changeRecord: ChangeRecordType = {
   "first": 3,
   "entries": [
     {
+      "title": "שפת המספרים",
+      "date": "16-01-2026",
+      "content": "הוספת להקצאת מספר חדש מתוך המסך של המשחק"
+    },
+    {
       "title": "לימוד שעון",
       "date": "16-01-2026",
       "content": "הוספת שעון מחוגים למסך הלימוד של שעון"
