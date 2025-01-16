@@ -13,7 +13,7 @@ export const Education = (props: EducationProps) => {
       {
         <Link to={`/launch?gameId=${props.id}`} className="app-link-sm">
           <img src={BASE_URL + "resources/icons/advise128.png"} 
-            alt="education icon" 
+            alt="education icon" title="הַקְלֵק כְּדֵי לִרְאוֹת חוֹמֶר לִימּוּד"
             height={64}>
           </img>
         </Link> 
