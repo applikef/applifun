@@ -55,7 +55,7 @@ export const LaunchPage = () => {
       { gameId === "morningRoutine" && <ImagesSequence gameDescriptor={descriptor}/> }
       { gameId === "washHands" && <ImagesSequence gameDescriptor={descriptor}/> }
 
-      { gameId === "numberLanguagesShow" && <NumberLanguages scope={ 100 }/> }
+      { gameId === "numberLanguagesShow" && <NumberLanguages scope={ 1 }/> }
 
       { gameId === "mouseJumpingShapeClick" && <MouseSkillsJumpingShape eventType={MOUSE_SKILL_TYPE.CLICK}/> }
 

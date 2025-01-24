@@ -8,80 +8,119 @@ import { FEEDBACK_FACE_SIZE, FONT_SIZE } from "../../../utils/ConstantsUtil";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 
+export const enum NUMBERS_SCOPE {
+  UNITS = 0,
+  TENS = 1,
+  HUNDREDS = 2
+}
+
 export interface NumberLanguagesProps {
-  scope: number;
+  scope: NUMBERS_SCOPE;
 }
 
 export const NumberLanguages = (props: NumberLanguagesProps) => {
+  const [scope, setScope] = useState<NUMBERS_SCOPE>(props.scope ? props.scope : NUMBERS_SCOPE.UNITS);
 
-  const UNITS = 0;
-  const TENS = 1;
-
-  const unitSize = 20;
-  const tenSize = unitSize * 3;
+  const barSize: Array<number> = [
+    20, 60, 180
+  ];
 
   const spaceSize = 10;
   const largeSpaceSize = 32;
   const numbersBankTop = 60;
   const numbersBankTitleTop = 48;
 
-  const bankWidth = 64 + unitSize + tenSize + 2 * largeSpaceSize
-  const unitBankX = 64 + tenSize + largeSpaceSize + unitSize / 2;
-  const tensBankX = 64 + tenSize / 2;
+  let bankWidth = 64 + (scope+1) * largeSpaceSize;
+  for (let i=0; i <= scope; i++) {
+    bankWidth += barSize[i];
+  }
+
+  let bankX = [
+    64 + barSize[1] / 2
+  ];
+  if (scope === NUMBERS_SCOPE.TENS) {
+    bankX = [
+      64 + barSize[1] + barSize[0] / 2 + largeSpaceSize,
+      64 + barSize[1] / 2
+    ]
+  }
+  else if (scope === NUMBERS_SCOPE.HUNDREDS) {
+    bankX = [
+      64 + barSize[2] + barSize[1] + barSize[0] / 2 + 2 * largeSpaceSize,
+      64 + barSize[1] + barSize[0] / 2 + largeSpaceSize,
+      64 + barSize[1] / 2
+    ]
+  }
 
   const [number, setNumber] = useState<number>(newNumber());
-  const numberDigits = 
-    [number - Math.floor(number / 10) * 10, Math.floor(number / 10)];
+  const numberAsString = number.toString();
+  const numberLength = numberAsString.length;
+  let numberDigits = [      // [unites, tens, hundreds]
+    Number(numberAsString.substring(numberLength-1)), 
+    scope > NUMBERS_SCOPE.UNITS ? Number(numberAsString.substring(numberLength-2, numberLength-1)) : 0,
+    scope > NUMBERS_SCOPE.TENS ? Number(numberAsString.substring(numberLength-3, numberLength-2)) : 0
+  ];
 
   let unitsBank = useRef<Array<number>>([...Array(9)]);
   let tensBank = useRef<Array<number>>([...Array(9)]);
+  let hundredsBank = useRef<Array<number>>([...Array(9)]);
   let unitsTarget = useRef<Array<number>>([]);
   let tensTarget = useRef<Array<number>>([]);
+  let hundredsTarget = useRef<Array<number>>([]);
 
   const unitId: string = "unit";
   const tenId: string = "ten";
+  const hundredId: string = "hundred";
 
   const unitIdBankPrefix = "unitSource_";
   const tenIdBankPrefix = "tenSource_";
+  const hundredIdBankPrefix = "hundredSource_";
   const unitIdTargetPrefix = "unitTarget_";
   const tenIdTargetPrefix = "tenTarget_";
+  const hundredIdTargetPrefix = "hundredTarget_";
 
   const [unitTargetCount, setUnitTargerCount] = useState<number>(unitsTarget.current.length);
   const [tenTargetCount, setTenTargerCount] = useState<number>(tensTarget.current.length);
+  const [hundredTargetCount, setHundredTargerCount] = useState<number>(hundredsTarget.current.length);
 
   const [unitFeedbackFace, setUnitFeedbackFace] = 
     useState<FACES>(numberDigits[0] === 0 ? FACES.HAPPY : FACES.NONE);
   const [tenFeedbackFace, setTenFeedbackFace] = 
     useState<FACES>(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
+  const [hundredFeedbackFace, setHundredFeedbackFace] = 
+    useState<FACES>(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
 
-    const {
-      isTablet,
-    } = useContext(GamesContext) as GamesContextType;
+  const {
+    isTablet,
+  } = useContext(GamesContext) as GamesContextType;
+
+  function newNumber(): number {
+    let number = ObjectsUtil.generateRandomNumbers(1,(10**(scope+1))-1,1)[0];
+    return number;
+  }
   
-    function newNumber(): number {
-      let number = ObjectsUtil.generateRandomNumbers(1,99,1)[0];
-      return number;
+  function add(
+    serialNo: number, 
+    sourceArray: Array<number>, 
+    sourcePrefix: string, 
+    targetArray: Array<number>, 
+    targetPrefix: string, 
+    digit: number, 
+    feedbackIdPrefix: string) {
+    document.getElementById(sourcePrefix + serialNo)!.style.visibility = "hidden";
+    sourceArray[serialNo] = -1;
+    document.getElementById(targetPrefix + targetArray.length)!.style.visibility = "visible";
+    targetArray.push(1);
+    if (feedbackIdPrefix === unitId) {
+      setUnitTargerCount(() => unitTargetCount + 1);
     }
-  
-      function add(
-      serialNo: number, 
-      sourceArray: Array<number>, 
-      sourcePrefix: string, 
-      targetArray: Array<number>, 
-      targetPrefix: string, 
-      digit: number, 
-      feedbackIdPrefix: string) {
-      document.getElementById(sourcePrefix + serialNo)!.style.visibility = "hidden";
-      sourceArray[serialNo] = -1;
-      document.getElementById(targetPrefix + targetArray.length)!.style.visibility = "visible";
-      targetArray.push(1);
-      if (feedbackIdPrefix === unitId) {
-        setUnitTargerCount(unitTargetCount + 1);
-      }
-      else {
-        setTenTargerCount(tenTargetCount + 1);
-      }
-      ValidateState(targetArray, digit, feedbackIdPrefix)
+    else if (feedbackIdPrefix === tenId) {
+      setTenTargerCount(() => tenTargetCount + 1);
+    }
+    else {
+      setHundredTargerCount(() => hundredTargetCount + 1);
+    }
+    ValidateState(targetArray, digit, feedbackIdPrefix)
   }
 
   function remove(
@@ -94,11 +133,15 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     feedbackIdPrefix: string) {
     targetArray.pop();
     if (feedbackIdPrefix === unitId) {
-      setUnitTargerCount(unitTargetCount - 1);
+      setUnitTargerCount(() => unitTargetCount - 1);
+    }
+    else if (feedbackIdPrefix === tenId) {
+      setTenTargerCount(() => tenTargetCount - 1);
     }
     else {
-      setTenTargerCount(tenTargetCount - 1);
+      setHundredTargerCount(() => hundredTargetCount - 1);
     }
+
     document.getElementById(targetPrefix + serialNo)!.style.visibility = "hidden";
     for (let i=0; i < sourceArray.length; i++) {
       if (sourceArray[i] === -1) {
@@ -115,24 +158,33 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
       if (idPrefix === unitId) {
         setUnitFeedbackFace(FACES.WORRY);
       }
-      else {
+      else if (idPrefix === tenId) {
         setTenFeedbackFace(FACES.WORRY);
+      }
+      else {
+        setHundredFeedbackFace(FACES.WORRY);
       }
     }
     else if (targetArray.length === numberDigits[digit]) {
       if (idPrefix === unitId) {
         setUnitFeedbackFace(FACES.HAPPY);
       }
-      else {
+      if (idPrefix === tenId) {
         setTenFeedbackFace(FACES.HAPPY);
+      }
+      else {
+        setHundredFeedbackFace(FACES.HAPPY);
       }
     }
     else {
       if (idPrefix === unitId) {
         setUnitFeedbackFace(FACES.NONE);
       }
-      else {
+      if (idPrefix === tenId) {
         setTenFeedbackFace(FACES.NONE);
+      }
+      else {
+        setHundredFeedbackFace(FACES.NONE);
       }
     }
   }
@@ -145,47 +197,84 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     const tenName: Array<string> =
       ["עֶשֶׂר", "עֶשְׂרִים", "שְׁלוֹשִׁים", "אַרְבָּעִים", "חֲמִשִּׁים", "שִׁשִּׁים", "שִׁבְעִים", "שְׁמוֹנִים", "תִּשְׁעִים"];
     const and: Array<string> = ["וְ", "וּ"];
-              
-    if (numberDigits[1] === 0 || (numberDigits[0] === 0 && numberDigits[1] === 1)) {
+    const hundredName: Array<string> = ["מֵאָה", "מָאתַיִים", "שְׁלוֹשׁ מֵאוֹת", "אַרְבַּע מֵאוֹת", "חָמֵשׁ מֵאוֹת", "שֵׁשׁ מֵאוֹת", "שְׁבַע מֵאוֹת", "שְׁמוֹנֶה מֵאוֹת", "תְּשַׁע מֵאוֹת"];
+
+    if (numberDigits[2] === 0 && numberDigits[1] === 0 && numberDigits[0] > 0) {
       return unitNames[numberDigits[0]-1];
+    }    
+
+    let numberAsString: string = "";
+
+    if (numberDigits[2] > 0) {
+      numberAsString += hundredName[numberDigits[2]-1];
+    }
+
+    if (numberDigits[0] === 0 && numberDigits[1] === 1) {
+      numberAsString += tenName[numberDigits[1]-1];
     }
     else if (numberDigits[1] === 1) {
-      return firstTenName[numberDigits[0]-1]
+      numberAsString += firstTenName[numberDigits[0]-1]
     }
     else {
       if (numberDigits[0] === 0) {
-        return tenName[numberDigits[1]-1]
+        numberAsString += tenName[numberDigits[1]-1]
       }
       else {
         let andIndex:number = 0;
         if (numberDigits[0] === 2 || numberDigits[0] === 8) {
           andIndex = 1;
         }
-        return tenName[numberDigits[1]-1] + " " + and[andIndex] + unitNames[numberDigits[0]-1];
+        numberAsString += tenName[numberDigits[1]-1] + " " + and[andIndex] + unitNames[numberDigits[0]-1];
       }
     }
+    return numberAsString;
   }
 
   function updateNumber() {
     for (let serialNo=0; serialNo < 9; serialNo++) {
       document.getElementById(unitIdBankPrefix + serialNo)!.style.visibility = "visible";
       document.getElementById(unitIdTargetPrefix + serialNo)!.style.visibility = "hidden";
-      document.getElementById(tenIdBankPrefix + serialNo)!.style.visibility = "visible";
-      document.getElementById(tenIdTargetPrefix + serialNo)!.style.visibility = "hidden";
+      if (scope > NUMBERS_SCOPE.UNITS) {
+        document.getElementById(tenIdBankPrefix + serialNo)!.style.visibility = "visible";
+        document.getElementById(tenIdTargetPrefix + serialNo)!.style.visibility = "hidden";
+      }
+      if (scope > NUMBERS_SCOPE.TENS) {
+        document.getElementById(hundredIdBankPrefix + serialNo)!.style.visibility = "visible";
+        document.getElementById(hundredIdTargetPrefix + serialNo)!.style.visibility = "hidden";
+      }
     }
-
-    setUnitFeedbackFace(FACES.NONE);
-    setTenFeedbackFace(FACES.NONE);
 
     unitsBank.current = [...Array(9)];
     tensBank.current = [...Array(9)];
+    hundredsBank.current = [...Array(9)];
     unitsTarget.current = [];
     tensTarget.current = [];
+    hundredsTarget.current = [];
   
     setUnitTargerCount(0);
     setTenTargerCount(0);
+    setHundredTargerCount(0);
   
-    setNumber(newNumber());
+    let updatedNumber = newNumber();
+    while (updatedNumber === number) {
+      updatedNumber = newNumber();
+    }
+
+    let numberAsString: string = updatedNumber.toString();
+    let numberLength: number = numberAsString.length;
+    setNumber(updatedNumber);
+
+    const numberDigits = [      // [unites, tens, hundreds]
+      Number(numberAsString.substring(numberLength-1)), 
+      scope > NUMBERS_SCOPE.UNITS ? Number(numberAsString.substring(numberLength-2, numberLength-1)) : 0,
+      scope > NUMBERS_SCOPE.TENS ? Number(numberAsString.substring(numberLength-3, numberLength-2)) : 0
+    ];
+  
+    setUnitFeedbackFace(numberDigits[0] === 0 ? FACES.HAPPY : FACES.NONE);
+    setTenFeedbackFace(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
+    setHundredFeedbackFace(numberDigits[2] === 0 ? FACES.HAPPY : FACES.NONE);
+
+
   }
 
   const titleTemplate = "הַקְלֵק עַל עֲשָׂרוֹת וְעַל יְחִידוֹת שֶׁמַּתְאִימוֹת לַמִּסְפָּר $number$";
@@ -205,32 +294,60 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
       </div>
 
       <h1 className="number-title">{ number }</h1>
-      <h2 className="number-sub-title">{numberDigits[1]} עֲשָׂרוֹת, {numberDigits[0]}  יְחִידוֹת  -  { getNumberName(numberDigits) }</h2>
+      <div className="number-sub-title">
+        { scope > NUMBERS_SCOPE.UNITS &&
+          <span> 
+            {numberDigits[1]} עֲשָׂרוֹת וְ-  
+          </span>
+        }
+        <span>
+          {numberDigits[0]}  יְחִידוֹת  -  { getNumberName(numberDigits) }
+        </span>
+      </div>
       <div style={{display: "flex", flexDirection: "row"}}>
         { number &&
           <div style={{display: "flex"}}>
-            <svg width={9 * (unitSize+spaceSize)} height={11 * (unitSize+spaceSize) + largeSpaceSize}>
+            <svg width={9 * (barSize[0]+spaceSize)} height={11 * (barSize[0]+spaceSize) + largeSpaceSize}>
               <text x={bankWidth/2} y="20" fontSize={20} textAnchor="middle">בַּנְק מִסְפָּרִים</text>
-              <text x={unitBankX} y={numbersBankTitleTop} textAnchor="middle"
+              <text x={bankX[0]} y={numbersBankTitleTop} textAnchor="middle"
                 fontSize={20}>יְחִידוֹת</text>
               { [...Array(9)].map((val,i) => 
                 <rect id={unitIdBankPrefix + i} key={i} 
-                  className="number-languages-item-bank" width={unitSize} height={unitSize} 
-                  x={unitBankX - (unitSize/2)} y={numbersBankTop + i * (unitSize+spaceSize)} 
-                  onClick={ () => add(i, unitsBank.current, unitIdBankPrefix, unitsTarget.current, unitIdTargetPrefix, UNITS, unitId) } 
+                  className="number-languages-item-bank" width={barSize[0]} height={barSize[0]} 
+                  x={bankX[0] - (barSize[0]/2)} y={numbersBankTop + i * (barSize[0]+spaceSize)} 
+                  onClick={ () => add(i, unitsBank.current, unitIdBankPrefix, unitsTarget.current, 
+                    unitIdTargetPrefix, NUMBERS_SCOPE.UNITS, unitId) } 
                   style={{visibility: "visible" }} />
               )}
             {
-              props.scope > 10 &&
+              scope > NUMBERS_SCOPE.UNITS &&
               <g>
-                <text x={tensBankX} y={numbersBankTitleTop} fontSize={20}
+                <text x={bankX[1]} y={numbersBankTitleTop} fontSize={20}
                   textAnchor="middle">עֲשָׂרוֹת</text>
                 <g>
                   { [...Array(9)].map((val,i) => 
                   <rect id={tenIdBankPrefix + i} key={i} 
-                    className="number-languages-item-bank" width={tenSize} height={unitSize} 
-                    x={tensBankX - (tenSize/2)} y={numbersBankTop + i * (unitSize+spaceSize)}
-                    onClick={ () => add(i, tensBank.current, tenIdBankPrefix, tensTarget.current, tenIdTargetPrefix, TENS, tenId) }
+                    className="number-languages-item-bank" width={barSize[1]} height={barSize[0]} 
+                    x={bankX[1] - (barSize[1]/2)} y={numbersBankTop + i * (barSize[0]+spaceSize)}
+                    onClick={ () => add(i, tensBank.current, tenIdBankPrefix, tensTarget.current, 
+                      tenIdTargetPrefix, NUMBERS_SCOPE.TENS, tenId) }
+                    style={{visibility: "visible" }} />
+                  )}
+                </g>
+              </g>
+            }
+            {
+              scope > NUMBERS_SCOPE.TENS &&
+              <g>
+                <text x={bankX[2]} y={numbersBankTitleTop} fontSize={20}
+                  textAnchor="middle">מֵאוֹת</text>
+                <g>
+                  { [...Array(9)].map((val,i) => 
+                  <rect id={hundredIdBankPrefix + i} key={i} 
+                    className="number-languages-item-bank" width={barSize[2]} height={barSize[0]} 
+                    x={bankX[2] - (barSize[2]/2)} y={numbersBankTop + i * (barSize[0]+spaceSize)}
+                    onClick={ () => add(i, hundredsBank.current, hundredIdBankPrefix, hundredsTarget.current, 
+                      hundredIdTargetPrefix, NUMBERS_SCOPE.HUNDREDS, hundredId) }
                     style={{visibility: "visible" }} />
                   )}
                 </g>
@@ -251,7 +368,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
                   <FaceFeedback face={unitFeedbackFace} size={FEEDBACK_FACE_SIZE.M}></FaceFeedback>
                 </td>
                 {
-                  props.scope > 10 &&
+                  scope > NUMBERS_SCOPE.UNITS &&
                     <td className="number-languages-unit-header">
                       <span className="number-languages-unit-title">
                         {tenTargetCount} עֲשָׂרוֹת
@@ -259,33 +376,62 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
                       <FaceFeedback face={tenFeedbackFace} size={FEEDBACK_FACE_SIZE.M}></FaceFeedback>
                     </td>
                 }
+                {
+                  scope > NUMBERS_SCOPE.TENS &&
+                    <td className="number-languages-unit-header">
+                      <span className="number-languages-unit-title">
+                        {tenTargetCount} מֵאוֹת
+                      </span>
+                      <FaceFeedback face={hundredFeedbackFace} size={FEEDBACK_FACE_SIZE.M}></FaceFeedback>
+                    </td>
+                }
               </tr>
               <tr>
                 <td style={{ border:"1px solid #FFFFFF" }}>
-                  <svg height={(unitSize + spaceSize)*9} width={9 * (unitSize+spaceSize) + spaceSize}>
+                  <svg height={(barSize[0] + spaceSize)*9} width={9 * (barSize[0]+spaceSize) + spaceSize}>
                     <g transform={"translate(" + spaceSize + " " + spaceSize + ")"}>
                       { [...Array(9)].map((val,i) => 
                         <rect id={unitIdTargetPrefix + i} key={i} 
-                          className="number-languages-item" width={unitSize} height={unitSize} 
-                          x={i * (unitSize+spaceSize)} y={0} 
-                          onClick={ () => remove(i, unitsBank.current, unitIdBankPrefix, unitsTarget.current, unitIdTargetPrefix, UNITS, unitId) } 
+                          className="number-languages-item" width={barSize[0]} height={barSize[0]} 
+                          x={i * (barSize[0]+spaceSize)} y={0} 
+                          onClick={ () => remove(i, unitsBank.current, unitIdBankPrefix, unitsTarget.current, 
+                            unitIdTargetPrefix, NUMBERS_SCOPE.UNITS, unitId) } 
                           style={{visibility: "hidden" }} />
                       )}
                     </g>
                   </svg>
                 </td>
                 <td style={{ border:"1px solid #FFFFFF" }}>
-                  <svg height={(unitSize + spaceSize)*9} width={tenSize + 2*spaceSize}>
+                { scope > NUMBERS_SCOPE.UNITS &&
+                  <svg height={(barSize[0] + spaceSize)*9} width={barSize[1] + 2*spaceSize}>
                     <g transform={"translate(" + spaceSize + " " + spaceSize + ")"}>
                       { [...Array(9)].map((val,i) => 
                         <rect id={tenIdTargetPrefix + i} key={i} className="number-languages-item" 
-                          width={tenSize} height={unitSize} 
-                          x={0} y={i * (unitSize+spaceSize)}
-                          onClick={ () => remove(i, tensBank.current, tenIdBankPrefix, tensTarget.current, tenIdTargetPrefix, TENS, tenId) }
+                          width={barSize[1]} height={barSize[0]} 
+                          x={0} y={i * (barSize[0]+spaceSize)}
+                          onClick={ () => remove(i, tensBank.current, tenIdBankPrefix, tensTarget.current, 
+                            tenIdTargetPrefix, NUMBERS_SCOPE.TENS, tenId) }
                           style={{visibility: "hidden" }} />
                       )}
                     </g>
                   </svg>
+                }
+                </td>
+                <td style={{ border:"1px solid #FFFFFF" }}>
+                { scope > NUMBERS_SCOPE.TENS &&
+                  <svg height={(barSize[0] + spaceSize)*9} width={barSize[2] + 2*spaceSize}>
+                    <g transform={"translate(" + spaceSize + " " + spaceSize + ")"}>
+                      { [...Array(9)].map((val,i) => 
+                        <rect id={hundredIdTargetPrefix + i} key={i} className="number-languages-item" 
+                          width={barSize[2]} height={barSize[0]} 
+                          x={0} y={i * (barSize[0]+spaceSize)}
+                          onClick={ () => remove(i, hundredsBank.current, hundredIdBankPrefix, hundredsTarget.current, 
+                            hundredIdTargetPrefix, NUMBERS_SCOPE.HUNDREDS, hundredId) }
+                          style={{visibility: "hidden" }} />
+                      )}
+                    </g>
+                  </svg>
+                }
                 </td>
               </tr>
             </tbody></table>
