@@ -30,25 +30,26 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   const numbersBankTop = 60;
   const numbersBankTitleTop = 48;
 
-  let bankWidth = 64 + (scope+1) * largeSpaceSize;
+  let bankWidth = (scope+1) * largeSpaceSize;
   for (let i=0; i <= scope; i++) {
     bankWidth += barSize[i];
   }
-
+  bankWidth = Math.max(bankWidth, 120);
+  
   let bankX = [
-    64 + barSize[1] / 2
+    barSize[1] / 2
   ];
   if (scope === NUMBERS_SCOPE.TENS) {
     bankX = [
-      64 + barSize[1] + barSize[0] / 2 + largeSpaceSize,
-      64 + barSize[1] / 2
+      barSize[1] + barSize[0] / 2 + largeSpaceSize,
+      barSize[1] / 2
     ]
   }
   else if (scope === NUMBERS_SCOPE.HUNDREDS) {
     bankX = [
-      64 + barSize[2] + barSize[1] + barSize[0] / 2 + 2 * largeSpaceSize,
-      64 + barSize[1] + barSize[0] / 2 + largeSpaceSize,
-      64 + barSize[1] / 2
+      barSize[2] + barSize[1] + barSize[0] / 2 + 2 * largeSpaceSize,
+      barSize[2] + barSize[0] / 2 + largeSpaceSize,
+      barSize[2] / 2
     ]
   }
 
@@ -64,9 +65,9 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   let unitsBank = useRef<Array<number>>([...Array(9)]);
   let tensBank = useRef<Array<number>>([...Array(9)]);
   let hundredsBank = useRef<Array<number>>([...Array(9)]);
-  let unitsTarget = useRef<Array<number>>([]);
-  let tensTarget = useRef<Array<number>>([]);
-  let hundredsTarget = useRef<Array<number>>([]);
+  let unitsTarget = useRef<Array<number>>([...Array(9)]);
+  let tensTarget = useRef<Array<number>>([...Array(9)]);
+  let hundredsTarget = useRef<Array<number>>([...Array(9)]);
 
   const unitId: string = "unit";
   const tenId: string = "ten";
@@ -79,9 +80,9 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   const tenIdTargetPrefix = "tenTarget_";
   const hundredIdTargetPrefix = "hundredTarget_";
 
-  const [unitTargetCount, setUnitTargerCount] = useState<number>(unitsTarget.current.length);
-  const [tenTargetCount, setTenTargerCount] = useState<number>(tensTarget.current.length);
-  const [hundredTargetCount, setHundredTargerCount] = useState<number>(hundredsTarget.current.length);
+  const [unitTargetCount, setUnitTargerCount] = useState<number>(0);
+  const [tenTargetCount, setTenTargerCount] = useState<number>(0);
+  const [hundredTargetCount, setHundredTargerCount] = useState<number>(0);
 
   const [unitFeedbackFace, setUnitFeedbackFace] = 
     useState<FACES>(numberDigits[0] === 0 ? FACES.HAPPY : FACES.NONE);
@@ -99,6 +100,15 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     return number;
   }
   
+  function getEmptySlotIndex(targetArray: Array<number>): number {
+    for (let i=0; i < targetArray.length; i++) {
+      if (targetArray[i] !== -1) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
   function add(
     serialNo: number, 
     sourceArray: Array<number>, 
@@ -109,8 +119,10 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     feedbackIdPrefix: string) {
     document.getElementById(sourcePrefix + serialNo)!.style.visibility = "hidden";
     sourceArray[serialNo] = -1;
-    document.getElementById(targetPrefix + targetArray.length)!.style.visibility = "visible";
-    targetArray.push(1);
+    const targetIndex = getEmptySlotIndex(targetArray);
+    document.getElementById(targetPrefix + targetIndex)!.style.visibility = "visible";
+    targetArray[targetIndex] = -1;
+
     if (feedbackIdPrefix === unitId) {
       setUnitTargerCount(() => unitTargetCount + 1);
     }
@@ -120,6 +132,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     else {
       setHundredTargerCount(() => hundredTargetCount + 1);
     }
+
     ValidateState(targetArray, digit, feedbackIdPrefix)
   }
 
@@ -131,7 +144,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     targetPrefix: string, 
     digit: number, 
     feedbackIdPrefix: string) {
-    targetArray.pop();
+    targetArray[serialNo] = serialNo;
     if (feedbackIdPrefix === unitId) {
       setUnitTargerCount(() => unitTargetCount - 1);
     }
@@ -153,19 +166,19 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     ValidateState(targetArray, digit, feedbackIdPrefix)
   }
 
-  function ValidateState(targetArray: Array<number>, digit: number, idPrefix: string) {
-    if (targetArray.length > numberDigits[digit]) {
-      if (idPrefix === unitId) {
-        setUnitFeedbackFace(FACES.WORRY);
-      }
-      else if (idPrefix === tenId) {
-        setTenFeedbackFace(FACES.WORRY);
-      }
-      else {
-        setHundredFeedbackFace(FACES.WORRY);
+  function getNumberOfTargetElements(targetArray: Array<number>): number {
+    let sum = 0;
+    for (let i=0; i < targetArray.length; i++) {
+      if (targetArray[i] === -1) {
+        sum++;
       }
     }
-    else if (targetArray.length === numberDigits[digit]) {
+    return sum;
+  }
+
+  function ValidateState(targetArray: Array<number>, digit: number, idPrefix: string) {
+    const targetSize = getNumberOfTargetElements(targetArray);
+    if (targetSize === numberDigits[digit]) {
       if (idPrefix === unitId) {
         setUnitFeedbackFace(FACES.HAPPY);
       }
@@ -174,6 +187,17 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
       }
       else {
         setHundredFeedbackFace(FACES.HAPPY);
+      }
+    }
+    else if (targetSize > numberDigits[digit]) {
+      if (idPrefix === unitId) {
+        setUnitFeedbackFace(FACES.WORRY);
+      }
+      else if (idPrefix === tenId) {
+        setTenFeedbackFace(FACES.WORRY);
+      }
+      else {
+        setHundredFeedbackFace(FACES.WORRY);
       }
     }
     else {
@@ -247,9 +271,9 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     unitsBank.current = [...Array(9)];
     tensBank.current = [...Array(9)];
     hundredsBank.current = [...Array(9)];
-    unitsTarget.current = [];
-    tensTarget.current = [];
-    hundredsTarget.current = [];
+    unitsTarget.current = [...Array(9)];
+    tensTarget.current = [...Array(9)];
+    hundredsTarget.current = [...Array(9)];
   
     setUnitTargerCount(0);
     setTenTargerCount(0);
@@ -273,8 +297,6 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     setUnitFeedbackFace(numberDigits[0] === 0 ? FACES.HAPPY : FACES.NONE);
     setTenFeedbackFace(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
     setHundredFeedbackFace(numberDigits[2] === 0 ? FACES.HAPPY : FACES.NONE);
-
-
   }
 
   const titleTemplate = "הַקְלֵק עַל עֲשָׂרוֹת וְעַל יְחִידוֹת שֶׁמַּתְאִימוֹת לַמִּסְפָּר $number$";
@@ -307,8 +329,8 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
       <div style={{display: "flex", flexDirection: "row"}}>
         { number &&
           <div style={{display: "flex"}}>
-            <svg width={9 * (barSize[0]+spaceSize)} height={11 * (barSize[0]+spaceSize) + largeSpaceSize}>
-              <text x={bankWidth/2} y="20" fontSize={20} textAnchor="middle">בַּנְק מִסְפָּרִים</text>
+            <svg width={bankWidth} height={11 * (barSize[0]+spaceSize) + largeSpaceSize}>
+              <text x={bankWidth / 2} y="20" fontSize={20} textAnchor="middle">בַּנְק מִסְפָּרִים</text>
               <text x={bankX[0]} y={numbersBankTitleTop} textAnchor="middle"
                 fontSize={20}>יְחִידוֹת</text>
               { [...Array(9)].map((val,i) => 
@@ -380,7 +402,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
                   scope > NUMBERS_SCOPE.TENS &&
                     <td className="number-languages-unit-header">
                       <span className="number-languages-unit-title">
-                        {tenTargetCount} מֵאוֹת
+                        {hundredTargetCount} מֵאוֹת
                       </span>
                       <FaceFeedback face={hundredFeedbackFace} size={FEEDBACK_FACE_SIZE.M}></FaceFeedback>
                     </td>
