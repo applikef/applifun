@@ -7,6 +7,7 @@ import { ObjectsUtil } from "../../../utils/ObjectsUtil";
 import { FEEDBACK_FACE_SIZE, FONT_SIZE } from "../../../utils/ConstantsUtil";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
+import { SingleSelectionDialog } from "../../shared/SingleSelectionDialog/SingleSelectionDialog";
 
 export const enum NUMBERS_SCOPE {
   UNITS = 0,
@@ -35,7 +36,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     bankWidth += barSize[i];
   }
   bankWidth = Math.max(bankWidth, 120);
-  
+
   let bankX = [
     barSize[1] / 2
   ];
@@ -53,7 +54,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     ]
   }
 
-  const [number, setNumber] = useState<number>(newNumber());
+  const [number, setNumber] = useState<number>(newNumber(scope));
   const numberAsString = number.toString();
   const numberLength = numberAsString.length;
   let numberDigits = [      // [unites, tens, hundreds]
@@ -91,12 +92,14 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   const [hundredFeedbackFace, setHundredFeedbackFace] = 
     useState<FACES>(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
 
+  const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
+    
   const {
     isTablet,
   } = useContext(GamesContext) as GamesContextType;
 
-  function newNumber(): number {
-    let number = ObjectsUtil.generateRandomNumbers(1,(10**(scope+1))-1,1)[0];
+  function newNumber(currentScope: number): number {
+    let number = ObjectsUtil.generateRandomNumbers(1,(10**(currentScope+1))-1,1)[0];
     return number;
   }
   
@@ -182,7 +185,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
       if (idPrefix === unitId) {
         setUnitFeedbackFace(FACES.HAPPY);
       }
-      if (idPrefix === tenId) {
+      else if (idPrefix === tenId) {
         setTenFeedbackFace(FACES.HAPPY);
       }
       else {
@@ -204,7 +207,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
       if (idPrefix === unitId) {
         setUnitFeedbackFace(FACES.NONE);
       }
-      if (idPrefix === tenId) {
+      else if (idPrefix === tenId) {
         setTenFeedbackFace(FACES.NONE);
       }
       else {
@@ -230,39 +233,49 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     let numberAsString: string = "";
 
     if (numberDigits[2] > 0) {
-      numberAsString += hundredName[numberDigits[2]-1];
+      numberAsString += `${hundredName[numberDigits[2]-1]} `;
     }
 
+    const tenNameAsString = tenName[numberDigits[1]-1] === undefined ?
+      "" :
+      tenName[numberDigits[1]-1];
+
     if (numberDigits[0] === 0 && numberDigits[1] === 1) {
-      numberAsString += tenName[numberDigits[1]-1];
+      numberAsString += tenNameAsString;
     }
     else if (numberDigits[1] === 1) {
       numberAsString += firstTenName[numberDigits[0]-1]
     }
     else {
       if (numberDigits[0] === 0) {
-        numberAsString += tenName[numberDigits[1]-1]
+        numberAsString += " " + tenNameAsString;
       }
       else {
         let andIndex:number = 0;
         if (numberDigits[0] === 2 || numberDigits[0] === 8) {
           andIndex = 1;
         }
-        numberAsString += tenName[numberDigits[1]-1] + " " + and[andIndex] + unitNames[numberDigits[0]-1];
+        numberAsString += " " + tenNameAsString + " " + and[andIndex] + unitNames[numberDigits[0]-1];
       }
     }
     return numberAsString;
   }
 
-  function updateNumber() {
+  function updateNumber(currentScope: number) {
     for (let serialNo=0; serialNo < 9; serialNo++) {
       document.getElementById(unitIdBankPrefix + serialNo)!.style.visibility = "visible";
       document.getElementById(unitIdTargetPrefix + serialNo)!.style.visibility = "hidden";
-      if (scope > NUMBERS_SCOPE.UNITS) {
+      if (currentScope > NUMBERS_SCOPE.UNITS &&
+        document.getElementById(tenIdBankPrefix + serialNo) !== null &&
+        document.getElementById(tenIdTargetPrefix + serialNo) !== null
+      ) {
         document.getElementById(tenIdBankPrefix + serialNo)!.style.visibility = "visible";
         document.getElementById(tenIdTargetPrefix + serialNo)!.style.visibility = "hidden";
       }
-      if (scope > NUMBERS_SCOPE.TENS) {
+      if (currentScope > NUMBERS_SCOPE.TENS && 
+        document.getElementById(hundredIdBankPrefix + serialNo) !== null &&
+        document.getElementById(hundredIdTargetPrefix + serialNo) !== null
+      ) {
         document.getElementById(hundredIdBankPrefix + serialNo)!.style.visibility = "visible";
         document.getElementById(hundredIdTargetPrefix + serialNo)!.style.visibility = "hidden";
       }
@@ -279,9 +292,9 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     setTenTargerCount(0);
     setHundredTargerCount(0);
   
-    let updatedNumber = newNumber();
+    let updatedNumber = newNumber(currentScope);
     while (updatedNumber === number) {
-      updatedNumber = newNumber();
+      updatedNumber = newNumber(currentScope);
     }
 
     let numberAsString: string = updatedNumber.toString();
@@ -290,8 +303,8 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
 
     const numberDigits = [      // [unites, tens, hundreds]
       Number(numberAsString.substring(numberLength-1)), 
-      scope > NUMBERS_SCOPE.UNITS ? Number(numberAsString.substring(numberLength-2, numberLength-1)) : 0,
-      scope > NUMBERS_SCOPE.TENS ? Number(numberAsString.substring(numberLength-3, numberLength-2)) : 0
+      currentScope > NUMBERS_SCOPE.UNITS ? Number(numberAsString.substring(numberLength-2, numberLength-1)) : 0,
+      currentScope > NUMBERS_SCOPE.TENS ? Number(numberAsString.substring(numberLength-3, numberLength-2)) : 0
     ];
   
     setUnitFeedbackFace(numberDigits[0] === 0 ? FACES.HAPPY : FACES.NONE);
@@ -302,13 +315,25 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   const titleTemplate = "הַקְלֵק עַל עֲשָׂרוֹת וְעַל יְחִידוֹת שֶׁמַּתְאִימוֹת לַמִּסְפָּר $number$";
   const title = ObjectsUtil.getTitle(titleTemplate, number.toString());
 
+  function handleSettingsCancel() {
+    setGameSettingsDisplay(()=>"game-settings-global-hide"); 
+  }
+
+  function handleSettingsDone(scopeOptionIndex: number) {
+    setGameSettingsDisplay(()=>"game-settings-global-hide");
+    setScope(() => scopeOptionIndex);
+    updateNumber(scopeOptionIndex);
+  }
+
   return(
     <div className="app-page">
-      <Banner gameId="numberLanguagesShow"/>
+      <Banner gameId="numberLanguagesShow"
+        settings={() => setGameSettingsDisplay("game-settings-global-show")} 
+      />
       
       <div className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XL)}`}>
         <button className="app-button-widget number-languages-newNumber-button"
-          onClick={() => updateNumber()}>
+          onClick={() => updateNumber(scope)}>
             מִסְפָּר חָדָשׁ
         </button>
 
@@ -317,6 +342,11 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
 
       <h1 className="number-title">{ number }</h1>
       <div className="number-sub-title">
+        { scope > NUMBERS_SCOPE.TENS &&
+          <span> 
+            {`${numberDigits[2]} מֵאוֹת, `}
+          </span>
+        }
         { scope > NUMBERS_SCOPE.UNITS &&
           <span> 
             {numberDigits[1]} עֲשָׂרוֹת וְ-  
@@ -460,6 +490,20 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
           }
         </div>
       </div>
+
+      <SingleSelectionDialog
+        className={ gameSettingsDisplay }
+        title={"סמן את תחום המספרים הרצוי"}
+        options={[
+          "יחידות",
+          "עשרות",
+          "מאות"
+        ]}
+        defaultOptionIndex={1}
+        handleDialogDone={handleSettingsDone}
+        handleDialogCancel={handleSettingsCancel}
+      />      
+
     </div>
   )
 }
