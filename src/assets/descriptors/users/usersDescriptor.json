@@ -1,5 +1,10 @@
 [
   {
+    "id": "predefinedLists",
+    "name": "רשימות מוגדרות מראש",
+    "descriptor": "predefinedLists.json"
+  },
+  {
     "id": "holidays",
     "name": "חורף וחג החגים",
     "descriptor": "holidays.json"

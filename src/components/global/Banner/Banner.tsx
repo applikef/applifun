@@ -4,8 +4,9 @@ import './Banner.css'
 import { ChangeEvent, useContext, useState } from "react";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { Help } from "../help/Help";
-import { getGameDescriptor, getProfileList } from "../../../pages/pages.util";
+import { getProfileList } from "../../../pages/pages.util";
 import { HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
+import { getGameDescriptor } from "../../../utils/DescriptorsUtil";
 
 export interface BannerPropsType {
   gameId: string;

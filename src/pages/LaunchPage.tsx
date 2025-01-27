@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 
 import "./pages.css";
 
-import { getGameDescriptor } from "./pages.util";
-
 import { Match } from "../components/games/Match/Match";
 import { ImagesSequence } from "../components/games/Sequence/ImagesSequence";
 import { ChangeRecords } from "./ChangeRecords";
@@ -25,6 +23,7 @@ import { MyScheduleDigital } from "../components/games/Clock/myScheduleDigital";
 import { GameList } from "./GameList";
 import { EducationClock } from "../components/education/EducationClock";
 import { SelectClockDigital } from "../components/games/Clock/SelectClockDigital";
+import { getGameDescriptor } from "../utils/DescriptorsUtil";
 
 
 export const LaunchPage = () => {

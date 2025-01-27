@@ -55,23 +55,26 @@ export const Match = (props: MatchPropsType) => {
   /***
    * Retrieve game descriptor values to local variables
    */
-  const descriptor: MatchDescriptorType = props.gameDescriptor;
+  let descriptor = useRef(props.gameDescriptor);
+  //const descriptor: MatchDescriptorType = props.gameDescriptor;
 
-  const titles = descriptor.titles;
-  const titleAudioKeys = descriptor.titleAudioKeys;
-  const titleAudioHover = descriptor.titleAudioHover ? descriptor.titleAudioHover : undefined;
-  const titleTemplate = descriptor.titleTemplate;
-  const titleVariableValues = descriptor.titleVariableValues;
-  const groups = descriptor.groups;
-  const items = descriptor.items;
-  const helpFileName: string | undefined = descriptor.helpFile ? descriptor.helpFile : undefined;
+  const titles = descriptor.current.titles;
+  const titleAudioKeys = descriptor.current.titleAudioKeys;
+  const titleAudioHover = descriptor.current.titleAudioHover ? 
+    descriptor.current.titleAudioHover : undefined;
+  const titleTemplate = descriptor.current.titleTemplate;
+  const titleVariableValues = descriptor.current.titleVariableValues;
+  const groups = descriptor.current.groups;
+  const items = descriptor.current.items;
+  const helpFileName: string | undefined = descriptor.current.helpFile ? 
+    descriptor.current.helpFile : undefined;
 
   const numberOfGroups = groups.length;
 
   const maxNumberOfValidGroups: number = 
     Math.min(
-      descriptor.maxSelectedGroups ? 
-        Math.min(descriptor.maxSelectedGroups,defaultMaxNumberOfValidGroups) : 
+      descriptor.current.maxSelectedGroups ? 
+        Math.min(descriptor.current.maxSelectedGroups,defaultMaxNumberOfValidGroups) : 
         defaultMaxNumberOfValidGroups,
       numberOfGroups
     );
@@ -176,7 +179,7 @@ export const Match = (props: MatchPropsType) => {
         showWellDone(audioOn);
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
-          navigate(GeneralUtil.targetNavigationOnGameOver(descriptor.isQuiz));
+          navigate(GeneralUtil.targetNavigationOnGameOver(descriptor.current.isQuiz));
         }, ConstantsUtil.shortPauseTimeout);
       }
       else {
@@ -239,9 +242,9 @@ export const Match = (props: MatchPropsType) => {
 
   return(
     <div className="app-page">
-      <Banner gameId={descriptor.gameId} 
+      <Banner gameId={descriptor.current.gameId} 
         helpFile={helpFileName} 
-        isQuiz={descriptor.isQuiz}
+        isQuiz={descriptor.current.isQuiz}
         settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
       <div style={{display:"flex", flexDirection:"row", justifyContent: "space-between"}}>
         <PageHeader title={setTitle()} 
@@ -249,10 +252,11 @@ export const Match = (props: MatchPropsType) => {
           audioHover={titleAudioHover}
           feedbackFace={feedbackFace}/>      
 
-        { descriptor.showAdvise === true &&
+        { descriptor.current.showAdvise === true &&
           <div onClick={() => setshowAdviseDetails(!showAdviseDetails)} 
             style={{ position: "relative" }}>
-            <Advise text={descriptor.adviseText ? descriptor.adviseText : "הסתכל על הרמז"} 
+            <Advise text={descriptor.current.adviseText ? 
+              descriptor.current.adviseText : "הסתכל על הרמז"} 
               direction={DIRECTION.LTR} forceReset={ false }/>
             {
               showAdviseDetails && validItems.current.map((item,i) =>
@@ -335,7 +339,7 @@ export const Match = (props: MatchPropsType) => {
       { maxNumberOfValidGroups > 0 &&
         <MultiSelectionSettings
         className={ gameSettingsDisplay }
-        title={descriptor.settingsTitle}
+        title={descriptor.current.settingsTitle}
         maxNumberOfValidGroups={maxNumberOfValidGroups}
         options={groups.map((group)=> group.name)}
         handleSettingsDone={handleSettingsDone}
