@@ -4,6 +4,11 @@
     {
       "id": "airplane",
       "url": "resources/imageCatalog/airplane.png",
+      "title": "אֲוִירוֹן"
+    },
+    {
+      "id": "airplane-picture",
+      "url": "resources/imageCatalog/airplane-picture.png",
       "title": "אֲוִירוֹן",
       "gameIds": ["wordMatch", "letterMatch"],
       "metadata": {
@@ -171,6 +176,11 @@
     {
       "id": "buterfly-2",
       "url": "resources/imageCatalog/buterfly-2.png",
+      "title": "פַּרְפָּרִים"
+    },
+    {
+      "id": "butterflies-picture",
+      "url": "resources/imageCatalog/butterflies-picture.png",
       "title": "פַּרְפָּרִים",
       "gameIds": ["wordMatch", "letterMatch"],
       "metadata": {
@@ -456,6 +466,11 @@
     {
       "id": "frog",
       "url": "resources/imageCatalog/frog.png",
+      "title": "צְפַרְדֵּעַ"
+    },
+    {
+      "id": "frog-picture",
+      "url": "resources/imageCatalog/frog-picture.png",
       "title": "צְפַרְדֵּעַ",
       "gameIds": ["wordMatch", "letterMatch"],
       "metadata": {
