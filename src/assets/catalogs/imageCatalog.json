@@ -5,7 +5,10 @@
       "id": "airplane",
       "url": "resources/imageCatalog/airplane.png",
       "title": "אֲוִירוֹן",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "א"
+      }
     },
     {
       "id": "angry-boy",
@@ -45,7 +48,10 @@
       "id": "apples-4",
       "url": "resources/imageCatalog/4Apples.png",
       "title": "תַּפּוּחִים",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ת"
+      }
     },
     {  
       "id": "balloon",
@@ -57,7 +63,10 @@
       "id": "balloon-yellow-transparent",
       "url": "resources/imageCatalog/balloon-yellow.png",
       "title": "בָּלוֹן",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ב"
+      }
     },
     {
       "id": "bamba",
@@ -67,7 +76,10 @@
       "id": "basket",
       "url": "resources/imageCatalog/basket.png",
       "title": "סַל",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ס"
+      }
     },
     {
       "id": "basketball",
@@ -81,7 +93,10 @@
       "id": "bird",
       "url": "resources/imageCatalog/tsadik.jpg",
       "title": "צִיפּוֹר",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "צ"
+      }
     },
     {
       "id": "bird-4",
@@ -101,13 +116,19 @@
       "id": "bird-5",
       "url": "resources/imageCatalog/bird-5.png",
       "title": "צִפּוֹרִים",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": ""
+      }
     },
     {
       "id": "blue-butterfly",
       "url": "resources/imageCatalog/butterfly-blue.png",
       "title": "פַּרְפַּר",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "פ"
+      }
     },
     {
       "id": "blue-halcyon",
@@ -121,13 +142,19 @@
       "id": "boat",
       "url": "resources/imageCatalog/sameh.jpg",
       "title": "סִירָה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ס"
+      }
     },
     {
       "id": "boy",
       "url": "resources/imageCatalog/yod.jpg",
       "title": "יֶלֶד",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "י"
+      }
     },
     {
       "id": "boy-refrigerator",
@@ -145,13 +172,19 @@
       "id": "buterfly-2",
       "url": "resources/imageCatalog/buterfly-2.png",
       "title": "פַּרְפָּרִים",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "פ"
+      }
     },
     {
       "id": "camel",
       "url": "resources/imageCatalog/camel.png",
       "title": "גָּמָל",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ג"
+      }
     },
     {
       "id": "candle",
@@ -177,13 +210,19 @@
       "id": "carrots-2",
       "url": "resources/imageCatalog/2Carrots.png",
       "title": "גְּזָרִים",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ג"
+      }
     },
     {
       "id": "cat",
       "url": "resources/imageCatalog/het.jpg",
       "title": "חָתוּל",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ח"
+      }
     },
     {
       "id": "cat-sitting",
@@ -197,7 +236,10 @@
       "id": "cats-2",
       "url": "resources/imageCatalog/2Cats.png",
       "title": "חֲתוּלִים",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ח"
+      }
     },
     {
       "id": "chess-board",
@@ -207,7 +249,10 @@
       "id": "chair",
       "url": "resources/imageCatalog/kaf.png",
       "title": "כִּיסֵּא",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "כ"
+      }
     },
     {
       "id": "chairs-4",
@@ -281,7 +326,10 @@
       "id": "dice",
       "url": "resources/imageCatalog/dice.png",
       "title": "קֻבִּיָּה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ק"
+      }
     },
     {
       "id": "doll",
@@ -291,13 +339,19 @@
       "id": "doll-transparent",
       "url": "resources/imageCatalog/doll.png",
       "title": "בֻּבָּה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ב"
+      }
     },
     {
       "id": "door",
       "url": "resources/imageCatalog/door.png",
       "title": "דֶּלֶת",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ד"
+      }
     },
     {
       "id": "doughnut",
@@ -355,7 +409,10 @@
       "id": "fish",
       "url": "resources/imageCatalog/fish.png",
       "title": "דָּג",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ד"
+      }
     },
     {
       "id": "fish-gold",
@@ -383,7 +440,10 @@
       "id": "flowers",
       "url": "resources/imageCatalog/flowers.png",
       "title": "פְּרָחִים",
-      "gameIds": ["wordMatch"]      
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "פ"
+      }
     },
     {
       "id": "flower-6",
@@ -397,7 +457,10 @@
       "id": "frog",
       "url": "resources/imageCatalog/frog.png",
       "title": "צְפַרְדֵּעַ",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "צ"
+      }
     },
     {
       "id": "gift",
@@ -411,7 +474,10 @@
       "id": "girl",
       "url": "resources/imageCatalog/girl.jpg",
       "title": "יַלְדָּה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "י"
+      }
     },
     {
       "id": "girls",
@@ -461,7 +527,10 @@
       "id": "green-grapes",
       "url": "resources/imageCatalog/grapes-green.png",
       "title": "עֲנָבִים",
-      "gameIds": ["wordMatch"]      
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ע"
+      }    
     },
     {
       "id": "green-splash",
@@ -523,7 +592,10 @@
       "id": "horse",
       "url": "resources/imageCatalog/horse.png",
       "title": "סוּס",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ס"
+      }
     },
     {
       "id": "hourses-clipart-9",
@@ -533,7 +605,10 @@
       "id": "house",
       "url": "resources/imageCatalog/bet.jpg",
       "title": "בַּיִת",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ב"
+      }
     },
     {
       "id": "house-10",
@@ -567,7 +642,10 @@
       "id": "icecream",
       "url": "resources/imageCatalog/icecream.png",
       "title": "גְּלִידָה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ג"
+      }
     },
     {
       "id": "latke",
@@ -585,31 +663,46 @@
       "id": "leaf",
       "url": "resources/imageCatalog/leaf.jpg",
       "title": "עָלֶה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": ""
+      }
     },
     {
       "id": "leaf-many-autumn",
       "url": "resources/imageCatalog/leaf-many-autumn.jpg",
       "title": "עָלִים",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ע"
+      }
     },
     {
       "id": "lemon",
       "url": "resources/imageCatalog/lemon.png",
       "title": "לִימוֹן",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ל"
+      }
     },
     {
       "id": "letuce",
       "url": "resources/imageCatalog/letuce.png",
       "title": "חַסָּה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ח"
+      }
     },
     {
       "id": "lion",
       "url": "resources/imageCatalog/alef.jpg",
       "title": "אַרְיֵה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "א"
+      }
     },
     {
       "id": "lion-transparent",
@@ -623,13 +716,19 @@
       "id": "monkey",
       "url": "resources/imageCatalog/kof.jpg",
       "title": "קוֹף",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ק"
+      }
     },
     {
       "id": "mountain",
       "url": "resources/imageCatalog/he.jpg",
       "title": "הַר",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ה"
+      }
     },
     {
       "id": "neckless",
@@ -639,7 +738,10 @@
       "id": "olive",
       "url": "resources/imageCatalog/olive.png",
       "title": "זַיִת",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ז"
+      }
     },
     {
       "id": "open-faucet",
@@ -649,13 +751,19 @@
       "id": "orange",
       "url": "resources/imageCatalog/orange.png",
       "title": "תַּפּוּז",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ת"
+      }
     },
     {
       "id": "oranges",
       "url": "resources/imageCatalog/tav.jpg",
       "title": "תַּפּוּזִים",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ת"
+      }
     },
     {
       "id": "pants-down-2",
@@ -669,7 +777,10 @@
       "id": "pizza",
       "url": "resources/imageCatalog/pe.png",
       "title": "פִּיצָה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "פ"
+      }
     },
     {
       "id": "palm",
@@ -767,7 +878,10 @@
       "id": "shoe",
       "url": "resources/imageCatalog/shoe.png",
       "title": "נַעַל",
-      "gameIds": ["wordMatch"]      
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "נ"
+      }
     },
     {
       "id": "sign-causion-warning",
@@ -785,19 +899,28 @@
       "id": "snale",
       "url": "resources/imageCatalog/snale.jpg",
       "title": "חִלָּזוֹן",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ח"
+      }
     },
     {
       "id": "snales",
       "url": "resources/imageCatalog/snales.jpg",
       "title": "חֶלְזוֹנוֹת",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ח"
+      }
     },
     {
       "id": "strawberry",
       "url": "resources/imageCatalog/strawberry-red.png",
       "title": "תּוּת",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ת"
+      }
     },
     {
       "id": "square",
@@ -815,7 +938,10 @@
       "id": "table-transparent",
       "url": "resources/imageCatalog/table-transparent.png",
       "title": "שֻׁלְחָן",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ש"
+      }
     },
     {
       "id": "take-toilet-paper-4",
@@ -837,7 +963,10 @@
       "id": "tree",
       "url": "resources/imageCatalog/tree.png",
       "title": "עֵץ",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ע"
+      }
     },
     {
       "id": "tree-3",
@@ -859,7 +988,10 @@
       "id": "turtle",
       "url": "resources/imageCatalog/turtle.png",
       "title": "צָב",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "צ"
+      }
     },
     {
       "id": "wake-up",
@@ -877,7 +1009,10 @@
       "id": "watermelon",
       "url": "resources/imageCatalog/watermelon.png",
       "title": "אֲבַטִּיחַ",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "א"
+      }
     },
     {
       "id": "wheel",
@@ -915,7 +1050,10 @@
       "id": "zebra",
       "url": "resources/imageCatalog/zain.png",
       "title": "זֶבְּרָה",
-      "gameIds": ["wordMatch"]
+      "gameIds": ["wordMatch", "letterMatch"],
+      "metadata": {
+        "firstLetter": "ז"
+      }
     }
   ]
 }

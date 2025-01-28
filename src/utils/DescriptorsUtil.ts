@@ -50,7 +50,7 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
       return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
     }
     else {    // Default descriptor
-      return require("./../assets/descriptors/componentDescriptors/matchDescriptors/letterMatch.json");
+      return generateLetterMatchDescriptor();
     }
   }
   else if (gameId === "numberMatch") {
@@ -108,6 +108,31 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   }
 }
 
+export function generateLetterMatchDescriptor() {
+  return require(`./../assets/descriptors/componentDescriptors/private/predefinedLists/letterMatch.json`);
+  /*
+  let templateBasedDescriptor = require("./../assets/descriptors/componentDescriptors/templates/letterMatch.json");
+
+  const images: Array<ImageCatalogEntryType> = MediaUtil.getRandomCatalogImages(25, "letterMatch", true);
+  let itemsList = [];
+  for (let i=0; i < images.length; i++) {
+    const image = images[i];
+    if (image.metadata !== undefined && image.metadata.firstLetter !== undefined) {
+      itemsList.push(
+        {
+          "id": image.id,
+          "title": image.title,
+          "image": image.id,
+          "groupId": image.metadata!.firstLetter
+        }  
+      );
+    }
+  }
+  templateBasedDescriptor.items = itemsList;
+  return templateBasedDescriptor;
+  */
+}
+
 export function generateWordMatchDescriptor() {
   const images: Array<ImageCatalogEntryType> = MediaUtil.getRandomCatalogImages(10, "wordMatch", true);
   let titleList = [];
@@ -141,5 +166,4 @@ export function generateWordMatchDescriptor() {
   }
 
   return descriptor;
-  //require("./../assets/descriptors/componentDescriptors/matchDescriptors/wordMatch.json");
 }
