@@ -30,11 +30,13 @@ export interface LettersSequenceProps {
 };
 
 export const LettersSequence = (props: LettersSequenceProps) => {
-  const wordsCatalog = props.gameDescriptor.words!;
+  const descriptor = useRef(props.gameDescriptor);
+  
+  const wordsCatalog = descriptor.current.words!;
   const wordsCatalogSize = wordsCatalog.length;
-  const gamePageTitle:string = props.gameDescriptor.title ? props.gameDescriptor.title : "";
-  const settingsTitle = props.gameDescriptor.settingsTitle ?
-    props.gameDescriptor.settingsTitle
+  const gamePageTitle:string = descriptor.current.title ? descriptor.current.title : "";
+  const settingsTitle = descriptor.current.settingsTitle ?
+    descriptor.current.settingsTitle
   : "";
   const navigate = useNavigate();
 
@@ -43,7 +45,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
     isTablet 
   } = useContext(GamesContext) as GamesContextType;
 
-  const helpFileName: string | undefined = props.gameDescriptor.helpFile ? props.gameDescriptor.helpFile : undefined;
+  const helpFileName: string | undefined = descriptor.current.helpFile ? descriptor.current.helpFile : undefined;
 
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
@@ -53,10 +55,10 @@ export const LettersSequence = (props: LettersSequenceProps) => {
     selectedSequenceSteps.current.push(id);
   };
 
-  const [words, setWords] = useState<WordDescriptorType[]>(props.gameDescriptor.words ?
-    ObjectsUtil.shuffleArrayItems(props.gameDescriptor.words) 
+  const [words, setWords] = useState<WordDescriptorType[]>(descriptor.current.words ?
+    ObjectsUtil.shuffleArrayItems(descriptor.current.words) 
   : []);
-  const numberOfWords = useRef<number>(props.gameDescriptor.words!.length);
+  const numberOfWords = useRef<number>(descriptor.current.words!.length);
     
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
   const [pageTitle, setPageTitle] = useState(gamePageTitle);
@@ -156,7 +158,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
       }
       else {  
         setTimeout(() => {
-          navigate(GeneralUtil.targetNavigationOnGameOver(props.gameDescriptor.isQuiz));
+          navigate(GeneralUtil.targetNavigationOnGameOver(descriptor.current.isQuiz));
         }, ConstantsUtil.hoorayTimeout);        
       }
     }, ConstantsUtil.hoorayTimeout)
@@ -185,8 +187,8 @@ export const LettersSequence = (props: LettersSequenceProps) => {
 
   return (
     <div className="app-page">
-      <Banner gameId={props.gameDescriptor.gameId} 
-        isQuiz={props.gameDescriptor.isQuiz}
+      <Banner gameId={descriptor.current.gameId} 
+        isQuiz={descriptor.current.isQuiz}
         helpFile={helpFileName} 
         settings={() => {
           setPendingSelectedWordIndices(() => selectedWordIndices);

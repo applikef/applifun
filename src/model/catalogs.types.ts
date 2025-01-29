@@ -10,6 +10,7 @@ export interface ImageCatalogType {
 
 export interface MetaDataType {
   firstLetter?: string;
+  alternativeSpelling?: string;
 }
 
 export interface ImageCatalogEntryType {
@@ -17,6 +18,7 @@ export interface ImageCatalogEntryType {
   url: string;
   imageType?: CATALOG_IMAGE_TYPE;
   isTransparent?: boolean;
+  audioId?: string;
   title?: string;
   gameIds?: Array<string>;
   metadata?: MetaDataType;

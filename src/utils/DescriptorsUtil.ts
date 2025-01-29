@@ -43,7 +43,7 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
       return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
     }
     else {    // Default descriptor
-      return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/iWriteDescriptor.json")
+      return generateIWriteWordsDescriptor();
     }
   }
   else if (gameId === "letterMatch") {
@@ -114,6 +114,29 @@ export function showGameSettings(descriptor: any): boolean {
     return true;
   }
   return descriptor.showSettings;
+}
+
+export function generateIWriteWordsDescriptor() {
+  const images: Array<ImageCatalogEntryType> = MediaUtil.getRandomCatalogImages(10, "iWriteWords", true);
+  let words = [];
+  for (let i=0; i < images.length; i++) {
+    const image = images[i];
+    words.push({
+      "id": image.id,
+      "title": image.title,
+      "name": image.metadata === undefined ? image.title : image.metadata.alternativeSpelling,
+      "file": image.id,
+      "audio": image.audioId !== undefined && image.audioId ? image.id : undefined
+    });
+  }
+  const descriptor = {
+    "gameId": "iWriteWords",
+    "title": "הַקְלֵק עַל הָאוֹתִיּוֹת מֵהָרִאשׁוֹנָה לָאַחֲרוֹנָה",
+    "settingsTitle": "בחר את המילים שתופענה במשחק",
+    "words": words
+  }
+
+  return descriptor;
 }
 
 export function generateLetterMatchDescriptor() {

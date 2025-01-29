@@ -10,9 +10,10 @@
       "id": "airplane-picture",
       "url": "resources/imageCatalog/airplane-picture.png",
       "title": "אֲוִירוֹן",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "א"
+        "firstLetter": "א",
+        "alternativeSpelling": "אוירון"
       }
     },
     {
@@ -53,24 +54,28 @@
       "id": "apples-4",
       "url": "resources/imageCatalog/4Apples.png",
       "title": "תַּפּוּחִים",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ת"
+        "firstLetter": "ת",
+        "alternativeSpelling": "תפוחים"
       }
     },
     {  
       "id": "balloon",
       "url": "resources/imageCatalog/balloon.png",
       "title": "בָּלוֹן",
+      "audioId": "בלון",
       "gameIds": []
     },
     {
       "id": "balloon-yellow-transparent",
       "url": "resources/imageCatalog/balloon-yellow.png",
       "title": "בָּלוֹן",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "בלון",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ב"
+        "firstLetter": "ב",
+        "alternativeSpelling": "בלון"
       }
     },
     {
@@ -81,9 +86,10 @@
       "id": "basket",
       "url": "resources/imageCatalog/basket.png",
       "title": "סַל",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ס"
+        "firstLetter": "ס",
+        "alternativeSpelling": "סל"
       }
     },
     {
@@ -98,9 +104,11 @@
       "id": "bird",
       "url": "resources/imageCatalog/tsadik.jpg",
       "title": "צִיפּוֹר",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "bird",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "צ"
+        "firstLetter": "צ",
+        "alternativeSpelling": "ציפור"
       }
     },
     {
@@ -121,18 +129,20 @@
       "id": "bird-5",
       "url": "resources/imageCatalog/bird-5.png",
       "title": "צִפּוֹרִים",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "צ"
+        "firstLetter": "צ",
+        "alternativeSpelling": "ציפורים"
       }
     },
     {
       "id": "blue-butterfly",
       "url": "resources/imageCatalog/butterfly-blue.png",
       "title": "פַּרְפַּר",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "פ"
+        "firstLetter": "פ",
+        "alternativeSpelling": "פרפר"
       }
     },
     {
@@ -147,18 +157,22 @@
       "id": "boat",
       "url": "resources/imageCatalog/sameh.jpg",
       "title": "סִירָה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "boat",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ס"
+        "firstLetter": "ס",
+        "alternativeSpelling": "סירה"
       }
     },
     {
       "id": "boy",
       "url": "resources/imageCatalog/yod.jpg",
       "title": "יֶלֶד",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "boy",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "י"
+        "firstLetter": "י",
+        "alternativeSpelling": "ילד"
       }
     },
     {
@@ -182,18 +196,20 @@
       "id": "butterflies-picture",
       "url": "resources/imageCatalog/butterflies-picture.png",
       "title": "פַּרְפָּרִים",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "פ"
+        "firstLetter": "פ",
+        "alternativeSpelling": "פרפרים"
       }
     },
     {
       "id": "camel",
       "url": "resources/imageCatalog/camel.png",
       "title": "גָּמָל",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ג"
+        "firstLetter": "ג",
+        "alternativeSpelling": "גמל"
       }
     },
     {
@@ -221,9 +237,10 @@
       "url": "resources/imageCatalog/carrots.png",
       "title": "גְּזָרִים",
       "type": "CLIPART",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ג"
+        "firstLetter": "ג",
+        "alternativeSpelling": "גזרים"
       }
     },
     {
@@ -236,9 +253,11 @@
       "id": "cat",
       "url": "resources/imageCatalog/het.jpg",
       "title": "חָתוּל",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "cat",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ח"
+        "firstLetter": "ח",
+        "alternativeSpelling": "חתול"
       }
     },
     {
@@ -253,9 +272,10 @@
       "id": "cats-2",
       "url": "resources/imageCatalog/2Cats.png",
       "title": "חֲתוּלִים",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ח"
+        "firstLetter": "ח",
+        "alternativeSpelling": "חתולים"
       }
     },
     {
@@ -266,9 +286,11 @@
       "id": "chair",
       "url": "resources/imageCatalog/kaf.png",
       "title": "כִּיסֵּא",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "chair",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "כ"
+        "firstLetter": "כ",
+        "alternativeSpelling": "כיסא"
       }
     },
     {
@@ -343,9 +365,10 @@
       "id": "dice",
       "url": "resources/imageCatalog/dice.png",
       "title": "קֻבִּיָּה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ק"
+        "firstLetter": "ק",
+        "alternativeSpelling": "קוביה"
       }
     },
     {
@@ -356,18 +379,20 @@
       "id": "doll-transparent",
       "url": "resources/imageCatalog/doll.png",
       "title": "בֻּבָּה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ב"
+        "firstLetter": "ב",
+        "alternativeSpelling": "בובה"
       }
     },
     {
       "id": "door",
       "url": "resources/imageCatalog/door.png",
       "title": "דֶּלֶת",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ד"
+        "firstLetter": "ד",
+        "alternativeSpelling": "דלת"
       }
     },
     {
@@ -420,15 +445,23 @@
     },
     {
       "id": "fence",
-      "url": "resources/imageCatalog/gimel.png"
+      "url": "resources/imageCatalog/gimel.png",
+      "title": "גָּדֵר",
+      "audioId": "fence",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
+      "metadata": {
+        "firstLetter": "ג",
+        "alternativeSpelling": "גדר"
+      }
     },
     {
       "id": "fish",
       "url": "resources/imageCatalog/fish.png",
       "title": "דָּג",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ד"
+        "firstLetter": "ד",
+        "alternativeSpelling": "דג"
       }
     },
     {
@@ -457,9 +490,10 @@
       "id": "flowers",
       "url": "resources/imageCatalog/flowers.png",
       "title": "פְּרָחִים",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "פ"
+        "firstLetter": "פ",
+        "alternativeSpelling": "פרחים"
       }
     },
     {
@@ -479,9 +513,10 @@
       "id": "frog-picture",
       "url": "resources/imageCatalog/frog-picture.png",
       "title": "צְפַרְדֵּעַ",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "צ"
+        "firstLetter": "צ",
+        "alternativeSpelling": "צפרדע"
       }
     },
     {
@@ -496,9 +531,10 @@
       "id": "girl",
       "url": "resources/imageCatalog/girl.jpg",
       "title": "יַלְדָּה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "י"
+        "firstLetter": "י",
+        "alternativeSpelling": "ילדה"
       }
     },
     {
@@ -549,9 +585,10 @@
       "id": "green-grapes",
       "url": "resources/imageCatalog/grapes-green.png",
       "title": "עֲנָבִים",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ע"
+        "firstLetter": "ע",
+        "alternativeSpelling": "ענבים"
       }    
     },
     {
@@ -614,9 +651,10 @@
       "id": "horse",
       "url": "resources/imageCatalog/horse.png",
       "title": "סוּס",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ס"
+        "firstLetter": "ס",
+        "alternativeSpelling": "סוס"
       }
     },
     {
@@ -627,9 +665,11 @@
       "id": "house",
       "url": "resources/imageCatalog/bet.jpg",
       "title": "בַּיִת",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "house",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ב"
+        "firstLetter": "ב",
+        "alternativeSpelling": "בית"
       }
     },
     {
@@ -664,9 +704,10 @@
       "id": "icecream",
       "url": "resources/imageCatalog/icecream.png",
       "title": "גְּלִידָה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ג"
+        "firstLetter": "ג",
+        "alternativeSpelling": "גלידה"
       }
     },
     {
@@ -685,45 +726,50 @@
       "id": "leaf",
       "url": "resources/imageCatalog/leaf.jpg",
       "title": "עָלֶה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ע"
+        "firstLetter": "ע",
+        "alternativeSpelling": "עלה"
       }
     },
     {
       "id": "leaf-many-autumn",
       "url": "resources/imageCatalog/leaf-many-autumn.jpg",
       "title": "עָלִים",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ע"
+        "firstLetter": "ע",
+        "alternativeSpelling": "עלים"
       }
     },
     {
       "id": "lemon",
       "url": "resources/imageCatalog/lemon.png",
       "title": "לִימוֹן",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ל"
+        "firstLetter": "ל",
+        "alternativeSpelling": "לימון"
       }
     },
     {
       "id": "letuce",
       "url": "resources/imageCatalog/letuce.png",
       "title": "חַסָּה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ח"
+        "firstLetter": "ח",
+        "alternativeSpelling": "חסה"
       }
     },
     {
       "id": "lion",
       "url": "resources/imageCatalog/alef.jpg",
       "title": "אַרְיֵה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "א"
+        "firstLetter": "א",
+        "alternativeSpelling": "אריה"
       }
     },
     {
@@ -738,18 +784,20 @@
       "id": "monkey",
       "url": "resources/imageCatalog/kof.jpg",
       "title": "קוֹף",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ק"
+        "firstLetter": "ק",
+        "alternativeSpelling": "קוף"
       }
     },
     {
       "id": "mountain",
       "url": "resources/imageCatalog/he.jpg",
       "title": "הַר",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ה"
+        "firstLetter": "ה",
+        "alternativeSpelling": "הר"
       }
     },
     {
@@ -760,9 +808,10 @@
       "id": "olive",
       "url": "resources/imageCatalog/olive.png",
       "title": "זַיִת",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ז"
+        "firstLetter": "ז",
+        "alternativeSpelling": "זית"
       }
     },
     {
@@ -773,18 +822,21 @@
       "id": "orange",
       "url": "resources/imageCatalog/orange.png",
       "title": "תַּפּוּז",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ת"
+        "firstLetter": "ת",
+        "alternativeSpelling": "תפוז"
       }
     },
     {
       "id": "oranges",
       "url": "resources/imageCatalog/tav.jpg",
       "title": "תַּפּוּזִים",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "oranges",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ת"
+        "firstLetter": "ת",
+        "alternativeSpelling": "תפוזים"
       }
     },
     {
@@ -799,9 +851,10 @@
       "id": "pizza",
       "url": "resources/imageCatalog/pe.png",
       "title": "פִּיצָה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "פ"
+        "firstLetter": "פ",
+        "alternativeSpelling": "פיצה"
       }
     },
     {
@@ -850,7 +903,14 @@
     },
     {
       "id": "red-flower",
-      "url": "resources/imageCatalog/flower-red.png"
+      "url": "resources/imageCatalog/flower-red.png",
+      "title": "פֶּרַח",
+      "audioId": "flower",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
+      "metadata": {
+        "firstLetter": "פ",
+        "alternativeSpelling": "פרח"
+      }
     },
     {
       "id": "red-puff",
@@ -900,9 +960,10 @@
       "id": "shoe",
       "url": "resources/imageCatalog/shoe.png",
       "title": "נַעַל",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "נ"
+        "firstLetter": "נ",
+        "alternativeSpelling": "נעל"
       }
     },
     {
@@ -921,27 +982,30 @@
       "id": "snale",
       "url": "resources/imageCatalog/snale.jpg",
       "title": "חִלָּזוֹן",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ח"
+        "firstLetter": "ח",
+        "alternativeSpelling": "חלזון"
       }
     },
     {
       "id": "snales",
       "url": "resources/imageCatalog/snales.jpg",
       "title": "חֶלְזוֹנוֹת",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ח"
+        "firstLetter": "ח",
+        "alternativeSpelling": "חלזונות"
       }
     },
     {
       "id": "strawberry",
       "url": "resources/imageCatalog/strawberry-red.png",
       "title": "תּוּת",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ת"
+        "firstLetter": "ת",
+        "alternativeSpelling": "תות"
       }
     },
     {
@@ -960,9 +1024,11 @@
       "id": "table-transparent",
       "url": "resources/imageCatalog/table-transparent.png",
       "title": "שֻׁלְחָן",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "table",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ש"
+        "firstLetter": "ש",
+        "alternativeSpelling": "שולחן"
       }
     },
     {
@@ -985,9 +1051,11 @@
       "id": "tree",
       "url": "resources/imageCatalog/tree.png",
       "title": "עֵץ",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "tree",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ע"
+        "firstLetter": "ע",
+        "alternativeSpelling": "עץ"
       }
     },
     {
@@ -1010,9 +1078,10 @@
       "id": "turtle",
       "url": "resources/imageCatalog/turtle.png",
       "title": "צָב",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "צ"
+        "firstLetter": "צ",
+        "alternativeSpelling": "צב"
       }
     },
     {
@@ -1031,9 +1100,10 @@
       "id": "watermelon",
       "url": "resources/imageCatalog/watermelon.png",
       "title": "אֲבַטִּיחַ",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "א"
+        "firstLetter": "א",
+        "alternativeSpelling": "אבטיח"
       }
     },
     {
@@ -1072,9 +1142,11 @@
       "id": "zebra",
       "url": "resources/imageCatalog/zain.png",
       "title": "זֶבְּרָה",
-      "gameIds": ["wordMatch", "letterMatch"],
+      "audioId": "zebra",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
-        "firstLetter": "ז"
+        "firstLetter": "ז",
+        "alternativeSpelling": "זברה"
       }
     }
   ]
