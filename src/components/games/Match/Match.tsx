@@ -20,6 +20,7 @@ import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
 import { Advise } from "../../shared/Advise/Advise";
 import { GeneralUtil } from "../../../utils/GeneralUtil";
+import { showGameSettings } from "../../../utils/DescriptorsUtil";
 
 type ItemTitleNotificationType = {
   top: number,
@@ -245,7 +246,11 @@ export const Match = (props: MatchPropsType) => {
       <Banner gameId={descriptor.current.gameId} 
         helpFile={helpFileName} 
         isQuiz={descriptor.current.isQuiz}
-        settings={() => setGameSettingsDisplay("game-settings-global-show")}/>
+        settings={ showGameSettings(descriptor.current) ?
+          () => setGameSettingsDisplay("game-settings-global-show")
+          :
+          undefined
+        }/>
       <div style={{display:"flex", flexDirection:"row", justifyContent: "space-between"}}>
         <PageHeader title={setTitle()} 
           audio={titleAudioKeys ? [titleAudioKeys[activeIndex]] : undefined} 

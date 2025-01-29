@@ -60,7 +60,7 @@ export const Banner = (props: BannerPropsType) => {
                   className="banner-icon" 
                   title="עמוד הבית"  alt="עמוד הבית" />
               </Link>
-              { props.settings &&
+              { props.settings !== undefined && props.settings &&
                 <img src="resources/icons/settings.png" className="banner-icon" 
                   title="הגדרות משחק"  alt="הגדרות משחק" 
                   onClick={() => props.settings ? props.settings() : undefined}/>

@@ -1,6 +1,7 @@
 import { ImageCatalogEntryType } from "../model/catalogs.types";
 import { User } from "../model/users.types";
 import { MediaUtil } from "../utils/MediaUtil";
+import { hebrewLetters } from "./LanguageUtil";
 
 export function getGameDescriptor(gameId: string | null, user: User, profile: string | null): any {
   if (gameId === null) {
@@ -108,13 +109,17 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   }
 }
 
-export function generateLetterMatchDescriptor() {
-  return require(`./../assets/descriptors/componentDescriptors/private/predefinedLists/letterMatch.json`);
-  /*
-  let templateBasedDescriptor = require("./../assets/descriptors/componentDescriptors/templates/letterMatch.json");
+export function showGameSettings(descriptor: any): boolean {
+  if (descriptor.showSettings === undefined) {
+    return true;
+  }
+  return descriptor.showSettings;
+}
 
-  const images: Array<ImageCatalogEntryType> = MediaUtil.getRandomCatalogImages(25, "letterMatch", true);
+export function generateLetterMatchDescriptor() {
+  const images: Array<ImageCatalogEntryType> = MediaUtil.getRandomCatalogImages(10, "letterMatch", true);
   let itemsList = [];
+  let groupIds: Array<string> = [];
   for (let i=0; i < images.length; i++) {
     const image = images[i];
     if (image.metadata !== undefined && image.metadata.firstLetter !== undefined) {
@@ -126,11 +131,39 @@ export function generateLetterMatchDescriptor() {
           "groupId": image.metadata!.firstLetter
         }  
       );
+      if (!groupIds.includes(image.metadata!.firstLetter)) {
+        groupIds.push(image.metadata!.firstLetter)
+      }
     }
   }
-  templateBasedDescriptor.items = itemsList;
-  return templateBasedDescriptor;
-  */
+
+  let groups = [];
+  let titleVariableValues = [];
+  for (let i=0; i < hebrewLetters.length; i++) {
+    const letter = hebrewLetters[i];
+    if (groupIds.includes(letter.id)) {
+      groups.push({
+        id: letter.id,
+        title: letter.title,
+        name: letter.name
+      })
+
+      titleVariableValues.push(letter.name);
+    }
+  }
+
+  let descriptor = {
+    "gameId": "letterMatch",
+    "showSettings": false,
+    "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
+    "showAdvise": true,
+    "adviseText": "הסתכל מה האות הראשונה בכל אחת מהמילים",
+    "settingsTitle": "סמן את האותיות שיופיעו במשחק",
+    "items": itemsList,
+    "groups": groups
+    }
+
+  return descriptor;
 }
 
 export function generateWordMatchDescriptor() {
@@ -156,13 +189,13 @@ export function generateWordMatchDescriptor() {
 
   let descriptor = {
     "gameId": "wordMatch",
+    "showSettings": false,
     "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
     "titleVariableValues": titleList,
     "showAdvise": true,
     "adviseText": "קרא כל אחת מהמילים",
     "groups": groupList,
-    "items": itemsList,
-    "settingsTitle": "סמן את התמונה"  
+    "items": itemsList  
   }
 
   return descriptor;

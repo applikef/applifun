@@ -123,7 +123,7 @@
       "title": "צִפּוֹרִים",
       "gameIds": ["wordMatch", "letterMatch"],
       "metadata": {
-        "firstLetter": ""
+        "firstLetter": "צ"
       }
     },
     {
@@ -217,13 +217,20 @@
       "url": "resources/imageCatalog/car-wheel.png"
     },
     {
-      "id": "carrots-2",
-      "url": "resources/imageCatalog/2Carrots.png",
+      "id": "carrots",
+      "url": "resources/imageCatalog/carrots.png",
       "title": "גְּזָרִים",
+      "type": "CLIPART",
       "gameIds": ["wordMatch", "letterMatch"],
       "metadata": {
         "firstLetter": "ג"
       }
+    },
+    {
+      "id": "carrots-2",
+      "url": "resources/imageCatalog/2Carrots.png",
+      "title": "גְּזָרִים",
+      "type": "PICTURE"
     },
     {
       "id": "cat",
@@ -680,7 +687,7 @@
       "title": "עָלֶה",
       "gameIds": ["wordMatch", "letterMatch"],
       "metadata": {
-        "firstLetter": ""
+        "firstLetter": "ע"
       }
     },
     {
