@@ -154,7 +154,7 @@ export function generateLetterMatchDescriptor() {
 
   let descriptor = {
     "gameId": "letterMatch",
-    "showSettings": false,
+    "showSettings": true,
     "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
     "showAdvise": true,
     "adviseText": "הסתכל מה האות הראשונה בכל אחת מהמילים",
@@ -189,7 +189,7 @@ export function generateWordMatchDescriptor() {
 
   let descriptor = {
     "gameId": "wordMatch",
-    "showSettings": false,
+    "showSettings": true,
     "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
     "titleVariableValues": titleList,
     "showAdvise": true,
