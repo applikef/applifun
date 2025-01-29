@@ -156,6 +156,7 @@ export function generateLetterMatchDescriptor() {
     "gameId": "letterMatch",
     "showSettings": true,
     "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
+    "titleVariableValues": titleVariableValues,
     "showAdvise": true,
     "adviseText": "הסתכל מה האות הראשונה בכל אחת מהמילים",
     "settingsTitle": "סמן את האותיות שיופיעו במשחק",
