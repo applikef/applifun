@@ -131,7 +131,7 @@ export const WhichNumberAmI = (props: WhichNumberAmIProps) => {
 
   return(
     <div className="app-page">
-      <Banner gameId="numberLanguagesShow"
+      <Banner gameId="whichNumberAmI"
         settings={() => setGameSettingsDisplay("game-settings-global-show")} 
       />
       
