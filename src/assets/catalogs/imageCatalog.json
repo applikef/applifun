@@ -10,6 +10,7 @@
       "id": "airplane-picture",
       "url": "resources/imageCatalog/airplane-picture.png",
       "title": "אֲוִירוֹן",
+      "type": "PICTURE",
       "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
         "firstLetter": "א",
@@ -48,6 +49,7 @@
       "id": "apple-3",
       "url": "resources/imageCatalog/apple-3.png",
       "title": "תַּפּוּחִים",
+      "type": "CLIPART",
       "gameIds": []
     },
     {
@@ -63,6 +65,7 @@
     {  
       "id": "balloon",
       "url": "resources/imageCatalog/balloon.png",
+      "type": "PICTURE",
       "title": "בָּלוֹן",
       "audioId": "בלון",
       "gameIds": []
@@ -71,6 +74,7 @@
       "id": "balloon-yellow-transparent",
       "url": "resources/imageCatalog/balloon-yellow.png",
       "title": "בָּלוֹן",
+      "type": "PICTURE",
       "audioId": "בלון",
       "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
@@ -80,12 +84,14 @@
     },
     {
       "id": "bamba",
-      "url": "resources/imageCatalog/bamba.png"
+      "url": "resources/imageCatalog/bamba.png",
+      "type": "PICTURE"
     },
     {
       "id": "basket",
       "url": "resources/imageCatalog/basket.png",
       "title": "סַל",
+      "type": "PICTURE",
       "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
         "firstLetter": "ס",
@@ -104,6 +110,7 @@
       "id": "bird",
       "url": "resources/imageCatalog/tsadik.jpg",
       "title": "צִיפּוֹר",
+      "type": "PICTURE",
       "audioId": "bird",
       "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
@@ -119,11 +126,28 @@
     },
     {
       "id": "bird-pigeon",
-      "url": "resources/imageCatalog/bird-pigeon.jpg"
+      "url": "resources/imageCatalog/bird-pigeon.jpg",
+      "title": "צִיפּוֹר",
+      "type": "PICTURE",
+      "audioId": "bird",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
+      "metadata": {
+        "firstLetter": "צ",
+        "alternativeSpelling": "ציפור"
+      }
+
     },
     {
       "id": "bird-white-wagtail",
-      "url": "resources/imageCatalog/white-wagtail.png"
+      "url": "resources/imageCatalog/white-wagtail.png",
+      "title": "צִיפּוֹר",
+      "type": "PICTURE",
+      "audioId": "bird",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
+      "metadata": {
+        "firstLetter": "צ",
+        "alternativeSpelling": "ציפור"
+      }
     },
     {
       "id": "bird-5",
@@ -147,7 +171,14 @@
     },
     {
       "id": "blue-halcyon",
-      "url": "resources/imageCatalog/halcyon-blue.png"
+      "url": "resources/imageCatalog/halcyon-blue.png",
+      "title": "צִיפּוֹר",
+      "audioId": "bird",
+      "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
+      "metadata": {
+        "firstLetter": "צ",
+        "alternativeSpelling": "ציפור"
+      }
     },
     {
       "id": "blue-splash",
@@ -190,12 +221,14 @@
     {
       "id": "buterfly-2",
       "url": "resources/imageCatalog/buterfly-2.png",
-      "title": "פַּרְפָּרִים"
+      "title": "פַּרְפָּרִים",
+      "type":"CLIPART"
     },
     {
       "id": "butterflies-picture",
       "url": "resources/imageCatalog/butterflies-picture.png",
       "title": "פַּרְפָּרִים",
+      "type":"PICTURE",
       "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
         "firstLetter": "פ",
@@ -236,7 +269,7 @@
       "id": "carrots",
       "url": "resources/imageCatalog/carrots.png",
       "title": "גְּזָרִים",
-      "type": "CLIPART",
+      "type": "PICTURE",
       "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
         "firstLetter": "ג",
@@ -247,7 +280,7 @@
       "id": "carrots-2",
       "url": "resources/imageCatalog/2Carrots.png",
       "title": "גְּזָרִים",
-      "type": "PICTURE"
+      "type": "CLIPART"
     },
     {
       "id": "cat",
@@ -272,6 +305,7 @@
       "id": "cats-2",
       "url": "resources/imageCatalog/2Cats.png",
       "title": "חֲתוּלִים",
+      "type":"PICTURE",
       "gameIds": ["wordMatch", "letterMatch", "iWriteWords"],
       "metadata": {
         "firstLetter": "ח",
