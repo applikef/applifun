@@ -40,3 +40,17 @@
   float: left;
   margin-left: 16px;
 }
+
+.which-number-number-input {
+  text-align: center;
+  font-size: 4rem;
+  padding: 8px;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+  width: 12rem;
+  margin-right: 60px;
+}
+
+.which-number-item {
+  fill: #e661fb
+}

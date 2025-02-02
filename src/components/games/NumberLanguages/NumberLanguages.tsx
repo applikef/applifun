@@ -8,6 +8,8 @@ import { FEEDBACK_FACE_SIZE, FONT_SIZE } from "../../../utils/ConstantsUtil";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { SingleSelectionDialog } from "../../shared/SingleSelectionDialog/SingleSelectionDialog";
+import { MediaUtil } from "../../../utils/MediaUtil";
+import { PlayListNames } from "../../../assets/playLists";
 
 export const enum NUMBERS_SCOPE {
   UNITS = 0,
@@ -94,9 +96,13 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
 
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
     
-  const {
-    isTablet,
+  const { 
+    audioOn, 
+    isTablet
   } = useContext(GamesContext) as GamesContextType;
+  
+  const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
+  const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
   function newNumber(currentScope: number): number {
     let number = ObjectsUtil.generateRandomNumbers(1,(10**(currentScope+1))-1,1)[0];
@@ -183,23 +189,29 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     const targetSize = getNumberOfTargetElements(targetArray);
     if (targetSize === numberDigits[digit]) {
       if (idPrefix === unitId) {
+        MediaUtil.player(playerHooray, audioOn);
         setUnitFeedbackFace(FACES.HAPPY);
       }
       else if (idPrefix === tenId) {
+        MediaUtil.player(playerHooray, audioOn);
         setTenFeedbackFace(FACES.HAPPY);
       }
       else {
+        MediaUtil.player(playerHooray, audioOn);
         setHundredFeedbackFace(FACES.HAPPY);
       }
     }
     else if (targetSize > numberDigits[digit]) {
       if (idPrefix === unitId) {
+        MediaUtil.player(playerOuch, audioOn);
         setUnitFeedbackFace(FACES.WORRY);
       }
       else if (idPrefix === tenId) {
+        MediaUtil.player(playerOuch, audioOn);
         setTenFeedbackFace(FACES.WORRY);
       }
       else {
+        MediaUtil.player(playerOuch, audioOn);
         setHundredFeedbackFace(FACES.WORRY);
       }
     }

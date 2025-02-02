@@ -24,6 +24,7 @@ import { GameList } from "./GameList";
 import { EducationClock } from "../components/education/EducationClock";
 import { SelectClockDigital } from "../components/games/Clock/SelectClockDigital";
 import { getGameDescriptor } from "../utils/DescriptorsUtil";
+import { WhichNumberAmI } from "../components/games/NumberLanguages/WhichNumberAmI";
 
 
 export const LaunchPage = () => {
@@ -55,6 +56,7 @@ export const LaunchPage = () => {
       { gameId === "washHands" && <ImagesSequence gameDescriptor={descriptor}/> }
 
       { gameId === "numberLanguagesShow" && <NumberLanguages scope={ 1 }/> }
+      { gameId === "whichNumberAmI" && <WhichNumberAmI scope={ 1 }/> }
 
       { gameId === "mouseJumpingShapeClick" && <MouseSkillsJumpingShape eventType={MOUSE_SKILL_TYPE.CLICK}/> }
 

@@ -23,10 +23,18 @@ export const homePageDescriptor: HomePageSectionType[] = [
     items: [
       {
         id: "numberLanguagesShow",
-        label: "MathNumberLanguages",
-        description: "MathNumberLanguagesDescription",
+        label: "mathNumberLanguages",
+        description: "mathNumberLanguagesDescription",
         path: "/launch?gameId=numberLanguagesShow",
         media: "resources/images/number-languages-show-game.png",
+        height: 100
+      },
+      {
+        id: "whichNumberAmI",
+        label: "whichNumberAmI",
+        description: "whichNumberAmIDescription",
+        path: "/launch?gameId=whichNumberAmI",
+        media: "resources/images/which-number-am-i.png",
         height: 100
       },
       {
