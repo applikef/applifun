@@ -1,0 +1,145 @@
+{
+  "gameId": "wordMatch",
+  "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
+  "titleVariableValues": [
+    "לֵיצָן",
+    "תַּחְפּוֹשֶׂת",
+    "רַעֲשָׁן",
+    "מַסֵּיכָה",
+    "אוֹזֶן הַמָּן",
+    "פּוּרִים",
+    "חוֹדֶשׁ אֲדָר",
+    "מִשְׁלוֹחַ מָנוֹת",
+    "מֶלֶךְ אֲחַשְׁוֵורוֹשׁ",
+    "מַלְכָּה אֶסְתֵּר",
+    "מְגִילַּת אֶסְתֵּר"
+  ],
+  "showAdvise": true,
+  "adviseText": "קרא כל אחת מהמילים",
+  "groups": [
+    {
+      "id": "clown",
+      "title": "לֵיצָן",
+      "name": "לֵיצָן"
+    },
+    {
+      "id": "disguise",
+      "title": "תַּחְפּוֹשֶׂת",
+      "name": "תַּחְפּוֹשֶׂת"
+    },
+    {
+      "id": "rattle",
+      "title": "רַעֲשָׁן",
+      "name": "רַעֲשָׁן"
+    },
+    {
+      "id": "mask",
+      "title": "מַסֵּיכָה",
+      "name": "מַסֵּיכָה"
+    },
+    {
+      "id": "haman-ear",
+      "title": "אוֹזֶן הַמָּן",
+      "name": "אוֹזֶן הַמָּן"
+    },
+    {
+      "id": "purim",
+      "title": "פּוּרִים",
+      "name": "פּוּרִים"
+    },
+    {
+      "id": "hebrew-month-adar",
+      "title": "חוֹדֶשׁ אֲדָר",
+      "name": "חוֹדֶשׁ אֲדָר"
+    },
+    {
+      "id": "sweets-bag",
+      "title": "מִשְׁלוֹחַ מָנוֹת",
+      "name": "מִשְׁלוֹחַ מָנוֹת"
+    },
+    {
+      "id": "king",
+      "title": "מֶלֶךְ אֲחַשְׁוֵורוֹשׁ",
+      "name": "מֶלֶךְ אֲחַשְׁוֵורוֹשׁ"
+    },
+    {
+      "id": "queen",
+      "title": "מַלְכָּה אֶסְתֵּר",
+      "name": "מַלְכָּה אֶסְתֵּר"
+    },
+    {
+      "id": "scroll",
+      "title": "מְגִילַּת אֶסְתֵּר",
+      "name": "מְגִילַּת אֶסְתֵּר"
+    }
+  ],
+  "items": [
+    {
+      "id": "clown",
+      "title": "לֵיצָן",
+      "image": "clown",
+      "groupId": "clown"
+    },
+    {
+      "id": "disguise",
+      "title": "תַּחְפּוֹשֶׂת",
+      "image": "disguise",
+      "groupId": "disguise"
+    },
+    {
+      "id": "rattle",
+      "title": "רַעֲשָׁן",
+      "image": "rattle",
+      "groupId": "rattle"
+    },
+    {
+      "id": "mask",
+      "title": "מַסֵּיכָה",
+      "image": "mask",
+      "groupId": "mask"
+    },
+    {
+      "id": "haman-ear",
+      "title": "אוֹזֶן הַמָּן",
+      "image": "haman-ear",
+      "groupId": "haman-ear"
+    },
+    {
+      "id": "purim",
+      "title": "פּוּרִים",
+      "image": "purim",
+      "groupId": "purim"
+    },
+    {
+      "id": "hebrew-month-adar",
+      "title": "חוֹדֶשׁ אֲדָר",
+      "image": "hebrew-month-adar",
+      "groupId": "hebrew-month-adar"
+    },
+    {
+      "id": "sweets-bag",
+      "title": "מִשְׁלוֹחַ מָנוֹת",
+      "image": "sweets-bag",
+      "groupId": "sweets-bag"
+    },
+    {
+      "id": "king",
+      "title": "מֶלֶךְ אֲחַשְׁוֵורוֹשׁ",
+      "image": "king",
+      "groupId": "king"
+    },
+    {
+      "id": "queen",
+      "title": "מַלְכָּה אֶסְתֵּר",
+      "image": "queen",
+      "groupId": "queen"
+    },
+    {
+      "id": "scroll",
+      "title": "מְגִילַּת אֶסְתֵּר",
+      "image": "scroll",
+      "groupId": "scroll"
+    }
+  ],
+  "settingsTitle": "סמן את התמונה"
+}

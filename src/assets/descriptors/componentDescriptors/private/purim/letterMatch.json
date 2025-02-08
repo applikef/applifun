@@ -1,0 +1,121 @@
+{
+  "gameId": "letterMatch",
+  "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
+  "titleVariableValues": [
+    "אָלֶף",
+    "חֵית",
+    "לָמֵד",
+    "מֵם",
+    "פֵּא",
+    "רֵישׁ",
+    "תָּו"
+  ],
+  "showAdvise": true,
+  "adviseText": "הסתכל מה האות הראשונה בכל אחת מהמילים",
+  "groups": [
+    {
+      "id": "א",
+      "title": "א",
+      "name": "אָלֶף"
+    },
+    {
+      "id": "ח",
+      "title": "ח",
+      "name": "חֵית"
+    },
+    {
+      "id": "ל",
+      "title": "ל",
+      "name": "לָמֵד"
+    },
+    {
+      "id": "מ",
+      "title": "מ",
+      "name": "מֵם"
+    },
+    {
+      "id": "פ",
+      "title": "פ",
+      "name": "פֵּא"
+    },
+    {
+      "id": "ר",
+      "title": "ר",
+      "name": "רֵישׁ"
+    },
+    {
+      "id": "ת",
+      "title": "ת",
+      "name": "תָּו"
+    }
+  ],
+  "items": [
+    {
+      "id": "clown",
+      "title": "לֵיצָן",
+      "image": "clown",
+      "groupId": "ל"
+    },
+    {
+      "id": "disguise",
+      "title": "תַּחְפּוֹשֶׂת",
+      "image": "disguise",
+      "groupId": "ת"
+    },
+    {
+      "id": "rattle",
+      "title": "רַעֲשָׁן",
+      "image": "rattle",
+      "groupId": "ר"
+    },
+    {
+      "id": "haman-ear",
+      "title": "אוֹזֶן הַמָּן",
+      "image": "haman-ear",
+      "groupId": "א"
+    },
+    {
+      "id": "purim",
+      "title": "פּוּרִים",
+      "image": "purim",
+      "groupId": "פ"
+    },
+    {
+      "id": "mask",
+      "title": "מַסֵּיכָה",
+      "image": "mask",
+      "groupId": "מ"
+    },
+    {
+      "id": "hebrew-month-adar",
+      "title": "חוֹדֶשׁ אֲדָר",
+      "image": "hebrew-month-adar",
+      "groupId": "ח"
+    },
+    {
+      "id": "sweets-bag",
+      "title": "מִשְׁלוֹחַ מָנוֹת",
+      "image": "sweets-bag",
+      "groupId": "מ"
+    },
+    {
+      "id": "king",
+      "title": "מֶלֶךְ אֲחַשְׁוֵורוֹשׁ",
+      "image": "king",
+      "groupId": "מ"
+    },
+    {
+      "id": "queen",
+      "title": "מַלְכָּה אֶסְתֵּר",
+      "image": "queen",
+      "groupId": "מ"
+    },
+    {
+      "id": "scroll",
+      "title": "מְגִילַּת אֶסְתֵּר",
+      "image": "scroll",
+      "groupId": "מ"
+    }
+ ],  
+  "settingsTitle": "סמן את האותיות שיופיעו במשחק"
+}

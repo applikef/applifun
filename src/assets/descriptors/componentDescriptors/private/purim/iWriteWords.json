@@ -1,0 +1,73 @@
+{
+  "gameId": "iWriteWords",
+  "title": "הַקְלֵק עַל הָאוֹתִיּוֹת מֵהָרִאשׁוֹנָה לָאַחֲרוֹנָה",
+  "settingsTitle": "בחר את המילים שתופענה במשחק",
+  "words": [
+    {
+      "id": "clown",
+      "title": "לֵיצָן",
+      "file": "clown",
+      "name": "ליצן"
+    },
+    {
+      "id": "disguise",
+      "title": "תַּחְפּוֹשֶׂת",
+      "file": "disguise",
+      "name": "תחפושת"
+    },
+    {
+      "id": "rattle",
+      "title": "רַעֲשָׁן",
+      "file": "rattle",
+      "name": "רעשן"
+    },
+    {
+      "id": "haman-ear",
+      "title": "אוֹזֶן הַמָּן",
+      "file": "haman-ear",
+      "name": "אוזן המן"
+    },
+    {
+      "id": "mask",
+      "title": "מַסֵּיכָה",
+      "file": "mask",
+      "name": "מסיכה"
+    },
+    {
+      "id": "purim",
+      "title": "פּוּרִים",
+      "file": "purim",
+      "name": "פורים"
+    },
+    {
+      "id": "hebrew-month-adar",
+      "title": "חוֹדֶשׁ אֲדָר",
+      "file": "hebrew-month-adar",
+      "name": "חודש אדר"
+    },
+    {
+      "id": "sweets-bag",
+      "title": "מִשְׁלוֹחַ מָנוֹת",
+      "file": "sweets-bag",
+      "name": "משלוח מנות"
+    },
+    {
+      "id": "king",
+      "title": "מֶלֶךְ אֲחַשְׁוֵורוֹשׁ",
+      "file": "king",
+      "name": "מלך אחשוורוש"
+    },
+    {
+      "id": "queen",
+      "title": "מַלְכָּה אֶסְתֵּר",
+      "file": "queen",
+      "name": "מלכה אסתר"
+    },
+    {
+      "id": "scroll",
+      "title": "מְגִילַּת אֶסְתֵּר",
+      "file": "scroll",
+      "name": "מגילת אסתר"
+    }
+  ]
+}

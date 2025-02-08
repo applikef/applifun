@@ -61,19 +61,19 @@ export const homePageDescriptor: HomePageSectionType[] = [
     media: "resources/images/letters-splash.png",
     items: [
       {
-        id: "letterMatch",
-        label: "מִי מַתְחִיל בְּאוֹת?",
-        path: "/launch?gameId=letterMatch",
-        description: "letterMatchDescription",
-        media: "resources/images/find-letter-game.png",
-        height: 100
-      },
-      {
         id: "wordMatch",
         label: "קוֹרְאִים מִלִּים",
         path: "/launch?gameId=wordMatch",
         description: "wordMatchDescription",
         media: "resources/images/words-game.png",
+        height: 100
+      },
+      {
+        id: "letterMatch",
+        label: "מִי מַתְחִיל בְּאוֹת?",
+        path: "/launch?gameId=letterMatch",
+        description: "letterMatchDescription",
+        media: "resources/images/find-letter-game.png",
         height: 100
       },
       {

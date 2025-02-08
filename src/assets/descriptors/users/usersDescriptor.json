@@ -10,6 +10,11 @@
     "descriptor": "holidays.json"
   },
   {
+    "id": "purim",
+    "name": "פורים",
+    "descriptor": "purim.json"
+  },
+  {
     "id": "netta",
     "name": "נטע",
     "descriptor": "netta.json",

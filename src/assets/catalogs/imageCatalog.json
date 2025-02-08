@@ -392,6 +392,10 @@
       "url": "resources/imageCatalog/clouds.jpg"
     },
     {
+      "id": "clown",
+      "url": "resources/imageCatalog/clown.jpg"
+    },
+    {
       "id": "curtain",
       "url": "resources/imageCatalog/vav.png"
     },
@@ -404,6 +408,10 @@
         "firstLetter": "ק",
         "alternativeSpelling": "קוביה"
       }
+    },
+    {
+      "id": "disguise",
+      "url": "resources/imageCatalog/disguise.jpg"
     },
     {
       "id": "doll",
@@ -634,6 +642,10 @@
       "url": "resources/imageCatalog/tree-green.png"
     },
     {
+      "id": "haman-ear",
+      "url": "resources/imageCatalog/haman-ear.jpeg"
+    },
+    {
       "id": "hannukah",
       "url": "resources/imageCatalog/hannukah.png"
     },
@@ -672,6 +684,10 @@
     {
       "id": "hearts-clipart-8",
       "url": "resources/imageCatalog/heart-8.png"
+    },
+    {
+      "id": "hebrew-month-adar",
+      "url": "resources/imageCatalog/hebrew-month-adar.png"
     },
     {
       "id": "helmet",
@@ -745,6 +761,10 @@
       }
     },
     {
+      "id": "king",
+      "url": "resources/imageCatalog/king.png"
+    },
+    {
       "id": "latke",
       "url": "resources/imageCatalog/latke.jpg"
     },
@@ -809,6 +829,10 @@
     {
       "id": "lion-transparent",
       "url": "resources/imageCatalog/lion.png"
+    },
+    {
+      "id": "mask",
+      "url": "resources/imageCatalog/mask.jpg"
     },
     {
       "id": "menorah",
@@ -912,6 +936,10 @@
       "url": "resources/imageCatalog/resh.jpg"
     },
     {
+      "id": "purim",
+      "url": "resources/imageCatalog/purim.png"
+    },
+    {
       "id": "purple-butterfly",
       "url": "resources/imageCatalog/butterfly-purple.png"
     },
@@ -930,6 +958,14 @@
     {
       "id": "put-soap-on-hands",
       "url": "resources/imageCatalog/put-soap.jpg"
+    },
+    {
+      "id": "queen",
+      "url": "resources/imageCatalog/queen.png"
+    },
+    {
+      "id": "rattle",
+      "url": "resources/imageCatalog/rattle.jpg"
     },
     {
       "id": "rectangle",
@@ -991,6 +1027,10 @@
       "url": "resources/imageCatalog/school-board.png"
     },
     {
+      "id": "scroll",
+      "url": "resources/imageCatalog/scroll.png"
+    },
+    {
       "id": "shoe",
       "url": "resources/imageCatalog/shoe.png",
       "title": "נַעַל",
@@ -1045,6 +1085,10 @@
     {
       "id": "square",
       "url": "resources/imageCatalog/square.png"
+    },
+    {
+      "id": "sweets-bag",
+      "url": "resources/imageCatalog/sweets-bag.jpg"
     },
     {
       "id": "talk-to-adult",
