@@ -115,7 +115,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
   }
 
   function verifyLetter(letter: ViewEntry) {
-    const letterValue: string = letter.value;
+    const letterValue: string = letter.value  === "_" ? " " : letter.value;
     const letterOrderedIndex = getLetterIndex(orderedLetters, letterValue, false);
     const letterShuffledIndex = getLetterIndex(shuffledLetters, letterValue, true);
     if (letterOrderedIndex === selectedSequenceSteps.current.length) {
@@ -220,7 +220,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
                     className={`sequence-letter ${i===shuffledLetters.length-1 ? "sequence-letter-last-letter" : ""}`} 
                     id={getBankId(e.value)} key={i} 
                     onClick={() => verifyLetter(e)}>
-                      {e.value}
+                      {e.value === " " ? "_" : e.value}
                   </span>
             )}
           </div>
@@ -240,7 +240,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
                     id={getFeedbackId(e.value)} 
                     key={`e.value_${i}`}>
-                      {e.value}
+                      e.value === " " ? "_" : e.value
                   </span>
                 )
             }
