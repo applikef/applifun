@@ -21,6 +21,7 @@ import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/Mult
 import { Advise } from "../../shared/Advise/Advise";
 import { GeneralUtil } from "../../../utils/GeneralUtil";
 import { showGameSettings } from "../../../utils/DescriptorsUtil";
+import { ScoreboardDescriptor } from "../../../model/global.types";
 
 type ItemTitleNotificationType = {
   top: number,
@@ -57,7 +58,6 @@ export const Match = (props: MatchPropsType) => {
    * Retrieve game descriptor values to local variables
    */
   let descriptor = useRef(props.gameDescriptor);
-  //const descriptor: MatchDescriptorType = props.gameDescriptor;
 
   const titles = descriptor.current.titles;
   const titleAudioKeys = descriptor.current.titleAudioKeys;
@@ -96,12 +96,39 @@ export const Match = (props: MatchPropsType) => {
     useRef<boolean[]>((new Array(numberOfGroups)).fill(false).map((v,i) => i < maxNumberOfValidGroups ? true : false));
   let validItems = useRef<Array<MatchItem | undefined>>(getvalidItems());
 
+  let initialScores =  {
+    scores: 0, 
+    totalScores: validItems.current.filter((item) => item !== undefined).length,
+    image: "resources/icons/smiley.png",
+    outlineImage: "resources/icons/smiley-outline.png"
+  };
+  let [scores, setScores] = useState<ScoreboardDescriptor>(initialScores);
+
   let activeGroupId = useRef(groups[activeIndex].id);
   let activeGroupIdTitle = useRef(groups[activeIndex].title);
   let activeGroup = useRef(groups[activeIndex].name);
 
   let showItemTitleNotification = useRef<boolean>(false);
 
+  /*
+  function initItems() {
+    let validIndices = [];
+    for (let i=0; i < items.length; i++) {
+      let item = items[i];
+      let groupIndex = getGroupIndex(item.groupId);
+      if (groupIndex !== -1 && validGroupValueIndices.current[groupIndex]) {
+        validIndices.push(i);
+      }
+    }
+    let randomIndices = ObjectsUtil.generateRandomNumbers(0, validIndices.length-1,10);
+    let validItems = [];
+    for (let i=0; i < randomIndices.length; i++) {
+      validItems.push(items[randomIndices[i]]);
+    }
+    return validItems;
+  }
+    */
+   
   function getGroupIndex(groupId: string) {
     for (let i=0; i < groups.length; i++) {
       if (groups[i].id === groupId) {
@@ -177,6 +204,8 @@ export const Match = (props: MatchPropsType) => {
       validItems.current[itemIndex] = undefined;
       showItemTitleNotification.current = false;
       if (validItems.current.every((val)=> val === undefined)) {
+        scores.scores++;
+        setScores({...scores});
         showWellDone(audioOn);
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
@@ -185,6 +214,8 @@ export const Match = (props: MatchPropsType) => {
       }
       else {
         MediaUtil.player(playerHooray, audioOn);
+        scores.scores++;
+        setScores({...scores});
         setFeedbackFace(() => FACES.HAPPY);
       }
       setTimeout(() => {
@@ -229,7 +260,7 @@ export const Match = (props: MatchPropsType) => {
   }
 
   function handleSettingsCancel() {
-    validItems.current = getvalidItems();
+    //validItems.current = getvalidItems();
     setGameSettingsDisplay(()=>"game-settings-global-hide"); 
   }
 
@@ -238,12 +269,15 @@ export const Match = (props: MatchPropsType) => {
     showItemTitleNotification.current = false;
     validItems.current = getvalidItems();
     setActiveGroup();
-    setGameSettingsDisplay(()=>"game-settings-global-hide")
+    setGameSettingsDisplay(()=>"game-settings-global-hide");
+    initialScores.totalScores = validItems.current.filter((item) => item !== undefined).length;
+    setScores(initialScores)
   }
 
   return(
     <div className="app-page">
       <Banner gameId={descriptor.current.gameId} 
+        scoreboard={scores}
         helpFile={helpFileName} 
         isQuiz={descriptor.current.isQuiz}
         settings={ showGameSettings(descriptor.current) ?

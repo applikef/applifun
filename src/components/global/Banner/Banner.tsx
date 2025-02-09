@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom";
 
 import './Banner.css'
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { Help } from "../help/Help";
 import { getProfileList } from "../../../pages/pages.util";
 import { HOME_PAGE_PATH } from "../../../utils/ConstantsUtil";
 import { getGameDescriptor } from "../../../utils/DescriptorsUtil";
+import { Scoreboard } from "../../shared/Scoreboard/Scoreboard";
+import { ScoreboardDescriptor } from "../../../model/global.types";
 
 export interface BannerPropsType {
   gameId: string;
   settings?: Function;
   hideAudio?: boolean;
   showLeftIconBar?: boolean;
+  scoreboard? : ScoreboardDescriptor;
   helpFile?: string;
   profileHandler?: Function;
   isQuiz?: boolean;
@@ -33,9 +36,17 @@ export const Banner = (props: BannerPropsType) => {
 
   const showLeftIconBar = props.showLeftIconBar !== undefined ? props.showLeftIconBar : true;
 
+  const [scoreboard, setScoreBoard] = 
+    useState<ScoreboardDescriptor | undefined>(props.scoreboard);
+  const showScoreboard = scoreboard !== undefined ? true : false;
+
   const [showBannerBar, setShowBannerBar] = useState<boolean>(true);
   const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
 
+  useEffect(() => {
+    setScoreBoard(props.scoreboard);
+  }, [props.scoreboard]);
+  
   function setHelpState() {              
     setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")
   }  
@@ -78,6 +89,11 @@ export const Banner = (props: BannerPropsType) => {
                 </span>
               }
             </div>
+
+            { showScoreboard &&
+              <Scoreboard scores={scoreboard!} />
+            }
+
             { showLeftIconBar &&
               <div className="banner-left-icon-bar">
                 <div>
