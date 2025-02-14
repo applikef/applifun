@@ -240,7 +240,7 @@ export const LettersSequence = (props: LettersSequenceProps) => {
                   e.show && <span className="sequence-feedback-letter sequence-letter" 
                     id={getFeedbackId(e.value)} 
                     key={`e.value_${i}`}>
-                      e.value === " " ? "_" : e.value
+                      { e.value === " " ? "_" : e.value }
                   </span>
                 )
             }
