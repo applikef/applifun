@@ -396,6 +396,14 @@
       "url": "resources/imageCatalog/clown.jpg"
     },
     {
+      "id": "clown-purim",
+      "url": "resources/imageCatalog/clown-purim.png"
+    },
+    {
+      "id": "costume-girl-bee",
+      "url": "resources/imageCatalog/costume-girl-bee.png"
+    },
+    {
       "id": "curtain",
       "url": "resources/imageCatalog/vav.png"
     },

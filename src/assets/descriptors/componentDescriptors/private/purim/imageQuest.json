@@ -1,0 +1,106 @@
+{
+  "gameId": "imageQuest",
+  "title": "הִסְתַּכֵּל עַל הַתְּמוּנָה וַעֲנֵה עַל הַשְּׁאֵלוֹת",
+  "sections": [
+    {
+      "id": "haman-ear",
+      "title": "אוזן המן",
+      "image": "haman-ear",
+      "questions": [
+        {
+          "questionText": "מָה רוֹאִים בַּתְּמוּנָה?",
+          "answers": [
+            "אוֹכֶל",
+            "מִשְׂחָק",
+            "חַיָּה"
+          ],
+          "correctAnswerIndex": 0
+        },
+        {
+          "questionText": "אֵיךְ קוֹרְאִים לְמָה שֶׁרוֹאִים בַּתְּמוּנָה?",
+          "answers": [
+            "סוּפְגָּנִיָּה",
+            "כָּרִיךְ",
+            "אוֹזֶן הַמָּן"
+          ],
+          "correctAnswerIndex": 2
+        }
+      ]
+    },
+    {
+      "id": "clown-purim",
+      "title": "ליצן",
+      "image": "clown-purim",
+      "questions": [
+        {
+          "questionText": " מָה הַלֵּיצָן מַחְזִיק?",
+          "answers": [
+            "מִשְׁלוֹחַ מָנוֹת וְרַעֲשָׁן",
+            "מִשְׂחָקִים",
+            "סַל קְנִיּוֹת"
+          ],
+          "correctAnswerIndex": 0
+        },
+        {
+          "questionText": "מָה יֵשׁ לַלֵּיצָן עַל הָרֹאשׁ?",
+          "answers": [
+            "הַשֵּׂעָרוֹת שֶׁלּוֹ",
+            "פֵּאָה שֶׁל הַתַּחְפֹּשֶׂת",
+            "סֻכָּרִיּוֹת"
+          ],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    {
+      "id": "rattle",
+      "title": "רַעֲשָׁן",
+      "image": "rattle",
+      "questions": [
+        {
+          "questionText": "מָה רוֹאִים בַּתְּמוּנָה?",
+          "answers": [
+            "אוֹכֶל",
+            "מִשְׂחָק",
+            "חַיָּה"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "questionText": "אֵיךְ קוֹרְאִים לְמָה שֶׁרוֹאִים בַּתְּמוּנָה?",
+          "answers": [
+            "מַקֵּל",
+            "רַעֲשָׁן",
+            "קַשׁ"
+          ],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    {
+      "id": "costume-girl-bee",
+      "title": "תַּחְפּוֹשֶׂת שֶׁל דְּבוֹרָה",
+      "image": "costume-girl-bee",
+      "questions": [
+        {
+          "questionText": "מָה הַיַּלְדָּה לוֹבֶשֶׁת?",
+          "answers": [
+            "שִׂמְלָה לַגַּן",
+            "תַּחְפּוֹשֶׂת שֶׁל דְּבוֹרָה",
+            "מִכְנָסַיִים וְחוּלְצָה"
+          ],
+          "correctAnswerIndex": 1
+        },    
+        {
+          "questionText": "אֵיךְ הַיַּלְדָּה מַרְגִּישָׁה?",
+          "answers": [
+            "עֲצוּבָה",
+            "כּוֹעֶסֶת",
+            "שְׂמֵחָה"
+          ],
+          "correctAnswerIndex": 2
+        }
+      ]
+    }
+  ]
+}

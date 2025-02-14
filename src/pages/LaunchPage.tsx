@@ -25,6 +25,7 @@ import { EducationClock } from "../components/education/EducationClock";
 import { SelectClockDigital } from "../components/games/Clock/SelectClockDigital";
 import { getGameDescriptor } from "../utils/DescriptorsUtil";
 import { WhichNumberAmI } from "../components/games/NumberLanguages/WhichNumberAmI";
+import { MultipleChoice } from "../components/games/MultipleChoice/MultipleChoice";
 
 
 export const LaunchPage = () => {
@@ -46,6 +47,8 @@ export const LaunchPage = () => {
       { gameId === "numberMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "letterMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "wordMatch" && <Match gameDescriptor={descriptor}/> }
+
+      { gameId === "imageQuest" && <MultipleChoice gameDescriptor={descriptor}/> }
       
       { gameId === "synonymsPairs" && <Pairs gameDescriptor={descriptor}/> }
       

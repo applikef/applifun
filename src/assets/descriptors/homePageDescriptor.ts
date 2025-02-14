@@ -85,6 +85,14 @@ export const homePageDescriptor: HomePageSectionType[] = [
         height: 100
       },
       {
+        id: "imageQuest",
+        label: "מִדְרַשׁ תְּמוּנָה",
+        path: "/launch?gameId=imageQuest",
+        description: "imageQuestDescription",
+        media: "resources/images/image-quest-game.png",
+        height: 100
+      },
+      {
         id: "synonymsPairs",
         label: "מִלִּים נִרְדָּפוֹת",
         path: "/launch?gameId=synonymsPairs",

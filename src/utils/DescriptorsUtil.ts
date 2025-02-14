@@ -38,6 +38,9 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   else if (gameId === "iCount") {
     return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/numbersSequence.json");
   }
+  else if (gameId === "imageQuest") {
+    return require("./../assets/descriptors/componentDescriptors/private/purim/imageQuest.json");
+  }
   else if (gameId === "iWriteWords") {
     if (gameDescriptorName) {
       return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
