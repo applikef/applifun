@@ -118,7 +118,7 @@ export interface SelectClockDescriptorType extends GameDescriptorType {
 export interface MultipleChoiceQuestionType {
   questionText?: string;
   answers: Array<string>;
-  correctAnswerIndex: number;
+  correctAnswerIndex?: number;
 }
 
 export interface MultipleChoiceSectionType {

@@ -43,43 +43,54 @@ export const MultipleChoice = (props: MultipleChoiceProps) => {
     useState<MultipleChoiceSectionType>(descriptor.current.sections[0]);
   let currentQuestionIndex = useRef(0);
   const [currentQuestion, setCurrentQuestion] 
-    = useState<MultipleChoiceQuestionType>(descriptor.current.sections[0].questions[0]);
+    = useState<MultipleChoiceQuestionType>(shuffleAnswers(descriptor.current.sections[0].questions[0]));
 
-    function verifyResponse(selectedAnswerIndex: number) {
-      if (selectedAnswerIndex === currentQuestion.correctAnswerIndex) {
-        setFeedbackFace(() => FACES.HAPPY);
-        MediaUtil.player(playerHooray, audioOn);
-        if (currentQuestionIndex.current < currentSection.questions.length-1) {
-          const newQuestionIndex = currentQuestionIndex.current+1;
-          currentQuestionIndex.current = newQuestionIndex;
-          setCurrentQuestion(currentSection.questions[newQuestionIndex])
-          setTimeout(() => {
-            setFeedbackFace(() => FACES.NONE);
-          }, ConstantsUtil.hoorayShortTimeout)
-        }
-        else if (currentSectionIndex.current < descriptor.current.sections.length-1) {
-          let newSectionIndex = currentSectionIndex.current + 1;
-          currentSectionIndex.current = newSectionIndex;
-          setCurrentSection(descriptor.current.sections[newSectionIndex]);
-          currentQuestionIndex.current = 0;
-          setCurrentQuestion(() => descriptor.current.sections[newSectionIndex].questions[0]);
-          setTimeout(() => {
-            setFeedbackFace(() => FACES.NONE);
-          }, ConstantsUtil.hoorayShortTimeout)
-        }
-        else {
+  function shuffleAnswers(question:MultipleChoiceQuestionType): MultipleChoiceQuestionType {
+    let newQ = JSON.parse(JSON.stringify(question));    //{...question};
+    let indices: Array<number> = 
+      ObjectsUtil.generateRandomNumbers(0, newQ.answers.length-1, newQ.answers.length);
+    newQ.correctAnswerIndex = indices.indexOf(0);
+    for (let i=0; i < newQ.answers.length; i++) {
+      newQ.answers[i] = question.answers[indices[i]];
+    }
+    return newQ;
+  }
+
+  function verifyResponse(selectedAnswerIndex: number) {
+    if (selectedAnswerIndex === currentQuestion.correctAnswerIndex) {
+      setFeedbackFace(() => FACES.HAPPY);
+      MediaUtil.player(playerHooray, audioOn);
+      if (currentQuestionIndex.current < currentSection.questions.length-1) {
+        const newQuestionIndex = currentQuestionIndex.current+1;
+        currentQuestionIndex.current = newQuestionIndex;
+        setCurrentQuestion(shuffleAnswers(currentSection.questions[newQuestionIndex]))
+        setTimeout(() => {
           setFeedbackFace(() => FACES.NONE);
-          showWellDone(audioOn);
-          setTimeout(() => {
-            navigate(GeneralUtil.targetNavigationOnGameOver(descriptor.current.isQuiz));
-          }, ConstantsUtil.hoorayTimeout); 
-        }
+        }, ConstantsUtil.hoorayShortTimeout)
+      }
+      else if (currentSectionIndex.current < descriptor.current.sections.length-1) {
+        let newSectionIndex = currentSectionIndex.current + 1;
+        currentSectionIndex.current = newSectionIndex;
+        setCurrentSection(descriptor.current.sections[newSectionIndex]);
+        currentQuestionIndex.current = 0;
+        setCurrentQuestion(() => shuffleAnswers(descriptor.current.sections[newSectionIndex].questions[0]));
+        setTimeout(() => {
+          setFeedbackFace(() => FACES.NONE);
+        }, ConstantsUtil.hoorayShortTimeout)
       }
       else {
-        setFeedbackFace(() => FACES.WORRY);
-        MediaUtil.player(playerOuch, audioOn);
+        setFeedbackFace(() => FACES.NONE);
+        showWellDone(audioOn);
+        setTimeout(() => {
+          navigate(GeneralUtil.targetNavigationOnGameOver(descriptor.current.isQuiz));
+        }, ConstantsUtil.hoorayTimeout); 
       }
     }
+    else {
+      setFeedbackFace(() => FACES.WORRY);
+      MediaUtil.player(playerOuch, audioOn);
+    }
+  }
 
   return (
     <div className="app-page">
