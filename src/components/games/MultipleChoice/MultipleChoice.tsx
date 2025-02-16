@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { GeneralUtil } from "../../../utils/GeneralUtil";
 import { MultipleChoiceDescriptorType, MultipleChoiceQuestionType, MultipleChoiceSectionType } from "../../../model/componentDescriptors.types";
+import { ScoreboardDescriptor } from "../../../model/global.types";
 
 export interface MultipleChoiceProps {
   gameDescriptor: MultipleChoiceDescriptorType;
@@ -45,6 +46,16 @@ export const MultipleChoice = (props: MultipleChoiceProps) => {
   const [currentQuestion, setCurrentQuestion] 
     = useState<MultipleChoiceQuestionType>(shuffleAnswers(descriptor.current.sections[0].questions[0]));
 
+  let initialScores =  {
+    scores: 0, 
+    totalScores: (descriptor.current.sections.map((section) => {
+      return section.questions.length})).reduce((partialSum, a) => partialSum + a, 0),
+    image: "resources/icons/clown.png",
+    outlineImage: "resources/icons/clown-outline.png"
+  };
+  let [scores, setScores] = useState<ScoreboardDescriptor>(initialScores);
+
+
   function shuffleAnswers(question:MultipleChoiceQuestionType): MultipleChoiceQuestionType {
     let newQ = JSON.parse(JSON.stringify(question));    //{...question};
     let indices: Array<number> = 
@@ -59,6 +70,8 @@ export const MultipleChoice = (props: MultipleChoiceProps) => {
   function verifyResponse(selectedAnswerIndex: number) {
     if (selectedAnswerIndex === currentQuestion.correctAnswerIndex) {
       setFeedbackFace(() => FACES.HAPPY);
+      scores.scores++;
+      setScores({...scores});
       MediaUtil.player(playerHooray, audioOn);
       if (currentQuestionIndex.current < currentSection.questions.length-1) {
         const newQuestionIndex = currentQuestionIndex.current+1;
@@ -96,6 +109,7 @@ export const MultipleChoice = (props: MultipleChoiceProps) => {
     <div className="app-page">
       <Banner gameId={descriptor.current.gameId} 
         isQuiz={descriptor.current.isQuiz}
+        scoreboard={scores}
         helpFile={helpFileName} 
       />
 
