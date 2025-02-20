@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ScoreboardDescriptor } from "../../../model/global.types";
-import "./../../../assets/styles/global.css";
+import "./Scoreboard.css";
 
 interface ScoreboardProps {
   scores: ScoreboardDescriptor;
@@ -32,10 +32,10 @@ export const Scoreboard = (props: ScoreboardProps) => {
       boardEntries.map((entry, i) =>  
         <span key={i}>
           { entry === true ? 
-            <img src={image} className="banner-icon" 
+            <img src={image} className="scoreboard-icon" 
                 title="יש!"  alt="יש!" />
           : 
-            <img src={outlineImage} className="banner-icon" 
+            <img src={outlineImage} className="scoreboard-icon" 
               title="עדיין לא"  alt="עדיין לא" />  
           }
         </span>

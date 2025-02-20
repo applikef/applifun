@@ -1,7 +1,9 @@
 {
   "games": {
-    "wordMatch": "purim/wordMatch.json",
     "iWriteWords": "purim/iWriteWords.json",
-    "letterMatch": "purim/letterMatch.json"
+    "imageQuestSort": "purim/imageQuestSort.json",
+    "imageQuestQuestions": "purim/imageQuestQuestions.json",
+    "letterMatch": "purim/letterMatch.json",
+    "wordMatch": "purim/wordMatch.json"
   }
 }

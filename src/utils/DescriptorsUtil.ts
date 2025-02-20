@@ -38,8 +38,21 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   else if (gameId === "iCount") {
     return require("./../assets/descriptors/componentDescriptors/sequenceDescriptors/numbersSequence.json");
   }
-  else if (gameId === "imageQuest") {
-    return require("./../assets/descriptors/componentDescriptors/private/purim/imageQuest.json");
+  else if (gameId === "imageQuestSort") {
+    if (gameDescriptorName) {
+      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
+    }
+    else {    // Default descriptor
+      return require(`./../assets/descriptors/componentDescriptors/imageQuest/imageQuestSort.json`);
+    }
+  }
+  else if (gameId === "imageQuestQuestions") {
+    if (gameDescriptorName) {
+      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
+    }
+    else {    // Default descriptor
+      return require(`./../assets/descriptors/componentDescriptors/imageQuest/imageQuestQuestions.json`);
+    }
   }
   else if (gameId === "iWriteWords") {
     if (gameDescriptorName) {

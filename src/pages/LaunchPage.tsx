@@ -48,7 +48,8 @@ export const LaunchPage = () => {
       { gameId === "letterMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "wordMatch" && <Match gameDescriptor={descriptor}/> }
 
-      { gameId === "imageQuest" && <MultipleChoice gameDescriptor={descriptor}/> }
+      { gameId === "imageQuestSort" && <MultipleChoice gameDescriptor={descriptor}/> }
+      { gameId === "imageQuestQuestions" && <MultipleChoice gameDescriptor={descriptor}/> }
       
       { gameId === "synonymsPairs" && <Pairs gameDescriptor={descriptor}/> }
       

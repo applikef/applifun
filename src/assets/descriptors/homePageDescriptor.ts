@@ -96,15 +96,23 @@ export const homePageDescriptor: HomePageSectionType[] = [
   },
   {
     id: "imageQuest",
-    title: "מִדְרַשׁ תְּמוּנָה",
+    title: "מָה בַּתְּמוּנָה?",
     media: "resources/images/image-quest-game.png",
     items: [
       {
-        id: "imageQuest",
-        label: "מִדְרַשׁ תְּמוּנָה",
-        path: "/launch?gameId=imageQuest",
+        id: "imageQuestSort",
+        label: "מִיּוּן",
+        path: "/launch?gameId=imageQuestSort",
         description: "imageQuestDescription",
-        media: "resources/images/image-quest-game.png",
+        media: "resources/images/image-quest-sort.png",
+        height: 100
+      },
+      {
+        id: "imageQuestQuestions",
+        label: "מִדְרַשׁ תְּמוּנָה",
+        path: "/launch?gameId=imageQuestQuestions",
+        description: "imageQuestDescription",
+        media: "resources/images/image-quest-questions.png",
         height: 100
       }
     ]

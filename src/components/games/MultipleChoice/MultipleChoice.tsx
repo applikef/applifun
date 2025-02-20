@@ -116,7 +116,7 @@ export const MultipleChoice = (props: MultipleChoiceProps) => {
       <div>
         <PageHeader title={ currentQuestion.questionText ? currentQuestion.questionText : "" } 
           feedbackFace={ feedbackFace } />
-        <div className="multiple-choice-sub-title">
+        <div className={isTablet ? "multiple-choice-sub-title-small" : "multiple-choice-sub-title"}>
           הַקְלֵק עַל הַתְּשׁוּבָה הַנְּכוֹנָה
         </div>
         <div className="app-center">

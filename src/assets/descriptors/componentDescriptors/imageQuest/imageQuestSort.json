@@ -1,0 +1,66 @@
+{
+  "gameId": "imageQuestSort",
+  "title": "הִסְתַּכֵּל עַל הַתְּמוּנָה וַעֲנֵה עַל הַשְּׁאֵלוֹת",
+  "sections": [
+    {
+      "id": "blue-butterfly",
+      "title": "פרפר",
+      "image": "blue-butterfly",
+      "questions": [
+        {
+          "questionText": "מָה רוֹאִים בַּתְּמוּנָה?",
+          "answers": [
+            "חַיָּה",
+            "צוֹמֵחַ",
+            "מִשְׂחָק"
+          ]        
+        }
+      ]
+    },
+    {
+      "id": "cat-transparent",
+      "title": "חתול",
+      "image": "cat-transparent",
+      "questions": [
+        {
+          "questionText": "מָה רוֹאִים בַּתְּמוּנָה?",
+          "answers": [
+            "חַיָּה",
+            "מִשְׂחָק",
+            "רָהִיט"
+          ]        
+        }
+      ]
+    },
+    {
+      "id": "carrots",
+      "title": "גְּזָרִים",
+      "image": "carrots",
+      "questions": [
+        {
+          "questionText": "מָה רוֹאִים בַּתְּמוּנָה?",
+          "answers": [
+            "אוֹכֶל",
+            "מִשְׂחָק",
+            "פֶּרַח"
+          ]        
+        }
+      ]
+    },
+    {
+      "id": "flowers",
+      "title": "פְּרָחִים",
+      "image": "flowers",
+      "questions": [
+        {
+          "questionText": "מָה רוֹאִים בַּתְּמוּנָה?",
+          "answers": [
+            "צוֹמֵחַ",
+            "חַי",
+            "דּוֹמֵם"
+          ]        
+        }    
+      ]
+    }
+  ]
+}
