@@ -11,15 +11,6 @@ export class ObjectsUtil {
     return !this.isNotSet(object);     
   }
 
-  public static getEnumKeyByEnumValue = (myEnum: any, enumValue?: string): any | undefined => {
-    if (!enumValue) {
-      return undefined;
-    }
-
-    let keys = Object.keys(myEnum).filter(x => myEnum[x] === enumValue);
-    return keys.length > 0 ? keys[0] : undefined;
-  }
-
   private static compareNumbers = (a: number, b: number) => {
     if (a < b) {
       return -1;
@@ -30,7 +21,7 @@ export class ObjectsUtil {
     return 0;
   }
 
-public static sortNumbers = (array: number[]) => {
+  public static sortNumbers = (array: number[]) => {
     let orderedNumbers = [...array];
     orderedNumbers.join();
     orderedNumbers.sort(this.compareNumbers);

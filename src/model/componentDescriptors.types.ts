@@ -31,6 +31,7 @@ export interface GameDescriptorType {
   helpFile?: string;
   isQuiz?: boolean;
   showSettings?: boolean;
+  scoresImage?: string;
 }
 
 export interface LinkListDescriptorType extends GameDescriptorType {

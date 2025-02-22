@@ -101,7 +101,7 @@ export const homePageDescriptor: HomePageSectionType[] = [
     items: [
       {
         id: "imageQuestSort",
-        label: "מִיּוּן",
+        label: "סִיווּג",
         path: "/launch?gameId=imageQuestSort",
         description: "imageQuestDescription",
         media: "resources/images/image-quest-sort.png",

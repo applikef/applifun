@@ -44,4 +44,10 @@ export const enum COLORS {
   GREEN_03 = "#31a354"
 }
 
+export const enum SCORES_IMAGE {
+  SMILEY = "smiley",
+  HEART = "heart",
+  CLOWN = "clown"
+}
+
 

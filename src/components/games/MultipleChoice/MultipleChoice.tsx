@@ -17,6 +17,7 @@ import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { GeneralUtil } from "../../../utils/GeneralUtil";
 import { MultipleChoiceDescriptorType, MultipleChoiceQuestionType, MultipleChoiceSectionType } from "../../../model/componentDescriptors.types";
 import { ScoreboardDescriptor } from "../../../model/global.types";
+import { getScoresImage, getScoresImageOutline } from "../../../utils/DescriptorsUtil";
 
 export interface MultipleChoiceProps {
   gameDescriptor: MultipleChoiceDescriptorType;
@@ -50,8 +51,8 @@ export const MultipleChoice = (props: MultipleChoiceProps) => {
     scores: 0, 
     totalScores: (descriptor.current.sections.map((section) => {
       return section.questions.length})).reduce((partialSum, a) => partialSum + a, 0),
-    image: "resources/icons/clown.png",
-    outlineImage: "resources/icons/clown-outline.png"
+    image: getScoresImage(descriptor.current.scoresImage),
+    outlineImage: getScoresImageOutline(descriptor.current.scoresImage),
   };
   let [scores, setScores] = useState<ScoreboardDescriptor>(initialScores);
 

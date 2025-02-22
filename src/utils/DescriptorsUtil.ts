@@ -1,6 +1,7 @@
 import { ImageCatalogEntryType } from "../model/catalogs.types";
 import { User } from "../model/users.types";
 import { MediaUtil } from "../utils/MediaUtil";
+import { SCORES_IMAGE } from "./ConstantsUtil";
 import { hebrewLetters } from "./LanguageUtil";
 
 export function getGameDescriptor(gameId: string | null, user: User, profile: string | null): any {
@@ -239,4 +240,32 @@ export function generateWordMatchDescriptor() {
   }
 
   return descriptor;
+}
+
+export function getScoresImage(imageType: string | undefined) {
+  switch(imageType) {
+    case (SCORES_IMAGE.CLOWN): {
+      return "resources/icons/clown.png";
+    }
+    case (SCORES_IMAGE.HEART): {
+      return "resources/icons/heart.png";
+    }
+    default: {
+      return "resources/icons/smiley.png";
+    }
+  }
+}
+
+export function getScoresImageOutline(imageType: string | undefined) {
+  switch(imageType) {
+    case (SCORES_IMAGE.CLOWN): {
+      return "resources/icons/clown-outline.png";
+    }
+    case (SCORES_IMAGE.HEART): {
+      return "resources/icons/heart-outline.png";
+    }
+    default: {
+      return "resources/icons/smiley-outline.png";
+    }
+  }
 }

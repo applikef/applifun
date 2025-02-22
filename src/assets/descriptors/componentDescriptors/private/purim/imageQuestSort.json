@@ -1,6 +1,7 @@
 {
   "gameId": "imageQuestSort",
   "title": "הִסְתַּכֵּל עַל הַתְּמוּנָה וַעֲנֵה עַל הַשְּׁאֵלוֹת",
+  "scoresImage": "clown",
   "sections": [
     {
       "id": "haman-ear",
