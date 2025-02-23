@@ -1,18 +1,18 @@
 @import "./../../../assets/styles/global.css";
 
-.multiple-choice-sub-title {
+.pick-and-choose-sub-title {
   margin-bottom: 16px;
   text-align: center;
 }
 
-.multiple-choice-sub-title-normal {
+.pick-and-choose-sub-title-normal {
   font-size: 2rem;
 }
 
-.multiple-choice-sub-title-small {
+.pick-and-choose-sub-title-small {
   font-size: 1.5rem;
 }
 
-.multiple-choice-sub-image {
+.pick-and-choose-sub-image {
   margin-bottom: 24px;
 }

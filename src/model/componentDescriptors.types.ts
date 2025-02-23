@@ -116,20 +116,20 @@ export interface SelectClockDescriptorType extends GameDescriptorType {
   hourTypes: Array<BaseItem>;
 }
 
-export interface MultipleChoiceQuestionType {
+export interface PickAndChooseQuestionType {
   questionText?: string;
   answers: Array<string>;
   correctAnswerIndex?: number;
 }
 
-export interface MultipleChoiceSectionType {
+export interface PickAndChooseSectionType {
   id: string;
   title: string;
   image: string;
-  questions: Array<MultipleChoiceQuestionType>;
+  questions: Array<PickAndChooseQuestionType>;
 }
 
-export interface MultipleChoiceDescriptorType extends GameDescriptorType {
+export interface PickAndChooseDescriptorType extends GameDescriptorType {
   title: string;
-  sections: Array<MultipleChoiceSectionType>;
+  sections: Array<PickAndChooseSectionType>;
 }

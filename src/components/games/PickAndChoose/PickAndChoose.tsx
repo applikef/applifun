@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 
-import "./MultipleChoice.css";
+import "./PickAndChoose.css";
 
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
 import { showWellDone } from "../../shared/WellDone/WellDone";
@@ -15,15 +15,15 @@ import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { GeneralUtil } from "../../../utils/GeneralUtil";
-import { MultipleChoiceDescriptorType, MultipleChoiceQuestionType, MultipleChoiceSectionType } from "../../../model/componentDescriptors.types";
+import { PickAndChooseDescriptorType, PickAndChooseQuestionType, PickAndChooseSectionType } from "../../../model/componentDescriptors.types";
 import { ScoreboardDescriptor } from "../../../model/global.types";
 import { getScoresImage, getScoresImageOutline } from "../../../utils/DescriptorsUtil";
 
-export interface MultipleChoiceProps {
-  gameDescriptor: MultipleChoiceDescriptorType;
+export interface PickAndChooseProps {
+  gameDescriptor: PickAndChooseDescriptorType;
 };
 
-export const MultipleChoice = (props: MultipleChoiceProps) => {
+export const PickAndChoose = (props: PickAndChooseProps) => {
   const descriptor = useRef(props.gameDescriptor);
   
   const navigate = useNavigate();
@@ -42,10 +42,10 @@ export const MultipleChoice = (props: MultipleChoiceProps) => {
 
   let currentSectionIndex = useRef(0);
   const [currentSection, setCurrentSection] = 
-    useState<MultipleChoiceSectionType>(descriptor.current.sections[0]);
+    useState<PickAndChooseSectionType>(descriptor.current.sections[0]);
   let currentQuestionIndex = useRef(0);
   const [currentQuestion, setCurrentQuestion] 
-    = useState<MultipleChoiceQuestionType>(shuffleAnswers(descriptor.current.sections[0].questions[0]));
+    = useState<PickAndChooseQuestionType>(shuffleAnswers(descriptor.current.sections[0].questions[0]));
 
   let initialScores =  {
     scores: 0, 
@@ -57,7 +57,7 @@ export const MultipleChoice = (props: MultipleChoiceProps) => {
   let [scores, setScores] = useState<ScoreboardDescriptor>(initialScores);
 
 
-  function shuffleAnswers(question:MultipleChoiceQuestionType): MultipleChoiceQuestionType {
+  function shuffleAnswers(question:PickAndChooseQuestionType): PickAndChooseQuestionType {
     let newQ = JSON.parse(JSON.stringify(question));    //{...question};
     let indices: Array<number> = 
       ObjectsUtil.generateRandomNumbers(0, newQ.answers.length-1, newQ.answers.length);
@@ -117,11 +117,11 @@ export const MultipleChoice = (props: MultipleChoiceProps) => {
       <div>
         <PageHeader title="הַקְלֵק עַל הַתְּשׁוּבָה הַנְּכוֹנָה"
           feedbackFace={ feedbackFace } />
-        <div className={`multiple-choice-sub-title ${isTablet ? "multiple-choice-sub-title-small" : "multiple-choice-sub-title-normal"}`}>
+        <div className={`pick-and-choose-sub-title ${isTablet ? "pick-and-choose-sub-title-small" : "pick-and-choose-sub-title-normal"}`}>
           { currentQuestion.questionText ? currentQuestion.questionText : "" } 
         </div>
         <div className="app-center">
-          <div className="multiple-choice-sub-image">
+          <div className="pick-and-choose-sub-image">
             <img src={MediaUtil.getCatalogImage(currentSection.image)} alt={currentSection.title}
               height={DeviceUtil.imageHeightLarge(isTablet)}></img>  
           </div>
