@@ -1,13 +1,16 @@
 @import "./../../../assets/styles/global.css";
 
 .multiple-choice-sub-title {
-  font-size: 1.5rem;
   margin-bottom: 16px;
+  text-align: center;
+}
+
+.multiple-choice-sub-title-normal {
+  font-size: 2rem;
 }
 
 .multiple-choice-sub-title-small {
-  font-size: 1rem;
-  margin-bottom: 16px;
+  font-size: 1.5rem;
 }
 
 .multiple-choice-sub-image {

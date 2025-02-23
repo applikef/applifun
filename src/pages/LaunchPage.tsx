@@ -50,6 +50,7 @@ export const LaunchPage = () => {
 
       { gameId === "imageQuestSort" && <MultipleChoice gameDescriptor={descriptor}/> }
       { gameId === "imageQuestQuestions" && <MultipleChoice gameDescriptor={descriptor}/> }
+      { gameId === "imageQuestPosition" && <MultipleChoice gameDescriptor={descriptor}/> }
       
       { gameId === "synonymsPairs" && <Pairs gameDescriptor={descriptor}/> }
       

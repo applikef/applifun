@@ -55,6 +55,9 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
       return require(`./../assets/descriptors/componentDescriptors/imageQuest/imageQuestQuestions.json`);
     }
   }
+  else if (gameId === "imageQuestPosition") {
+      return require(`./../assets/descriptors/componentDescriptors/imageQuest/imageQuestPosition.json`);
+  }
   else if (gameId === "iWriteWords") {
     if (gameDescriptorName) {
       return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);

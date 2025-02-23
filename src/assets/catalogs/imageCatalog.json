@@ -344,6 +344,10 @@
       "url": "resources/imageCatalog/children.png"
     },
     {
+      "id": "child-at-a-table",
+      "url": "resources/imageCatalog/child-at-a-table.png"
+    },
+    {
       "id": "child-breath",
       "url": "resources/imageCatalog/child-breath.jpg"
     },
