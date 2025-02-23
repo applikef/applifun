@@ -41,7 +41,7 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   }
   else if (gameId === "imageQuestSort") {
     if (gameDescriptorName) {
-      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
+      return require(`./../assets/descriptors/private/${gameDescriptorName}`);
     }
     else {    // Default descriptor
       return require(`./../assets/descriptors/componentDescriptors/imageQuest/imageQuestSort.json`);
@@ -49,7 +49,7 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   }
   else if (gameId === "imageQuestQuestions") {
     if (gameDescriptorName) {
-      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
+      return require(`./../assets/descriptors/private/${gameDescriptorName}`);
     }
     else {    // Default descriptor
       return require(`./../assets/descriptors/componentDescriptors/imageQuest/imageQuestQuestions.json`);
@@ -60,7 +60,7 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   }
   else if (gameId === "iWriteWords") {
     if (gameDescriptorName) {
-      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
+      return require(`./../assets/descriptors/private/${gameDescriptorName}`);
     }
     else {    // Default descriptor
       return generateIWriteWordsDescriptor();
@@ -68,7 +68,7 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   }
   else if (gameId === "letterMatch") {
     if (gameDescriptorName) {
-      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
+      return require(`./../assets/descriptors/private/${gameDescriptorName}`);
     }
     else {    // Default descriptor
       return generateLetterMatchDescriptor();
@@ -118,7 +118,7 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   }
   else if (gameId === "wordMatch") {
     if (gameDescriptorName) {
-      return require(`./../assets/descriptors/componentDescriptors/private/${gameDescriptorName}`);
+      return require(`./../assets/descriptors/private/${gameDescriptorName}`);
     }
     else {    // Default descriptor
       return generateWordMatchDescriptor();
