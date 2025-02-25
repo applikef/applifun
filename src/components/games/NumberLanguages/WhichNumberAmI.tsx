@@ -4,12 +4,15 @@ import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
-import { FEEDBACK_FACE_SIZE, FONT_SIZE } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, FEEDBACK_FACE_SIZE, FONT_SIZE } from "../../../utils/ConstantsUtil";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { SingleSelectionDialog } from "../../shared/SingleSelectionDialog/SingleSelectionDialog";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { PlayListNames } from "../../../assets/playLists";
+import { ScoreboardDescriptor } from "../../../model/global.types";
+import { GeneralUtil } from "../../../utils/GeneralUtil";
+import { useNavigate } from "react-router-dom";
 
 export const enum NUMBERS_SCOPE {
   UNITS = 0,
@@ -22,6 +25,10 @@ export interface WhichNumberAmIProps {
 }
 
 export const WhichNumberAmI = (props: WhichNumberAmIProps) => {
+  const numberOfRounds = 10;
+
+  const navigate = useNavigate();
+  
   const { 
     audioOn, 
     isTablet
@@ -35,7 +42,16 @@ export const WhichNumberAmI = (props: WhichNumberAmIProps) => {
 
   const spaceSize = 10;
 
+  let initialScores =  {
+    scores: 0, 
+    totalScores: numberOfRounds,
+    image: "resources/icons/smiley.png",
+    outlineImage: "resources/icons/smiley-outline.png"
+  };
+  let [scores, setScores] = useState<ScoreboardDescriptor>(initialScores);
+
   const [scope, setScope] = useState<NUMBERS_SCOPE>(props.scope ? props.scope : NUMBERS_SCOPE.UNITS);
+  const [currentRound, setCurrentRound] = useState<number>(1);
   const [number, setNumber] = useState<number>(newNumber(scope));
   const numberAsString = number.toString();
   const numberLength = numberAsString.length;
@@ -61,7 +77,21 @@ export const WhichNumberAmI = (props: WhichNumberAmIProps) => {
   function validateNumber(value: number) {
     if (value === number) {
       MediaUtil.player(playerHooray, audioOn);
+      scores.scores++;
+      setScores({...scores});
+
       setNumberFeedbackFace(FACES.HAPPY);
+      if (currentRound < numberOfRounds) {
+        setTimeout(()=> {
+          setCurrentRound(currentRound+1);
+          updateNumber(scope);
+        }, ConstantsUtil.hoorayTimeout);
+      }
+      else {
+        setTimeout(()=> {
+          navigate(GeneralUtil.targetNavigationOnGameOver());
+        }, ConstantsUtil.hoorayTimeout);
+      }
     }
     else {
       setNumberFeedbackFace(FACES.WORRY);
@@ -132,15 +162,11 @@ export const WhichNumberAmI = (props: WhichNumberAmIProps) => {
   return(
     <div className="app-page">
       <Banner gameId="whichNumberAmI"
+        scoreboard={scores}
         settings={() => setGameSettingsDisplay("game-settings-global-show")} 
       />
       
       <div className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XL)}`}>
-        <button className="app-button-widget number-languages-newNumber-button"
-          onClick={() => updateNumber(scope)}>
-            מִסְפָּר חָדָשׁ
-        </button>
-
         <PageHeader title={title} feedbackFace={ FACES.NONE } />
       </div>
 
