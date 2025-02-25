@@ -171,6 +171,7 @@ export const WhichNumberAmI = (props: WhichNumberAmIProps) => {
       </div>
 
       <input className="which-number-number-input"id="whichNumberInputBox"
+        autoComplete="off" autoFocus
         onInput={(e: React.ChangeEvent<HTMLInputElement>) => e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')}
         onChange={(e) => validateNumber(Number(e.target.value))}/>
       <FaceFeedback face={numberFeedbackFace} 
