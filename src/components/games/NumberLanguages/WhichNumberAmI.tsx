@@ -13,6 +13,7 @@ import { PlayListNames } from "../../../assets/playLists";
 import { ScoreboardDescriptor } from "../../../model/global.types";
 import { GeneralUtil } from "../../../utils/GeneralUtil";
 import { useNavigate } from "react-router-dom";
+import { showWellDone } from "../../shared/WellDone/WellDone";
 
 export const enum NUMBERS_SCOPE {
   UNITS = 0,
@@ -76,21 +77,22 @@ export const WhichNumberAmI = (props: WhichNumberAmIProps) => {
   
   function validateNumber(value: number) {
     if (value === number) {
-      MediaUtil.player(playerHooray, audioOn);
       scores.scores++;
       setScores({...scores});
-
-      setNumberFeedbackFace(FACES.HAPPY);
       if (currentRound < numberOfRounds) {
-        setTimeout(()=> {
+        MediaUtil.player(playerHooray, audioOn);
+        setNumberFeedbackFace(FACES.HAPPY);
+          setTimeout(()=> {
           setCurrentRound(currentRound+1);
           updateNumber(scope);
         }, ConstantsUtil.hoorayTimeout);
       }
       else {
+        setNumberFeedbackFace(FACES.NONE);
+        showWellDone(audioOn);
         setTimeout(()=> {
           navigate(GeneralUtil.targetNavigationOnGameOver());
-        }, ConstantsUtil.hoorayTimeout);
+        }, ConstantsUtil.shortPauseTimeout);
       }
     }
     else {
