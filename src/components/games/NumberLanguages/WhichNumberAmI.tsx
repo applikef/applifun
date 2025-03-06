@@ -82,7 +82,7 @@ export const WhichNumberAmI = (props: WhichNumberAmIProps) => {
       if (currentRound < numberOfRounds) {
         MediaUtil.player(playerHooray, audioOn);
         setNumberFeedbackFace(FACES.HAPPY);
-          setTimeout(()=> {
+        setTimeout(()=> {
           setCurrentRound(currentRound+1);
           updateNumber(scope);
         }, ConstantsUtil.hoorayTimeout);

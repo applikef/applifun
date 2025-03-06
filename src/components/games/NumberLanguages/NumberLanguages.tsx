@@ -4,12 +4,16 @@ import { Banner } from "../../global/Banner/Banner";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { FACES, FaceFeedback } from "../../shared/FaceFeedback/FaceFeedback";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
-import { FEEDBACK_FACE_SIZE, FONT_SIZE } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil, FEEDBACK_FACE_SIZE, FONT_SIZE } from "../../../utils/ConstantsUtil";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { SingleSelectionDialog } from "../../shared/SingleSelectionDialog/SingleSelectionDialog";
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { PlayListNames } from "../../../assets/playLists";
+import { useNavigate } from "react-router-dom";
+import { ScoreboardDescriptor } from "../../../model/global.types";
+import { showWellDone } from "../../shared/WellDone/WellDone";
+import { GeneralUtil } from "../../../utils/GeneralUtil";
 
 export const enum NUMBERS_SCOPE {
   UNITS = 0,
@@ -22,7 +26,20 @@ export interface NumberLanguagesProps {
 }
 
 export const NumberLanguages = (props: NumberLanguagesProps) => {
+  const numberOfRounds = 10;
+
+  const navigate = useNavigate();
+  
+  let initialScores =  {
+    scores: 0, 
+    totalScores: numberOfRounds,
+    image: "resources/icons/smiley.png",
+    outlineImage: "resources/icons/smiley-outline.png"
+  };
+  let [scores, setScores] = useState<ScoreboardDescriptor>(initialScores);
+
   const [scope, setScope] = useState<NUMBERS_SCOPE>(props.scope ? props.scope : NUMBERS_SCOPE.UNITS);
+  const [currentRound, setCurrentRound] = useState<number>(1);
 
   const barSize: Array<number> = [
     20, 60, 180
@@ -93,6 +110,12 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     useState<FACES>(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
   const [hundredFeedbackFace, setHundredFeedbackFace] = 
     useState<FACES>(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
+
+  let progress = useRef<Array<boolean>>([      // [unites, tens, hundreds]
+    false, 
+    scope > NUMBERS_SCOPE.UNITS ? false : true,
+    scope > NUMBERS_SCOPE.TENS ? false : true
+  ]);
 
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
     
@@ -185,45 +208,59 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     return sum;
   }
 
-  function ValidateState(targetArray: Array<number>, digit: number, idPrefix: string) {
-    const targetSize = getNumberOfTargetElements(targetArray);
-    if (targetSize === numberDigits[digit]) {
-      if (idPrefix === unitId) {
-        MediaUtil.player(playerHooray, audioOn);
-        setUnitFeedbackFace(FACES.HAPPY);
-      }
-      else if (idPrefix === tenId) {
-        MediaUtil.player(playerHooray, audioOn);
-        setTenFeedbackFace(FACES.HAPPY);
-      }
-      else {
-        MediaUtil.player(playerHooray, audioOn);
-        setHundredFeedbackFace(FACES.HAPPY);
-      }
+  function setFeedbackFace(idPrefix: string, face: FACES) {
+    if (idPrefix === unitId) {
+      setUnitFeedbackFace(face);
     }
-    else if (targetSize > numberDigits[digit]) {
-      if (idPrefix === unitId) {
-        MediaUtil.player(playerOuch, audioOn);
-        setUnitFeedbackFace(FACES.WORRY);
-      }
-      else if (idPrefix === tenId) {
-        MediaUtil.player(playerOuch, audioOn);
-        setTenFeedbackFace(FACES.WORRY);
-      }
-      else {
-        MediaUtil.player(playerOuch, audioOn);
-        setHundredFeedbackFace(FACES.WORRY);
-      }
+    else if (idPrefix === tenId) {
+      setTenFeedbackFace(face);
     }
     else {
-      if (idPrefix === unitId) {
-        setUnitFeedbackFace(FACES.NONE);
-      }
-      else if (idPrefix === tenId) {
-        setTenFeedbackFace(FACES.NONE);
+      setHundredFeedbackFace(face);
+    }
+  }
+
+  function ValidateState(targetArray: Array<number>, digit: number, idPrefix: string) {
+    const targetSize = getNumberOfTargetElements(targetArray);
+    const progressIndex = (idPrefix === unitId ? 0 : (idPrefix === tenId ? 1 : 2));
+    if (targetSize === numberDigits[digit]) {
+      MediaUtil.player(playerHooray, audioOn);
+      progress.current[progressIndex] = true;
+      setFeedbackFace(idPrefix, FACES.HAPPY);
+    }
+    else if (targetSize > numberDigits[digit]) {
+      MediaUtil.player(playerOuch, audioOn);
+      progress.current[progressIndex] = false;
+      setFeedbackFace(idPrefix, FACES.WORRY);
+    }
+    else {
+      setFeedbackFace(idPrefix, FACES.NONE);
+    }
+
+    if (progress.current.indexOf(false) === -1) {   // All true
+      scores.scores++;
+      setScores({...scores});
+
+      progress.current = [
+        false, 
+        scope > NUMBERS_SCOPE.UNITS ? false : true,
+        scope > NUMBERS_SCOPE.TENS ? false : true
+      ];
+    
+      if (currentRound < numberOfRounds) {
+        MediaUtil.player(playerHooray, audioOn);
+        setFeedbackFace(idPrefix, FACES.HAPPY);
+        setTimeout(()=> {
+          setCurrentRound(currentRound+1);
+          updateNumber(scope);
+        }, ConstantsUtil.hoorayTimeout);        
       }
       else {
-        setHundredFeedbackFace(FACES.NONE);
+        setFeedbackFace(idPrefix, FACES.NONE);
+        showWellDone(audioOn);
+        setTimeout(()=> {
+          navigate(GeneralUtil.targetNavigationOnGameOver());
+        }, ConstantsUtil.shortPauseTimeout);
       }
     }
   }
@@ -322,6 +359,12 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
     setUnitFeedbackFace(numberDigits[0] === 0 ? FACES.HAPPY : FACES.NONE);
     setTenFeedbackFace(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
     setHundredFeedbackFace(numberDigits[2] === 0 ? FACES.HAPPY : FACES.NONE);
+
+    progress.current = [
+      numberDigits[0] === 0 ? true : false,
+      numberDigits[1] === 0 ? true : false,
+      numberDigits[2] === 0 ? true : false
+    ]
   }
 
   const titleTemplate = "הַקְלֵק עַל עֲשָׂרוֹת וְעַל יְחִידוֹת שֶׁמַּתְאִימוֹת לַמִּסְפָּר $number$";
@@ -340,15 +383,11 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   return(
     <div className="app-page">
       <Banner gameId="numberLanguagesShow"
+        scoreboard={scores}
         settings={() => setGameSettingsDisplay("game-settings-global-show")} 
       />
       
       <div className={`app-title-centered ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XL)}`}>
-        <button className="app-button-widget number-languages-newNumber-button"
-          onClick={() => updateNumber(scope)}>
-            מִסְפָּר חָדָשׁ
-        </button>
-
         <PageHeader title={title} feedbackFace={ FACES.NONE } />
       </div>
 
