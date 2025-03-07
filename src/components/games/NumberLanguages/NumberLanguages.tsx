@@ -111,10 +111,14 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
   const [hundredFeedbackFace, setHundredFeedbackFace] = 
     useState<FACES>(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
 
-  let progress = useRef<Array<boolean>>([      // [unites, tens, hundreds]
-    false, 
-    scope > NUMBERS_SCOPE.UNITS ? false : true,
-    scope > NUMBERS_SCOPE.TENS ? false : true
+  // Indicates correct user response per digit: [unites, tens, hundreds]
+  let progress = useRef<Array<boolean>>([
+      numberDigits[0] === 0 ? true : false,
+      numberDigits[1] === 0 ? true : false,
+      numberDigits[2] === 0 ? true : false
+    // false, 
+    // scope > NUMBERS_SCOPE.UNITS ? false : true,
+    // scope > NUMBERS_SCOPE.TENS ? false : true
   ]);
 
   const [gameSettingsDisplay, setGameSettingsDisplay] = useState<string>("game-settings-global-hide");
@@ -355,17 +359,17 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
       currentScope > NUMBERS_SCOPE.UNITS ? Number(numberAsString.substring(numberLength-2, numberLength-1)) : 0,
       currentScope > NUMBERS_SCOPE.TENS ? Number(numberAsString.substring(numberLength-3, numberLength-2)) : 0
     ];
-  
-    setUnitFeedbackFace(numberDigits[0] === 0 ? FACES.HAPPY : FACES.NONE);
-    setTenFeedbackFace(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
-    setHundredFeedbackFace(numberDigits[2] === 0 ? FACES.HAPPY : FACES.NONE);
-
+      
     progress.current = [
       numberDigits[0] === 0 ? true : false,
       numberDigits[1] === 0 ? true : false,
       numberDigits[2] === 0 ? true : false
     ]
-  }
+  
+    setUnitFeedbackFace(numberDigits[0] === 0 ? FACES.HAPPY : FACES.NONE);
+    setTenFeedbackFace(numberDigits[1] === 0 ? FACES.HAPPY : FACES.NONE);
+    setHundredFeedbackFace(numberDigits[2] === 0 ? FACES.HAPPY : FACES.NONE);
+}
 
   const titleTemplate = "הַקְלֵק עַל עֲשָׂרוֹת וְעַל יְחִידוֹת שֶׁמַּתְאִימוֹת לַמִּסְפָּר $number$";
   const title = ObjectsUtil.getTitle(titleTemplate, number.toString());
