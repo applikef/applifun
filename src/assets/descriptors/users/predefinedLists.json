@@ -2,6 +2,7 @@
   "games": {
     "wordMatch": "predefinedLists/wordMatch.json",
     "iWriteWords": "predefinedLists/iWriteDescriptor.json",
+    "scrambledWords": "predefinedLists/iWriteDescriptor.json",
     "letterMatch": "predefinedLists/letterMatch.json"
   }
 }

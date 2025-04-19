@@ -1,6 +1,6 @@
 {
   "games": {
-    "iWriteWords": "purim/iWriteWords.json",
+    "scrambledWords": "purim/scrambledWords.json",
     "imageQuestSort": "purim/imageQuestSort.json",
     "imageQuestQuestions": "purim/imageQuestQuestions.json",
     "letterMatch": "purim/letterMatch.json",

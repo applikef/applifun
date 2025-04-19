@@ -58,6 +58,14 @@ export function getGameDescriptor(gameId: string | null, user: User, profile: st
   else if (gameId === "imageQuestPosition") {
       return require(`./../assets/descriptors/componentDescriptors/imageQuest/imageQuestPosition.json`);
   }
+  else if (gameId === "scrambledWords") {
+    if (gameDescriptorName) {
+      return require(`./../assets/descriptors/private/${gameDescriptorName}`);
+    }
+    else {    // Default descriptor
+      return generateScrambledWordsDescriptor();
+    }
+  }
   else if (gameId === "iWriteWords") {
     if (gameDescriptorName) {
       return require(`./../assets/descriptors/private/${gameDescriptorName}`);
@@ -136,6 +144,29 @@ export function showGameSettings(descriptor: any): boolean {
   return descriptor.showSettings;
 }
 
+export function generateScrambledWordsDescriptor() {
+  const images: Array<ImageCatalogEntryType> = MediaUtil.getRandomCatalogImages(10, "scrambledWords", true);
+  let words = [];
+  for (let i=0; i < images.length; i++) {
+    const image = images[i];
+    words.push({
+      "id": image.id,
+      "title": image.title,
+      "name": image.metadata === undefined ? image.title : image.metadata.alternativeSpelling,
+      "file": image.id,
+      "audio": image.audioId !== undefined && image.audioId ? image.id : undefined
+    });
+  }
+  const descriptor = {
+    "gameId": "scrambledWords",
+    "title": "הַקְלֵק עַל הָאוֹתִיּוֹת מֵהָרִאשׁוֹנָה לָאַחֲרוֹנָה",
+    "settingsTitle": "בחר את המילים שתופענה במשחק",
+    "words": words
+  }
+
+  return descriptor;
+}
+
 export function generateIWriteWordsDescriptor() {
   const images: Array<ImageCatalogEntryType> = MediaUtil.getRandomCatalogImages(10, "iWriteWords", true);
   let words = [];
@@ -151,7 +182,7 @@ export function generateIWriteWordsDescriptor() {
   }
   const descriptor = {
     "gameId": "iWriteWords",
-    "title": "הַקְלֵק עַל הָאוֹתִיּוֹת מֵהָרִאשׁוֹנָה לָאַחֲרוֹנָה",
+    "title": "הַקְלֵד אֶת הַמִּילָּה שֶׁמְּתָאֶרֶת מָה מוֹפִיעַ בַּתְּמוּנָה",
     "settingsTitle": "בחר את המילים שתופענה במשחק",
     "words": words
   }

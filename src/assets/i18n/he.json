@@ -4,6 +4,7 @@
   "codePlayDescription": "ציור תוך כדי רכישת מיומנויות תכנות בסיסיות",
   "colorMatchDescription": "התאמת עצמים בצבעים שונים לצבע המתאים להם",
   "colorSortDescription": "מיון תמונות לפי צבע העצמים המופיעים בהן",
+  "iWriteWordsDescription": "הקלדת מילים המתארות עצמים בתמונות",
   "HelpStr": "עזרה",
   "letterMatchDescription": "התאמת תמונות לאות הראשונה של מה שהן מציגות",
   "HomePageMailTitle": 
@@ -17,7 +18,7 @@
   "HomePageGamesList": "לרשימת כל המשחקים",
   "imageQuestDescription": "מענה לשאלות על המוצג בתמונה",
   "imageQuestPositionDescription": "מענה לשאלות בנושאי כיוונים וכלי אוכל על המוצג בתמונה",
-  "iWriteWordsDescription": "סידור אותיות לבניית מילה נתונה",
+  "scrambledWordsDescription": "סידור אותיות לבניית מילה נתונה",
   "moodSelectDescription": "התאמת תמונות למצבי רוח שונים",
   "moodSortDescription": "מיון תמונות לפי מצבי רוח",
 

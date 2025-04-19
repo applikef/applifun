@@ -26,6 +26,7 @@ import { SelectClockDigital } from "../components/games/Clock/SelectClockDigital
 import { getGameDescriptor } from "../utils/DescriptorsUtil";
 import { WhichNumberAmI } from "../components/games/NumberLanguages/WhichNumberAmI";
 import { PickAndChoose } from "../components/games/PickAndChoose/PickAndChoose";
+import { WriteWords } from "../components/games/Write/WriteWords";
 
 
 export const LaunchPage = () => {
@@ -56,7 +57,7 @@ export const LaunchPage = () => {
       
       { gameId === "bathroomRoutine" && <ImagesSequence gameDescriptor={descriptor}/> }
       { gameId === "iCount" && <NumbersSequence gameDescriptor={descriptor}/> }
-      { gameId === "iWriteWords" && <LettersSequence gameDescriptor={descriptor} /> }
+      { gameId === "scrambledWords" && <LettersSequence gameDescriptor={descriptor} /> }
       { gameId === "morningRoutine" && <ImagesSequence gameDescriptor={descriptor}/> }
       { gameId === "washHands" && <ImagesSequence gameDescriptor={descriptor}/> }
 
@@ -84,6 +85,9 @@ export const LaunchPage = () => {
 
       { gameId === "changeRecords" && <ChangeRecords/> }
       { gameId === "gameList" && <GameList/> }
+
+      { gameId === "iWriteWords" && <WriteWords gameDescriptor={descriptor} /> }
+
     </div>
   )
 }

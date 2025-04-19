@@ -78,9 +78,17 @@ export const homePageDescriptor: HomePageSectionType[] = [
       },
       {
         id: "iWriteWords",
-        label: "מִלִּים מְבֻלְבָּלוֹת",
+        label: "אֲנִי כּוֹתֵב מִילִּים",
         path: "/launch?gameId=iWriteWords",
         description: "iWriteWordsDescription",
+        media: "resources/images/child-typing.jpg",
+        height: 100
+      },
+      {
+        id: "scrambledWords",
+        label: "מִלִּים מְבֻלְבָּלוֹת",
+        path: "/launch?gameId=scrambledWords",
+        description: "scrambledWordsDescription",
         media: "resources/images/order-letters-game.png",
         height: 100
       },
