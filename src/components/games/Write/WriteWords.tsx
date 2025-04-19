@@ -54,6 +54,12 @@ export const WriteWords = (props: WriteWordsProps) => {
     
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
 
+  const [pageTitle, setPageTitle] = useState(gamePageTitle);
+  const [word, setWord] = useState<WordDescriptorType>(words[0]);
+  const [gameSettingsDisplay, setgameSettingsDisplay] = useState<string>("game-settings-global-hide");
+  const [pendingSelectedWordIndices, setPendingSelectedWordIndices] = useState<boolean[]>([]);
+  const [selectedWordIndices, setSelectedWordIndices] = useState<boolean[]>([])
+
   let initialScores =  {
     scores: 0, 
     totalScores: descriptor.current.words.length,
@@ -61,13 +67,6 @@ export const WriteWords = (props: WriteWordsProps) => {
     outlineImage: "resources/icons/smiley-outline.png"
   };
   let [scores, setScores] = useState<ScoreboardDescriptor>(initialScores);
-
-
-  const [pageTitle, setPageTitle] = useState(gamePageTitle);
-  const [word, setWord] = useState<WordDescriptorType>(words[0]);
-  const [gameSettingsDisplay, setgameSettingsDisplay] = useState<string>("game-settings-global-hide");
-  const [pendingSelectedWordIndices, setPendingSelectedWordIndices] = useState<boolean[]>([]);
-  const [selectedWordIndices, setSelectedWordIndices] = useState<boolean[]>([])
 
   let currentIndex = useRef<number>(0);
 
@@ -122,8 +121,8 @@ export const WriteWords = (props: WriteWordsProps) => {
     setSelectedWordIndices(()=>pendingSelectedWordIndices);
     setgameSettingsDisplay(()=>"game-settings-global-hide")
 
-    initialScores.totalScores = descriptor.current.words.length;
-    setScores(initialScores)
+    scores.totalScores = selectedWordIndices.length;
+    setScores({...scores});
   }
 
   function validateInput(inputElement: ChangeEvent<HTMLInputElement>) {
@@ -154,10 +153,7 @@ export const WriteWords = (props: WriteWordsProps) => {
         isQuiz={descriptor.current.isQuiz}
         scoreboard={scores}
         helpFile={helpFileName} 
-        settings={() => {
-          setPendingSelectedWordIndices(() => selectedWordIndices);
-          setgameSettingsDisplay("game-settings-global-show")
-      }}/>
+      />
 
       <PageHeader title={ pageTitle } audio={["order-letters"]} feedbackFace={ feedbackFace } />
 
