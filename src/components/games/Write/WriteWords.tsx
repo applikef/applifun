@@ -3,7 +3,7 @@ import React, { ChangeEvent, useContext, useEffect, useRef, useState } from "rea
 import "./Write.css";
 
 import { FACES } from "../../shared/FaceFeedback/FaceFeedback";
-import { hideWellDone, showWellDone } from "../../shared/WellDone/WellDone";
+import { hideWellDone } from "../../shared/WellDone/WellDone";
 
 import { MediaUtil } from "../../../utils/MediaUtil";
 import { ObjectsUtil } from "../../../utils/ObjectsUtil";
@@ -12,18 +12,14 @@ import { Banner } from "../../global/Banner/Banner";
 import { DeviceUtil } from "../../../utils/DeviceUtil";
 import GamesContext, { GamesContextType } from "../../../context/GamesContext";
 import { LetterSequenceDescriptorType, WordDescriptorType } from "../../../model/Sequence.types";
-import { ConstantsUtil, DIRECTION } from "../../../utils/ConstantsUtil";
+import { ConstantsUtil } from "../../../utils/ConstantsUtil";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "../../shared/PageHeader/PageHeader";
 import { Advise } from "../../shared/Advise/Advise";
 import { TalkToMe } from "../../shared/TalkToMe/TalkToMe";
 import { MultiSelectionSettings } from "../../shared/MultiSelectionSettings/MultiSelectionSettings";
 import { GeneralUtil } from "../../../utils/GeneralUtil";
-
-interface ViewEntry {
-  value: string;
-  show: boolean;
-}
+import { ScoreboardDescriptor } from "../../../model/global.types";
 
 export interface WriteWordsProps {
   gameDescriptor: LetterSequenceDescriptorType;
@@ -48,12 +44,8 @@ export const WriteWords = (props: WriteWordsProps) => {
   const helpFileName: string | undefined = descriptor.current.helpFile ? descriptor.current.helpFile : undefined;
 
   const playerHooray:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.SHORT_HOORAY);
-  const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
   let selectedSequenceSteps = useRef<string[]>([]);
-  function addSequenceStep(id: string) {
-    selectedSequenceSteps.current.push(id);
-  };
 
   const [words, setWords] = useState<WordDescriptorType[]>(descriptor.current.words ?
     ObjectsUtil.shuffleArrayItems(descriptor.current.words) 
@@ -61,10 +53,18 @@ export const WriteWords = (props: WriteWordsProps) => {
   const numberOfWords = useRef<number>(descriptor.current.words!.length);
     
   const [feedbackFace, setFeedbackFace] = useState<FACES>(FACES.NONE);
+
+  let initialScores =  {
+    scores: 0, 
+    totalScores: descriptor.current.words.length,
+    image: "resources/icons/smiley.png",
+    outlineImage: "resources/icons/smiley-outline.png"
+  };
+  let [scores, setScores] = useState<ScoreboardDescriptor>(initialScores);
+
+
   const [pageTitle, setPageTitle] = useState(gamePageTitle);
   const [word, setWord] = useState<WordDescriptorType>(words[0]);
-  const [orderedLetters, setOrderedLetters] = useState<ViewEntry[]>([]);
-  const [shuffledLetters, setShuffledLetters] = useState<ViewEntry[]>([]);
   const [gameSettingsDisplay, setgameSettingsDisplay] = useState<string>("game-settings-global-hide");
   const [pendingSelectedWordIndices, setPendingSelectedWordIndices] = useState<boolean[]>([]);
   const [selectedWordIndices, setSelectedWordIndices] = useState<boolean[]>([])
@@ -78,70 +78,8 @@ export const WriteWords = (props: WriteWordsProps) => {
   useEffect(() => {
     numberOfWords.current = words.length;
     setWord(words[0]);
+    document.getElementById("wordInpurArea")!.focus();
   }, [words]);
-
-  useEffect(() => {
-    setOrderedLetters(word.name.split("").map((letter:string) => {
-        return({
-          value: letter,
-          show: false
-        });
-    }));
-    setShuffledLetters(() => 
-      ObjectsUtil.shuffleArrayItems(word.name.split("")).map((letter:string) => {
-        return({
-          value: letter,
-          show: true
-        });
-    }));
-  }, [word]);
-
-  function getFeedbackId(letter: string): string {
-    return `feedback-${word.id}-${letter}`;
-  }
-
-  function getBankId(letter: string): string {
-    return `bank-${word.id}-${letter}`;
-  }
-
-  function getLetterIndex(lettersArr: ViewEntry[], letter: string, isShuffled: boolean) {
-    for (let i=0; i < lettersArr.length; i++) {
-      const letterItem: ViewEntry = lettersArr[i];
-      if (letterItem.value === letter && letterItem.show === isShuffled) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  function verifyLetter(letter: ViewEntry) {
-    const letterValue: string = letter.value  === "_" ? " " : letter.value;
-    const letterOrderedIndex = getLetterIndex(orderedLetters, letterValue, false);
-    const letterShuffledIndex = getLetterIndex(shuffledLetters, letterValue, true);
-    if (letterOrderedIndex === selectedSequenceSteps.current.length) {
-      addSequenceStep(letterValue);
-      orderedLetters[letterOrderedIndex].show = true;
-      setOrderedLetters([...orderedLetters]);
-      shuffledLetters[letterShuffledIndex].show = false;
-      setShuffledLetters([...shuffledLetters])
-
-      if (letterOrderedIndex === orderedLetters.length-1) {
-        setFeedbackFace(() => FACES.NONE);
-        showWellDone(audioOn);
-        setTimeout(() => {
-          getNextWord();
-        }, ConstantsUtil.hoorayTimeout); 
-      }
-      else {
-        setFeedbackFace(() => FACES.HAPPY);
-        MediaUtil.player(playerHooray, audioOn);
-      }
-    }
-    else {
-      setFeedbackFace(() => FACES.WORRY);
-      MediaUtil.player(playerOuch, audioOn);
-    }
-  }
 
   function getNextWord() { 
     setTimeout(() =>{
@@ -183,6 +121,9 @@ export const WriteWords = (props: WriteWordsProps) => {
     setWords(()=>ObjectsUtil.shuffleArrayItems(newWords));
     setSelectedWordIndices(()=>pendingSelectedWordIndices);
     setgameSettingsDisplay(()=>"game-settings-global-hide")
+
+    initialScores.totalScores = descriptor.current.words.length;
+    setScores(initialScores)
   }
 
   function validateInput(inputElement: ChangeEvent<HTMLInputElement>) {
@@ -190,17 +131,28 @@ export const WriteWords = (props: WriteWordsProps) => {
     if (inputValue === word.name) {
         setFeedbackFace(() => FACES.HAPPY);
         MediaUtil.player(playerHooray, audioOn);
+        scores.scores++;
+        setScores({...scores});
+
         setTimeout(() => {
           inputElement.target.value = "";
           getNextWord();
-        }, ConstantsUtil.hoorayTimeout); 
+          document.getElementById('wordInpurArea')!.focus();
+        }, ConstantsUtil.hoorayShortTimeout); 
     }
+  }
+
+  function clearInput() {    
+    let inputElement: HTMLInputElement = document.getElementById('wordInpurArea')! as HTMLInputElement;
+    inputElement.value = '';
+    inputElement.focus();
   }
 
   return (
     <div className="app-page">
       <Banner gameId={descriptor.current.gameId} 
         isQuiz={descriptor.current.isQuiz}
+        scoreboard={scores}
         helpFile={helpFileName} 
         settings={() => {
           setPendingSelectedWordIndices(() => selectedWordIndices);
@@ -209,38 +161,32 @@ export const WriteWords = (props: WriteWordsProps) => {
 
       <PageHeader title={ pageTitle } audio={["order-letters"]} feedbackFace={ feedbackFace } />
 
-      <div className="letters-sequence-global">
+      <div className="i-write-global">
         <div>
           <img src={MediaUtil.getCatalogImage(word.file)} alt={word.title}
             height={DeviceUtil.imageHeightLarge(isTablet)}></img>  
         </div>
 
-        <div className="sequence-container">
-          <div className="sequence-letters-advise">  
+        <div className="i-write-container">
+          <div className="i-write-advise">  
             <Advise text={ word.name }
               default={ false } />
             { word.audio &&
-                <span className="sequence-letters-talk-to-me">
+                <span className="i-write-talk-to-me">
                   <TalkToMe audioList={[word.audio!]} isAudioCatalog={true}/>
                 </span>
             }
           </div>
         </div>
 
-        <div className="sequence-feedback">
-
-          <h3>
-            <TalkToMe audioList={["correct-word"!]} 
-              direction={DIRECTION.RTL}/>
-
-            פֹּה לְמַטָּה נִרְאֶה אֶת הַמִּילָּה כְּתוּבָה נָכוֹן
-          </h3>
-
+        <div className="i-write-feedback">
           <div id="feedback-area">
             <input type="text" id="wordInpurArea" className="i-write-input i-write-input-text"
+              autoComplete="off"
               onChange={(e:ChangeEvent<HTMLInputElement>)=> validateInput(e)}
             />
-          </div>  
+          </div>
+          <button className="app-button-ghost-sm" onClick={() => clearInput()}>נַקֵּה הַדְפָּסָה</button>  
         </div>
       </div>
 
