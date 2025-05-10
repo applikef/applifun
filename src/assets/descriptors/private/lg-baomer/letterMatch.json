@@ -1,0 +1,91 @@
+{
+  "gameId": "letterMatch",
+  "titleTemplate": "בְּחַר תְּמוּנָה עִם דָּבָר שֶׁמַּתְחִיל בָּאוֹת $value$",
+  "titleVariableValues": [
+    "אָלֶף",
+    "חֵית",
+    "מֵם",
+    "עַיִן",
+    "קוֹף",
+    "תָּו"
+  ],
+  "showAdvise": true,
+  "adviseText": "הסתכל מה האות הראשונה בכל אחת מהמילים",
+  "groups": [
+    {
+      "id": "א",
+      "title": "א",
+      "name": "אָלֶף"
+    },
+    {
+      "id": "ח",
+      "title": "ח",
+      "name": "חֵית"
+    },
+    {
+      "id": "מ",
+      "title": "מ",
+      "name": "מֵם"
+    },
+    {
+      "id": "ע",
+      "title": "ע",
+      "name": "עַיִן"
+    },
+    {
+      "id": "ק",
+      "title": "ק",
+      "name": "קוֹף"
+    },
+    {
+      "id": "ת",
+      "title": "ת",
+      "name": "תָּו"
+    }
+  ],
+  "items": [
+    {
+      "id": "potatos",
+      "title": "תַּפּוּחֵי אֲדָמָה",
+      "image": "potatos",
+      "groupId": "ת"
+    },
+    {
+      "id": "fire-place",
+      "title": "מְדוּרָה",
+      "image": "fire-place",
+      "groupId": "מ"
+    },
+    {
+      "id": "wood-logs",
+      "title": "עֵצִים",
+      "image": "wood-logs",
+      "groupId": "ע"
+    },
+    {
+      "id": "marshmallow",
+      "title": "מַרְשְׁמֵלוֹ",
+      "image": "marshmallow",
+      "groupId": "מ"
+    },
+    {
+      "id": "fire",
+      "title": "אֵשׁ",
+      "image": "fire",
+      "groupId": "א"
+    },
+    {
+      "id": "bow-and-arrow",
+      "title": "חֵץ וָקֶשֶׁת",
+      "image": "bow-and-arrow",
+      "groupId": "ח"
+    },
+    {
+      "id": "wood-planks",
+      "title": "קְרָשִׁים",
+      "image": "wood-planks",
+      "groupId": "ק"
+    }
+ ],  
+  "settingsTitle": "סמן את האותיות שיופיעו במשחק"
+}

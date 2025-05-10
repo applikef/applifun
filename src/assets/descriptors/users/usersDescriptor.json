@@ -15,6 +15,11 @@
     "descriptor": "purim.json"
   },
   {
+    "id": "lg-baomer",
+    "name": "לג בעומר",
+    "descriptor": "lg-baomer.json"
+  },
+  {
     "id": "netta",
     "name": "נטע",
     "descriptor": "netta.json",

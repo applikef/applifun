@@ -1,0 +1,9 @@
+{
+  "games": {
+    "scrambledWords": "lg-baomer/scrambledWords.json",
+    "imageQuestQuestions": "lg-baomer/imageQuestQuestions.json",
+    "wordMatch": "lg-baomer/wordMatch.json",
+    "letterMatch": "lg-baomer/letterMatch.json",
+    "iWriteWords": "lg-baomer/iWriteWords.json"
+  }
+}

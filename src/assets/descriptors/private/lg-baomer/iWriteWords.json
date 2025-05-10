@@ -1,0 +1,49 @@
+{
+  "gameId": "iWriteWords",
+  "title": "הַקְלֵק עַל הָאוֹתִיּוֹת מֵהָרִאשׁוֹנָה לָאַחֲרוֹנָה",
+  "settingsTitle": "בחר את המילים שתופענה במשחק",
+  "words": [
+    {
+      "id": "fire-place",
+      "title": "מְדוּרָה",
+      "name": "מדורה",
+      "file": "fire-place"
+    },
+    {
+      "id": "potatos",
+      "title": "תַּפּוּחֵי אֲדָמָה",
+      "name": "תפוחי אדמה",
+      "file": "potatos"
+    },
+    {
+      "id": "wood-logs",
+      "title": "עֵצִים",
+      "name": "עצים",
+      "file": "wood-logs"
+    },
+    {
+      "id": "marshmallow",
+      "title": "מַרְשְׁמֵלוֹ",
+      "name": "מרשמלו",
+      "file": "marshmallow"
+    },
+    {
+      "id": "fire",
+      "title": "אֵשׁ",
+      "name": "אש",
+      "file": "fire"
+    },
+    {
+      "id": "bow-and-arrow",
+      "title": "חֵץ וָקֶשֶׁת",
+      "name": "חץ וקשת",
+      "file": "bow-and-arrow"
+    },
+    {
+      "id": "wood-planks",
+      "title": "קְרָשִׁים",
+      "name": "קרשים",
+      "file": "wood-planks"
+    }
+  ]
+}

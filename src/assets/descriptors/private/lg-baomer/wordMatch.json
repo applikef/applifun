@@ -1,0 +1,97 @@
+{
+  "gameId": "wordMatch",
+  "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
+  "titleVariableValues": [
+    "מְדוּרָה",
+    "תַּפּוּחֵי אֲדָמָה",
+    "עֵצִים",
+    "מַרְשְׁמֵלוֹ",
+    "אֵשׁ",
+    "חֵץ וָקֶשֶׁת",
+    "קְרָשִׁים"
+  ],
+  "showAdvise": true,
+  "adviseText": "קרא כל אחת מהמילים",
+  "groups": [
+    {
+      "id": "fire-place",
+      "title": "מְדוּרָה",
+      "name": "מְדוּרָה"
+    },
+    {
+      "id": "potatos",
+      "title": "תַּפּוּחֵי אֲדָמָה",
+      "name": "תַּפּוּחֵי אֲדָמָה"
+    },
+    {
+      "id": "wood-logs",
+      "title": "עֵצִים",
+      "name": "עֵצִים"
+    },
+    {
+      "id": "marshmallow",
+      "title": "מַרְשְׁמֵלוֹ",
+      "name": "מַרְשְׁמֵלוֹ"
+    },
+    {
+      "id": "fire",
+      "title": "אֵשׁ",
+      "name": "אֵשׁ"
+    },
+    {
+      "id": "bow-and-arrow",
+      "title": "חֵץ וָקֶשֶׁת",
+      "name": "חֵץ וָקֶשֶׁת"
+    },
+    {
+      "id": "wood-planks",
+      "title": "קְרָשִׁים",
+      "name": "קְרָשִׁים"
+    }
+  ],
+  "items": [
+    {
+      "id": "fire-place",
+      "title": "מְדוּרָה",
+      "image": "fire-place",
+      "groupId": "fire-place"
+    },
+    {
+      "id": "potatos",
+      "title": "תַּפּוּחֵי אֲדָמָה",
+      "image": "potatos",
+      "groupId": "potatos"
+    },
+    {
+      "id": "wood-logs",
+      "title": "עֵצִים",
+      "image": "wood-logs",
+      "groupId": "wood-logs"
+    },
+    {
+      "id": "marshmallow",
+      "title": "מַרְשְׁמֵלוֹ",
+      "image": "marshmallow",
+      "groupId": "marshmallow"
+    },
+    {
+      "id": "fire",
+      "title": "אֵשׁ",
+      "image": "fire",
+      "groupId": "fire"
+    },
+    {
+      "id": "bow-and-arrow",
+      "title": "חֵץ וָקֶשֶׁת",
+      "image": "bow-and-arrow",
+      "groupId": "bow-and-arrow"
+    },
+    {
+      "id": "wood-planks",
+      "title": "קְרָשִׁים",
+      "image": "wood-planks",
+      "groupId": "wood-planks"
+    }
+  ],
+  "settingsTitle": "סמן את התמונה"
+}
