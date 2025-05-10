@@ -196,6 +196,10 @@
       }
     },
     {
+      "id": "bow-and-arrow",
+      "url": "resources/imageCatalog/bow-and-arrow.jpeg"
+    },
+    {
       "id": "boy",
       "url": "resources/imageCatalog/yod.jpg",
       "title": "יֶלֶד",
@@ -506,6 +510,21 @@
       "metadata": {
         "firstLetter": "ג",
         "alternativeSpelling": "גדר"
+      }
+    },
+    {
+      "id": "fire",
+      "url": "resources/imageCatalog/fire.png"
+    },
+    {
+      "id": "fire-place",
+      "url": "resources/imageCatalog/fire-place.png",
+      "title": "מְדוּרָה",
+      "audioId": "fire",
+      "gameIds": [],
+      "metadata": {
+        "firstLetter": "מ",
+        "alternativeSpelling": "מדורה"
       }
     },
     {
@@ -843,6 +862,10 @@
       "url": "resources/imageCatalog/lion.png"
     },
     {
+      "id": "marshmallow",
+      "url": "resources/imageCatalog/marshmallow.png"
+    },
+    {
       "id": "mask",
       "url": "resources/imageCatalog/mask.jpg"
     },
@@ -946,6 +969,10 @@
     {
       "id": "pommegranate",
       "url": "resources/imageCatalog/resh.jpg"
+    },
+    {
+      "id": "potatos.png",
+      "url": "resources/imageCatalog/potatos.png"
     },
     {
       "id": "purim",
@@ -1207,6 +1234,14 @@
     {
       "id": "woman-child-bag",
       "url": "resources/imageCatalog/woman-child-bag.png"
+    },
+    {
+      "id": "wood-logs",
+      "url": "resources/imageCatalog/wood-logs.png"
+    },
+    {
+      "id": "wood-planks",
+      "url": "resources/imageCatalog/wood-planks.png"
     },
     {
       "id": "worry-face",
