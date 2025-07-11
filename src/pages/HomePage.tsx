@@ -19,6 +19,14 @@ import { User } from "../model/users.types";
 import { HomePageItemType, HomePageSectionType } from "../model/componentDescriptors.types";
 import { Education } from "../components/shared/Education/Education";
 
+interface ShowStateType {
+    help: String;
+    mailHelp: String;
+    section: Array<boolean>;
+    arrow: Array<number> | undefined,
+    dismissPortrait: boolean;
+}
+
 export const HomePage = () => {
   const { t } = useTranslation();
 
@@ -40,12 +48,14 @@ export const HomePage = () => {
     setIsPortrait(isPortrait);
   }, [setIsPortrait, isPortrait, isTablet, setIsTablet]);
 
-  const [showHelp, setShowHelp] = useState<string>("banner-hide-help");
-  const [showMailHelp, setShowMailHelp] = useState<string>("home-page-hide-mail-help");
-  const [showSection, setShowSection] = useState<Array<boolean>>(new Array<boolean>(homePageDescriptor.length));
-  const [showArrow, setShowArrow] = useState<Array<number>|undefined>(undefined);
-  const [dismissPortrait, setDismissPortrait] = useState<boolean>(false);
-  
+  const [showState, setShowState] = useState<ShowStateType>({
+    help: "banner-hide-help",
+    mailHelp: "home-page-hide-mail-help",
+    section: new Array<boolean>(homePageDescriptor.length),
+    arrow: undefined,
+    dismissPortrait: false
+  })
+
   const navigate = useNavigate();
 
   const userList = new Array<User>();
@@ -58,7 +68,10 @@ export const HomePage = () => {
     if (homePageDescriptor[index].items.length > 1) {
       let arr = new Array<boolean>(homePageDescriptor.length);
       arr[index] = true;
-      setShowSection(arr);
+      setShowState({
+        ...showState,
+        section: arr
+      })
     }
     else {
       navigate(homePageDescriptor[index].items[0].path);
@@ -66,11 +79,17 @@ export const HomePage = () => {
   }
 
   function showDownArrow(event: React.MouseEvent<HTMLElement>) {
-    setShowArrow([event.clientX, event.clientY]);
+    setShowState({
+      ...showState,
+      arrow: [event.clientX, event.clientY]
+    })
   }
 
   function setHelpState() {
-    setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help");
+    setShowState({
+      ...showState,
+      help: showState.help === "banner-show-help" ? "banner-hide-help" : "banner-show-help"
+    })
   }
 
   return (
@@ -79,7 +98,10 @@ export const HomePage = () => {
         <div className="home-page-top-banner">
           <div className="home-page-mail app-clickable"
             onClick={() => {
-              setShowMailHelp(() => showMailHelp === "home-page-show-mail-help" ? "home-page-hide-mail-help" : "home-page-show-mail-help");
+              setShowState({
+                ...showState,
+                mailHelp: showState.mailHelp === "home-page-show-mail-help" ? "home-page-hide-mail-help" : "home-page-show-mail-help"
+              })
             }}>
             <Trans i18nKey="HomePageMailTitle">
               Comments? Insights? Proposals? We'd be glad to hear. 
@@ -90,15 +112,23 @@ export const HomePage = () => {
             className="banner-icon app-clickable"
             title={t("HomePageHelpTitle")}  
             onClick={() => {               
-              setShowHelp(() => showHelp === "banner-show-help" ? "banner-hide-help" : "banner-show-help")}
-            }
+              setShowState({
+                ...showState,
+                help: showState.help === "banner-show-help" ? "banner-hide-help" : "banner-show-help"
+              })
+            }}
             alt={t("HelpStr")} />
         </div>
         {isTablet && <br/>}
 
         <ModalNotification text={ t("HomePageHoldInLandscape") } 
-          show={(isTablet && isPortrait) && !dismissPortrait}
-          onDismiss={() => setDismissPortrait(true)}/>
+          show={(isTablet && isPortrait) && !showState.dismissPortrait}
+          onDismiss={() => 
+            setShowState({
+              ...showState,
+              dismissPortrait: true
+            })
+          }/>
 
         <div className={`home-page-title ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XXL)}`}>
           { t("HomePagePlayAndLearn") }
@@ -153,7 +183,7 @@ export const HomePage = () => {
           <div>
             {homePageDescriptor.map((section: HomePageSectionType,i) =>
               <div key={i} 
-                className={`home-page-games-list-items ${showSection[i] ? "app-show-flex" : "app-hide"}`} >
+                className={`home-page-games-list-items ${showState.section[i] ? "app-show-flex" : "app-hide"}`} >
                 <div className="app-sub-title home-page-games-list-title">
                   {t(section.title ? section.title : "")}
                   {section.education !== undefined &&
@@ -183,21 +213,27 @@ export const HomePage = () => {
         
       </div>
 
-      <div className={`banner-help-content ${showHelp}`}>
+      <div className={`banner-help-content ${showState.help}`}>
         <Help gameId={"generalHelp"} baseUrl={BASE_URL} onClose={setHelpState}/>
       </div>
       <div 
-        className={`home-page-mail-help app-clickable ${showMailHelp}`}
+        className={`home-page-mail-help app-clickable ${showState.mailHelp}`}
         onClick={() => {               
-          setShowMailHelp("home-page-hide-mail-help")}
-        }
+          setShowState({
+            ...showState,
+            mailHelp: "home-page-hide-mail-help"
+          })
+        }}
       >
         {t("HomePageMailHelp")}
       </div>
 
       { isTablet && 
-        <div className={showArrow ? "app-show-inline": "app-hide"}
-          style={{position: "absolute", left: showArrow ? showArrow[0] : 0, top: showArrow ? showArrow[1] : 0}}>
+        <div className={showState.arrow ? "app-show-inline": "app-hide"}
+          style={{position: "absolute", 
+            left: showState.arrow ? 
+              showState.arrow[0] : 
+              0, top: showState.arrow ? showState.arrow[1] : 0}}>
           <AttentionArrow></AttentionArrow>
         </div>
       }
