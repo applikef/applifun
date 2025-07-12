@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Subject } from '../model/subjects.types';
 import { User } from '../model/users.types';
 
 export type GamesContextType = {
@@ -12,8 +13,11 @@ export type GamesContextType = {
   isPortrait: boolean;
   setIsPortrait: (val: boolean) => void;
 
-  user: User;
-  setUser: (val: User) => void;
+  subject: Subject;
+  setSubject: (val: Subject) => void;
+
+  user: User | undefined;
+  setUser: (val: User | undefined) => void;
 };
 
 const GamesContext = React.createContext<GamesContextType | null>(null);
@@ -42,9 +46,15 @@ export const GamesProvider: React.FC<React.PropsWithChildren> = ({
     setIsPortraitState(val);
   }
 
-  const [user, setUserValue] = useState<User>({"id": ""});
+  const [subject, setSubjectValue] = useState<Subject>({"id": ""});
 
-  const setUser = (val: User) => {
+  const setSubject = (val: Subject) => {
+    setSubjectValue(val);
+  }
+
+  const [user, setUserValue] = useState<User | undefined>();
+
+  const setUser = (val: User | undefined) => {
     setUserValue(val);
   }
 
@@ -58,8 +68,10 @@ export const GamesProvider: React.FC<React.PropsWithChildren> = ({
         setIsTablet,      
         isPortrait,
         setIsPortrait,
+        subject,
+        setSubject,
         user,
-        setUser,
+        setUser
       }}
     >
       {children}

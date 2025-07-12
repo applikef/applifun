@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
 
 import { Card } from "../components/shared/Card/Card";
-import { homePageDescriptor } from  "../assets/descriptors/homePageDescriptor";
+//import { homePageDescriptor } from  "../assets/descriptors/homePageDescriptor";
 
 import './pages.css';
 import { useContext, useLayoutEffect, useState } from "react";
@@ -15,7 +15,7 @@ import { DeviceUtil } from "../utils/DeviceUtil";
 import { ModalNotification } from "../components/shared/Notification/ModalNotification";
 import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
-import { User } from "../model/users.types";
+import { Subject } from "../model/subjects.types";
 import { HomePageItemType, HomePageSectionType } from "../model/componentDescriptors.types";
 import { Education } from "../components/shared/Education/Education";
 
@@ -33,14 +33,41 @@ export const HomePage = () => {
   const {
     setIsTablet,
     setIsPortrait,
-    user,
-    setUser
+    subject,
+    setSubject
   } = useContext(GamesContext) as GamesContextType;
+
+  const { state } = useLocation();
+  let homePageDescriptor: HomePageSectionType[] = 
+    require("../assets/descriptors/defaultHomePageDescriptor.json");
+
+  if (state !== null) {
+    // NETTA: update to retrieve user specific descriptor from DB or keep
+    // default if none is available
+    const { id } = state;
+    homePageDescriptor = [
+      {
+        "id": "math",
+        "title": "MathTitle",
+        "media": "resources/images/numbers-splash.png",
+        "items": [
+          {
+            "id": "numberLanguagesShow",
+            "label": "mathNumberLanguages",
+            "description": "mathNumberLanguagesDescription",
+            "path": "/launch?gameId=numberLanguagesShow",
+            "media": "resources/images/number-languages-show-game.png",
+            "height": 100
+          }
+        ]
+      }
+    ]; 
+  }
 
   /* Local isTablet for the value to be used in this component before 
      context is updated
   */
-  const users: Array<User> = require("./../assets/descriptors/users/usersDescriptor.json");
+  const subjects: Array<Subject> = require("./../assets/descriptors/subjects/subjectsDescriptor.json");
   const isTablet = useMediaQuery({ query: `(max-width: ${ConstantsUtil.smallScreenWidth}px)` });
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
   useLayoutEffect(() => {
@@ -58,10 +85,10 @@ export const HomePage = () => {
 
   const navigate = useNavigate();
 
-  const userList = new Array<User>();
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].show === undefined || users[i].show === true) {
-      userList.push(users[i]);
+  const subjectList = new Array<Subject>();
+  for (let i = 0; i < subjects.length; i++) {
+    if (subjects[i].show === undefined || subjects[i].show === true) {
+      subjectList.push(subjects[i]);
     }
   }
   function updateShowSection(index: number) {
@@ -134,19 +161,19 @@ export const HomePage = () => {
           { t("HomePagePlayAndLearn") }
           <span className={`home-page-user-area ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.L)}`}>
             <span className="home-page-user-area-title">נושא</span>
-            <select id="userList" defaultValue={user.id} 
+            <select id="subjectList" defaultValue={subject.id} 
               className="home-page-user-area-selection" onChange={()=>{
               const selectObject: HTMLSelectElement | null = 
-                document.getElementById("userList") as HTMLSelectElement;
+                document.getElementById("subjectList") as HTMLSelectElement;
               let i: number = -1; 
               if (selectObject !== null) {
                 i = selectObject.selectedIndex - 1; // -1 to compensate for the first general entry
               }
-              setUser(i > -1 ? users[i] : {"id": ""});
+              setSubject(i > -1 ? subjects[i] : {"id": ""});
             }}>
               <option value="">כללי</option>
-              {userList.map((currentUser) => 
-                 <option value={currentUser.id} key={currentUser.id}>{currentUser.name}</option>
+              {subjectList.map((currentSubject) => 
+                 <option value={currentSubject.id} key={currentSubject.id}>{currentSubject.name}</option>
               )}
             </select>
           </span>
@@ -161,7 +188,7 @@ export const HomePage = () => {
             </div>
           </div>
           <div className='home-page-section-list' data-walkthrough="app-games-list">
-            {homePageDescriptor.map((section: HomePageSectionType,i) =>
+            {homePageDescriptor.map((section: HomePageSectionType, i: number) =>
               (section.hide !== true && (!isTablet ||
                 (isTablet && (section.mobile ? section.mobile : true)))) &&
                 <div className="home-page-games-list" key={i}>
@@ -181,7 +208,7 @@ export const HomePage = () => {
           </div>
           <hr className="home-page-hr"/>
           <div>
-            {homePageDescriptor.map((section: HomePageSectionType,i) =>
+            {homePageDescriptor.map((section: HomePageSectionType, i: number) =>
               <div key={i} 
                 className={`home-page-games-list-items ${showState.section[i] ? "app-show-flex" : "app-hide"}`} >
                 <div className="app-sub-title home-page-games-list-title">

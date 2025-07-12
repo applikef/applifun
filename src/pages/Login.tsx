@@ -1,14 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { HOME_PAGE_PATH } from "../utils/ConstantsUtil";
+import GamesContext, { GamesContextType } from "../context/GamesContext";
 
 import "./pages.css";
-
-interface StudentType {
-  firstName: string;
-  lastName: string;
-  className: string;
-}
+import { User } from "../model/users.types";
 
 export const Login = () => {
   const classNames = [
@@ -17,23 +13,39 @@ export const Login = () => {
   ]
   const navigate = useNavigate();
 
-  const [student, setStudent] = useState<StudentType>({
+    const { 
+      setUser
+    } = useContext(GamesContext) as GamesContextType;
+
+
+  const [student, setStudent] = useState<User>({
+    id: "",
     firstName: "",
     lastName: "",
     className: classNames[0]
   });
 
   const submitHandler = (() => {
-      if (student.firstName === "נטע" && student.lastName === "שני" &&
-        student.className === "לילך" 
-      ) {
-        navigate(HOME_PAGE_PATH);
-      }
-      else {
-        alert(`משהו לא נכון: שם תלמיד ${student.firstName} שם משפחה: ${student.lastName} או כיתה: ${student.className}`);
-      }
+    // NETTA: Update to validate against DB and retrieve id
+    if (student.firstName === "נטע" && student.lastName === "שני" &&
+      student.className === "לילך" 
+    ) {
+      student.id = "123";
+      setUser({
+        ...student
+    });
+      navigate(HOME_PAGE_PATH, {state: student.id});
+    }
+    else {
+      setUser(undefined);
+      alert(`משהו לא נכון: שם תלמיד ${student.firstName} שם משפחה: ${student.lastName} או כיתה: ${student.className}`);
+    }
   })
 
+  function gotoHome() {
+    navigate(HOME_PAGE_PATH);
+  }
+  
 return (
   <div className="app-page">
     <form onSubmit={submitHandler}>
@@ -66,7 +78,7 @@ return (
           })}>
             {
               classNames.map((className: string) => 
-                  <option value={className} className="login-label">{ className }</option>
+                  <option key={className} value={className} className="login-label">{ className }</option>
               )
             }
           </select>
@@ -76,5 +88,6 @@ return (
         <input type="submit" value="התחל" className="app-button-primary-sm"></input>
       </div>
     </form>
+    <div><div className="login-label app-link" onClick={() => gotoHome()}>התחל לכל משתמש</div></div>
   </div>
 )} 

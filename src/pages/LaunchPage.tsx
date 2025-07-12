@@ -35,10 +35,10 @@ export const LaunchPage = () => {
   const profile = queryParameters.get("profile");
 
   const {
-    user
+    subject
   } = useContext(GamesContext) as GamesContextType;
 
-  const descriptor = getGameDescriptor(gameId, user, profile);
+  const descriptor = getGameDescriptor(gameId, subject, profile);
 
   return (
     <div className="app-page">

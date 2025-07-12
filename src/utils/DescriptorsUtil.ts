@@ -1,15 +1,15 @@
 import { ImageCatalogEntryType } from "../model/catalogs.types";
-import { User } from "../model/users.types";
+import { Subject } from "../model/subjects.types";
 import { MediaUtil } from "../utils/MediaUtil";
 import { SCORES_IMAGE } from "./ConstantsUtil";
 import { hebrewLetters } from "./LanguageUtil";
 
-export function getGameDescriptor(gameId: string | null, user: User, profile: string | null): any {
+export function getGameDescriptor(gameId: string | null, subject: Subject, profile: string | null): any {
   if (gameId === null) {
     return undefined;
   }
 
-  const userDescriptorName = user.descriptor ? require(`./../assets/descriptors/users/${user.descriptor}`) : undefined;
+  const userDescriptorName = subject.descriptor ? require(`./../assets/descriptors/subjects/${subject.descriptor}`) : undefined;
   const gameDescriptorName = userDescriptorName ? userDescriptorName["games"][gameId] : undefined;
 
   /*

@@ -31,7 +31,7 @@ export const Banner = (props: BannerPropsType) => {
     turnAudioOn, 
     turnAudioOff, 
     audioOn, 
-    user 
+    subject 
   } = useContext(GamesContext) as GamesContextType;
 
   const showLeftIconBar = props.showLeftIconBar !== undefined ? props.showLeftIconBar : true;
@@ -54,7 +54,7 @@ export const Banner = (props: BannerPropsType) => {
   function loadProfile(e: ChangeEvent<HTMLSelectElement>) {
     let profileId: string = e.target.value;
     if (props.profileHandler !== undefined) {
-      const descriptor = getGameDescriptor(props.gameId, user, profileId)
+      const descriptor = getGameDescriptor(props.gameId, subject, profileId)
       props.profileHandler(descriptor);
     }
   }
