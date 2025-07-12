@@ -164,3 +164,24 @@
 .game-list-page {
   margin-bottom: var(--size-xxl);
 }
+
+.login-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+  width: 50%;
+}
+
+.login-label {
+  font-size: var(--font-size-l);
+  color: var(--green-03);
+  padding: 5px;
+}
+
+.login-input-entry {
+  font-size: var(--font-size-l);
+}
+
+.login-button {
+  margin-right: 15px;
+}

@@ -7,6 +7,7 @@ import { GamesProvider } from "./context/GamesContext";
 import { KidDevProvider } from "./CodePlay/model/KDContext";
 import { DayQuiz } from "./pages/DayQuiz";
 import { DayQuizDone } from "./pages/DayQuizDone";
+import { Login } from "./pages/Login";
 
 function App() {
   return (    
@@ -15,6 +16,7 @@ function App() {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/dayQuiz" element={<DayQuiz />} />
             <Route path="/dayQuizDone" element={<DayQuizDone />} />
             <Route path="launch" element={<LaunchPage />} />
