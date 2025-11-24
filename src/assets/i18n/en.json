@@ -17,7 +17,9 @@
   "MathTitle": "Math",
   "MathNumberLanguages": "What does the number mean?",
   "MathCounting": "Counting",
-  "MathNumbersInLine": "Numbers in Line",  
+  "MathNumbersInLine": "Numbers in Line", 
+  
+  "PairsBoard": "Pairs board",
  
   "HelpStr": "Help"
 }

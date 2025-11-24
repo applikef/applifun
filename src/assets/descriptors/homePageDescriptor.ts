@@ -52,6 +52,14 @@ export const homePageDescriptor: HomePageSectionType[] = [
         description: "MathNumbersInLineDescription",
         media: "resources/images/order-numbers-game.png",
         height: 100
+      },
+      {
+        "id": "pairsBoard",
+        "label": "PairsBoard",
+        "path": "/launch?gameId=pairsBoard",
+        "description": "pairsBoardDescription",
+        "media": "resources/images/pairs-board.png",
+        "height": 100
       }
     ]
   },

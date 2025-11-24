@@ -68,6 +68,13 @@ export interface MatchDescriptorType extends GameDescriptorType {
   settingsTitle: string;
 }
 
+export interface PairsBoardDescriptorType extends GameDescriptorType {
+  boardSize: number;
+  goal: number;
+  operator: string;
+  titleTemplate: string;
+}
+
 export interface PairsItem {
   id: string;
   title: string;

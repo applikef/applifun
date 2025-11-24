@@ -42,26 +42,11 @@ export const HomePage = () => {
     require("../assets/descriptors/defaultHomePageDescriptor.json");
 
   if (state !== null) {
-    // NETTA: update to retrieve user specific descriptor from DB or keep
-    // default if none is available
     const { id } = state;
-    homePageDescriptor = [
-      {
-        "id": "math",
-        "title": "MathTitle",
-        "media": "resources/images/numbers-splash.png",
-        "items": [
-          {
-            "id": "numberLanguagesShow",
-            "label": "mathNumberLanguages",
-            "description": "mathNumberLanguagesDescription",
-            "path": "/launch?gameId=numberLanguagesShow",
-            "media": "resources/images/number-languages-show-game.png",
-            "height": 100
-          }
-        ]
-      }
-    ]; 
+    console.log(`state=${state}`);
+    console.log(id);
+    console.log(state.id);
+    homePageDescriptor = require(`./../assets/db/${state}.json`);
   }
 
   /* Local isTablet for the value to be used in this component before 

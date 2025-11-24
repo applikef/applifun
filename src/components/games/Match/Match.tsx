@@ -51,6 +51,7 @@ export const Match = (props: MatchPropsType) => {
   const playerOuch:HTMLAudioElement = MediaUtil.pickPlayer(PlayListNames.OUCH);
 
   const defaultMaxNumberOfValidGroups: number = 10;
+  const numberOfDisplayedItems: number = 10;
 
   const navigate = useNavigate();
 
@@ -110,7 +111,6 @@ export const Match = (props: MatchPropsType) => {
 
   let showItemTitleNotification = useRef<boolean>(false);
 
-  /*
   function initItems() {
     let validIndices = [];
     for (let i=0; i < items.length; i++) {
@@ -120,14 +120,19 @@ export const Match = (props: MatchPropsType) => {
         validIndices.push(i);
       }
     }
-    let randomIndices = ObjectsUtil.generateRandomNumbers(0, validIndices.length-1,10);
+
+    if (items.length <= numberOfDisplayedItems) {
+      return items;
+    }
+
+    let randomIndices = ObjectsUtil.generateRandomNumbers(0, validIndices.length-1,
+      numberOfDisplayedItems);
     let validItems = [];
     for (let i=0; i < randomIndices.length; i++) {
       validItems.push(items[randomIndices[i]]);
     }
     return validItems;
   }
-    */
    
   function getGroupIndex(groupId: string) {
     for (let i=0; i < groups.length; i++) {
@@ -210,7 +215,7 @@ export const Match = (props: MatchPropsType) => {
         setFeedbackFace(() => FACES.NONE);
         setTimeout(() => {
           navigate(GeneralUtil.targetNavigationOnGameOver(descriptor.current.isQuiz));
-        }, ConstantsUtil.shortPauseTimeout);
+        }, ConstantsUtil.gameOverPauseTimeout);
       }
       else {
         MediaUtil.player(playerHooray, audioOn);

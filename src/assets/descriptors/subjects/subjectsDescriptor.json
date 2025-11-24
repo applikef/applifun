@@ -1,23 +1,27 @@
 [
   {
     "id": "predefinedLists",
-    "name": "רשימות מוגדרות מראש",
-    "descriptor": "predefinedLists.json"
+    "name": "משחקים שהוגדרו מראש",
+    "descriptor": "predefinedLists.json",
+    "show": false
   },
   {
     "id": "holidays",
-    "name": "חורף וחג החגים",
-    "descriptor": "holidays.json"
+    "name": "חורף, חנוכה וחג החגים",
+    "descriptor": "holidays.json",
+    "show": false
   },
   {
     "id": "purim",
     "name": "פורים",
-    "descriptor": "purim.json"
+    "descriptor": "purim.json",
+    "show": false
   },
   {
     "id": "lg-baomer",
     "name": "לג בעומר",
-    "descriptor": "lg-baomer.json"
+    "descriptor": "lg-baomer.json",
+    "show": false
   },
   {
     "id": "netta",

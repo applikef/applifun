@@ -6,7 +6,6 @@
     "אוֹכֶלֶת",
     "חִלָּזוֹן",
     "חֶלְזוֹנוֹת",
-    "חֲנוּכָּה",
     "חֲנוּכִּיָּה",
     "חָצָב",
     "חֲצָבִים",
@@ -57,11 +56,6 @@
       "id": "snales",
       "title": "חֶלְזוֹנוֹת",
       "name": "חֶלְזוֹנוֹת"
-    },
-    {
-      "id": "hannukah",
-      "title": "חֲנוּכָּה",
-      "name": "חֲנוּכָּה"
     },
     {
       "id": "menorah",
@@ -355,12 +349,6 @@
       "title": "חָצָב",
       "image": "flower-hatsav",
       "groupId": "flower-hatsav"
-    },
-    {
-      "id": "hannukah",
-      "title": "חֲנוּכָּה",
-      "image": "hannukah",
-      "groupId": "hannukah"
     },
     {
       "id": "eat",

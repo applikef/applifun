@@ -103,6 +103,9 @@ export function getGameDescriptor(gameId: string | null, subject: Subject, profi
   else if (gameId === "myScheduleDigital") {
     return require("./../assets/descriptors/componentDescriptors/clockDescriptors/myScheduleDigital.json");
   }
+  else if (gameId === "pairsBoard") {
+    return require("./../assets/descriptors/componentDescriptors/pairsBoardDescriptors/pairsBoard.json");
+  }
   else if (gameId === "selectClockAnalog") {
     return require("./../assets/descriptors/componentDescriptors/clockDescriptors/selectClockAnalog.json");
   }

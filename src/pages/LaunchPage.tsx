@@ -27,6 +27,7 @@ import { getGameDescriptor } from "../utils/DescriptorsUtil";
 import { WhichNumberAmI } from "../components/games/NumberLanguages/WhichNumberAmI";
 import { PickAndChoose } from "../components/games/PickAndChoose/PickAndChoose";
 import { WriteWords } from "../components/games/Write/WriteWords";
+import { PairsBoard } from "../components/games/PairsBoard/PairsBoard";
 
 
 export const LaunchPage = () => {
@@ -63,6 +64,7 @@ export const LaunchPage = () => {
 
       { gameId === "numberLanguagesShow" && <NumberLanguages scope={ 1 }/> }
       { gameId === "whichNumberAmI" && <WhichNumberAmI scope={ 1 }/> }
+      { gameId === "pairsBoard" && <PairsBoard gameDescriptor={descriptor}/> }
 
       { gameId === "mouseJumpingShapeClick" && <MouseSkillsJumpingShape eventType={MOUSE_SKILL_TYPE.CLICK}/> }
 

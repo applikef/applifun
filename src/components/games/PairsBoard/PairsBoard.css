@@ -1,0 +1,21 @@
+@import './../../../assets/styles/global.css';
+
+.board-style {
+  border-collapse: collapse;
+}
+
+.board-cell-style {
+  border: 3px solid var(--gray-03);
+  min-width: 50px;
+  text-align: center;  
+}
+
+.pairs-board-settings-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+.pairs-board-settings-form div {
+  padding: 10px;
+}

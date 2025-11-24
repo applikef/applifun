@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import sqlite3 from "sqlite3"
 
 import { HomePage } from "./pages/HomePage";
 import { LaunchPage } from "./pages/LaunchPage";
@@ -10,6 +11,8 @@ import { DayQuizDone } from "./pages/DayQuizDone";
 import { Login } from "./pages/Login";
 
 function App() {
+  // const db = new sqlite3.Database("/assets/db/users.db");
+
   return (    
     <GamesProvider>
       <KidDevProvider>

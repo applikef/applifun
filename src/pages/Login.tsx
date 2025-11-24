@@ -5,12 +5,10 @@ import GamesContext, { GamesContextType } from "../context/GamesContext";
 
 import "./pages.css";
 import { User } from "../model/users.types";
+import { DBClass, DBManager } from "../assets/db/DBManager";
 
 export const Login = () => {
-  const classNames = [
-    "לילך",
-    "זית"
-  ]
+  const dbClasses: DBClass[] = require("./../assets/db/class_names.json")
   const navigate = useNavigate();
 
     const { 
@@ -22,15 +20,14 @@ export const Login = () => {
     id: "",
     firstName: "",
     lastName: "",
-    className: classNames[0]
+    className: dbClasses[0].id
   });
 
   const submitHandler = (() => {
-    // NETTA: Update to validate against DB and retrieve id
-    if (student.firstName === "נטע" && student.lastName === "שני" &&
-      student.className === "לילך" 
-    ) {
-      student.id = "123";
+    let user: User | undefined = DBManager.getStudent(student.firstName, student.lastName,
+      student.className);
+    if (user !== undefined) {
+      student.id = user.id;
       setUser({
         ...student
     });
@@ -39,13 +36,14 @@ export const Login = () => {
     else {
       setUser(undefined);
       alert(`משהו לא נכון: שם תלמיד ${student.firstName} שם משפחה: ${student.lastName} או כיתה: ${student.className}`);
+      gotoHome();
     }
   })
 
   function gotoHome() {
     navigate(HOME_PAGE_PATH);
   }
-  
+
 return (
   <div className="app-page">
     <form onSubmit={submitHandler}>
@@ -77,8 +75,9 @@ return (
             className: e.target.value
           })}>
             {
-              classNames.map((className: string) => 
-                  <option key={className} value={className} className="login-label">{ className }</option>
+              dbClasses.map((dbClass: DBClass) => 
+                  <option key={dbClass.id} value={dbClass.name} 
+                    className="login-label">{ dbClass.name }</option>
               )
             }
           </select>
@@ -88,6 +87,6 @@ return (
         <input type="submit" value="התחל" className="app-button-primary-sm"></input>
       </div>
     </form>
-    <div><div className="login-label app-link" onClick={() => gotoHome()}>התחל לכל משתמש</div></div>
+    <div><div className="login-label app-link" onClick={() => gotoHome()}>התחל עם כל המשחקים</div></div>
   </div>
 )} 

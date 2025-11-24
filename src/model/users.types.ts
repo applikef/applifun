@@ -4,3 +4,8 @@ export interface User {
   lastName: string;
   className: string;
 }
+
+export interface SchoolClass {
+  id: string;
+  name: string;
+}

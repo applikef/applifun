@@ -92,7 +92,7 @@ export const WhichNumberAmI = (props: WhichNumberAmIProps) => {
         showWellDone(audioOn);
         setTimeout(()=> {
           navigate(GeneralUtil.targetNavigationOnGameOver());
-        }, ConstantsUtil.shortPauseTimeout);
+        }, ConstantsUtil.gameOverPauseTimeout);
       }
     }
     else {

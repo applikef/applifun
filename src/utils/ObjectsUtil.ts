@@ -11,6 +11,11 @@ export class ObjectsUtil {
     return !this.isNotSet(object);     
   }
 
+  public static isEven(n: number) {
+    n = Number(n);
+    return n === 0 || !!(n && !(n%2));
+  }
+
   private static compareNumbers = (a: number, b: number) => {
     if (a < b) {
       return -1;
@@ -43,6 +48,10 @@ export class ObjectsUtil {
 
   public static getArrayOfNumbers = (length: number) => {
     return Array.from(Array(length).keys())
+  }
+
+  public static generateRandomNumber(min: number, max: number): number {
+    return ObjectsUtil.generateRandomNumbers(min, max, 1)[0];
   }
 
   public static generateRandomNumbers(min: number, max: number, numberOfNumbers: number): Array<number> {
@@ -117,4 +126,20 @@ export class ObjectsUtil {
     return tmpArray && tmpArray.length > 0 ? tmpArray[0] : undefined;
   }
 
+  public static getColors(numberOfColors: number): Array<string> {
+    let colors: Array<string> = [];
+    let count = 0;
+    while (count < numberOfColors) {
+      const hue = Math.floor(Math.random() * 16777215)
+      // Ignore bottom 40% of scope and top 10% to avoid too dark or light colors
+      if (hue < 5592405 || hue > 15099494) {     
+        continue;
+      }
+      const hexString = hue.toString(16);
+      const paddedHex = hexString.padStart(6, "0");
+      colors.push(`#${paddedHex}`);
+      count++;
+    }
+    return colors;
+  }
 }

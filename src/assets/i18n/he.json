@@ -42,6 +42,9 @@
 
   "numberSortDescription": "מיון תמונות לפי מספר העצמים המופיעים בהן",
 
+  "PairsBoard": "חַבֵּר בִּשְׁנַיִם",
+  "pairsBoardDescription": "תיגרול סכום מספרים למספר נבחר",
+
   "shapeSortDescription": "מיון תמונות לפי צורתן ההנדסית",
   "selectClockAnalogDescription": "התאמת שעון מחוגים לשעה נתונה",
   "selectClockDigitalDescription": "התאמת שעון דיגיטלי לשעה נתונה",

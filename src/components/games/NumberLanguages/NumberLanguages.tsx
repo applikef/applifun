@@ -264,7 +264,7 @@ export const NumberLanguages = (props: NumberLanguagesProps) => {
         showWellDone(audioOn);
         setTimeout(()=> {
           navigate(GeneralUtil.targetNavigationOnGameOver());
-        }, ConstantsUtil.shortPauseTimeout);
+        }, ConstantsUtil.gameOverPauseTimeout);
       }
     }
   }

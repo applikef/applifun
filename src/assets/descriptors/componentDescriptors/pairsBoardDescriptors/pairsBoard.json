@@ -1,0 +1,9 @@
+{  
+  "gameType": "pairsBoard",
+  "gameId": "pairsBoard",
+  "titleTemplate": "הַקְלֵק עַל שְׁנֵי מִסְפָּרִים שֶׁסְּכוּמָם הוּא $value$",
+
+  "boardSize": 4,
+  "goal": 10,
+  "operator": "+"
+}

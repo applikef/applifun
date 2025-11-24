@@ -1,0 +1,17 @@
+[
+  {
+    "id": "math",
+    "title": "MathTitle",
+    "media": "resources/images/numbers-splash.png",
+    "items": [
+      {
+        "id": "numberLanguagesShow",
+        "label": "mathNumberLanguages",
+        "description": "mathNumberLanguagesDescription",
+        "path": "/launch?gameId=numberLanguagesShow",
+        "media": "resources/images/number-languages-show-game.png",
+        "height": 100
+      }
+    ]
+  }
+]
