@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 
 import "./../../../assets/styles/global.css";
-import "./Match.css";
+import "./PropertyMatch.css";
 
 import { Banner } from "../../global/Banner/Banner";
 import { MatchDescriptorType, MatchItem } from "../../../model/componentDescriptors.types";
@@ -30,18 +30,18 @@ type ItemTitleNotificationType = {
 }
 
 /********************************************
- * Match game 
- * An item out of a set of items is shown at the top (number, color, letter, etc.).
+ * PropertyMatch game 
+ * A property of an item that is out of a set of items is shown at the top (number, color, letter, etc.).
  * A set of images that correspond to the various items is shown at the bottom.
  * An image that corresponds to the shown item should be clicked. If an appropriate image
  * is clicked, hooray feedback is provided and another item is shown. If the image that is
  * clicked is wrond, an ouch feedback is provided and another image-click can be attempted 
  */
-export interface MatchPropsType {
+export interface PropertyMatchPropsType {
   gameDescriptor: MatchDescriptorType;
 }
 
-export const Match = (props: MatchPropsType) => {
+export const PropertyMatch = (props: PropertyMatchPropsType) => {
   const { 
     audioOn, 
     isTablet

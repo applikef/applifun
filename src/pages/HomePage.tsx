@@ -18,6 +18,7 @@ import { Trans } from "react-i18next";
 import { Subject } from "../model/subjects.types";
 import { HomePageItemType, HomePageSectionType } from "../model/componentDescriptors.types";
 import { Education } from "../components/shared/Education/Education";
+import { ObjectsUtil } from "../utils/ObjectsUtil";
 
 interface ShowStateType {
     help: String;
@@ -147,14 +148,12 @@ export const HomePage = () => {
           <span className={`home-page-user-area ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.L)}`}>
             <span className="home-page-user-area-title">נושא</span>
             <select id="subjectList" defaultValue={subject.id} 
-              className="home-page-user-area-selection" onChange={()=>{
+              className="home-page-user-area-selection" onChange={() => {
               const selectObject: HTMLSelectElement | null = 
                 document.getElementById("subjectList") as HTMLSelectElement;
-              let i: number = -1; 
-              if (selectObject !== null) {
-                i = selectObject.selectedIndex - 1; // -1 to compensate for the first general entry
-              }
-              setSubject(i > -1 ? subjects[i] : {"id": ""});
+              let subjectId: string = selectObject !== null ? selectObject.value : ""; 
+              let subject = ObjectsUtil.getEntityById(subjects, subjectId);
+              setSubject(subject !== undefined ? subject : {"id": ""});
             }}>
               <option value="">כללי</option>
               {subjectList.map((currentSubject) => 

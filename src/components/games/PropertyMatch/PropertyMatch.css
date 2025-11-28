@@ -1,0 +1,27 @@
+.groupImage {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.groupName {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+}
+.groupNameTitle {
+  font-size: 3rem;
+  padding-bottom: 2rem;
+  font-weight: bold;
+}
+.imagesArea {
+  text-align: center;
+}
+.imageStyle {
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.match-item-titles {
+  background-color: white;
+  padding: 8px;
+  border: solid 1px var(--gray-02);
+  color: var(--text);
+}

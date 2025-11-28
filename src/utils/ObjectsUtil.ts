@@ -70,6 +70,15 @@ export class ObjectsUtil {
     return arr;
   }
 
+  public static getRandomElements(arr: any[], numberOfNumbers: number): any[] {
+    let selectedIndices = ObjectsUtil.generateRandomNumbers(0, numberOfNumbers-1, numberOfNumbers);
+    let result: any[] = [];
+    for (let i: number = 0; i < numberOfNumbers; i++) {
+      result.push(arr[selectedIndices[i]]);
+    }
+    return result;
+  }
+
   // Used and tested for simple elements as strings
   public static equalByValue = (arr1: any[], arr2: any[]) => {
     if (arr1.length !== arr2.length) {

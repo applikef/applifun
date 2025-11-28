@@ -8,8 +8,7 @@
   {
     "id": "holidays",
     "name": "חורף, חנוכה וחג החגים",
-    "descriptor": "holidays.json",
-    "show": false
+    "descriptor": "holidays.json"
   },
   {
     "id": "purim",
