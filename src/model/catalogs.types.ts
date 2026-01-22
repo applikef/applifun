@@ -20,6 +20,7 @@ export interface ImageCatalogEntryType {
   isTransparent?: boolean;
   audioId?: string;
   title?: string;
+  name?: string;
   gameIds?: Array<string>;
   metadata?: MetaDataType;
 }

@@ -68,6 +68,23 @@ export interface MatchDescriptorType extends GameDescriptorType {
   settingsTitle: string;
 }
 
+export interface PropertyMatchItem {
+  id: string;
+  title: string;
+  name?: string;
+  image: string;
+  titleAudioKey?: string;
+  titleAudioHover?: string;
+}
+
+export interface PropertyMatchDescriptorType extends GameDescriptorType {
+  titleTemplate?: string;
+  showAdvise?: boolean;
+  adviseText?: string;
+  items: PropertyMatchItem[];
+  settingsTitle: string;
+}
+
 export interface PairsBoardDescriptorType extends GameDescriptorType {
   boardSize: number;
   goal: number;

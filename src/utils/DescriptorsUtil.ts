@@ -246,20 +246,13 @@ export function generateLetterMatchDescriptor() {
 
 export function generateWordMatchDescriptor() {
   const images: Array<ImageCatalogEntryType> = MediaUtil.getRandomCatalogImages(10, "wordMatch", true);
-  let titleList = [];
-  let groupList = [];
   let itemsList = [];
   for (let i=0; i < images.length; i++) {
     const image = images[i];
-    titleList.push(image.title);
-    groupList.push({
-      "id": image.id,
-      "title": image.title,
-      "name": image.title
-    });
     itemsList.push({
       "id": image.id,
       "title": image.title,
+      "name": image.name !== undefined ? image.name : image.title,
       "image": image.id,
       "groupId": image.id
     });
@@ -267,12 +260,9 @@ export function generateWordMatchDescriptor() {
 
   let descriptor = {
     "gameId": "wordMatch",
-    "showSettings": true,
     "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
-    "titleVariableValues": titleList,
     "showAdvise": true,
     "adviseText": "קרא כל אחת מהמילים",
-    "groups": groupList,
     "items": itemsList  
   }
 

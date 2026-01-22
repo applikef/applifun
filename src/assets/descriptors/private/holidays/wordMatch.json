@@ -1,0 +1,195 @@
+{
+  "gameId": "propertyMatch",
+  "titleTemplate": "בְּחַר תְּמוּנָה שֶׁל $value$",
+  "showAdvise": true,
+  "adviseText": "קרא כל אחת מהמילים",
+  "items": [
+    {
+      "id": "birds",
+      "title": "צִפּוֹרִים",
+      "image": "bird-5",
+      "groupId": "birds"
+    },
+    {
+      "id": "tree-3",
+      "title": "עֵצִים",
+      "image": "tree-3",
+      "groupId": "tree-3"
+    },
+    {
+      "id": "clouds",
+      "title": "עֲנָנִים",
+      "image": "clouds",
+      "groupId": "clouds"
+    },
+    {
+      "id": "leaf",
+      "title": "עָלֶה",
+      "image": "leaf",
+      "groupId": "leaf"
+    },
+    {
+      "id": "doughnuts",
+      "title": "סוּפְגָּנִיּוֹת",
+      "image": "doughnuts",
+      "groupId": "doughnuts"
+    },
+    {
+      "id": "bird-white-wagtail",
+      "title": "נַחְלִיאֵלִי",
+      "image": "bird-white-wagtail",
+      "groupId": "bird-white-wagtail"
+    },
+    {
+      "id": "candles",
+      "title": "נֵרוֹת",
+      "image": "candles",
+      "groupId": "candles"
+    },
+    {
+      "id": "dradle",
+      "title": "סְבִיבוֹן",
+      "image": "dradle",
+      "groupId": "dradle"
+    },
+    {
+      "id": "candle-light",
+      "title": "מַדְלִיק",
+      "image": "candle-light",
+      "groupId": "candle-light"
+    },
+    {
+      "id": "latke",
+      "title": "לְבִיבָה",
+      "image": "latke",
+      "groupId": "latke"
+    },
+    {
+      "id": "girl",
+      "title": "יַלְדָּה",
+      "image": "girl",
+      "groupId": "girl"
+    },
+    {
+      "id": "have-breakfast",
+      "title": "אוֹכֵל",
+      "image": "have-breakfast",
+      "groupId": "have-breakfast"
+    },
+    {
+      "id": "snales",
+      "title": "חֶלְזוֹנוֹת",
+      "image": "snales",
+      "groupId": "snales"
+    },
+    {
+      "id": "flower-hatsav-many",
+      "title": "חֲצָבִים",
+      "image": "flower-hatsav-many",
+      "groupId": "flower-hatsav-many"
+    },
+    {
+      "id": "menorah",
+      "title": "חֲנוּכִּיָּה",
+      "image": "menorah",
+      "groupId": "menorah"
+    },
+    {
+      "id": "bird",
+      "title": "צִיפּוֹר",
+      "image": "bird",
+      "groupId": "bird"
+    },
+    {
+      "id": "girls",
+      "title": "יְלָדוֹת",
+      "image": "girls",
+      "groupId": "girls"
+    },
+    {
+      "id": "boy",
+      "title": "יֶלֶד",
+      "image": "boy",
+      "groupId": "boy"
+    },
+    {
+      "id": "tree",
+      "title": "עֵץ",
+      "image": "tree",
+      "groupId": "tree"
+    },
+    {
+      "id": "flamingos-flying",
+      "title": "צִפּוֹרִים נוֹדְדוֹת",
+      "image": "flamingos-flying",
+      "groupId": "flamingos-flying"
+    },
+    {
+      "id": "greek-soldiers",
+      "title": "יְוָנִים",
+      "image": "greek-soldiers",
+      "groupId": "greek-soldiers"
+    },
+    {
+      "id": "dradles",
+      "title": "סְבִיבוֹנִים",
+      "image": "dradles",
+      "groupId": "dradles"
+    },
+    {
+      "id": "candle",
+      "title": "נֵר",
+      "image": "candle",
+      "groupId": "candle"
+    },
+    {
+      "id": "latkes",
+      "title": "לְבִיבוֹת",
+      "image": "latkes",
+      "groupId": "latkes"
+    },
+    {
+      "id": "children",
+      "title": "יְלָדִים",
+      "image": "children-3",
+      "groupId": "children"
+    },
+    {
+      "id": "flower-hatsav",
+      "title": "חָצָב",
+      "image": "flower-hatsav",
+      "groupId": "flower-hatsav"
+    },
+    {
+      "id": "eat",
+      "title": "אוֹכֶלֶת",
+      "image": "eat",
+      "groupId": "eat"
+    },
+    {
+      "id": "snale",
+      "title": "חִלָּזוֹן",
+      "image": "snale",
+      "groupId": "snale"
+    },
+    {
+      "id": "doughnut",
+      "title": "סוּפְגָּנִיָּה",
+      "image": "doughnut",
+      "groupId": "doughnut"
+    },
+    {
+    "id": "cloud",
+    "title": "עָנָן",
+      "image": "cloud",
+      "groupId": "cloud"
+    },
+    {
+      "id": "leaf-many-autumn",
+      "title": "עֲלֵי שַׁלֶּכֶת",
+      "image": "leaf-many-autumn",
+      "groupId": "leaf-many-autumn"
+    }
+],
+  "settingsTitle": "סמן את התמונה"
+}

@@ -28,6 +28,8 @@ import { WhichNumberAmI } from "../components/games/NumberLanguages/WhichNumberA
 import { PickAndChoose } from "../components/games/PickAndChoose/PickAndChoose";
 import { WriteWords } from "../components/games/Write/WriteWords";
 import { PairsBoard } from "../components/games/PairsBoard/PairsBoard";
+import { PropertyMatch } from "../components/games/PropertyMatch/PropertyMatch";
+import { FacilitatedCommunication } from "../components/games/FacilitatedCommunication/FacilitatedCommunication";
 
 
 export const LaunchPage = () => {
@@ -48,7 +50,7 @@ export const LaunchPage = () => {
       { gameId === "colorMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "numberMatch" && <Match gameDescriptor={descriptor}/> }
       { gameId === "letterMatch" && <Match gameDescriptor={descriptor}/> }
-      { gameId === "wordMatch" && <Match gameDescriptor={descriptor}/> }
+      { gameId === "wordMatch" && <PropertyMatch gameDescriptor={descriptor}/> }
 
       { gameId === "imageQuestSort" && <PickAndChoose gameDescriptor={descriptor}/> }
       { gameId === "imageQuestQuestions" && <PickAndChoose gameDescriptor={descriptor}/> }
@@ -67,6 +69,7 @@ export const LaunchPage = () => {
       { gameId === "pairsBoard" && <PairsBoard gameDescriptor={descriptor}/> }
 
       { gameId === "mouseJumpingShapeClick" && <MouseSkillsJumpingShape eventType={MOUSE_SKILL_TYPE.CLICK}/> }
+      { gameId === "facilitatedCommunication" && <FacilitatedCommunication/> }
 
       { gameId === "colorSort" && <SortGame gameDescriptor={descriptor}/> }
       { gameId === "moodSort" && <SortGame gameDescriptor={descriptor}/> }

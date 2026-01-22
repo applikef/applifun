@@ -13,6 +13,14 @@ export const homePageDescriptor: HomePageSectionType[] = [
         media: "resources/images/mouse-frog-chase.png",
         description: "MyMouseDescription",
         height: 100
+      },
+      {
+        id: "facilitatedCommunication",
+        label: "FacilitatedCommunicationLabel",
+        path: "/launch?gameId=facilitatedCommunication",
+        media: "resources/images/child-typing.jpg",
+        description: "FacilitatedCommunicationDescription",
+        height: 100
       }
     ]
   },

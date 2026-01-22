@@ -135,6 +135,16 @@ export class ObjectsUtil {
     return tmpArray && tmpArray.length > 0 ? tmpArray[0] : undefined;
   }
 
+  /** returns entity name if it is defined or entity title id no name is provided */
+  public static getEntityName(entity: any): string {
+    if (entity.name !== undefined && entity.name.length > 0 ) {
+      return entity.name;
+    }
+    else {
+      return entity.title;
+    }
+  }
+
   public static getColors(numberOfColors: number): Array<string> {
     let colors: Array<string> = [];
     let count = 0;

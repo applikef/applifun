@@ -1,0 +1,25 @@
+@import "./../../../assets/styles/global.css";
+
+.fc-board-style {
+  background-color: black;
+}
+
+.fc-row-style {
+  cursor: pointer;
+}
+
+.fc-key-style {
+  cursor: pointer;
+  color: white;
+  background-color: #222222;
+  min-height: 96px;
+  min-width: 96px;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-right: 16px;
+  padding-left: 16px;
+  font-size: 48px;
+}
+

@@ -12,47 +12,11 @@
   ],
   "showAdvise": true,
   "adviseText": "קרא כל אחת מהמילים",
-  "groups": [
-    {
-      "id": "fire-place",
-      "title": "מְדוּרָה",
-      "name": "מְדוּרָה"
-    },
-    {
-      "id": "potatos",
-      "title": "תַּפּוּחֵי אֲדָמָה",
-      "name": "תַּפּוּחֵי אֲדָמָה"
-    },
-    {
-      "id": "wood-logs",
-      "title": "עֵצִים",
-      "name": "עֵצִים"
-    },
-    {
-      "id": "marshmallow",
-      "title": "מַרְשְׁמֵלוֹ",
-      "name": "מַרְשְׁמֵלוֹ"
-    },
-    {
-      "id": "fire",
-      "title": "אֵשׁ",
-      "name": "אֵשׁ"
-    },
-    {
-      "id": "bow-and-arrow",
-      "title": "חֵץ וָקֶשֶׁת",
-      "name": "חֵץ וָקֶשֶׁת"
-    },
-    {
-      "id": "wood-planks",
-      "title": "קְרָשִׁים",
-      "name": "קְרָשִׁים"
-    }
-  ],
   "items": [
     {
       "id": "fire-place",
       "title": "מְדוּרָה",
+      "name": "מְדוּרָה",
       "image": "fire-place",
       "groupId": "fire-place"
     },

@@ -9,50 +9,32 @@
   ],
   "showAdvise": true,
   "adviseText": "קרא כל אחת מהמילים",
-  "groups": [
-    {
-      "id": "gift",
-      "title": "מַתָּנָה",
-      "name": "מַתָּנָה"
-    },
-    {
-      "id": "horse",
-      "title": "סוּס",
-      "name": "סוּס"
-    },
-    {
-      "id": "carriage",
-      "title": "עֲגָלָה",
-      "name": "עֲגָלָה"
-    },
-    {
-      "id": "strawberry",
-      "title": "תּוּת",
-      "name": "תּוּת"
-    }
-  ],
   "items": [
     {
       "id": "horse",
       "title": "סוּס",
+      "name": "סוּס",
       "image": "horse",
       "groupId": "horse"
     },
     {
       "id": "gift",
       "title": "מַתָּנָה",
+      "name": "מַתָּנָה",
       "image": "gift",
       "groupId": "gift"
     },
     {
       "id": "carriage",
       "title": "עֲגָלָה",
+      "name": "עֲגָלָה",
       "image": "carriage",
       "groupId": "carriage"
     },
     {
       "id": "strawberry",
       "title": "תּוּת",
+      "name": "תּוּת",
       "image": "strawberry",
       "groupId": "strawberry"
     }
