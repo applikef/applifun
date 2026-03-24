@@ -1,0 +1,8 @@
+  {
+    id: "facilitatedCommunication",
+    label: "FacilitatedCommunicationLabel",
+    path: "/launch?gameId=facilitatedCommunication",
+    media: "resources/images/child-typing.jpg",
+    description: "FacilitatedCommunicationDescription",
+    height: 100
+  }
