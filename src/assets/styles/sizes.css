@@ -56,10 +56,6 @@
   font-size: var(--font-size-xl);
 }
 
-.font-size-xxl-tablet {
-  font-size: var(--font-size-xxl);
-}
-
 .font-size-xl-tablet {
   font-size: var(--font-size-l);
 }
@@ -82,6 +78,10 @@
 
 .font-size-xxs-tablet {
   font-size: var(--font-size-xxs);
+}
+
+.padding-top-l {
+  padding-top: var(--font-size-l);
 }
 
 

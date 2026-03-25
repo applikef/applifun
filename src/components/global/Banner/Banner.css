@@ -31,6 +31,13 @@
   cursor: pointer;
 }
 
+.banner-icon-tablet {
+  height: 24px;
+  width: 24px;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
 .banner-show-help {
   display: inline;
 }

@@ -108,32 +108,6 @@ export const HomePage = () => {
   return (
     <div className="home-page-app">
       <div className="home-page-content-area">
-        <div className="home-page-top-banner">
-          <div className="home-page-mail app-clickable"
-            onClick={() => {
-              setShowState({
-                ...showState,
-                mailHelp: showState.mailHelp === "home-page-show-mail-help" ? "home-page-hide-mail-help" : "home-page-show-mail-help"
-              })
-            }}>
-            <Trans i18nKey="HomePageMailTitle">
-              Comments? Insights? Proposals? We'd be glad to hear. 
-              <span className='app-bold'>Write to us to goofarimhaifa@gmail.com</span>
-            </Trans>            
-          </div>
-          <img src={BASE_URL + "resources/icons/help.png"} 
-            className="banner-icon app-clickable"
-            title={t("HomePageHelpTitle")}  
-            onClick={() => {               
-              setShowState({
-                ...showState,
-                help: showState.help === "banner-show-help" ? "banner-hide-help" : "banner-show-help"
-              })
-            }}
-            alt={t("HelpStr")} />
-        </div>
-        {isTablet && <br/>}
-
         <ModalNotification text={ t("HomePageHoldInLandscape") } 
           show={(isTablet && isPortrait) && !showState.dismissPortrait}
           onDismiss={() => 
@@ -144,23 +118,36 @@ export const HomePage = () => {
           }/>
 
         <div className={`home-page-title ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.XXL)}`}>
+          <img src={BASE_URL + "resources/icons/help.png"} 
+            className={ `${isTablet ? "banner-icon-tablet" : "banner-icon"} app-clickable` }
+            title={t("HomePageHelpTitle")}  
+            onClick={() => {               
+              setShowState({
+                ...showState,
+                help: showState.help === "banner-show-help" ? "banner-hide-help" : "banner-show-help"
+              })
+            }}
+            alt={t("HelpStr")} />
+
           { t("HomePagePlayAndLearn") }
+        { subjectList.length > 1 &&
           <span className={`home-page-user-area ${DeviceUtil.getFontSize(isTablet, FONT_SIZE.L)}`}>
             <span className="home-page-user-area-title">נושא</span>
-            <select id="subjectList" defaultValue={subject.id} 
-              className="home-page-user-area-selection" onChange={() => {
-              const selectObject: HTMLSelectElement | null = 
-                document.getElementById("subjectList") as HTMLSelectElement;
-              let subjectId: string = selectObject !== null ? selectObject.value : ""; 
-              let subject = ObjectsUtil.getEntityById(subjects, subjectId);
-              setSubject(subject !== undefined ? subject : {"id": ""});
-            }}>
-              <option value="">כללי</option>
-              {subjectList.map((currentSubject) => 
-                 <option value={currentSubject.id} key={currentSubject.id}>{currentSubject.name}</option>
-              )}
-            </select>
-          </span>
+              <select id="subjectList" defaultValue={subject.id} 
+                className="home-page-user-area-selection" onChange={() => {
+                const selectObject: HTMLSelectElement | null = 
+                  document.getElementById("subjectList") as HTMLSelectElement;
+                let subjectId: string = selectObject !== null ? selectObject.value : ""; 
+                let subject = ObjectsUtil.getEntityById(subjects, subjectId);
+                setSubject(subject !== undefined ? subject : {"id": ""});
+              }}>
+                <option value="">כללי</option>
+                {subjectList.map((currentSubject) => 
+                  <option value={currentSubject.id} key={currentSubject.id}>{currentSubject.name}</option>
+                )}
+              </select>
+            </span>
+          }
         </div>
         <div>
           <div className="home-page-sub-title app-indent-top-16 home-page-sub-title">
@@ -215,6 +202,20 @@ export const HomePage = () => {
             )}
           </div>
         </div> 
+
+        <div className="home-page-mail app-clickable padding-top-l"
+          onClick={() => {
+            setShowState({
+              ...showState,
+              mailHelp: showState.mailHelp === "home-page-show-mail-help" ? "home-page-hide-mail-help" : "home-page-show-mail-help"
+            })
+          }}>
+          <Trans i18nKey="HomePageMailTitle">
+            Comments? Insights? Proposals? We'd be glad to hear. 
+            <span className='app-bold'>Write to us to goofarimhaifa@gmail.com</span>
+          </Trans>            
+        </div>
+
         <Link to="/launch?gameId=changeRecords" className="app-link-sm">
           {t("HomePageChangeRecord")}
         </Link> 
