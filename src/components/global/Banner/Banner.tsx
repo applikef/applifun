@@ -28,6 +28,7 @@ export const Banner = (props: BannerPropsType) => {
   }
 
   const { 
+    isTablet,
     turnAudioOn, 
     turnAudioOff, 
     audioOn, 
@@ -59,6 +60,10 @@ export const Banner = (props: BannerPropsType) => {
     }
   }
 
+  function getBannerIconClass() {
+    return isTablet ? "banner-icon-tablet" : "banner-icon";
+  }
+
   return (
     <>
       { !activeIsQuiz &&
@@ -68,11 +73,11 @@ export const Banner = (props: BannerPropsType) => {
             <div className="banner-right-icon-bar">
               <Link to={HOME_PAGE_PATH}>
                 <img src="resources/icons/home128.png" 
-                  className="banner-icon" 
+                  className={ getBannerIconClass() } 
                   title="עמוד הבית"  alt="עמוד הבית" />
               </Link>
               { props.settings !== undefined && props.settings &&
-                <img src="resources/icons/settings.png" className="banner-icon" 
+                <img src="resources/icons/settings.png" className={ getBannerIconClass() } 
                   title="הגדרות משחק"  alt="הגדרות משחק" 
                   onClick={() => props.settings ? props.settings() : undefined}/>
               }
@@ -90,30 +95,30 @@ export const Banner = (props: BannerPropsType) => {
               }
             </div>
 
-            { showScoreboard &&
+            { !isTablet && showScoreboard &&
               <Scoreboard scores={scoreboard!} />
             }
 
             { showLeftIconBar &&
               <div className="banner-left-icon-bar">
                 <div>
-                  <img src="resources/icons/hide.png" className="banner-icon" 
+                  <img src="resources/icons/hide.png" className={ getBannerIconClass() } 
                       title="החבא תפריט שליטה"  alt="החבא תפריט שליטה"
                       onClick={() => setShowBannerBar(false)} />
                 </div>
                 { props.gameId.length > 0 &&
                   <div onClick={() => setHelpState()}>
-                    <img src="resources/icons/help.png" className="banner-icon" 
+                    <img src="resources/icons/help.png" className={ getBannerIconClass() } 
                       title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
                   </div>
                 }
                 {
-                  !props.hideAudio && audioOn && <img src="resources/icons/speaker.png" className="banner-icon"
+                  !props.hideAudio && audioOn && <img src="resources/icons/speaker.png" className={ getBannerIconClass() }
                     onClick={() => turnAudioOff()} 
                       title="קול" alt="קול" />
                 }
                 {
-                  !props.hideAudio && !audioOn && <img src="resources/icons/speaker-off.png" className="banner-icon" 
+                  !props.hideAudio && !audioOn && <img src="resources/icons/speaker-off.png" className={ getBannerIconClass() } 
                     onClick={() => turnAudioOn()}
                       title="קול" alt="קול" />
                 }
@@ -125,7 +130,7 @@ export const Banner = (props: BannerPropsType) => {
         
         {!showBannerBar &&
           <div>
-            <img src="resources/icons/show.png" className="banner-icon" 
+            <img src="resources/icons/show.png" className={ getBannerIconClass() } 
                 title="הראה תפריט שליטה"  alt="הראה תפריט שליטה"
                 onClick={() => setShowBannerBar(true)} />
           </div>
@@ -152,17 +157,17 @@ export const Banner = (props: BannerPropsType) => {
           </div>
         { props.gameId.length > 0 &&
             <div onClick={() => setHelpState()}>
-              <img src="resources/icons/help.png" className="banner-icon" 
+              <img src="resources/icons/help.png" className={ getBannerIconClass() } 
                 title="עזרה: קליק לפתיחה ולסגירה"  alt="עזרה" />
             </div>
           }
           {
-            !props.hideAudio && audioOn && <img src="resources/icons/speaker.png" className="banner-icon"
+            !props.hideAudio && audioOn && <img src="resources/icons/speaker.png" className={ getBannerIconClass() }
               onClick={() => turnAudioOff()} 
                 title="קול" alt="קול" />
           }
           {
-            !props.hideAudio && !audioOn && <img src="resources/icons/speaker-off.png" className="banner-icon" 
+            !props.hideAudio && !audioOn && <img src="resources/icons/speaker-off.png" className={ getBannerIconClass() } 
               onClick={() => turnAudioOn()}
                 title="קול" alt="קול" />
           }
