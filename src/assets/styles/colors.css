@@ -35,7 +35,7 @@
   --pink-03: #dd1c77;
   --pink-04: #980043;
 
-  --background: var(--gray-01);
+  --background: var(--white-01);
   --text: var(--blue-03);
   --link: var(--blue-03);
   --clickable: var(--blue-01);
